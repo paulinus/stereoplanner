@@ -1,0 +1,111 @@
+\documentclass[12pt,a4paper]{article}
+
+% Include other packages here, before hyperref.
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\pdfoutput=1
+\usepackage[pdftex]{graphicx}
+\usepackage{times}
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,
+            breaklinks=true,
+            letterpaper=true,
+            colorlinks,
+            bookmarks=false]{hyperref}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+\newtheorem{fact}{Fact}
+
+\def\1{\raisebox{2pt}{\rm{$\chi$}}}
+\def\div{\mathop{\rm div}}
+\def\argmax{\mathop{\rm arg\,max}}
+\def\argmin{\mathop{\rm arg\,min}}
+\def\at{\Bigr|}
+\def\R{\mathbb{R}}
+\def\S{\varGamma}
+\def\x{\mathbf x}
+\def\X{\mathbf X}
+\def\y{\mathbf y}
+\def\Y{\mathbf Y}
+\def\O{\mathbf O}
+\def\p{\mathbf p}
+\def\e{\mathbf e}
+\def\n{\mathbf n}
+
+
+\begin{document}
+
+\title{Geometry of Stereoscopic Filming and Displaying}
+\author{}
+\maketitle
+\tableofcontents
+
+
+\section{Formulas}
+
+\subsection{Filming}
+\begin{figure}
+ \begin{center}
+  \includegraphics[width=0.9\textwidth]{stereo_projection.pdf}
+ \end{center}
+ \caption{Projection of a point into two cameras.  Or, equivanlently, the percieved 3D point given the two images presented to the observer.}
+\end{figure}
+
+
+There are mainly 3 parameters that descrive the internal geometry of a camera, and thus the way in which it captures images.  These are
+\begin{itemize}
+ \item the focal leghth of the camera, $f$,
+ \item the width of the sensor, $w$
+ \item and the position of the principal point, $\p$.
+\end{itemize}
+Usually, only the ratio between the focal lenght and the image width is relevant, and the principal point is at the origin.  In this discussion however, we have to take into account all 3 parameters since they are going to play and important role when displayng the images to the audience.
+
+When filming in stereo, another parameter has to be controled.  This is
+\begin{itemize}
+ \item the inter-camera distance or baseline, $b$.
+\end{itemize}
+Other parameters could also be taken into account to represent the relative position of cameras, but here, we are only going to consider parallel cameras with their optical center shifted on the x axis.  The reason is that other set ups yield to vertical disparity and should never be used without geometric correction.  A simplistic argument for this is that: since the images are going to be displayed in a single plane (the screen), they should also be captured in a single plane.  By placing the cameras in parallel position, we make their image planes coincide.
+
+
+Let $b_c$ be the baseline or inter-occular distance of the cameras.  Let the optical centers of the cameras be
+\begin{equation}
+ \O^l = (-\frac{b_c}{2}, 0, 0)  \quad\quad  \O^r = (\frac{b_c}{2}, 0, 0)
+\end{equation}
+Let $f_c$ be the focal distance of the cameras and $w_c$ the width of the images expressed in the same units.  Let also $\p^l$ and $\p^r$ be the principal point of the cameras.
+
+
+By Thales theorem we have
+\begin{equation}
+ \frac{p^l + w \x^l}{f} = \frac{\X_{xy} - \O^l_{xy}}{\X_z}
+\end{equation}
+This equation relates the 3D point $\X$ with its projection into the left image $\x^l$.  The same equation holds for the right image.
+
+
+\begin{figure}
+ \begin{center}
+  \includegraphics[width=0.7\textwidth]{image_coordinate.pdf}
+ \end{center}
+ \caption{The image coordinate system used in the equations.}
+\end{figure}
+
+\subsection{Displaying}
+Ideally, one would like to disylay the images in the exact same set up that was used for filming.  If this was the case, the observer would view exactly what the cameras where seeing and the sesation of presence should be perfect, since there is no way for the observer to distinguish the images that are being shown from the ones that he whould obsreve if she was actually there.
+
+In practice, reproducing the exact same setup is not always possible.  In the following we are going to consider that the parameters such as the focal lenght $f$, the image width $w$, etc, are different when filming and when displaying, and we will analyse the geomtric effect iduced by this differences.
+
+
+
+\end{document}
+
