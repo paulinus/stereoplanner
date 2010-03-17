@@ -27,6 +27,7 @@ class SpMainWindow : public QMainWindow {
   void CreateMenus();
   
  private:
+  // TODO(pau): Add a dialog to tune the parameters.
   QMenu *file_menu_;
   QAction *open_action_;
 
