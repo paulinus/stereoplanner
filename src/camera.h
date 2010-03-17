@@ -1,7 +1,6 @@
 #ifndef __Camera_h__
 #define __Camera_h__
 
-
 #include <Eigen/Dense>
 
 using namespace Eigen;

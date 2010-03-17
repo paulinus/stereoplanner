@@ -75,7 +75,7 @@ class SpDocument : public QObject {
     sensor_width_ = 36;
     sensor_height_ = 24;
 
-    rig_interocular_ = 65;
+    rig_interocular_ = .65;
     rig_position_ << 0, 0, -6;
     //rig_orientation_;
     
@@ -100,7 +100,7 @@ class SpDocument : public QObject {
 
   void ProjectToSensor() {
     for (int i = 0; i < 2; ++i) {
-      Vector3d shift((i==0)?-1:1 * rig_interocular_ / 2, 0, 0);
+      Vector3d shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
       Vector3d pos = rig_position_
                    + rig_orientation_.toRotationMatrix() * shift;
       Camera camera(focal_length_, sensor_width_, sensor_height_,

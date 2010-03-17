@@ -16,6 +16,11 @@ SpMainWindow::SpMainWindow(QWidget *parent)
   setWindowTitle("Stereo Planer");
 
   doc_ = new SpDocument;
+
+  NewCaptureViewer();
+  NewSensorViewer();
+  //NewScreenViewer();
+  //NewTheaterViewer();
 }
 
 SpMainWindow::~SpMainWindow() {
@@ -25,6 +30,20 @@ SpMainWindow::~SpMainWindow() {
 void SpMainWindow::NewCaptureViewer() {
   CaptureViewer *viewer = new CaptureViewer(NULL, this);
   viewer->SetDocument(doc_);
+  viewers_area_->addSubWindow(viewer);
+  viewer->show();
+}
+
+void SpMainWindow::NewSensorViewer() {
+  GeometryViewer *viewer = new GeometryViewer(NULL, this);
+  viewer->SetGeometry(doc_->sensor_geometry_);
+  viewers_area_->addSubWindow(viewer);
+  viewer->show();
+}
+
+void SpMainWindow::NewScreenViewer() {
+  GeometryViewer *viewer = new GeometryViewer(NULL, this);
+  viewer->SetGeometry(doc_->screen_geometry_);
   viewers_area_->addSubWindow(viewer);
   viewer->show();
 }

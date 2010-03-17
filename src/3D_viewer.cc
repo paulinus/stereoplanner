@@ -170,8 +170,13 @@ CaptureViewer::CaptureViewer(QGLWidget *share, QWidget *parent)
   setWindowTitle("Capture Viewer");
 }
 
+GeometryViewer::GeometryViewer(QGLWidget *share, QWidget *parent)
+    : Viewer3D(share, parent), geo_(0) {
+  setWindowTitle("Generic Geometry Viewer");
+}
+
 TheaterViewer::TheaterViewer(QGLWidget *share, QWidget *parent)
-    : Viewer3D(share, parent) {
+    : Viewer3D(share, parent), doc_(0) {
   setWindowTitle("Theater Viewer");
 }
 

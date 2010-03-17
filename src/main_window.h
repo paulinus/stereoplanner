@@ -17,6 +17,8 @@ class SpMainWindow : public QMainWindow {
  
  public slots:
   void NewCaptureViewer();
+  void NewSensorViewer();
+  void NewScreenViewer();
   void NewTheaterViewer();
 
  private:

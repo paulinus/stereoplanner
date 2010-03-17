@@ -39,8 +39,6 @@ inline Geometry CubeGeometry() {
              4,5,6,
              6,7,4};
   g.triangles_.insert(g.triangles_.begin(), t, t + sizeof(t)/sizeof(t[0]));
-  std::cout << sizeof(v) << "\n";
-  std::cout << sizeof(t) << "\n";
   return g;
 }
 

@@ -128,16 +128,46 @@ class TheaterViewer : public Viewer3D {
           int b = doc_->theater_geometry_.triangles_[i + (j+1)%3];
           glVertex4fv(&doc_->theater_geometry_.vertex_[4 * a]);
           glVertex4fv(&doc_->theater_geometry_.vertex_[4 * b]);
-
-std::cout << doc_->theater_geometry_.vertex_[4 * a] << " ";
         }
       }
-std::cout << "caca\n";
       glEnd();
     }
   }
  private:
   SpDocument *doc_;
+};
+
+class GeometryViewer : public Viewer3D {
+  Q_OBJECT
+  
+ public:
+  GeometryViewer(QGLWidget *share, QWidget *parent);
+  virtual ~GeometryViewer() {}
+  void SetGeometry(Geometry *geo) {
+    geo_ = geo;
+  }
+  void paintGL() {
+    Viewer3D::paintGL();
+   
+    if (geo_) {
+      for (int s = 0; s < 2; ++s) {
+        Geometry *g = geo_ + s;
+        glBegin(GL_LINES);
+        for (int i = 0; i < g->triangles_.size(); i += 3) {
+          for (int j = 0; j < 3; ++j) {
+            glColor4f(.5 + s*.5,.7,1 - s*.5,1);
+            int a = g->triangles_[i + j];
+            int b = g->triangles_[i + (j+1)%3];
+            glVertex4fv(&g->vertex_[4 * a]);
+            glVertex4fv(&g->vertex_[4 * b]);
+          }
+        }
+        glEnd();
+      }
+    }
+  }
+ private:
+  Geometry *geo_;
 };
 
 #endif // UI_TVR_3D_VIEWER_H_
