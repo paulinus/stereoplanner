@@ -32,6 +32,8 @@ class SpMainWindow : public QMainWindow {
 
   QMenu *view_menu_;
   QAction *new_capture_viewer_action_;
+  QAction *new_sensor_viewer_action_;
+  QAction *new_screen_viewer_action_;
   QAction *new_theater_viewer_action_;
 
   QMdiArea *viewers_area_;

@@ -9,8 +9,6 @@
 #include "document.h"
 
 
-// TODO(pau): Add viewers for the sensor, and screen geometries.
-
 
 class ViewerCamera {
  public:
@@ -90,6 +88,18 @@ class CaptureViewer : public Viewer3D {
     Viewer3D::paintGL();
    
     if (doc_) {
+      // Draw better cameras.
+      glBegin(GL_POINTS);
+      glColor4d(0,1,0,1);
+      glVertex3dv(&doc_->rig_position_[0]);
+      for (int i = 0; i < 2; ++i) {
+        Vector3d pos = doc_->CameraPosition(i);
+          std::cout << pos << " pos\n";
+        glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
+        glVertex3dv(&pos[0]);
+      }
+      glEnd();
+
       glBegin(GL_LINES);
       for (int i = 0; i < doc_->capture_geometry_.triangles_.size(); i += 3) {
         for (int j = 0; j < 3; ++j) {
@@ -120,6 +130,31 @@ class TheaterViewer : public Viewer3D {
     Viewer3D::paintGL();
    
     if (doc_) {
+      // Draw the screen.
+      float w = doc_->screen_width_ / 2;
+      float h = doc_->screen_height_ / 2;
+      glBegin(GL_LINES);
+      glColor3f(.7, .7, .7);
+      glVertex3f(-w, -h, 0); glVertex3f(+w, -h, 0);
+      glVertex3f(+w, -h, 0); glVertex3f(+w, +h, 0);
+      glVertex3f(+w, +h, 0); glVertex3f(-w, +h, 0);
+      glVertex3f(-w, +h, 0); glVertex3f(-w, -h, 0);
+      glEnd();
+
+      // Draw the observer.
+      glBegin(GL_POINTS);
+      glColor4d(0,1,0,1);
+      glVertex3dv(&doc_->observer_position_[0]);
+      for (int i = 0; i < 2; ++i) {
+        Vector3d pos = doc_->EyePosition(i);
+          std::cout << pos << " pos\n";
+        glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
+        glVertex3dv(&pos[0]);
+      }
+      glEnd();
+
+
+      // Draw geometry.
       glBegin(GL_LINES);
       for (int i = 0; i < doc_->theater_geometry_.triangles_.size(); i += 3) {
         for (int j = 0; j < 3; ++j) {

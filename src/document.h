@@ -77,14 +77,14 @@ class SpDocument : public QObject {
 
     rig_interocular_ = .65;
     rig_position_ << 0, 0, -6;
-    //rig_orientation_;
+    rig_orientation_.setIdentity();
     
     screen_width_ = 20;
-    screen_heigth_ = 15;
+    screen_height_ = 15;
     
     observer_interocular_ = 6.5;
     observer_position_ << 0, 0, -30;
-    //observer_orientation_;
+    observer_orientation_.setIdentity();
 
     capture_geometry_ = CubeGeometry();
     UpdateEverything();
@@ -98,11 +98,14 @@ class SpDocument : public QObject {
     Triangulate();
   }
 
+  Vector3d CameraPosition(int i) {
+    Vector3d shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
+    return rig_position_ + rig_orientation_.toRotationMatrix() * shift;
+  }
+
   void ProjectToSensor() {
     for (int i = 0; i < 2; ++i) {
-      Vector3d shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
-      Vector3d pos = rig_position_
-                   + rig_orientation_.toRotationMatrix() * shift;
+      Vector3d pos = CameraPosition(i);
       Camera camera(focal_length_, sensor_width_, sensor_height_,
                     pos, rig_orientation_);
       // TODO(pau): Test Project capture geometry.
@@ -113,18 +116,22 @@ class SpDocument : public QObject {
   void SensorToScreen() {
     for (int i = 0; i < 2; ++i) {
       // TODO(pau): Test scale geometry.
-      ScaleGeometry(sensor_geometry_[i], screen_width_ / 2, screen_heigth_ / 2,
+      ScaleGeometry(sensor_geometry_[i], screen_width_ / 2, screen_height_ / 2,
                     1, &screen_geometry_[i]);
     }
   }
 
+  Vector3d EyePosition(int i) {
+    Vector3d shift((i==0?-1:1) * observer_interocular_ / 2, 0, 0);
+    return observer_position_ 
+        + observer_orientation_.toRotationMatrix() * shift;
+  }
+
+
   void Triangulate() {
     // TODO(pau): Test Triangulate.
-    Matrix3d R = observer_orientation_.toRotationMatrix();
-    Vector3d left_eye = observer_position_ 
-        + R * Vector3d(-observer_interocular_ / 2, 0, 0);
-    Vector3d right_eye = observer_position_ 
-        + R * Vector3d(observer_interocular_ / 2, 0, 0);
+    Vector3d left_eye = EyePosition(0);
+    Vector3d right_eye = EyePosition(1);
 
     theater_geometry_.vertex_.resize(screen_geometry_[0].vertex_.size());
     for (unsigned int i = 0; i < theater_geometry_.vertex_.size(); i += 4) {
@@ -170,10 +177,10 @@ class SpDocument : public QObject {
   
   // Screen parameters.
   // The center of the screen is assumed to be at (0,0,0), its top-left corner 
-  // is at (screen_width_ / 2, screen_heigth_ / 2, 0).  The normal vector
+  // is at (screen_width_ / 2, screen_height_ / 2, 0).  The normal vector
   // pointing to the theater is the (0,0,1).
   double screen_width_;
-  double screen_heigth_;
+  double screen_height_;
   
   // Observer parameters.
   double observer_interocular_;

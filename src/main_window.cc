@@ -66,6 +66,17 @@ void SpMainWindow::CreateActions() {
   new_capture_viewer_action_->setStatusTip(tr("New Capture Viewer"));
   connect(new_capture_viewer_action_, SIGNAL(triggered()),
           this, SLOT(NewCaptureViewer()));
+
+  new_sensor_viewer_action_ = new QAction(tr("&Sensor"), this);
+  new_sensor_viewer_action_->setStatusTip(tr("New Sensor Viewer"));
+  connect(new_sensor_viewer_action_, SIGNAL(triggered()),
+          this, SLOT(NewSensorViewer()));
+
+  new_screen_viewer_action_ = new QAction(tr("&Screen"), this);
+  new_screen_viewer_action_ ->setStatusTip(tr("New Screen Viewer"));
+  connect(new_screen_viewer_action_, SIGNAL(triggered()),
+          this, SLOT(NewScreenViewer()));
+
   new_theater_viewer_action_ = new QAction(tr("&Theater"), this);
   new_theater_viewer_action_->setStatusTip(tr("New Theater Viewer"));
   connect(new_theater_viewer_action_, SIGNAL(triggered()),
@@ -77,6 +88,8 @@ void SpMainWindow::CreateMenus() {
   file_menu_->addAction(open_action_);
   file_menu_ = menuBar()->addMenu(tr("&View"));
   file_menu_->addAction(new_capture_viewer_action_);
+  file_menu_->addAction(new_sensor_viewer_action_);
+  file_menu_->addAction(new_screen_viewer_action_);
   file_menu_->addAction(new_theater_viewer_action_);
 }
 
