@@ -15,7 +15,15 @@ class ParametersForm : public QWidget {
   ~ParametersForm() {}
  
  public slots:
-  
+   void on_focalLengthSpinBox_valueChanged(double v) {
+     std::cout << v << "\n";
+     ui_.sensorWidthSpinBox->setValue(v);
+   }
+   void on_sensorWidthSpinBox_valueChanged(double v) {
+     ui_.focalLengthSpinBox->setValue(v);
+   }
+   void on_sensorHeightSpinBox_valueChanged(double v) {
+   }
  private:
    Ui::ParametersForm ui_;
    SpDocument *doc_;
