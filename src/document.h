@@ -18,15 +18,6 @@ class SpDocument : public QObject {
   SpDocument();
   virtual ~SpDocument();
 
-  void UpdateEverything();
-
-  Vector3d CameraPosition(int i);
-  void ProjectToSensor();
-  void SensorToScreen();
-  Vector3d EyePosition(int i);
-
-  void Triangulate();
-
   const Geometry &CaptureGeometry() const { return capture_geometry_; }
   const Geometry &SensorGeometry(int i) const { return sensor_geometry_[i]; }
   const Geometry &ScreenGeometry(int i) const { return screen_geometry_[i]; }
@@ -39,6 +30,7 @@ class SpDocument : public QObject {
   double RigInterocular() { return rig_interocular_; }
   Vector3d RigPosition() { return rig_position_; }
   Quaterniond RigOrientation() { return rig_orientation_; }
+  Vector3d CameraPosition(int i);
 
   double ScreenWidth() { return screen_height_; }
   double ScreenHeight() { return screen_height_; }
@@ -46,6 +38,23 @@ class SpDocument : public QObject {
   double ObserverInterocular() { return observer_interocular_; }
   Vector3d ObserverPosition() { return observer_position_; }
   Quaterniond ObserverOrientation() { return observer_orientation_; }
+  Vector3d EyePosition(int i);
+ 
+ public slots:
+  void SetFocalLegth(double v);
+  void SetSensorWidth(double v);
+  void SetSensorHeight(double v);
+
+ signals:
+  void DocumentChanged();
+
+ private:
+  void UpdateEverything();
+
+  void ProjectToSensor();
+  void SensorToScreen();
+
+  void Triangulate();
 
  private:
   Geometry capture_geometry_;

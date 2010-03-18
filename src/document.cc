@@ -79,11 +79,32 @@ SpDocument::SpDocument() {
 SpDocument::~SpDocument() {
 }
 
+void SpDocument::SetFocalLegth(double v) {
+  if (focal_length_ != v) {
+    focal_length_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetSensorWidth(double v) {
+  if (sensor_width_ != v) {
+    sensor_width_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetSensorHeight(double v) {
+  if (sensor_height_ != v) {
+    sensor_height_ = v;
+    UpdateEverything();
+  }
+}
 
 void SpDocument::UpdateEverything() {
   ProjectToSensor();
   SensorToScreen();
   Triangulate();
+  emit DocumentChanged();
 }
 
 Vector3d SpDocument::CameraPosition(int i) {

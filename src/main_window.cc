@@ -14,12 +14,14 @@ SpMainWindow::SpMainWindow(QWidget *parent)
 
   setWindowTitle("Stereo Planer");
 
+  doc_ = new SpDocument;
+
   parameters_form_ = new ParametersForm(this);
   parameters_dock_ = new QDockWidget("Tools", this);
   parameters_dock_->setWidget(parameters_form_);
   addDockWidget(Qt::RightDockWidgetArea, parameters_dock_);
 
-  doc_ = new SpDocument;
+  parameters_form_->SetDocument(doc_);
 
   NewCaptureViewer();
   //NewSensorViewer();

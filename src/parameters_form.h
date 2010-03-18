@@ -13,17 +13,24 @@ class ParametersForm : public QWidget {
  public:
   ParametersForm(QWidget *parent = 0);
   ~ParametersForm() {}
+  void SetDocument(SpDocument *doc);
  
  public slots:
+   void UpdateParameters() {
+     ui_.focalLengthSpinBox->setValue(doc_->FocalLegth());
+     ui_.sensorWidthSpinBox->setValue(doc_->SensorWidth());
+     ui_.sensorHeightSpinBox->setValue(doc_->SensorHeight());
+   }
    void on_focalLengthSpinBox_valueChanged(double v) {
-     std::cout << v << "\n";
-     ui_.sensorWidthSpinBox->setValue(v);
+     doc_->SetFocalLegth(v);
    }
    void on_sensorWidthSpinBox_valueChanged(double v) {
-     ui_.focalLengthSpinBox->setValue(v);
+     doc_->SetSensorWidth(v);
    }
    void on_sensorHeightSpinBox_valueChanged(double v) {
+     doc_->SetSensorHeight(v);
    }
+
  private:
    Ui::ParametersForm ui_;
    SpDocument *doc_;

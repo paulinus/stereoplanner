@@ -126,6 +126,10 @@ class TheaterViewer : public Viewer3D {
   virtual ~TheaterViewer() {}
   void SetDocument(SpDocument *doc) {
     doc_ = doc;
+    if (doc_) {
+      // Make connections.
+      connect(doc_, SIGNAL(DocumentChanged()), this, SLOT(updateGL()));
+    }
   }
   void paintGL() {
     Viewer3D::paintGL();
