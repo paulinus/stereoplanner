@@ -1,6 +1,6 @@
 <ui version="4.0" >
  <class>ParametersForm</class>
- <widget class="QDialog" name="ParametersForm" >
+ <widget class="QWidget" name="ParametersForm" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -22,7 +22,7 @@
    </size>
   </property>
   <property name="windowTitle" >
-   <string>Dialog</string>
+   <string>Parameters</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4" >
    <item>

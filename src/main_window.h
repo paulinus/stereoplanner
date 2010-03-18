@@ -6,7 +6,11 @@
 #include <QAction>
 #include <QMdiArea>
 #include <qgl.h>
+
 #include "document.h"
+#include "parameters_form.h"
+
+//TODO(pau) Link the parameters_form_ widget to the actual values.
 
 class SpMainWindow : public QMainWindow {
   Q_OBJECT
@@ -22,7 +26,6 @@ class SpMainWindow : public QMainWindow {
   void NewTheaterViewer();
 
  private:
-  void Show3DView();
   void CreateActions();
   void CreateMenus();
   
@@ -37,7 +40,8 @@ class SpMainWindow : public QMainWindow {
   QAction *new_screen_viewer_action_;
   QAction *new_theater_viewer_action_;
 
-  QMdiArea *viewers_area_;
+  QDockWidget *parameters_dock_;
+  ParametersForm *parameters_form_;
 
   SpDocument *doc_;
 };

@@ -1,4 +1,5 @@
 #include <QMenuBar>
+
 #include <QFileDialog>
 #include <QtGui>
 
@@ -11,16 +12,19 @@ SpMainWindow::SpMainWindow(QWidget *parent)
   CreateActions();
   CreateMenus();
 
-  viewers_area_ = new QMdiArea;
-  setCentralWidget(viewers_area_);
   setWindowTitle("Stereo Planer");
+
+  parameters_form_ = new ParametersForm(this);
+  parameters_dock_ = new QDockWidget("Tools", this);
+  parameters_dock_->setWidget(parameters_form_);
+  addDockWidget(Qt::RightDockWidgetArea, parameters_dock_);
 
   doc_ = new SpDocument;
 
   NewCaptureViewer();
-  NewSensorViewer();
+  //NewSensorViewer();
   //NewScreenViewer();
-  //NewTheaterViewer();
+  NewTheaterViewer();
 }
 
 SpMainWindow::~SpMainWindow() {
@@ -30,29 +34,33 @@ SpMainWindow::~SpMainWindow() {
 void SpMainWindow::NewCaptureViewer() {
   CaptureViewer *viewer = new CaptureViewer(NULL, this);
   viewer->SetDocument(doc_);
-  viewers_area_->addSubWindow(viewer);
-  viewer->show();
+  QDockWidget *dock = new QDockWidget("Capture Geometry", this);
+  dock->setWidget(viewer);
+  addDockWidget(Qt::LeftDockWidgetArea, dock);
 }
 
 void SpMainWindow::NewSensorViewer() {
   GeometryViewer *viewer = new GeometryViewer(NULL, this);
   viewer->SetGeometry(doc_->sensor_geometry_);
-  viewers_area_->addSubWindow(viewer);
-  viewer->show();
+  QDockWidget *dock = new QDockWidget("Sensor Geometry", this);
+  dock->setWidget(viewer);
+  addDockWidget(Qt::LeftDockWidgetArea, dock);
 }
 
 void SpMainWindow::NewScreenViewer() {
   GeometryViewer *viewer = new GeometryViewer(NULL, this);
   viewer->SetGeometry(doc_->screen_geometry_);
-  viewers_area_->addSubWindow(viewer);
-  viewer->show();
+  QDockWidget *dock = new QDockWidget("Screen Geometry", this);
+  dock->setWidget(viewer);
+  addDockWidget(Qt::LeftDockWidgetArea, dock);
 }
 
 void SpMainWindow::NewTheaterViewer() {
   TheaterViewer *viewer = new TheaterViewer(NULL, this);
   viewer->SetDocument(doc_);
-  viewers_area_->addSubWindow(viewer);
-  viewer->show();
+  QDockWidget *dock = new QDockWidget("Theater Geometry", this);
+  dock->setWidget(viewer);
+  addDockWidget(Qt::LeftDockWidgetArea, dock);
 }
 
 void SpMainWindow::CreateActions() {
@@ -91,12 +99,5 @@ void SpMainWindow::CreateMenus() {
   file_menu_->addAction(new_sensor_viewer_action_);
   file_menu_->addAction(new_screen_viewer_action_);
   file_menu_->addAction(new_theater_viewer_action_);
-}
-
-void SpMainWindow::Show3DView() {
-//  Viewer3D *viewer = new Viewer3D(&context_, this);
-  Viewer3D *viewer = new Viewer3D(NULL, this);
-  viewers_area_->addSubWindow(viewer);
-  viewer->show();
 }
 

@@ -94,7 +94,6 @@ class CaptureViewer : public Viewer3D {
       glVertex3dv(&doc_->rig_position_[0]);
       for (int i = 0; i < 2; ++i) {
         Vector3d pos = doc_->CameraPosition(i);
-          std::cout << pos << " pos\n";
         glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
         glVertex3dv(&pos[0]);
       }
@@ -147,7 +146,6 @@ class TheaterViewer : public Viewer3D {
       glVertex3dv(&doc_->observer_position_[0]);
       for (int i = 0; i < 2; ++i) {
         Vector3d pos = doc_->EyePosition(i);
-          std::cout << pos << " pos\n";
         glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
         glVertex3dv(&pos[0]);
       }
