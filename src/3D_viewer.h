@@ -91,7 +91,8 @@ class CaptureViewer : public Viewer3D {
       // Draw better cameras.
       glBegin(GL_POINTS);
       glColor4d(0,1,0,1);
-      glVertex3dv(&doc_->rig_position_[0]);
+      Vector3d p = doc_->RigPosition();
+      glVertex3dv(&p[0]);
       for (int i = 0; i < 2; ++i) {
         Vector3d pos = doc_->CameraPosition(i);
         glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
@@ -99,14 +100,15 @@ class CaptureViewer : public Viewer3D {
       }
       glEnd();
 
+      const Geometry &g = doc_->CaptureGeometry();
       glBegin(GL_LINES);
-      for (int i = 0; i < doc_->capture_geometry_.triangles_.size(); i += 3) {
+      for (int i = 0; i < g.triangles_.size(); i += 3) {
         for (int j = 0; j < 3; ++j) {
           glColor4f(.5,.7,1,1);
-          int a = doc_->capture_geometry_.triangles_[i + j];
-          int b = doc_->capture_geometry_.triangles_[i + (j+1)%3];
-          glVertex4fv(&doc_->capture_geometry_.vertex_[4 * a]);
-          glVertex4fv(&doc_->capture_geometry_.vertex_[4 * b]);
+          int a = g.triangles_[i + j];
+          int b = g.triangles_[i + (j+1)%3];
+          glVertex4fv(&g.vertex_[4 * a]);
+          glVertex4fv(&g.vertex_[4 * b]);
         }
       }
       glEnd();
@@ -130,8 +132,8 @@ class TheaterViewer : public Viewer3D {
    
     if (doc_) {
       // Draw the screen.
-      float w = doc_->screen_width_ / 2;
-      float h = doc_->screen_height_ / 2;
+      float w = doc_->ScreenWidth() / 2;
+      float h = doc_->ScreenHeight() / 2;
       glBegin(GL_LINES);
       glColor3f(.7, .7, .7);
       glVertex3f(-w, -h, 0); glVertex3f(+w, -h, 0);
@@ -143,7 +145,8 @@ class TheaterViewer : public Viewer3D {
       // Draw the observer.
       glBegin(GL_POINTS);
       glColor4d(0,1,0,1);
-      glVertex3dv(&doc_->observer_position_[0]);
+      Vector3d p = doc_->ObserverPosition();
+      glVertex3dv(&p[0]);
       for (int i = 0; i < 2; ++i) {
         Vector3d pos = doc_->EyePosition(i);
         glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
@@ -153,14 +156,15 @@ class TheaterViewer : public Viewer3D {
 
 
       // Draw geometry.
+      const Geometry &g = doc_->TheaterGeometry();
       glBegin(GL_LINES);
-      for (int i = 0; i < doc_->theater_geometry_.triangles_.size(); i += 3) {
+      for (int i = 0; i < g.triangles_.size(); i += 3) {
         for (int j = 0; j < 3; ++j) {
           glColor4f(1,.7,.5,1);
-          int a = doc_->theater_geometry_.triangles_[i + j];
-          int b = doc_->theater_geometry_.triangles_[i + (j+1)%3];
-          glVertex4fv(&doc_->theater_geometry_.vertex_[4 * a]);
-          glVertex4fv(&doc_->theater_geometry_.vertex_[4 * b]);
+          int a = g.triangles_[i + j];
+          int b = g.triangles_[i + (j+1)%3];
+          glVertex4fv(&g.vertex_[4 * a]);
+          glVertex4fv(&g.vertex_[4 * b]);
         }
       }
       glEnd();
@@ -176,7 +180,7 @@ class GeometryViewer : public Viewer3D {
  public:
   GeometryViewer(QGLWidget *share, QWidget *parent);
   virtual ~GeometryViewer() {}
-  void SetGeometry(Geometry *geo) {
+  void SetGeometry(const Geometry *geo) {
     geo_ = geo;
   }
   void paintGL() {
@@ -184,7 +188,7 @@ class GeometryViewer : public Viewer3D {
    
     if (geo_) {
       for (int s = 0; s < 2; ++s) {
-        Geometry *g = geo_ + s;
+        const Geometry *g = geo_ + s;
         glBegin(GL_LINES);
         for (int i = 0; i < g->triangles_.size(); i += 3) {
           for (int j = 0; j < 3; ++j) {
@@ -200,7 +204,7 @@ class GeometryViewer : public Viewer3D {
     }
   }
  private:
-  Geometry *geo_;
+  const Geometry *geo_;
 };
 
 #endif // UI_TVR_3D_VIEWER_H_

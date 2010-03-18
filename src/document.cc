@@ -1,7 +1,7 @@
 #include "document.h"
 
 
-/*
+/* Author: Paul Brouke
    Calculate the line segment PaPb that is the shortest route between
    two lines P1P2 and P3P4. Calculate also the values of mua and mub where
       Pa = P1 + mua (P2 - P1)

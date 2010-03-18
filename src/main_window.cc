@@ -41,7 +41,7 @@ void SpMainWindow::NewCaptureViewer() {
 
 void SpMainWindow::NewSensorViewer() {
   GeometryViewer *viewer = new GeometryViewer(NULL, this);
-  viewer->SetGeometry(doc_->sensor_geometry_);
+  viewer->SetGeometry(&doc_->SensorGeometry(0));
   QDockWidget *dock = new QDockWidget("Sensor Geometry", this);
   dock->setWidget(viewer);
   addDockWidget(Qt::LeftDockWidgetArea, dock);
@@ -49,7 +49,7 @@ void SpMainWindow::NewSensorViewer() {
 
 void SpMainWindow::NewScreenViewer() {
   GeometryViewer *viewer = new GeometryViewer(NULL, this);
-  viewer->SetGeometry(doc_->screen_geometry_);
+  viewer->SetGeometry(&doc_->ScreenGeometry(0));
   QDockWidget *dock = new QDockWidget("Screen Geometry", this);
   dock->setWidget(viewer);
   addDockWidget(Qt::LeftDockWidgetArea, dock);
