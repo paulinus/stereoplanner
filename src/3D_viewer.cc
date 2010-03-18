@@ -97,6 +97,7 @@ void ViewerCamera::MouseZoom(float dw) {
 Viewer3D::Viewer3D(QGLWidget *share, QWidget *parent) :
     QGLWidget(0, share) {
   setWindowTitle("3D View");
+  setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 
 QSize Viewer3D::minimumSizeHint() const {

@@ -9,6 +9,7 @@
 SpMainWindow::SpMainWindow(QWidget *parent)
   : QMainWindow(parent) {
 
+  setDockNestingEnabled(true);
   CreateActions();
   CreateMenus();
 
