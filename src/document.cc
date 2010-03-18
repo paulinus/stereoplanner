@@ -104,6 +104,75 @@ void SpDocument::SetSensorHeight(double v) {
   }
 }
 
+void SpDocument::SetRigInterocular(double v) {
+  if (rig_interocular_ != v) {
+    rig_interocular_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigPosition(double x, double y, double z) {
+  Vector3d p(x, y, z);
+  if (rig_position_ != p) {
+    rig_position_ = p;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigOrientation(double p, double t, double r) {
+  if (rig_pan_ != p || rig_tilt_ != t || rig_roll_ != r ) {
+    rig_pan_ = p;
+    rig_tilt_ = t;
+    rig_roll_ = r;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetScreenWidth(double v) {
+  if (screen_width_ != v) {
+    screen_width_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetScreenHeight(double v) {
+  if (screen_height_ != v) {
+    screen_height_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetObserverInterocular(double v) {
+  if (observer_interocular_ != v) {
+    observer_interocular_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetObserverPosition(double x, double y, double z) {
+  Vector3d p(x, y, z);
+  if (observer_position_ != p) {
+    observer_position_ = p;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetObserverOrientation(double p, double t, double r) {
+  if (observer_pan_ != p || observer_tilt_ != t || observer_roll_ != r ) {
+    observer_pan_ = p;
+    observer_tilt_ = t;
+    observer_roll_ = r;
+    UpdateEverything();
+  }
+}
+
+
+
+
+
+
+
+
 void SpDocument::UpdateEverything() {
   ProjectToSensor();
   SensorToScreen();

@@ -52,7 +52,8 @@ class SpDocument : public QObject {
   double ObserverPan() { return observer_pan_; }
   double ObserverTilt() { return observer_tilt_; }
   double ObserverRoll() { return observer_roll_; }
-  Matrix3d ObserverRotation() { return PanTiltRoll(observer_pan_, observer_tilt_,
+  Matrix3d ObserverRotation() { return PanTiltRoll(observer_pan_,
+                                                   observer_tilt_,
                                                    observer_roll_); }
   Vector3d EyePosition(int i);
  
@@ -60,6 +61,17 @@ class SpDocument : public QObject {
   void SetFocalLegth(double v);
   void SetSensorWidth(double v);
   void SetSensorHeight(double v);
+
+  void SetRigInterocular(double v);
+  void SetRigPosition(double x, double y, double z);
+  void SetRigOrientation(double p, double t, double r);
+  
+  void SetScreenWidth(double v);
+  void SetScreenHeight(double v);
+  
+  void SetObserverInterocular(double v);
+  void SetObserverPosition(double x, double y, double z);
+  void SetObserverOrientation(double p, double t, double r);
 
  signals:
   void DocumentChanged();

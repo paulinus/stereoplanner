@@ -10,4 +10,5 @@ void ParametersForm::SetDocument(SpDocument *doc) {
     // Make connections.
     connect(doc_, SIGNAL(DocumentChanged()), this, SLOT(UpdateParameters()));
   }
+  UpdateParameters();
 }
