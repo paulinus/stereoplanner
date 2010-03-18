@@ -83,6 +83,10 @@ class CaptureViewer : public Viewer3D {
   virtual ~CaptureViewer() {}
   void SetDocument(SpDocument *doc) {
     doc_ = doc;
+    if (doc_) {
+      // Make connections.
+      connect(doc_, SIGNAL(DocumentChanged()), this, SLOT(updateGL()));
+    }
   }
   void paintGL() {
     Viewer3D::paintGL();
@@ -91,8 +95,7 @@ class CaptureViewer : public Viewer3D {
       // Draw better cameras.
       glBegin(GL_POINTS);
       glColor4d(0,1,0,1);
-      Vector3d p = doc_->RigPosition();
-      glVertex3dv(&p[0]);
+      glVertex3d(doc_->RigX(), doc_->RigY(), doc_->RigZ());
       for (int i = 0; i < 2; ++i) {
         Vector3d pos = doc_->CameraPosition(i);
         glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
@@ -149,8 +152,7 @@ class TheaterViewer : public Viewer3D {
       // Draw the observer.
       glBegin(GL_POINTS);
       glColor4d(0,1,0,1);
-      Vector3d p = doc_->ObserverPosition();
-      glVertex3dv(&p[0]);
+      glVertex3d(doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ()); 
       for (int i = 0; i < 2; ++i) {
         Vector3d pos = doc_->EyePosition(i);
         glColor4f(1. - i * .5, .7, .5 + i * .5, 1);

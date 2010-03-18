@@ -111,19 +111,44 @@ void SpDocument::SetRigInterocular(double v) {
   }
 }
 
-void SpDocument::SetRigPosition(double x, double y, double z) {
-  Vector3d p(x, y, z);
-  if (rig_position_ != p) {
-    rig_position_ = p;
+void SpDocument::SetRigX(double v) {
+  if (rig_position_[0] != v) {
+    rig_position_[0] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigOrientation(double p, double t, double r) {
-  if (rig_pan_ != p || rig_tilt_ != t || rig_roll_ != r ) {
-    rig_pan_ = p;
-    rig_tilt_ = t;
-    rig_roll_ = r;
+void SpDocument::SetRigY(double v) {
+  if (rig_position_[1] != v) {
+    rig_position_[1] = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigZ(double v) {
+  if (rig_position_[2] != v) {
+    rig_position_[2] = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigPan(double v) {
+  if (rig_pan_ != v) {
+    rig_pan_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigTilt(double v) {
+  if (rig_tilt_ != v) {
+    rig_tilt_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigRoll(double v) {
+  if (rig_roll_ != v) {
+    rig_roll_ = v;
     UpdateEverything();
   }
 }
@@ -149,29 +174,47 @@ void SpDocument::SetObserverInterocular(double v) {
   }
 }
 
-void SpDocument::SetObserverPosition(double x, double y, double z) {
-  Vector3d p(x, y, z);
-  if (observer_position_ != p) {
-    observer_position_ = p;
+void SpDocument::SetObserverX(double v) {
+  if (observer_position_[0] != v) {
+    observer_position_[0] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverOrientation(double p, double t, double r) {
-  if (observer_pan_ != p || observer_tilt_ != t || observer_roll_ != r ) {
-    observer_pan_ = p;
-    observer_tilt_ = t;
-    observer_roll_ = r;
+void SpDocument::SetObserverY(double v) {
+  if (observer_position_[1] != v) {
+    observer_position_[1] = v;
     UpdateEverything();
   }
 }
 
+void SpDocument::SetObserverZ(double v) {
+  if (observer_position_[2] != v) {
+    observer_position_[2] = v;
+    UpdateEverything();
+  }
+}
 
+void SpDocument::SetObserverPan(double v) {
+  if (observer_pan_ != v) {
+    observer_pan_ = v;
+    UpdateEverything();
+  }
+}
 
+void SpDocument::SetObserverTilt(double v) {
+  if (observer_tilt_ != v) {
+    observer_tilt_ = v;
+    UpdateEverything();
+  }
+}
 
-
-
-
+void SpDocument::SetObserverRoll(double v) {
+  if (observer_roll_ != v) {
+    observer_roll_ = v;
+    UpdateEverything();
+  }
+}
 
 void SpDocument::UpdateEverything() {
   ProjectToSensor();

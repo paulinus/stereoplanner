@@ -12,9 +12,9 @@ using namespace Eigen;
 
 inline Matrix3d PanTiltRoll(double pan, double tilt, double roll) {
   Matrix3d m;
-  m = AngleAxisd(pan, Vector3d::UnitZ())
-    * AngleAxisd(tilt, Vector3d::UnitY())
-    * AngleAxisd(roll, Vector3d::UnitZ());
+  m = AngleAxisd(pan * M_PI / 180., Vector3d::UnitZ())
+    * AngleAxisd(tilt * M_PI / 180., Vector3d::UnitY())
+    * AngleAxisd(roll * M_PI / 180., Vector3d::UnitZ());
   return m;
 }
 
@@ -37,18 +37,22 @@ class SpDocument : public QObject {
   double SensorHeight() { return sensor_height_; }
 
   double RigInterocular() { return rig_interocular_; }
-  Vector3d RigPosition() { return rig_position_; }
+  double RigX() { return rig_position_[0]; }
+  double RigY() { return rig_position_[1]; }
+  double RigZ() { return rig_position_[2]; }
   double RigPan() { return rig_pan_; }
   double RigTilt() { return rig_tilt_; }
   double RigRoll() { return rig_roll_; }
   Matrix3d RigRotation() { return PanTiltRoll(rig_pan_, rig_tilt_, rig_roll_); }
   Vector3d CameraPosition(int i);
 
-  double ScreenWidth() { return screen_height_; }
+  double ScreenWidth() { return screen_width_; }
   double ScreenHeight() { return screen_height_; }
 
   double ObserverInterocular() { return observer_interocular_; }
-  Vector3d ObserverPosition() { return observer_position_; }
+  double ObserverX() { return observer_position_[0]; }
+  double ObserverY() { return observer_position_[1]; }
+  double ObserverZ() { return observer_position_[2]; }
   double ObserverPan() { return observer_pan_; }
   double ObserverTilt() { return observer_tilt_; }
   double ObserverRoll() { return observer_roll_; }
@@ -63,15 +67,23 @@ class SpDocument : public QObject {
   void SetSensorHeight(double v);
 
   void SetRigInterocular(double v);
-  void SetRigPosition(double x, double y, double z);
-  void SetRigOrientation(double p, double t, double r);
+  void SetRigX(double v);
+  void SetRigY(double v);
+  void SetRigZ(double v);
+  void SetRigPan(double v);
+  void SetRigTilt(double v);
+  void SetRigRoll(double v);
   
   void SetScreenWidth(double v);
   void SetScreenHeight(double v);
   
   void SetObserverInterocular(double v);
-  void SetObserverPosition(double x, double y, double z);
-  void SetObserverOrientation(double p, double t, double r);
+  void SetObserverX(double v);
+  void SetObserverY(double v);
+  void SetObserverZ(double v);
+  void SetObserverPan(double v);
+  void SetObserverTilt(double v);
+  void SetObserverRoll(double v);
 
  signals:
   void DocumentChanged();
