@@ -63,14 +63,18 @@ SpDocument::SpDocument() {
 
   rig_interocular_ = .65;
   rig_position_ << 0, 0, -6;
-  rig_orientation_.setIdentity();
+  rig_pan_ = 0;
+  rig_tilt_ = 0;
+  rig_roll_ = 0;
 
   screen_width_ = 20;
   screen_height_ = 15;
 
   observer_interocular_ = 6.5;
   observer_position_ << 0, 0, -30;
-  observer_orientation_.setIdentity();
+  observer_pan_ = 0;
+  observer_tilt_ = 0;
+  observer_roll_ = 0;
 
   capture_geometry_ = CubeGeometry();
   UpdateEverything();
@@ -109,14 +113,14 @@ void SpDocument::UpdateEverything() {
 
 Vector3d SpDocument::CameraPosition(int i) {
   Vector3d shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
-  return rig_position_ + rig_orientation_.toRotationMatrix() * shift;
+  return rig_position_ + RigRotation() * shift;
 }
 
 void SpDocument::ProjectToSensor() {
   for (int i = 0; i < 2; ++i) {
     Vector3d pos = CameraPosition(i);
     Camera camera(focal_length_, sensor_width_, sensor_height_,
-        pos, rig_orientation_);
+        pos, RigRotation());
     // TODO(pau): Test Project capture geometry.
     ProjectGeometry(capture_geometry_, camera, &sensor_geometry_[i]);
   }
@@ -133,7 +137,7 @@ void SpDocument::SensorToScreen() {
 Vector3d SpDocument::EyePosition(int i) {
   Vector3d shift((i==0?-1:1) * observer_interocular_ / 2, 0, 0);
   return observer_position_ 
-    + observer_orientation_.toRotationMatrix() * shift;
+    + ObserverRotation() * shift;
 }
 
 

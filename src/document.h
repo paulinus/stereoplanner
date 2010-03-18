@@ -10,6 +10,15 @@
 using namespace Eigen;
 
 
+inline Matrix3d PanTiltRoll(double pan, double tilt, double roll) {
+  Matrix3d m;
+  m = AngleAxisd(pan, Vector3d::UnitZ())
+    * AngleAxisd(tilt, Vector3d::UnitY())
+    * AngleAxisd(roll, Vector3d::UnitZ());
+  return m;
+}
+
+
 // TODO(pau): Add signals for document changed.
 class SpDocument : public QObject {
   Q_OBJECT
@@ -29,7 +38,10 @@ class SpDocument : public QObject {
 
   double RigInterocular() { return rig_interocular_; }
   Vector3d RigPosition() { return rig_position_; }
-  Quaterniond RigOrientation() { return rig_orientation_; }
+  double RigPan() { return rig_pan_; }
+  double RigTilt() { return rig_tilt_; }
+  double RigRoll() { return rig_roll_; }
+  Matrix3d RigRotation() { return PanTiltRoll(rig_pan_, rig_tilt_, rig_roll_); }
   Vector3d CameraPosition(int i);
 
   double ScreenWidth() { return screen_height_; }
@@ -37,7 +49,11 @@ class SpDocument : public QObject {
 
   double ObserverInterocular() { return observer_interocular_; }
   Vector3d ObserverPosition() { return observer_position_; }
-  Quaterniond ObserverOrientation() { return observer_orientation_; }
+  double ObserverPan() { return observer_pan_; }
+  double ObserverTilt() { return observer_tilt_; }
+  double ObserverRoll() { return observer_roll_; }
+  Matrix3d ObserverRotation() { return PanTiltRoll(observer_pan_, observer_tilt_,
+                                                   observer_roll_); }
   Vector3d EyePosition(int i);
  
  public slots:
@@ -71,8 +87,8 @@ class SpDocument : public QObject {
 
   // Rig parameters.
   double rig_interocular_;
-  Eigen::Vector3d rig_position_;
-  Eigen::Quaterniond rig_orientation_;
+  Vector3d rig_position_;
+  double rig_pan_, rig_tilt_, rig_roll_;
   
   // Screen parameters.
   // The center of the screen is assumed to be at (0,0,0), its top-left corner 
@@ -84,8 +100,8 @@ class SpDocument : public QObject {
   
   // Observer parameters.
   double observer_interocular_;
-  Eigen::Vector3d observer_position_;
-  Eigen::Quaterniond observer_orientation_;
+  Vector3d observer_position_;
+  double observer_pan_, observer_tilt_, observer_roll_;
 };
 
 #endif // DOCUMENT_H_

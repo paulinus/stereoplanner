@@ -9,14 +9,14 @@ using namespace Eigen;
 class Camera {
  public:
   Camera(double focal_length, double sensor_width, double sensor_height,
-         const Vector3d &position, const Quaterniond &orientation) {
+         const Vector3d &position, const Matrix3d &orientation) {
     focal_length_ = focal_length;
     sensor_width_ = sensor_width;
     sensor_height_ = sensor_height;
     //  (R|t) * (O|p) = I 
     //     R*O = I  ->   R = O^T
     //     Rp + t = 0  ->  t = -Rp
-    R_ = orientation.toRotationMatrix().transpose();
+    R_ = orientation.transpose();
     t_ = - R_ * position;
     K_ << 2 * focal_length_ / sensor_width_, 0, 0,
           0, 2 * focal_length_ / sensor_height_, 0,
