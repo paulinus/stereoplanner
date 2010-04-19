@@ -76,7 +76,7 @@ SpDocument::SpDocument() {
   observer_tilt_ = 0;
   observer_roll_ = 0;
 
-  capture_geometry_ = CubeGeometry();
+  ReadObj("torus.obj", &capture_geometry_);
   UpdateEverything();
 }
 

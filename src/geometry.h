@@ -2,11 +2,11 @@
 #define GEOMETRY_H_
 
 #include <vector>
+#include <fstream>
 #include <Eigen/Dense>
 
 #include "camera.h"
 
-// TODO(pau): Add functions to read geometries from files.
 
 
 class Geometry {
@@ -14,6 +14,9 @@ class Geometry {
   std::vector<float> vertex_;  // 4 floats per vertex.
   std::vector<int> triangles_; // 3 ints per triangle.
 };
+
+
+void ReadObj(const char *filename, Geometry *g);
 
 inline Geometry CubeGeometry() {
   Geometry g;
