@@ -9,6 +9,7 @@ using namespace Eigen;
 class Camera {
  public:
   Camera(double focal_length, double sensor_width, double sensor_height,
+         double pp_x, double pp_y,
          const Vector3d &position, const Matrix3d &orientation) {
     focal_length_ = focal_length;
     sensor_width_ = sensor_width;
@@ -18,8 +19,8 @@ class Camera {
     //     Rp + t = 0  ->  t = -Rp
     R_ = orientation.transpose();
     t_ = - R_ * position;
-    K_ << 2 * focal_length_ / sensor_width_, 0, 0,
-          0, 2 * focal_length_ / sensor_height_, 0,
+    K_ << 2 * focal_length_ / sensor_width_, 0, pp_x,
+          0, 2 * focal_length_ / sensor_height_, pp_y,
           0, 0, 1;
     P_ << K_ * R_, K_ * t_;
   }

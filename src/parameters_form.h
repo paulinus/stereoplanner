@@ -6,6 +6,7 @@
 #include "ui_parameters_form.h"
 #include "document.h"
 
+// TODO(pau): Add a convergance parameter.
 
 class ParametersForm : public QWidget {
   Q_OBJECT
@@ -22,6 +23,7 @@ class ParametersForm : public QWidget {
      ui_.sensorHeightSpinBox->setValue(doc_->SensorHeight());
 
      ui_.rigInterocularSpinBox->setValue(doc_->RigInterocular());
+     ui_.rigConvergenceSpinBox->setValue(doc_->RigConvergence());
      ui_.rigXSpinBox->setValue(doc_->RigX());
      ui_.rigYSpinBox->setValue(doc_->RigY());
      ui_.rigZSpinBox->setValue(doc_->RigZ());
@@ -52,6 +54,9 @@ class ParametersForm : public QWidget {
    }
    void on_rigInterocularSpinBox_valueChanged(double v) {
      doc_->SetRigInterocular(v);
+   }
+   void on_rigConvergenceSpinBox_valueChanged(double v) {
+     doc_->SetRigConvergence(v);
    }
    void on_rigXSpinBox_valueChanged(double v) {
      doc_->SetRigX(v);

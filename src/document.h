@@ -37,6 +37,7 @@ class SpDocument : public QObject {
   double SensorHeight() { return sensor_height_; }
 
   double RigInterocular() { return rig_interocular_; }
+  double RigConvergence() { return rig_convergence_; }
   double RigX() { return rig_position_[0]; }
   double RigY() { return rig_position_[1]; }
   double RigZ() { return rig_position_[2]; }
@@ -67,6 +68,7 @@ class SpDocument : public QObject {
   void SetSensorHeight(double v);
 
   void SetRigInterocular(double v);
+  void SetRigConvergence(double v);
   void SetRigX(double v);
   void SetRigY(double v);
   void SetRigZ(double v);
@@ -111,6 +113,7 @@ class SpDocument : public QObject {
 
   // Rig parameters.
   double rig_interocular_;
+  double rig_convergence_;
   Vector3d rig_position_;
   double rig_pan_, rig_tilt_, rig_roll_;
   

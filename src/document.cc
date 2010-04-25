@@ -62,6 +62,7 @@ SpDocument::SpDocument() {
   sensor_height_ = 24;
 
   rig_interocular_ = .65;
+  rig_convergence_ = 1e8;
   rig_position_ << 0, 0, -6;
   rig_pan_ = 0;
   rig_tilt_ = 0;
@@ -107,6 +108,13 @@ void SpDocument::SetSensorHeight(double v) {
 void SpDocument::SetRigInterocular(double v) {
   if (rig_interocular_ != v) {
     rig_interocular_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetRigConvergence(double v) {
+  if (rig_convergence_ != v) {
+    rig_convergence_ = v;
     UpdateEverything();
   }
 }
@@ -231,8 +239,10 @@ Vector3d SpDocument::CameraPosition(int i) {
 void SpDocument::ProjectToSensor() {
   for (int i = 0; i < 2; ++i) {
     Vector3d pos = CameraPosition(i);
-    Camera camera(focal_length_, sensor_width_, sensor_height_,
-        pos, RigRotation());
+    double pp_x = (i==0?-1:1) * rig_interocular_ * focal_length_
+                    / sensor_width_ / rig_convergence_;
+    Camera camera(focal_length_, sensor_width_, sensor_height_, pp_x, 0,
+                  pos, RigRotation());
     // TODO(pau): Test Project capture geometry.
     ProjectGeometry(capture_geometry_, camera, &sensor_geometry_[i]);
   }
