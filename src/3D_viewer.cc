@@ -23,6 +23,15 @@ void Viewer3D::initializeGL() {
   glClearColor(0, 0, 0, 1);
   glPointSize(3);
   glShadeModel(GL_FLAT);
+
+  // Set up GL_LIGHT1
+  GLfloat LightAmbient[]= { 0.3f, 0.3f, 0.4f, 1.0f }; 			
+  GLfloat LightDiffuse[]= { 1.0f, 1.0f, 0.9f, 1.0f };				
+  GLfloat LightPosition[]= { 0.0f, 0.0f, 2.0f, 1.0f };				
+  glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
+  glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
+  glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);
+  glEnable(GL_LIGHT1);
 }
 
 void Viewer3D::paintGL() {
@@ -30,6 +39,7 @@ void Viewer3D::paintGL() {
   
   trackball_.SetUpGlCamera();
    
+  glDisable(GL_LIGHTING);
   glBegin(GL_LINES);
   glColor4f(1,0,0,1); glVertex3f(0, 0, 0); glVertex3f(1, 0, 0);
   glColor4f(0,1,0,1); glVertex3f(0, 0, 0); glVertex3f(0, 1, 0);
@@ -89,11 +99,47 @@ void CaptureViewer::SetDocument(SpDocument *doc) {
   }
 }
 
+static Vector3f Eucliean(const float *h) {
+  return Vector3f(h[0] / h[3], h[1] / h[3], h[2] / h[3]);
+}
+
+static void ComputeNormal(const float *a, const float *b, const float *c,
+                          float *n) {
+  Vector3f aa = Eucliean(a);
+  Vector3f bb = Eucliean(b);
+  Vector3f cc = Eucliean(c);
+  Vector3f u = bb - aa;
+  Vector3f v = cc - aa;
+  Vector3f nn = u.cross(v).normalized();
+  n[0] = nn[0];
+  n[1] = nn[1];
+  n[2] = nn[2];
+}
+
+void DrawGeometry(const Geometry &g) {
+  glEnable(GL_LIGHTING);
+  glBegin(GL_TRIANGLES);
+  for (int i = 0; i < g.triangles_.size(); i += 3) {
+    const float *a = &g.vertex_[4 * g.triangles_[i + 0]];
+    const float *b = &g.vertex_[4 * g.triangles_[i + 1]];
+    const float *c = &g.vertex_[4 * g.triangles_[i + 2]];
+    float normal[3];
+    ComputeNormal(a, b, c, normal);
+    glNormal3f(normal[0], normal[1], normal[2]);
+    glColor4f(.5,.7,1,1);
+    glVertex4fv(a);
+    glVertex4fv(b);
+    glVertex4fv(c);
+  }
+  glEnd();
+}
+
 void CaptureViewer::paintGL() {
   Viewer3D::paintGL();
  
   if (doc_) {
     // Draw better cameras.
+    glDisable(GL_LIGHTING);
     glBegin(GL_POINTS);
     glColor4d(0,1,0,1);
     glVertex3d(doc_->RigX(), doc_->RigY(), doc_->RigZ());
@@ -104,18 +150,7 @@ void CaptureViewer::paintGL() {
     }
     glEnd();
 
-    const Geometry &g = doc_->CaptureGeometry();
-    glBegin(GL_LINES);
-    for (int i = 0; i < g.triangles_.size(); i += 3) {
-      for (int j = 0; j < 3; ++j) {
-        glColor4f(.5,.7,1,1);
-        int a = g.triangles_[i + j];
-        int b = g.triangles_[i + (j+1)%3];
-        glVertex4fv(&g.vertex_[4 * a]);
-        glVertex4fv(&g.vertex_[4 * b]);
-      }
-    }
-    glEnd();
+    DrawGeometry(doc_->CaptureGeometry());
   }
 }
 
@@ -161,18 +196,7 @@ void TheaterViewer::paintGL() {
 
 
     // Draw geometry.
-    const Geometry &g = doc_->TheaterGeometry();
-    glBegin(GL_LINES);
-    for (int i = 0; i < g.triangles_.size(); i += 3) {
-      for (int j = 0; j < 3; ++j) {
-        glColor4f(1,.7,.5,1);
-        int a = g.triangles_[i + j];
-        int b = g.triangles_[i + (j+1)%3];
-        glVertex4fv(&g.vertex_[4 * a]);
-        glVertex4fv(&g.vertex_[4 * b]);
-      }
-    }
-    glEnd();
+    DrawGeometry(doc_->TheaterGeometry());
   }
 }
 
