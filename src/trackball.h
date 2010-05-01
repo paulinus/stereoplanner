@@ -6,6 +6,7 @@
 
 #include "Eigen/Dense"
 
+// TODO(pau): add presets for top, front, left, ...
 
 class Trackball {
  public:

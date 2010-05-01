@@ -63,7 +63,7 @@ SpDocument::SpDocument() {
 
   rig_interocular_ = .65;
   rig_convergence_ = 7;
-  rig_position_ << -7, 0, -4;
+  rig_position_ << -7, 1, -4;
   rig_pan_ = 0;
   rig_tilt_ = 49;
   rig_roll_ = 0;
