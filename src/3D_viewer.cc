@@ -4,7 +4,7 @@
 #include "3D_viewer.h"
 
 
-ViewerCamera::ViewerCamera() {  
+TrackBall::TrackBall() {  
   field_of_view_ = 60;
   near_ = 0.1;
   far_ = 100;
@@ -19,12 +19,12 @@ ViewerCamera::ViewerCamera() {
   zoom_speed_ = 0.002;
 }
   
-void ViewerCamera::SetScreenSize(int width, int height) {
+void TrackBall::SetScreenSize(int width, int height) {
   screen_width_ = width;
   screen_height_ = height;
 }
 
-void ViewerCamera::SetUpGlCamera() {
+void TrackBall::SetUpGlCamera() {
   // Set intrinsic parameters.
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -47,7 +47,7 @@ void ViewerCamera::SetUpGlCamera() {
   glTranslatef(-revolve_point_(0), -revolve_point_(1), -revolve_point_(2));
 }
 
-void ViewerCamera::MouseTranslate(float x1, float y1, float x2, float y2) {
+void TrackBall::MouseTranslate(float x1, float y1, float x2, float y2) {
   float dx = x2 - x1;
   float dy = y2 - y1;
   revolve_point_in_cam_coords_(0) += translation_speed_ * dx / screen_width_;
@@ -72,7 +72,7 @@ static Eigen::Vector3f LiftToTrackball(float x, float y,
   return Eigen::Vector3f(x, y, z);
 }
 
-void ViewerCamera::MouseRevolve(float x1, float y1, float x2, float y2) {
+void TrackBall::MouseRevolve(float x1, float y1, float x2, float y2) {
   if (x1 == x2 && y1 == y2) {
     return;
   }
@@ -90,7 +90,7 @@ void ViewerCamera::MouseRevolve(float x1, float y1, float x2, float y2) {
   orientation_.normalize();
 }
 
-void ViewerCamera::MouseZoom(float dw) {
+void TrackBall::MouseZoom(float dw) {
   revolve_point_in_cam_coords_(2) += - zoom_speed_ * dw;
 }
 
@@ -118,7 +118,7 @@ void Viewer3D::initializeGL() {
 void Viewer3D::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
-  viewer_camera_.SetUpGlCamera();
+  track_ball_.SetUpGlCamera();
    
   glBegin(GL_LINES);
   glColor4f(1,0,0,1); glVertex3f(0, 0, 0); glVertex3f(1, 0, 0);
@@ -130,7 +130,7 @@ void Viewer3D::paintGL() {
 }
 
 void Viewer3D::resizeGL(int width, int height) {
-  viewer_camera_.SetScreenSize(width, height);
+  track_ball_.SetScreenSize(width, height);
   glViewport(0, 0, width, height);
 }
 
@@ -149,11 +149,11 @@ void Viewer3D::mouseMoveEvent(QMouseEvent *event) {
   }
   
   if (event->buttons() & Qt::LeftButton) {
-    viewer_camera_.MouseRevolve(x1, y1, x2, y2);
+    track_ball_.MouseRevolve(x1, y1, x2, y2);
   }
   
   if (event->buttons() & Qt::RightButton) {
-    viewer_camera_.MouseTranslate(x1, y1, x2, y2);
+    track_ball_.MouseTranslate(x1, y1, x2, y2);
   } 
   
   lastPos_ = event->pos();
@@ -161,7 +161,7 @@ void Viewer3D::mouseMoveEvent(QMouseEvent *event) {
 }
 
 void Viewer3D::wheelEvent(QWheelEvent *event) {
-  viewer_camera_.MouseZoom(event->delta());
+  track_ball_.MouseZoom(event->delta());
   updateGL();
 }
 

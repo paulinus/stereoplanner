@@ -6,7 +6,6 @@
 #include "ui_parameters_form.h"
 #include "document.h"
 
-// TODO(pau): Add a convergance parameter.
 
 class ParametersForm : public QWidget {
   Q_OBJECT

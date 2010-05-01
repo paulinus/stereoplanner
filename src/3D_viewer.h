@@ -10,9 +10,9 @@
 
 
 
-class ViewerCamera {
+class TrackBall {
  public:
-  ViewerCamera();
+  TrackBall();
   void SetScreenSize(int width, int height);
   void SetUpGlCamera();
   void MouseTranslate(float x1, float y1, float x2, float y2);
@@ -44,6 +44,7 @@ class ViewerCamera {
   float zoom_speed_;
 };
 
+
 // A widget displaying a 3D scene.
 class Viewer3D : public QGLWidget {
   Q_OBJECT
@@ -70,7 +71,7 @@ class Viewer3D : public QGLWidget {
   void wheelEvent(QWheelEvent *);
 
  private:
-  ViewerCamera viewer_camera_;
+  TrackBall track_ball_;
   QPoint lastPos_;
 };
 
