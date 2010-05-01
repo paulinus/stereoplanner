@@ -4,96 +4,6 @@
 #include "3D_viewer.h"
 
 
-TrackBall::TrackBall() {  
-  field_of_view_ = 60;
-  near_ = 0.1;
-  far_ = 100;
-  screen_width_ = 1;
-  screen_height_ = 1;
-  
-  revolve_point_ << 0, 0, 0;
-  revolve_point_in_cam_coords_ << 0, 0, -1;
-  orientation_ = Eigen::Quaternionf(1, 0, 0, 0);
-  
-  translation_speed_ = 5;
-  zoom_speed_ = 0.002;
-}
-  
-void TrackBall::SetScreenSize(int width, int height) {
-  screen_width_ = width;
-  screen_height_ = height;
-}
-
-void TrackBall::SetUpGlCamera() {
-  // Set intrinsic parameters.
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluPerspective(field_of_view_,
-                 float(screen_width_) / float(screen_height_),
-                 near_, far_);
-  
-  // Set extrinsic parametres.
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-  
-  // (1) Translate axis to revolve_point.
-  glTranslatef(revolve_point_in_cam_coords_(0),
-               revolve_point_in_cam_coords_(1),
-               revolve_point_in_cam_coords_(2)); 
-  // (2) Rotate.
-  Eigen::AngleAxisf aa = orientation_;
-  glRotatef(aa.angle() * 180. / M_PI, aa.axis()(0), aa.axis()(1), aa.axis()(2));
-  // (3) Translate axis to world origin.
-  glTranslatef(-revolve_point_(0), -revolve_point_(1), -revolve_point_(2));
-}
-
-void TrackBall::MouseTranslate(float x1, float y1, float x2, float y2) {
-  float dx = x2 - x1;
-  float dy = y2 - y1;
-  revolve_point_in_cam_coords_(0) += translation_speed_ * dx / screen_width_;
-  revolve_point_in_cam_coords_(1) -= translation_speed_ * dy / screen_width_;
-};
-
-static Eigen::Vector3f LiftToTrackball(float x, float y,
-                                    float width, float height) {
-  float sphere_radius = std::min(width, height) / 2;
-
-  // Normalize coordinates, and reverse y axis.
-  x = (x - width / 2) / sphere_radius;
-  y = - (y - height / 2) / sphere_radius;
-
-  float r2 = x * x + y * y;
-  float z;
-  if (r2 < 0.5) {     
-    z = sqrt(1 - r2);        // Lift to the sphere.
-  } else {                    
-    z = 1 / (2 * sqrt(r2));  // Lift to the hyperboloid.
-  }
-  return Eigen::Vector3f(x, y, z);
-}
-
-void TrackBall::MouseRevolve(float x1, float y1, float x2, float y2) {
-  if (x1 == x2 && y1 == y2) {
-    return;
-  }
-  // Lift points to the trackball.
-  Eigen::Vector3f p1 = LiftToTrackball(x1, y1, screen_width_, screen_height_);
-  Eigen::Vector3f p2 = LiftToTrackball(x2, y2, screen_width_, screen_height_);
-
-  // Compute rotation between the lifted vectors.
-  Eigen::Quaternionf dq;
-  dq.setFromTwoVectors(p1, p2);
-  dq.normalize();
-  
-  // Apply the rotation.
-  orientation_ = dq * orientation_;
-  orientation_.normalize();
-}
-
-void TrackBall::MouseZoom(float dw) {
-  revolve_point_in_cam_coords_(2) += - zoom_speed_ * dw;
-}
-
 Viewer3D::Viewer3D(QGLWidget *share, QWidget *parent) :
     QGLWidget(0, share) {
   setWindowTitle("3D View");
@@ -118,7 +28,7 @@ void Viewer3D::initializeGL() {
 void Viewer3D::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   
-  track_ball_.SetUpGlCamera();
+  trackball_.SetUpGlCamera();
    
   glBegin(GL_LINES);
   glColor4f(1,0,0,1); glVertex3f(0, 0, 0); glVertex3f(1, 0, 0);
@@ -130,7 +40,7 @@ void Viewer3D::paintGL() {
 }
 
 void Viewer3D::resizeGL(int width, int height) {
-  track_ball_.SetScreenSize(width, height);
+  trackball_.SetScreenSize(width, height);
   glViewport(0, 0, width, height);
 }
 
@@ -149,11 +59,11 @@ void Viewer3D::mouseMoveEvent(QMouseEvent *event) {
   }
   
   if (event->buttons() & Qt::LeftButton) {
-    track_ball_.MouseRevolve(x1, y1, x2, y2);
+    trackball_.MouseRevolve(x1, y1, x2, y2);
   }
   
   if (event->buttons() & Qt::RightButton) {
-    track_ball_.MouseTranslate(x1, y1, x2, y2);
+    trackball_.MouseTranslate(x1, y1, x2, y2);
   } 
   
   lastPos_ = event->pos();
@@ -161,7 +71,7 @@ void Viewer3D::mouseMoveEvent(QMouseEvent *event) {
 }
 
 void Viewer3D::wheelEvent(QWheelEvent *event) {
-  track_ball_.MouseZoom(event->delta());
+  trackball_.MouseZoom(event->delta());
   updateGL();
 }
 
@@ -171,14 +81,129 @@ CaptureViewer::CaptureViewer(QGLWidget *share, QWidget *parent)
   setWindowTitle("Capture Viewer");
 }
 
-GeometryViewer::GeometryViewer(QGLWidget *share, QWidget *parent)
-    : Viewer3D(share, parent), geo_(0) {
-  setWindowTitle("Generic Geometry Viewer");
+void CaptureViewer::SetDocument(SpDocument *doc) {
+  doc_ = doc;
+  if (doc_) {
+    // Make connections.
+    connect(doc_, SIGNAL(DocumentChanged()), this, SLOT(updateGL()));
+  }
 }
+
+void CaptureViewer::paintGL() {
+  Viewer3D::paintGL();
+ 
+  if (doc_) {
+    // Draw better cameras.
+    glBegin(GL_POINTS);
+    glColor4d(0,1,0,1);
+    glVertex3d(doc_->RigX(), doc_->RigY(), doc_->RigZ());
+    for (int i = 0; i < 2; ++i) {
+      Vector3d pos = doc_->CameraPosition(i);
+      glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
+      glVertex3dv(&pos[0]);
+    }
+    glEnd();
+
+    const Geometry &g = doc_->CaptureGeometry();
+    glBegin(GL_LINES);
+    for (int i = 0; i < g.triangles_.size(); i += 3) {
+      for (int j = 0; j < 3; ++j) {
+        glColor4f(.5,.7,1,1);
+        int a = g.triangles_[i + j];
+        int b = g.triangles_[i + (j+1)%3];
+        glVertex4fv(&g.vertex_[4 * a]);
+        glVertex4fv(&g.vertex_[4 * b]);
+      }
+    }
+    glEnd();
+  }
+}
+
 
 TheaterViewer::TheaterViewer(QGLWidget *share, QWidget *parent)
     : Viewer3D(share, parent), doc_(0) {
   setWindowTitle("Theater Viewer");
 }
 
+void TheaterViewer::SetDocument(SpDocument *doc) {
+  doc_ = doc;
+  if (doc_) {
+    // Make connections.
+    connect(doc_, SIGNAL(DocumentChanged()), this, SLOT(updateGL()));
+  }
+}
+
+void TheaterViewer::paintGL() {
+  Viewer3D::paintGL();
+ 
+  if (doc_) {
+    // Draw the screen.
+    float w = doc_->ScreenWidth() / 2;
+    float h = doc_->ScreenHeight() / 2;
+    glBegin(GL_LINES);
+    glColor3f(.7, .7, .7);
+    glVertex3f(-w, -h, 0); glVertex3f(+w, -h, 0);
+    glVertex3f(+w, -h, 0); glVertex3f(+w, +h, 0);
+    glVertex3f(+w, +h, 0); glVertex3f(-w, +h, 0);
+    glVertex3f(-w, +h, 0); glVertex3f(-w, -h, 0);
+    glEnd();
+
+    // Draw the observer.
+    glBegin(GL_POINTS);
+    glColor4d(0,1,0,1);
+    glVertex3d(doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ()); 
+    for (int i = 0; i < 2; ++i) {
+      Vector3d pos = doc_->EyePosition(i);
+      glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
+      glVertex3dv(&pos[0]);
+    }
+    glEnd();
+
+
+    // Draw geometry.
+    const Geometry &g = doc_->TheaterGeometry();
+    glBegin(GL_LINES);
+    for (int i = 0; i < g.triangles_.size(); i += 3) {
+      for (int j = 0; j < 3; ++j) {
+        glColor4f(1,.7,.5,1);
+        int a = g.triangles_[i + j];
+        int b = g.triangles_[i + (j+1)%3];
+        glVertex4fv(&g.vertex_[4 * a]);
+        glVertex4fv(&g.vertex_[4 * b]);
+      }
+    }
+    glEnd();
+  }
+}
+
+
+GeometryViewer::GeometryViewer(QGLWidget *share, QWidget *parent)
+    : Viewer3D(share, parent), geo_(0) {
+  setWindowTitle("Generic Geometry Viewer");
+}
+
+void GeometryViewer::SetGeometry(const Geometry *geo) {
+  geo_ = geo;
+}
+
+void GeometryViewer::paintGL() {
+  Viewer3D::paintGL();
+ 
+  if (geo_) {
+    for (int s = 0; s < 2; ++s) {
+      const Geometry *g = geo_ + s;
+      glBegin(GL_LINES);
+      for (int i = 0; i < g->triangles_.size(); i += 3) {
+        for (int j = 0; j < 3; ++j) {
+          glColor4f(.5 + s*.5,.7,1 - s*.5,1);
+          int a = g->triangles_[i + j];
+          int b = g->triangles_[i + (j+1)%3];
+          glVertex4fv(&g->vertex_[4 * a]);
+          glVertex4fv(&g->vertex_[4 * b]);
+        }
+      }
+      glEnd();
+    }
+  }
+}
 

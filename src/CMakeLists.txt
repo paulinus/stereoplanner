@@ -32,6 +32,7 @@ SET(MOC_HEADERS main_window.h
 SET(SOURCES main.cc
             main_window.cc
             3D_viewer.cc
+            trackball.cc
             document.cc
             geometry.cc
             parameters_form.cc)
