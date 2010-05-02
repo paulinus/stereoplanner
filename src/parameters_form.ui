@@ -214,7 +214,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="screenWidthSpinBox" />
+         <widget class="QDoubleSpinBox" name="screenWidthSpinBox" >
+          <property name="maximum" >
+           <double>10000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -228,7 +232,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="screenHeightSpinBox" />
+         <widget class="QDoubleSpinBox" name="screenHeightSpinBox" >
+          <property name="maximum" >
+           <double>10000.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -271,21 +279,30 @@
         <item>
          <widget class="QDoubleSpinBox" name="observerXSpinBox" >
           <property name="minimum" >
-           <double>-99.989999999999995</double>
+           <double>-10000.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>10000.000000000000000</double>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="observerYSpinBox" >
           <property name="minimum" >
-           <double>-99.989999999999995</double>
+           <double>-10000.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>10000.000000000000000</double>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QDoubleSpinBox" name="observerZSpinBox" >
           <property name="minimum" >
-           <double>-99.989999999999995</double>
+           <double>-10000.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>10000.000000000000000</double>
           </property>
          </widget>
         </item>
