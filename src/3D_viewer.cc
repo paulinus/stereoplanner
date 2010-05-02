@@ -165,7 +165,7 @@ void CaptureViewer::paintGL() {
               / doc_->FocalLegth() / 2;
     float h = doc_->RigConvergence() * doc_->SensorHeight()
               / doc_->FocalLegth() / 2;
-    float z = doc_->RigConvergence();
+    float z = -doc_->RigConvergence();
     
     glBegin(GL_LINES);
     glColor3f(.7, .7, .7);

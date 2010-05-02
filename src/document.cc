@@ -65,14 +65,14 @@ SpDocument::SpDocument() {
   rig_convergence_ = 7;
   rig_position_ << -7, 1, -4;
   rig_pan_ = 0;
-  rig_tilt_ = 49;
+  rig_tilt_ = 230;
   rig_roll_ = 0;
 
   screen_width_ = 40;
   screen_height_ = 30;
 
   observer_interocular_ = 6.5;
-  observer_position_ << 0, 0, -70;
+  observer_position_ << 0, 0, 70;
   observer_pan_ = 0;
   observer_tilt_ = 0;
   observer_roll_ = 0;
@@ -241,7 +241,7 @@ void SpDocument::ProjectToSensor() {
     Vector3d pos = CameraPosition(i);
     double pp_x = (i==0?-1:1) * rig_interocular_ * focal_length_
                     / sensor_width_ / rig_convergence_;
-    Camera camera(focal_length_, sensor_width_, sensor_height_, pp_x, 0,
+    Camera camera(-focal_length_, sensor_width_, sensor_height_, pp_x, 0,
                   pos, RigRotation());
     // TODO(pau): Test Project capture geometry.
     ProjectGeometry(capture_geometry_, camera, &sensor_geometry_[i]);

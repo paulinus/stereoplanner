@@ -155,13 +155,43 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="rigPanSpinBox" />
+         <widget class="QDoubleSpinBox" name="rigPanSpinBox" >
+          <property name="minimum" >
+           <double>-360.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>360.000000000000000</double>
+          </property>
+          <property name="singleStep" >
+           <double>10.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="rigTiltSpinBox" />
+         <widget class="QDoubleSpinBox" name="rigTiltSpinBox" >
+          <property name="minimum" >
+           <double>-360.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>360.000000000000000</double>
+          </property>
+          <property name="singleStep" >
+           <double>10.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="rigRollSpinBox" />
+         <widget class="QDoubleSpinBox" name="rigRollSpinBox" >
+          <property name="minimum" >
+           <double>-360.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>360.000000000000000</double>
+          </property>
+          <property name="singleStep" >
+           <double>10.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -271,13 +301,43 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="observerPanSpinBox" />
+         <widget class="QDoubleSpinBox" name="observerPanSpinBox" >
+          <property name="minimum" >
+           <double>-360.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>360.000000000000000</double>
+          </property>
+          <property name="singleStep" >
+           <double>10.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="observerTiltSpinBox" />
+         <widget class="QDoubleSpinBox" name="observerTiltSpinBox" >
+          <property name="minimum" >
+           <double>-360.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>360.000000000000000</double>
+          </property>
+          <property name="singleStep" >
+           <double>10.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="observerRollSpinBox" />
+         <widget class="QDoubleSpinBox" name="observerRollSpinBox" >
+          <property name="minimum" >
+           <double>-360.000000000000000</double>
+          </property>
+          <property name="maximum" >
+           <double>360.000000000000000</double>
+          </property>
+          <property name="singleStep" >
+           <double>10.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
