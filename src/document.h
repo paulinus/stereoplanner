@@ -18,6 +18,12 @@ inline Matrix3d PanTiltRoll(double pan, double tilt, double roll) {
   return m;
 }
 
+inline AngleAxisd PanTiltRollA(double pan, double tilt, double roll) {
+  return AngleAxisd(pan * M_PI / 180., Vector3d::UnitZ())
+    * AngleAxisd(tilt * M_PI / 180., Vector3d::UnitY())
+    * AngleAxisd(roll * M_PI / 180., Vector3d::UnitZ());
+}
+
 
 // TODO(pau): Add signals for document changed.
 class SpDocument : public QObject {

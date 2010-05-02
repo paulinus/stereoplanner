@@ -138,17 +138,58 @@ void CaptureViewer::paintGL() {
   Viewer3D::paintGL();
  
   if (doc_) {
-    // Draw better cameras.
+
+    glPushMatrix(); // Move to rig's reference frame.
+    glTranslated( doc_->RigX(), doc_->RigY(), doc_->RigZ());
+    Transform3d m;
+    m = PanTiltRollA(doc_->RigPan(), doc_->RigTilt(), doc_->RigRoll());
+    glMultMatrixd(m.data());
+
+
+    // Draw cameras.
+    // TODO(pau): Draw better cameras.
     glDisable(GL_LIGHTING);
     glBegin(GL_POINTS);
-    glColor4d(0,1,0,1);
-    glVertex3d(doc_->RigX(), doc_->RigY(), doc_->RigZ());
-    for (int i = 0; i < 2; ++i) {
-      Vector3d pos = doc_->CameraPosition(i);
-      glColor4f(1. - i * .5, .7, .5 + i * .5, 1);
-      glVertex3dv(&pos[0]);
-    }
+    glColor4d(0,1,0,1); // rig's center
+    glVertex3d(0,0,0);
+    glColor4f(1, .7, .5, 1); // left
+    float l = -doc_->RigInterocular() / 2;
+    float r = doc_->RigInterocular() / 2;
+    glVertex3d(l, 0, 0);
+    glColor4f(.5, .7, 1, 1); // right
+    glVertex3d(r, 0, 0);
     glEnd();
+
+    // Draw the screen.
+    float w = doc_->RigConvergence() * doc_->SensorWidth()
+              / doc_->FocalLegth() / 2;
+    float h = doc_->RigConvergence() * doc_->SensorHeight()
+              / doc_->FocalLegth() / 2;
+    float z = doc_->RigConvergence();
+    
+    glBegin(GL_LINES);
+    glColor3f(.7, .7, .7);
+    glVertex3f(-w, -h, z); glVertex3f(+w, -h, z);
+    glVertex3f(+w, -h, z); glVertex3f(+w, +h, z);
+    glVertex3f(+w, +h, z); glVertex3f(-w, +h, z);
+    glVertex3f(-w, +h, z); glVertex3f(-w, -h, z);
+    glEnd();
+
+    // Draw Frustum
+    glBegin(GL_LINES);
+    glColor3f(.7, .4, .4);
+    glVertex3f(l,0,0); glVertex3f(-w, -h, z);
+    glVertex3f(l,0,0); glVertex3f(+w, -h, z);
+    glVertex3f(l,0,0); glVertex3f(+w, +h, z);
+    glVertex3f(l,0,0); glVertex3f(-w, +h, z);
+    glColor3f(.4, .7, .7);
+    glVertex3f(r,0,0); glVertex3f(-w, -h, z);
+    glVertex3f(r,0,0); glVertex3f(+w, -h, z);
+    glVertex3f(r,0,0); glVertex3f(+w, +h, z);
+    glVertex3f(r,0,0); glVertex3f(-w, +h, z);
+    glEnd();
+
+    glPopMatrix(); // Rig's reference frame.
 
     DrawGeometry(doc_->CaptureGeometry());
   }
