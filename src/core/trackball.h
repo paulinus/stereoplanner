@@ -33,10 +33,6 @@ class Trackball {
                                          // of the camera.
   Eigen::Quaternionf orientation_; // Orientation of the world axis w.r.t.
                                    // the camera axis.
-
-  // Interaction parameters.
-  float translation_speed_;
-  float zoom_speed_;
 };
 
 #endif // TRACKBALL_H_

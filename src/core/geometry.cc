@@ -1,10 +1,11 @@
 #include "geometry.h"
 
-void ReadObj(const char *filename, Geometry *g) {
+void ReadObj(std::istream *input_stream, Geometry *g) {
+  std::istream &fin = *input_stream;
+  
   g->vertex_.clear();
   g->triangles_.clear();
-
-  std::ifstream fin(filename);
+  
   while (fin.good()) {
     // Process 1 line.
     char c;
@@ -29,6 +30,20 @@ void ReadObj(const char *filename, Geometry *g) {
     } 
   }
 }
+
+
+void ReadObj(const char *filename, Geometry *g) {
+  std::ifstream fin(filename);
+  ReadObj(&fin, g);
+}
+
+void ReadObjFromContent(const char *content, Geometry *g) {
+  const std::string s(content);
+  std::istringstream stream(s);
+  ReadObj(&stream, g);
+}
+
+
 
 void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p) {
   p->vertex_.resize(g.vertex_.size());

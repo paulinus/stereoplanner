@@ -78,11 +78,15 @@ SpDocument::SpDocument() {
   observer_roll_ = 0;
 
   capture_geometry_ = CubeGeometry();
-  //ReadObj("models/torus.obj", &capture_geometry_);
   UpdateEverything();
 }
 
 SpDocument::~SpDocument() {
+}
+
+void SpDocument::LoadGeometry(const char *obj_content) {
+  ReadObjFromContent(obj_content, &capture_geometry_);
+  UpdateEverything();
 }
 
 void SpDocument::SetFocalLegth(double v) {

@@ -30,6 +30,8 @@ class SpDocument {
  public:
   SpDocument();
   virtual ~SpDocument();
+  
+  void LoadGeometry(const char *obj_content);
 
   const Geometry &CaptureGeometry() const { return capture_geometry_; }
   const Geometry &SensorGeometry(int i) const { return sensor_geometry_[i]; }

@@ -34,6 +34,16 @@
   
   // Create the document
   doc_ = new SpDocument;
+  
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"cotxe" ofType:@"obj"];  
+   if (filePath) {
+     NSString *myText = [NSString stringWithContentsOfFile:filePath];
+     const char *text = [myText UTF8String];
+//     doc_->LoadGeometry(text);
+   }  
+   
+   
+   
   	  
   captureViewController = [[CaptureViewController alloc] init];
   [captureViewController.view setFrame:[mama frame]];

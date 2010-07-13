@@ -11,6 +11,76 @@
 #include "document.h"
 
 
+struct TwoTouchMoveDecomposition {
+  CGPoint prevCenter, curCenter;
+  CGPoint prevRadius, curRadius;
+  
+  CGPoint centerDisp;
+  CGPoint radiusDisp;
+  
+  CGFloat normalDisp;
+  CGFloat tangentDisp;
+  CGFloat zoom;
+  CGFloat rotation;
+};
+
+CGFloat distanceBetweenTwoPoints(CGPoint p1, CGPoint p2) {
+  float x = p1.x - p2.x;
+  float y = p1.y - p2.y;
+  return sqrt(x * x + y * y);
+}
+
+CGPoint baricenter(CGPoint p1, CGPoint p2) {
+  return CGPointMake((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
+}
+
+CGPoint diff(CGPoint p1, CGPoint p2) {
+  return CGPointMake(p1.x - p2.x, p1.y - p2.y);
+}
+
+CGFloat norm2(CGPoint p) {
+  return p.x * p.x + p.y * p.y;
+}
+
+// Computes the length of the projection of d onto r.
+CGFloat projection(CGPoint d, CGPoint r) {
+  return (d.x * r.x + d.y * r.y) / norm2(r);
+}
+
+
+CGFloat angle(CGPoint from, CGPoint to) {
+  return acos((from.x * to.x + from.y * to.y) / sqrt(norm2(from) * norm2(to)));
+}
+
+
+                   
+void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
+                           CGPoint cur1, CGPoint cur2,
+                           TwoTouchMoveDecomposition *d) {
+  
+  d->prevCenter = baricenter(prev1, prev2);
+  d->curCenter = baricenter(cur1, cur2);
+  d->prevRadius = diff(prev2, d->prevCenter);
+  d->curRadius = diff(cur2, d->curCenter);
+  
+  d->centerDisp = diff(d->curCenter, d->prevCenter);
+  d->radiusDisp = diff(d->curRadius, d->prevRadius);
+  
+  d->normalDisp = projection(d->radiusDisp, d->prevRadius);
+  d->tangentDisp = sqrt(norm2(d->radiusDisp) - d->normalDisp * d->normalDisp);
+  
+  CGFloat normPrevRadius = norm2(d->prevRadius);
+  if (normPrevRadius > 0.1) {
+    d->zoom = sqrt(norm2(d->curRadius) / normPrevRadius);
+  } else {
+    d->zoom = 0;
+  }
+  d->rotation = angle(d->prevRadius, d->curRadius);
+}
+
+
+
+
 @implementation EAGLView
 
 @synthesize rotation;
@@ -25,6 +95,8 @@
   viewRenderbuffer = 0;
   depthRenderbuffer = 0;
   geometry_ = 0;
+  
+  [self setMultipleTouchEnabled:YES];
   
   // Get the layer
   CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
@@ -73,19 +145,19 @@
     GLfloat x0 = - (n - 1) / 2.0f;
     for (int i = 0; i < n; ++i) {
       *p++ = x0;
-      *p++ = x0 + i;
       *p++ = 0;
+      *p++ = x0 + i;
       *p++ = -x0;
-      *p++ = x0 + i;
       *p++ = 0;
+      *p++ = x0 + i;
     }
     for (int i = 0; i < n; ++i) {
       *p++ = x0 + i;
+      *p++ = 0;
       *p++ = x0;
-      *p++ = 0;
       *p++ = x0 + i;
-      *p++ = -x0;
       *p++ = 0;
+      *p++ = -x0;
     }
   }
   glVertexPointer(3, GL_FLOAT, 0, gridVertices);
@@ -132,7 +204,8 @@
   glVertexPointer(4, GL_FLOAT, 0,&geo->vertex_[0]);
   
   glColor4f(0.8f, 0.8f, 1.0f, 1.0f);
-  glDrawElements(GL_TRIANGLES, geo->triangles_.size(), GL_UNSIGNED_SHORT, &geo->triangles_[0]);
+  glDrawElements(GL_TRIANGLES, geo->triangles_.size(), GL_UNSIGNED_SHORT,
+                 &geo->triangles_[0]);
 
   glDisableClientState(GL_VERTEX_ARRAY);
 }
@@ -235,6 +308,7 @@
 }
 
 
+/*
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   UITouch *touch = [[event touchesForView:self] anyObject];
   
@@ -242,15 +316,41 @@
   CGPoint p2 = [touch locationInView:self];
   
   trackball_.MouseRevolve(p1.x, p1.y, p2.x, p2.y);
- 
+  
+  [self drawView];
+}*/
+
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  NSArray *allTouches = [[event allTouches] allObjects];
+  
+  if ([allTouches count] == 1) {
+    UITouch *touch = [touches anyObject];
+    
+    CGPoint p1 = [touch previousLocationInView:self];
+    CGPoint p2 = [touch locationInView:self];
+    
+    trackball_.MouseRevolve(p1.x, p1.y, p2.x, p2.y);
+    
+  } else if ([allTouches count] == 2) {
+    UITouch *t1 = [allTouches objectAtIndex:0];
+    UITouch *t2 = [allTouches objectAtIndex:1];
+    
+    TwoTouchMoveDecomposition d;
+    DecomposeTwoTouchMove([t1 previousLocationInView:self],
+                          [t2 previousLocationInView:self],
+                          [t1 locationInView:self],
+                          [t2 locationInView:self],
+                          &d);
+    
+      trackball_.MouseZoom(d.zoom);
+      trackball_.MouseTranslate(d.prevCenter.x, d.prevCenter.y,
+                                d.curCenter.x, d.curCenter.y);
+  }
+    
+  
   [self drawView];
 }
-
-
-
-
-
-
 
 
 - (void)dealloc {

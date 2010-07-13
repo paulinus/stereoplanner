@@ -41,5 +41,4 @@ class Geometry;
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
 
-
 @end

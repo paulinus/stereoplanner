@@ -20,11 +20,14 @@
   myview = [[EAGLView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
   
   self.view = myview;
+  
+  if (doc_) {
+    [myview setGeometry:&(doc_->TheaterGeometry())];
+  }
 }
 
 - (void)setDocument:(SpDocument *)document {
   doc_ = document;
-  [myview setGeometry:nil];
   [myview setGeometry:&(doc_->TheaterGeometry())];
 }
 

@@ -16,8 +16,6 @@ Trackball::Trackball() {
   revolve_point_in_cam_coords_ << 0, 0, -10;
   orientation_ = Eigen::Quaternionf(1, 0, 0, 0);
   
-  translation_speed_ = 5;
-  zoom_speed_ = 0.02;
 }
   
 void Trackball::SetScreenSize(int width, int height) {
@@ -51,8 +49,10 @@ void Trackball::SetUpGlCamera() {
 void Trackball::MouseTranslate(float x1, float y1, float x2, float y2) {
   float dx = x2 - x1;
   float dy = y2 - y1;
-  revolve_point_in_cam_coords_(0) += translation_speed_ * dx / screen_width_;
-  revolve_point_in_cam_coords_(1) -= translation_speed_ * dy / screen_width_;
+  float speed = - revolve_point_in_cam_coords_(2) * tan(field_of_view_ / 180. * M_PI / 2) 
+                / screen_width_;
+  revolve_point_in_cam_coords_(0) += speed * dx;
+  revolve_point_in_cam_coords_(1) -= speed * dy;
 };
 
 static Eigen::Vector3f LiftToTrackball(float x, float y,
@@ -92,6 +92,6 @@ void Trackball::MouseRevolve(float x1, float y1, float x2, float y2) {
 }
 
 void Trackball::MouseZoom(float dw) {
-  revolve_point_in_cam_coords_(2) += - zoom_speed_ * dw;
+  revolve_point_in_cam_coords_(2) /= dw;
 }
 

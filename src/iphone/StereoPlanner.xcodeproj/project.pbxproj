@@ -20,6 +20,7 @@
 		D53A03FC11E4830E0087316D /* trackball.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A03FA11E4830E0087316D /* trackball.cc */; };
 		D53A040C11E483940087316D /* CaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53A040B11E483940087316D /* CaptureViewController.mm */; };
 		D53A076911E678410087316D /* CinemaViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53A076811E678410087316D /* CinemaViewController.mm */; };
+		D53DB39111E777F5009FA541 /* cotxe.obj in Resources */ = {isa = PBXBuildFile; fileRef = D53DB39011E777F5009FA541 /* cotxe.obj */; };
 		D5C0055B11D65EBC0007CF10 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5C0055A11D65EBC0007CF10 /* EAGLView.mm */; };
 		D5C0057B11D65F9B0007CF10 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0057A11D65F9B0007CF10 /* OpenGLES.framework */; };
 		D5C0058F11D65FCD0007CF10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0058E11D65FCD0007CF10 /* QuartzCore.framework */; };
@@ -50,6 +51,7 @@
 		D53A040B11E483940087316D /* CaptureViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CaptureViewController.mm; sourceTree = "<group>"; };
 		D53A076711E678410087316D /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaViewController.h; sourceTree = "<group>"; };
 		D53A076811E678410087316D /* CinemaViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinemaViewController.mm; sourceTree = "<group>"; };
+		D53DB39011E777F5009FA541 /* cotxe.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cotxe.obj; sourceTree = "<group>"; };
 		D5C0055911D65EBC0007CF10 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		D5C0055A11D65EBC0007CF10 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
 		D5C0057A11D65F9B0007CF10 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -122,6 +124,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D53DB39011E777F5009FA541 /* cotxe.obj */,
 				2899E5210DE3E06400AC0155 /* MainView.xib */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* StereoPlanner-Info.plist */,
@@ -200,6 +203,7 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				2899E5220DE3E06400AC0155 /* MainView.xib in Resources */,
+				D53DB39111E777F5009FA541 /* cotxe.obj in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +266,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.3;
+				SYMROOT = "~/scratch/stereoplaner_build";
 			};
 			name = Debug;
 		};
@@ -276,6 +281,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.3;
+				SYMROOT = "~/scratch/stereoplaner_build";
 			};
 			name = Release;
 		};

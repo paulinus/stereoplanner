@@ -18,6 +18,7 @@ class Geometry {
 
 
 void ReadObj(const char *filename, Geometry *g);
+void ReadObjFromContent(const char *content, Geometry *g);
 
 inline Geometry CubeGeometry() {
   Geometry g;
