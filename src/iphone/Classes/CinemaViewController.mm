@@ -17,18 +17,19 @@
 - (void)loadView {
   self.wantsFullScreenLayout = NO;
   
-  myview = [[EAGLView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+  myview = [[CinemaView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
   
   self.view = myview;
   
   if (doc_) {
-    [myview setGeometry:&(doc_->TheaterGeometry())];
+    [self setDocument:doc_];
   }
 }
 
 - (void)setDocument:(SpDocument *)document {
   doc_ = document;
-  [myview setGeometry:&(doc_->TheaterGeometry())];
+  
+  [myview setDocument:doc_];
 }
 
 

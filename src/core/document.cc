@@ -8,18 +8,18 @@
       Pb = P3 + mub (P4 - P3)
    Return FALSE if no solution exists.
 */
-static int LineLineIntersect(const Vector3d &p1,
-                             const Vector3d &p2,
-                             const Vector3d &p3,
-                             const Vector3d &p4,
-                             Vector3d *pa,
-                             Vector3d *pb,
-                             double *mua,
-                             double *mub) {
-   const double EPS = 1e-8;
-   Vector3d p13,p43,p21;
-   double d1343,d4321,d1321,d4343,d2121;
-   double numer,denom;
+static int LineLineIntersect(const Vector3f &p1,
+                             const Vector3f &p2,
+                             const Vector3f &p3,
+                             const Vector3f &p4,
+                             Vector3f *pa,
+                             Vector3f *pb,
+                             float *mua,
+                             float *mub) {
+   const float EPS = 1e-8;
+   Vector3f p13,p43,p21;
+   float d1343,d4321,d1321,d4343,d2121;
+   float numer,denom;
 
    p13[0] = p1[0] - p3[0];
    p13[1] = p1[1] - p3[1];
@@ -76,6 +76,9 @@ SpDocument::SpDocument() {
   observer_pan_ = 0;
   observer_tilt_ = 0;
   observer_roll_ = 0;
+  
+  near_distance_ = 1;
+  far_distance_ = 1500;
 
   capture_geometry_ = CubeGeometry();
   UpdateEverything();
@@ -84,150 +87,166 @@ SpDocument::SpDocument() {
 SpDocument::~SpDocument() {
 }
 
-void SpDocument::LoadGeometry(const char *obj_content) {
-  ReadObjFromContent(obj_content, &capture_geometry_);
+void SpDocument::LoadGeometry(const char *path) {
+  ReadGeo(path, &capture_geometry_);
   UpdateEverything();
 }
 
-void SpDocument::SetFocalLegth(double v) {
+void SpDocument::SetFocalLegth(float v) {
   if (focal_length_ != v) {
     focal_length_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetSensorWidth(double v) {
+void SpDocument::SetSensorWidth(float v) {
   if (sensor_width_ != v) {
     sensor_width_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetSensorHeight(double v) {
+void SpDocument::SetSensorHeight(float v) {
   if (sensor_height_ != v) {
     sensor_height_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigInterocular(double v) {
+void SpDocument::SetRigInterocular(float v) {
   if (rig_interocular_ != v) {
     rig_interocular_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigConvergence(double v) {
+void SpDocument::SetRigConvergence(float v) {
   if (rig_convergence_ != v) {
     rig_convergence_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigX(double v) {
+void SpDocument::SetRigX(float v) {
   if (rig_position_[0] != v) {
     rig_position_[0] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigY(double v) {
+void SpDocument::SetRigY(float v) {
   if (rig_position_[1] != v) {
     rig_position_[1] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigZ(double v) {
+void SpDocument::SetRigZ(float v) {
   if (rig_position_[2] != v) {
     rig_position_[2] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigPan(double v) {
+void SpDocument::SetRigPan(float v) {
   if (rig_pan_ != v) {
     rig_pan_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigTilt(double v) {
+void SpDocument::SetRigTilt(float v) {
   if (rig_tilt_ != v) {
     rig_tilt_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetRigRoll(double v) {
+void SpDocument::SetRigRoll(float v) {
   if (rig_roll_ != v) {
     rig_roll_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetScreenWidth(double v) {
+void SpDocument::SetScreenWidth(float v) {
   if (screen_width_ != v) {
     screen_width_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetScreenHeight(double v) {
+void SpDocument::SetScreenHeight(float v) {
   if (screen_height_ != v) {
     screen_height_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverInterocular(double v) {
+void SpDocument::SetObserverInterocular(float v) {
   if (observer_interocular_ != v) {
     observer_interocular_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverX(double v) {
+void SpDocument::SetObserverX(float v) {
   if (observer_position_[0] != v) {
     observer_position_[0] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverY(double v) {
+void SpDocument::SetObserverY(float v) {
   if (observer_position_[1] != v) {
     observer_position_[1] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverZ(double v) {
+void SpDocument::SetObserverZ(float v) {
   if (observer_position_[2] != v) {
     observer_position_[2] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverPan(double v) {
+void SpDocument::SetObserverPan(float v) {
   if (observer_pan_ != v) {
     observer_pan_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverTilt(double v) {
+void SpDocument::SetObserverTilt(float v) {
   if (observer_tilt_ != v) {
     observer_tilt_ = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverRoll(double v) {
+void SpDocument::SetObserverRoll(float v) {
   if (observer_roll_ != v) {
     observer_roll_ = v;
     UpdateEverything();
   }
 }
+
+
+void SpDocument::SetNearDistance(float v) {
+  if (near_distance_ != v) {
+    near_distance_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetFarDistance(float v) {
+  if (far_distance_ != v) {
+    far_distance_ = v;
+    UpdateEverything();
+  }
+}
+
 
 void SpDocument::setDocumentChanged(bool b) {
   document_changed_ = b;
@@ -244,15 +263,15 @@ void SpDocument::UpdateEverything() {
   setDocumentChanged(true);
 }
 
-Vector3d SpDocument::CameraPosition(int i) {
-  Vector3d shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
+Vector3f SpDocument::CameraPosition(int i) const {
+  Vector3f shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
   return rig_position_ + RigRotation() * shift;
 }
 
 void SpDocument::ProjectToSensor() {
   for (int i = 0; i < 2; ++i) {
-    Vector3d pos = CameraPosition(i);
-    double pp_x = (i==0?-1:1) * rig_interocular_ * focal_length_
+    Vector3f pos = CameraPosition(i);
+    float pp_x = (i==0?-1:1) * rig_interocular_ * focal_length_
                     / sensor_width_ / rig_convergence_;
     Camera camera(-focal_length_, sensor_width_, sensor_height_, pp_x, 0,
                   pos, RigRotation());
@@ -269,8 +288,8 @@ void SpDocument::SensorToScreen() {
   }
 }
 
-Vector3d SpDocument::EyePosition(int i) {
-  Vector3d shift((i==0?-1:1) * observer_interocular_ / 2, 0, 0);
+Vector3f SpDocument::EyePosition(int i) const {
+  Vector3f shift((i==0?-1:1) * observer_interocular_ / 2, 0, 0);
   return observer_position_ 
     + ObserverRotation() * shift;
 }
@@ -278,25 +297,25 @@ Vector3d SpDocument::EyePosition(int i) {
 
 void SpDocument::Triangulate() {
   // TODO(pau): Test Triangulate.
-  Vector3d left_eye = EyePosition(0);
-  Vector3d right_eye = EyePosition(1);
+  Vector3f left_eye = EyePosition(0);
+  Vector3f right_eye = EyePosition(1);
 
   theater_geometry_.vertex_.resize(screen_geometry_[0].vertex_.size());
   for (unsigned int i = 0; i < theater_geometry_.vertex_.size(); i += 4) {
-    Vector3d left_point(screen_geometry_[0].vertex_[i + 0],
+    Vector3f left_point(screen_geometry_[0].vertex_[i + 0],
         screen_geometry_[0].vertex_[i + 1],
         screen_geometry_[0].vertex_[i + 2]);
     left_point /= screen_geometry_[0].vertex_[i + 3];
-    Vector3d right_point(screen_geometry_[1].vertex_[i + 0],
+    Vector3f right_point(screen_geometry_[1].vertex_[i + 0],
         screen_geometry_[1].vertex_[i + 1],
         screen_geometry_[1].vertex_[i + 2]);
     right_point /= screen_geometry_[1].vertex_[i + 3];
 
-    Vector3d pa, pb;
-    double mua, mub;
+    Vector3f pa, pb;
+    float mua, mub;
     LineLineIntersect(left_eye, left_point, right_eye, right_point,
         &pa, &pb, &mua, &mub);
-    Vector3d intersection = (pa + pb) / 2;
+    Vector3f intersection = (pa + pb) / 2;
 
     theater_geometry_.vertex_[i + 0] = intersection[0];
     theater_geometry_.vertex_[i + 1] = intersection[1];

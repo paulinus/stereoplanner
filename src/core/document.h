@@ -9,18 +9,18 @@
 using namespace Eigen;
 
 
-inline Matrix3d PanTiltRoll(double pan, double tilt, double roll) {
-  Matrix3d m;
-  m = AngleAxisd(pan * M_PI / 180., Vector3d::UnitZ())
-    * AngleAxisd(tilt * M_PI / 180., Vector3d::UnitY())
-    * AngleAxisd(roll * M_PI / 180., Vector3d::UnitZ());
+inline Matrix3f PanTiltRoll(float pan, float tilt, float roll) {
+  Matrix3f m;
+  m = AngleAxisf(pan * M_PI / 180., Vector3f::UnitZ())
+    * AngleAxisf(tilt * M_PI / 180., Vector3f::UnitY())
+    * AngleAxisf(roll * M_PI / 180., Vector3f::UnitZ());
   return m;
 }
 
-inline AngleAxisd PanTiltRollA(double pan, double tilt, double roll) {
-  return AngleAxisd(pan * M_PI / 180., Vector3d::UnitZ())
-    * AngleAxisd(tilt * M_PI / 180., Vector3d::UnitY())
-    * AngleAxisd(roll * M_PI / 180., Vector3d::UnitZ());
+inline AngleAxisf PanTiltRollA(float pan, float tilt, float roll) {
+  return AngleAxisf(pan * M_PI / 180., Vector3f::UnitZ())
+    * AngleAxisf(tilt * M_PI / 180., Vector3f::UnitY())
+    * AngleAxisf(roll * M_PI / 180., Vector3f::UnitZ());
 }
 
 
@@ -31,67 +31,73 @@ class SpDocument {
   SpDocument();
   virtual ~SpDocument();
   
-  void LoadGeometry(const char *obj_content);
+  void LoadGeometry(const char *path);
 
   const Geometry &CaptureGeometry() const { return capture_geometry_; }
   const Geometry &SensorGeometry(int i) const { return sensor_geometry_[i]; }
   const Geometry &ScreenGeometry(int i) const { return screen_geometry_[i]; }
   const Geometry &TheaterGeometry() const { return theater_geometry_; }
 
-  double FocalLegth() { return focal_length_; }
-  double SensorWidth() { return sensor_width_; }
-  double SensorHeight() { return sensor_height_; }
+  float FocalLegth() const { return focal_length_; }
+  float SensorWidth() const { return sensor_width_; }
+  float SensorHeight() const { return sensor_height_; }
 
-  double RigInterocular() { return rig_interocular_; }
-  double RigConvergence() { return rig_convergence_; }
-  double RigX() { return rig_position_[0]; }
-  double RigY() { return rig_position_[1]; }
-  double RigZ() { return rig_position_[2]; }
-  double RigPan() { return rig_pan_; }
-  double RigTilt() { return rig_tilt_; }
-  double RigRoll() { return rig_roll_; }
-  Matrix3d RigRotation() { return PanTiltRoll(rig_pan_, rig_tilt_, rig_roll_); }
-  Vector3d CameraPosition(int i);
+  float RigInterocular() const { return rig_interocular_; }
+  float RigConvergence() const { return rig_convergence_; }
+  float RigX() const { return rig_position_[0]; }
+  float RigY() const { return rig_position_[1]; }
+  float RigZ() const { return rig_position_[2]; }
+  float RigPan() const { return rig_pan_; }
+  float RigTilt() const { return rig_tilt_; }
+  float RigRoll() const { return rig_roll_; }
+  Matrix3f RigRotation() const { return PanTiltRoll(rig_pan_, rig_tilt_, rig_roll_); }
+  Vector3f CameraPosition(int i) const;
 
-  double ScreenWidth() { return screen_width_; }
-  double ScreenHeight() { return screen_height_; }
+  float ScreenWidth() const { return screen_width_; }
+  float ScreenHeight() const { return screen_height_; }
 
-  double ObserverInterocular() { return observer_interocular_; }
-  double ObserverX() { return observer_position_[0]; }
-  double ObserverY() { return observer_position_[1]; }
-  double ObserverZ() { return observer_position_[2]; }
-  double ObserverPan() { return observer_pan_; }
-  double ObserverTilt() { return observer_tilt_; }
-  double ObserverRoll() { return observer_roll_; }
-  Matrix3d ObserverRotation() { return PanTiltRoll(observer_pan_,
+  float ObserverInterocular() const { return observer_interocular_; }
+  float ObserverX() const { return observer_position_[0]; }
+  float ObserverY() const { return observer_position_[1]; }
+  float ObserverZ() const { return observer_position_[2]; }
+  float ObserverPan() const { return observer_pan_; }
+  float ObserverTilt() const { return observer_tilt_; }
+  float ObserverRoll() const { return observer_roll_; }
+  Matrix3f ObserverRotation() const { return PanTiltRoll(observer_pan_,
                                                    observer_tilt_,
                                                    observer_roll_); }
-  Vector3d EyePosition(int i);
- 
+  Vector3f EyePosition(int i) const;
+  
+  float NearDistance() const { return near_distance_; }
+  float FarDistance() const { return far_distance_; }
+  
  public:
-  void SetFocalLegth(double v);
-  void SetSensorWidth(double v);
-  void SetSensorHeight(double v);
+  void SetFocalLegth(float v);
+  void SetSensorWidth(float v);
+  void SetSensorHeight(float v);
 
-  void SetRigInterocular(double v);
-  void SetRigConvergence(double v);
-  void SetRigX(double v);
-  void SetRigY(double v);
-  void SetRigZ(double v);
-  void SetRigPan(double v);
-  void SetRigTilt(double v);
-  void SetRigRoll(double v);
+  void SetRigInterocular(float v);
+  void SetRigConvergence(float v);
+  void SetRigX(float v);
+  void SetRigY(float v);
+  void SetRigZ(float v);
+  void SetRigPan(float v);
+  void SetRigTilt(float v);
+  void SetRigRoll(float v);
   
-  void SetScreenWidth(double v);
-  void SetScreenHeight(double v);
+  void SetScreenWidth(float v);
+  void SetScreenHeight(float v);
   
-  void SetObserverInterocular(double v);
-  void SetObserverX(double v);
-  void SetObserverY(double v);
-  void SetObserverZ(double v);
-  void SetObserverPan(double v);
-  void SetObserverTilt(double v);
-  void SetObserverRoll(double v);
+  void SetObserverInterocular(float v);
+  void SetObserverX(float v);
+  void SetObserverY(float v);
+  void SetObserverZ(float v);
+  void SetObserverPan(float v);
+  void SetObserverTilt(float v);
+  void SetObserverRoll(float v);
+  
+  void SetNearDistance(float v);
+  void SetFarDistance(float v);
 
   void setDocumentChanged(bool b);
   bool DocumentChanged();
@@ -115,28 +121,32 @@ class SpDocument {
   // All distances are in mm.
 
   // Camera parameters.
-  double focal_length_;
-  double sensor_width_;
-  double sensor_height_;
+  float focal_length_;
+  float sensor_width_;
+  float sensor_height_;
 
   // Rig parameters.
-  double rig_interocular_;
-  double rig_convergence_;
-  Vector3d rig_position_;
-  double rig_pan_, rig_tilt_, rig_roll_;
+  float rig_interocular_;
+  float rig_convergence_;
+  Vector3f rig_position_;
+  float rig_pan_, rig_tilt_, rig_roll_;
   
   // Screen parameters.
   // The center of the screen is assumed to be at (0,0,0), its top-left corner 
   // is at (screen_width_ / 2, screen_height_ / 2, 0).  The normal vector
   // pointing to the theater is the (0,0,1).
   
-  double screen_width_;
-  double screen_height_;
+  float screen_width_;
+  float screen_height_;
   
   // Observer parameters.
-  double observer_interocular_;
-  Vector3d observer_position_;
-  double observer_pan_, observer_tilt_, observer_roll_;
+  float observer_interocular_;
+  Vector3f observer_position_;
+  float observer_pan_, observer_tilt_, observer_roll_;
+  
+  // Scene parameters.
+  float near_distance_;
+  float far_distance_;
 };
 
 #endif // DOCUMENT_H_

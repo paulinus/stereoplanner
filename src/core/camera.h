@@ -8,9 +8,9 @@ using namespace Eigen;
 
 class Camera {
  public:
-  Camera(double focal_length, double sensor_width, double sensor_height,
-         double pp_x, double pp_y,
-         const Vector3d &position, const Matrix3d &orientation) {
+  Camera(float focal_length, float sensor_width, float sensor_height,
+         float pp_x, float pp_y,
+         const Vector3f &position, const Matrix3f &orientation) {
     focal_length_ = focal_length;
     sensor_width_ = sensor_width;
     sensor_height_ = sensor_height;
@@ -40,13 +40,13 @@ class Camera {
    *
    * This function assumes that P = K(R|t) with K(2,2) = 1.  See CheckK() doc.
    */
-  void Project(double &u, double &v, double &zi,
-               double x, double y, double z) const {
+  void Project(float &u, float &v, float &zi,
+               float x, float y, float z) const {
     Project(u, v, zi, x, y, z, 1);
   }
 
-  void Project(double &u, double &v, double &zi,
-               double x, double y, double z, double w) const {
+  void Project(float &u, float &v, float &zi,
+               float x, float y, float z, float w) const {
     zi = P_(2, 0) * x + P_(2, 1) * y + P_(2, 2) * z + P_(2, 3) * w;
     u = (P_(0, 0) * x + P_(0, 1) * y + P_(0, 2) * z + P_(0, 3) * w) / zi;
     v = (P_(1, 0) * x + P_(1, 1) * y + P_(1, 2) * z + P_(1, 3) * w) / zi;
@@ -61,38 +61,38 @@ class Camera {
    *  \param [in] y  The y coordinate of in the world frame.
    *  \param [in] z  The z coordinate of in the world frame.
    */
-  void CameraCoordinates(double &xc, double &yc, double &zc,
-                         double x, double y, double z ) const {
+  void CameraCoordinates(float &xc, float &yc, float &zc,
+                         float x, float y, float z ) const {
     xc = R_(0, 0) * x + R_(0, 1) * y + R_(0, 2) * z + t_(0);
     yc = R_(1, 0) * x + R_(1, 1) * y + R_(1, 2) * z + t_(1);
     zc = R_(2, 0) * x + R_(2, 1) * y + R_(2, 2) * z + t_(2);
   }
 
  private:
-  Matrix3d K_;
-  Matrix3d R_;
-  Vector3d t_;
+  Matrix3f K_;
+  Matrix3f R_;
+  Vector3f t_;
 
-  Matrix<double, 3, 4> P_;
+  Matrix<float, 3, 4> P_;
 
-  double focal_length_;  // in mm
-  double sensor_width_, sensor_height_;  // in mm
-  double near_, far_;
+  float focal_length_;  // in mm
+  float sensor_width_, sensor_height_;  // in mm
+  float near_, far_;
 };
 
 
 class NearAndFarEstimator {
 public:
   const Camera &c;
-  double near,far;
+  float near,far;
 
   NearAndFarEstimator(const Camera &cam) : c(cam) {
     near = 1e20;
     far = 0;
   }
 
-  void push(const double x, const double y, const double z) {
-    double u, v, zi;
+  void push(const float x, const float y, const float z) {
+    float u, v, zi;
     c.Project(u, v, zi, x, y, z);
     if(zi < near) near = zi;
     if(far < zi) far = zi;

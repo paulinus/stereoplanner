@@ -1,5 +1,35 @@
 #include "geometry.h"
 
+
+
+void ReadGeo(std::istream *input_stream, Geometry *g) {
+  std::istream &fin = *input_stream;
+  
+  int num_vertices, num_faces;
+  fin >> num_vertices >> num_faces;
+  
+  g->vertex_.resize(num_vertices * 4);
+  g->normal_.resize(num_vertices * 3);
+  g->triangles_.resize(num_faces * 3);
+  
+  char buf[3000];  // Read anything remaining in the line including the '\n'.
+  fin.getline(buf, 3000 - 1);
+  
+  fin.read((char *)&g->vertex_[0],
+           sizeof(g->vertex_[0]) * g->vertex_.size());
+  fin.read((char *)&g->normal_[0],
+           sizeof(g->normal_[0]) * g->normal_.size());
+  fin.read((char *)&g->triangles_[0],
+           sizeof(g->triangles_[0]) * g->triangles_.size());
+}
+
+void ReadGeo(const char *filename, Geometry *g) {
+  std::ifstream fin(filename);
+  ReadGeo(&fin, g);
+}
+
+
+
 void ReadObj(std::istream *input_stream, Geometry *g) {
   std::istream &fin = *input_stream;
   
@@ -48,7 +78,7 @@ void ReadObjFromContent(const char *content, Geometry *g) {
 void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p) {
   p->vertex_.resize(g.vertex_.size());
   for (unsigned int i = 0; i < g.vertex_.size(); i += 4) {
-    double u, v, zi;
+    float u, v, zi;
     c.Project(u,v,zi, g.vertex_[i + 0],
                       g.vertex_[i + 1],
                       g.vertex_[i + 2],
@@ -61,7 +91,7 @@ void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p) {
   p->triangles_ = g.triangles_;
 }
 
-void ScaleGeometry(const Geometry &g, double fx, double fy, double fz,
+void ScaleGeometry(const Geometry &g, float fx, float fy, float fz,
                    Geometry *p) {
   p->vertex_.resize(g.vertex_.size());
   for (unsigned int i = 0; i < g.vertex_.size(); i += 4) {

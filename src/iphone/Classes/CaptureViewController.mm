@@ -17,18 +17,19 @@
 - (void)loadView {
   self.wantsFullScreenLayout = NO;
   
-  myview = [[EAGLView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+  myview = [[CaptureView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
   
   self.view = myview;
   
   if (doc_) {
-    [myview setGeometry:&(doc_->CaptureGeometry())];
+    [self setDocument:doc_];
   }
 }
 
 - (void)setDocument:(SpDocument *)document {
   doc_ = document;
-  [myview setGeometry:&(doc_->CaptureGeometry())];
+  
+  [myview setDocument:doc_];
 }
 
 

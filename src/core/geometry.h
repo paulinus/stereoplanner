@@ -8,17 +8,23 @@
 #include "camera.h"
 
 
-// TODO(pau) affegir normals a la geometria.
+// TODO(pau) afegir normals a la geometria.
 
 class Geometry {
  public:
   std::vector<float> vertex_;  // 4 floats per vertex.
+  std::vector<float> normal_;  // 3 floats per vertex.
   std::vector<unsigned short> triangles_; // 3 ints per triangle.
 };
 
+void ReadGeo(std::istream *input_stream, Geometry *g);
+void ReadGeo(const char *filename, Geometry *g);
 
 void ReadObj(const char *filename, Geometry *g);
 void ReadObjFromContent(const char *content, Geometry *g);
+
+
+
 
 inline Geometry CubeGeometry() {
   Geometry g;
@@ -47,8 +53,9 @@ inline Geometry CubeGeometry() {
   return g;
 }
 
+
 void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p);
-void ScaleGeometry(const Geometry &g, double fx, double fy, double fz,
+void ScaleGeometry(const Geometry &g, float fx, float fy, float fz,
                    Geometry *p);
 
 

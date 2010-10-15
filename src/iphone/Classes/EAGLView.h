@@ -17,10 +17,8 @@ class Geometry;
 
 
 @interface EAGLView : UIView {
-  float rotation;
 @private
   Trackball trackball_;
-  const Geometry *geometry_;
   
   EAGLContext *context;
   
@@ -36,8 +34,11 @@ class Geometry;
 
 @property (nonatomic) float rotation;
 
-- (void)setGeometry:(const Geometry *)geometry;
-- (void)drawView;
+- (void)updateGL;
+- (void)preDraw;
+- (void)draw;
+- (void)postDraw;
+- (void)renderGeometry:(const Geometry *)geo;
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
 

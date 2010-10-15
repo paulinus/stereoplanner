@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EAGLView.h"
+#import "CaptureView.h"
 
 class SpDocument;
 
 @interface CaptureViewController : UIViewController {
-  EAGLView *myview;
+  CaptureView *myview;
   
   SpDocument *doc_;
 }

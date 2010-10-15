@@ -7,15 +7,31 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InfiniteSlider.h"
 #import "CaptureViewController.h"
 #import "CinemaViewController.h"
+#import "CalculatorViewNController.h"
 
 class SpDocument;
+
+typedef enum {
+  SLIDER_NEAR,
+  SLIDER_FAR,
+  SLIDER_CONVERGENCE,
+  SLIDER_FOCAL_LENGTH,
+  SLIDER_INTEROCULAR
+} SliderVariable;
 
 @interface MainViewController : UIViewController {
   UIView *mama;
   CaptureViewController *captureViewController;
   CinemaViewController *cinemaViewController;
+  CalculatorViewNController *calculatorViewController;
+
+  InfiniteSlider *slider;
+  
+  SliderVariable selected_slider_variable;
+
   UISegmentedControl *selector;
   SpDocument *doc_;
 }
@@ -23,8 +39,12 @@ class SpDocument;
 @property (nonatomic,assign) IBOutlet UIView *mama;
 @property (nonatomic,assign) IBOutlet UISegmentedControl *selector;
 
-- (IBAction)selectSetCinema;
 
+- (void)setSliderVariableSelection:(SliderVariable)v;
+- (NSString *)getSliderVariableLabel;
+- (float)getSliderVariableValue;
+- (void)setSliderVariableValue:(float)value;      
+- (IBAction)selectSetCinema;
 
 @end
 

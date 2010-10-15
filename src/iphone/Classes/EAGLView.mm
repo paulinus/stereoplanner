@@ -83,7 +83,6 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 
 @implementation EAGLView
 
-@synthesize rotation;
 
 // You must implement this method
 + (Class)layerClass {
@@ -94,7 +93,6 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
   viewFramebuffer = 0;
   viewRenderbuffer = 0;
   depthRenderbuffer = 0;
-  geometry_ = 0;
   
   [self setMultipleTouchEnabled:YES];
   
@@ -115,6 +113,19 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
     [self release];
     return nil;
   }
+  
+  glEnable(GL_DEPTH_TEST);
+  glShadeModel(GL_SMOOTH);
+  
+  // Set up GL_LIGHT1
+  GLfloat LightAmbient[]= { 0.3f, 0.3f, 0.4f, 1.0f }; 			
+  GLfloat LightDiffuse[]= { 1.0f, 1.0f, 0.9f, 1.0f };				
+  GLfloat LightPosition[]= { 0.0f, 0.0f, 2.0f, 1.0f };				
+  glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
+  glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);
+  glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);
+  glEnable(GL_LIGHT1);
+  
   
   return self;
 }
@@ -200,18 +211,26 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 
 
 - (void)renderGeometry:(const Geometry *)geo {
+  glEnable(GL_LIGHTING);
   glEnableClientState(GL_VERTEX_ARRAY);
-  glVertexPointer(4, GL_FLOAT, 0,&geo->vertex_[0]);
+  glVertexPointer(4, GL_FLOAT, 0, &geo->vertex_[0]);
   
-  glColor4f(0.8f, 0.8f, 1.0f, 1.0f);
+  if (geo->normal_.size() / 3 == geo->vertex_.size() / 4) {
+    glEnableClientState(GL_NORMAL_ARRAY);
+    glNormalPointer(GL_FLOAT, 0, &geo->normal_[0]);
+  }
+    
+  glEnable(GL_COLOR_MATERIAL);
+  glColor4f(0.5f, 0.5f, 8.0f, 1.0f);
   glDrawElements(GL_TRIANGLES, geo->triangles_.size(), GL_UNSIGNED_SHORT,
                  &geo->triangles_[0]);
 
   glDisableClientState(GL_VERTEX_ARRAY);
+  glDisableClientState(GL_NORMAL_ARRAY);
+  glDisable(GL_LIGHTING);
 }
 
-
-- (void)drawView {
+- (void)preDraw {
   // Make our opengl context current.
   [EAGLContext setCurrentContext:context];
   
@@ -223,15 +242,24 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
   
   glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  glEnable(GL_DEPTH_TEST);
+ 
   
+}
+
+- (void)draw {
   [self renderAxis];
   [self renderGrid];
-  if (geometry_)
-    [self renderGeometry:geometry_];
+}
 
-  glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+- (void)postDraw {
+    glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
   [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+}
+
+- (void)updateGL {
+  [self preDraw];
+  [self draw];
+  [self postDraw];
 }
 
 
@@ -247,7 +275,7 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
   
   trackball_.SetScreenSize(backingWidth, backingHeight);
   
-  [self drawView];
+  [self updateGL];
 }
 
 - (BOOL)createFramebuffer {
@@ -302,23 +330,6 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 }
 
 
-- (void)setGeometry:(const Geometry *)geometry {
-  geometry_ = geometry;
-  [self drawView];
-}
-
-
-/*
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-  UITouch *touch = [[event touchesForView:self] anyObject];
-  
-  CGPoint p1 = [touch previousLocationInView:self];
-  CGPoint p2 = [touch locationInView:self];
-  
-  trackball_.MouseRevolve(p1.x, p1.y, p2.x, p2.y);
-  
-  [self drawView];
-}*/
 
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -349,7 +360,7 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
   }
     
   
-  [self drawView];
+  [self updateGL];
 }
 
 

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EAGLView.h"
+#import "CinemaView.h"
 
 class SpDocument;
 
 @interface CinemaViewController : UIViewController {
-  EAGLView *myview;
+  CinemaView *myview;
   
   SpDocument *doc_;
 }
