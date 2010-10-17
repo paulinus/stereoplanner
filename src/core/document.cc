@@ -92,6 +92,23 @@ void SpDocument::LoadGeometry(const char *path) {
   UpdateEverything();
 }
 
+float SpDocument::ParallaxFromDepth(float z) const {
+  return 100 * RigInterocular() * FocalLegth() / RigConvergence() / SensorWidth()
+         * (z - RigConvergence()) / z;
+}
+
+float SpDocument::NearParallax() const {
+  return ParallaxFromDepth(NearDistance());
+}
+
+float SpDocument::FarParallax() const {
+  return ParallaxFromDepth(FarDistance());
+}
+
+float SpDocument::ParallaxBudged() const {
+  return FarParallax() - NearParallax();
+}
+
 void SpDocument::SetFocalLegth(float v) {
   if (focal_length_ != v) {
     focal_length_ = v;

@@ -83,6 +83,7 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 
 @implementation EAGLView
 
+@synthesize rotation;
 
 // You must implement this method
 + (Class)layerClass {
