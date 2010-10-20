@@ -143,7 +143,6 @@ class SpDocument {
   // pointing to the theater is the (0,0,1).
   
   float screen_width_;
-  float screen_height_;
   
   // Observer parameters.
   float observer_interocular_;

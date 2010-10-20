@@ -19,7 +19,8 @@
   [self updateGL];
 }
 
-
+// TODO(pau): split this function in subfunctions.
+// TODO(pau): draw near and far planes.
 - (void)draw {
   [super draw];
 

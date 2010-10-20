@@ -69,7 +69,6 @@ SpDocument::SpDocument() {
   rig_roll_ = 0;
 
   screen_width_ = 10;
-  screen_height_ = 7;
 
   observer_interocular_ = 0.065;
   observer_position_ << 0, 0, 10;
@@ -306,7 +305,7 @@ void SpDocument::ProjectToSensor() {
 void SpDocument::SensorToScreen() {
   for (int i = 0; i < 2; ++i) {
     // TODO(pau): Test scale geometry.
-    ScaleGeometry(sensor_geometry_[i], screen_width_ / 2, screen_height_ / 2,
+    ScaleGeometry(sensor_geometry_[i], ScreenWidth() / 2, ScreenHeight() / 2,
         1, &screen_geometry_[i]);
   }
 }
