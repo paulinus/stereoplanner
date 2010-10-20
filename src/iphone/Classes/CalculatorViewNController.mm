@@ -19,9 +19,14 @@
 @synthesize convergenceLabel;
 @synthesize focalLengthLabel;
 @synthesize interocularLabel;
+@synthesize screenWidthLabel;
 @synthesize nearParallaxLabel;
 @synthesize farParallaxLabel;
 @synthesize parallaxBudgedLabel;
+@synthesize nearScreenParallaxLabel;
+@synthesize farScreenParallaxLabel;
+@synthesize screenParallaxBudgedLabel;
+
 
 - (id)initWithMainViewController:(MainViewController *)mvc {
   main_view_controller_ = mvc;
@@ -76,7 +81,6 @@
   [self updateView];
 }
 
-// TODO(pau): posar els parallax en centimetres
 - (IBAction)updateView {
   [nearLabel setText:floatToStringInMetric(doc_->NearDistance(), 2)];
   [farLabel setText:floatToStringInMetric(doc_->FarDistance(), 2)];
@@ -87,6 +91,9 @@
   [nearParallaxLabel setText:floatToStringPercentage(doc_->NearParallax(), 2)];
   [farParallaxLabel setText:floatToStringPercentage(doc_->FarParallax(), 2)];
   [parallaxBudgedLabel setText:floatToStringPercentage(doc_->ParallaxBudged(), 2)];
+  [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
+  [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
+  [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
 }
 
 - (IBAction)nearButton {

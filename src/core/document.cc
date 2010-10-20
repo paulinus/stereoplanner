@@ -109,6 +109,19 @@ float SpDocument::ParallaxBudged() const {
   return FarParallax() - NearParallax();
 }
 
+float SpDocument::NearScreenParallax() const {
+  return ScreenWidth() * NearParallax() / 100;
+}
+
+float SpDocument::FarScreenParallax() const {
+  return ScreenWidth() * FarParallax() / 100;
+}
+
+float SpDocument::ScreenParallaxBudged() const {
+  return FarScreenParallax() - NearScreenParallax();
+}
+
+
 void SpDocument::SetFocalLegth(float v) {
   if (focal_length_ != v) {
     focal_length_ = v;

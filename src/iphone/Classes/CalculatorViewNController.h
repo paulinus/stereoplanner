@@ -24,6 +24,9 @@ class SpDocument;
   id nearParallaxLabel;
   id farParallaxLabel;
   id parallaxBudgedLabel;
+  id nearScreenParallaxLabel;
+  id farScreenParallaxLabel;
+  id screenParallaxBudgedLabel;
 }
 
 @property (nonatomic,assign) IBOutlet id nearLabel;
@@ -35,6 +38,9 @@ class SpDocument;
 @property (nonatomic,assign) IBOutlet id nearParallaxLabel;
 @property (nonatomic,assign) IBOutlet id farParallaxLabel;
 @property (nonatomic,assign) IBOutlet id parallaxBudgedLabel;
+@property (nonatomic,assign) IBOutlet id nearScreenParallaxLabel;
+@property (nonatomic,assign) IBOutlet id farScreenParallaxLabel;
+@property (nonatomic,assign) IBOutlet id screenParallaxBudgedLabel;
 
 
 - (id)initWithMainViewController:(MainViewController *)mvc;

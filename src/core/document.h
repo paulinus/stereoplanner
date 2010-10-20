@@ -74,6 +74,9 @@ class SpDocument {
   float NearParallax() const;
   float FarParallax() const;
   float ParallaxBudged() const;
+  float NearScreenParallax() const;
+  float FarScreenParallax() const;
+  float ScreenParallaxBudged() const;
   
  public:
   void SetFocalLegth(float v);
