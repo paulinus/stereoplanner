@@ -31,7 +31,7 @@ typedef enum {
 
   InfiniteSlider *slider;
   
-  SliderVariable selected_slider_variable;
+  SliderVariable selectedSliderVariable;
 
   UISegmentedControl *selector;
   SpDocument *doc_;
@@ -39,9 +39,10 @@ typedef enum {
 
 @property (nonatomic,assign) IBOutlet UIView *mama;
 @property (nonatomic,assign) IBOutlet UISegmentedControl *selector;
+@property (nonatomic) SliderVariable selectedSliderVariable;
 
 
-- (void)setSliderVariableSelection:(SliderVariable)v;
+
 - (NSString *)getSliderVariableLabel;
 - (float)getSliderVariableValue;
 - (void)setSliderVariableValue:(float)value;      

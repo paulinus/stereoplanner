@@ -96,28 +96,36 @@
   [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
 }
 
+- (void)highlightSelection {
+  UIColor *a = [UIColor blueColor];
+  UIColor *b = [UIColor blackColor];
+  [nearLabel setBackgroundColor:
+   ([main_view_controller_ selectedSliderVariable] == SLIDER_NEAR) ? a : b];
+}
+
 - (IBAction)nearButton {
-  [main_view_controller_ setSliderVariableSelection:SLIDER_NEAR];
+  [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
+  [self highlightSelection];
 }
 
 - (IBAction)farButton {
-  [main_view_controller_ setSliderVariableSelection:SLIDER_FAR]; 
+  [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR]; 
 }
 
 - (IBAction)convergenceButton {
-  [main_view_controller_ setSliderVariableSelection:SLIDER_CONVERGENCE];
+  [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
 }
 
 - (IBAction)focalLengthButton {
-  [main_view_controller_ setSliderVariableSelection:SLIDER_FOCAL_LENGTH];
+  [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
 }
 
 - (IBAction)interocularButton {
-  [main_view_controller_ setSliderVariableSelection:SLIDER_INTEROCULAR];
+  [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
 }
 
 - (IBAction)screenWidthButton {
-  [main_view_controller_ setSliderVariableSelection:SLIDER_SCREEN_WIDTH];
+  [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
 }
 
 

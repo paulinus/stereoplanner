@@ -45,6 +45,7 @@ class SpDocument;
 
 - (id)initWithMainViewController:(MainViewController *)mvc;
 - (void)setDocument:(SpDocument *)document;
+- (void)highlightSelection;
 - (IBAction)updateView;
 - (IBAction)nearButton;
 - (IBAction)farButton;

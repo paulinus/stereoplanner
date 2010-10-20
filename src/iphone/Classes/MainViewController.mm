@@ -15,6 +15,7 @@
 
 @synthesize mama;
 @synthesize selector;
+@dynamic selectedSliderVariable;
 
 
 /*
@@ -60,7 +61,7 @@
   slider = [[InfiniteSlider alloc] init];
   [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
 
-  [self setSliderVariableSelection:SLIDER_CONVERGENCE];
+  [self setSelectedSliderVariable:SLIDER_CONVERGENCE];
    
   CGRect rect = [mama frame];
   int h = 50;
@@ -74,16 +75,20 @@
   [mama bringSubviewToFront:slider];
 }
 
-- (void)setSliderVariableSelection:(SliderVariable)v {
-  if (selected_slider_variable != v) {
-    selected_slider_variable = v;
+- (void)setSelectedSliderVariable:(SliderVariable)v {
+  if (selectedSliderVariable != v) {
+    selectedSliderVariable = v;
     [slider setLabel:[self getSliderVariableLabel]];
     [slider setValue:[self getSliderVariableValue]];
   }
 }
 
+- (SliderVariable)selectedSliderVariable {
+  return selectedSliderVariable;
+}
+
 - (NSString *)getSliderVariableLabel {
-  switch (selected_slider_variable) {
+  switch (selectedSliderVariable) {
     case SLIDER_NEAR:
       return @"Near";
     case SLIDER_FAR:
@@ -102,7 +107,7 @@
 }
 
 - (float)getSliderVariableValue {
-  switch (selected_slider_variable) {
+  switch (selectedSliderVariable) {
     case SLIDER_NEAR:
       return doc_->NearDistance();
     case SLIDER_FAR:
@@ -121,7 +126,7 @@
 }
 
 - (void)setSliderVariableValue:(float)value {
-  switch (selected_slider_variable) {
+  switch (selectedSliderVariable) {
     case SLIDER_NEAR:
       doc_->SetNearDistance(value);
       break;
