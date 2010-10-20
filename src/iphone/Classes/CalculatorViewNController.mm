@@ -116,22 +116,18 @@
 
 - (IBAction)nearButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
-  [self highlightSelection];
 }
 
 - (IBAction)farButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR]; 
-  [self highlightSelection];
 }
 
 - (IBAction)convergenceButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
-  [self highlightSelection];
 }
 
 - (IBAction)focalLengthButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
-  [self highlightSelection];
 }
 
 - (IBAction)interocularButton {
@@ -141,7 +137,6 @@
 
 - (IBAction)screenWidthButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
-  [self highlightSelection];
 }
 
 

@@ -54,6 +54,7 @@
   calculatorViewController = [[CalculatorViewNController alloc] initWithMainViewController:self];
   [calculatorViewController.view setFrame:[mama frame]];
   [calculatorViewController setDocument:doc_];
+  [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
 
   [self selectSetCinema];
 
@@ -80,6 +81,7 @@
     selectedSliderVariable = v;
     [slider setLabel:[self getSliderVariableLabel]];
     [slider setValue:[self getSliderVariableValue]];
+    [(CalculatorViewNController *)calculatorViewController highlightSelection];
   }
 }
 
@@ -148,7 +150,6 @@
   }
 }
 
-
 - (void)sliderChanged:(id)sender {
   if (slider.value != [self getSliderVariableValue]) {
     [self setSliderVariableValue:slider.value];
@@ -162,7 +163,6 @@
     }
   }
 }
-
 
 /*
 // Override to allow orientations other than the default portrait orientation.
