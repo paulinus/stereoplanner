@@ -76,15 +76,14 @@
   [self updateView];
 }
 
-// TODO(pau): Posar unitats a la calculadora.
-// TODO(pau): Afegir la mida de la pantalla com a parametre i posar els
-//            parallax en centimetres
+// TODO(pau): posar els parallax en centimetres
 - (IBAction)updateView {
   [nearLabel setText:floatToStringInMetric(doc_->NearDistance(), 2)];
   [farLabel setText:floatToStringInMetric(doc_->FarDistance(), 2)];
   [convergenceLabel setText:floatToStringInMetric(doc_->RigConvergence(), 2)];
   [focalLengthLabel setText:floatToStringInMetric(doc_->FocalLegth(), 2)];
   [interocularLabel setText:floatToStringInMetric(doc_->RigInterocular(), 2)];
+  [screenWidthLabel setText:floatToStringInMetric(doc_->ScreenWidth(), 2)];
   [nearParallaxLabel setText:floatToStringPercentage(doc_->NearParallax(), 2)];
   [farParallaxLabel setText:floatToStringPercentage(doc_->FarParallax(), 2)];
   [parallaxBudgedLabel setText:floatToStringPercentage(doc_->ParallaxBudged(), 2)];
@@ -108,6 +107,10 @@
 
 - (IBAction)interocularButton {
   [main_view_controller_ setSliderVariableSelection:SLIDER_INTEROCULAR];
+}
+
+- (IBAction)screenWidthButton {
+  [main_view_controller_ setSliderVariableSelection:SLIDER_SCREEN_WIDTH];
 }
 
 

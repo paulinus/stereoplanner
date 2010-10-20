@@ -20,6 +20,7 @@ class SpDocument;
   id convergenceLabel;
   id focalLengthLabel;
   id interocularLabel;
+  id screenWidthLabel;
   id nearParallaxLabel;
   id farParallaxLabel;
   id parallaxBudgedLabel;
@@ -30,6 +31,7 @@ class SpDocument;
 @property (nonatomic,assign) IBOutlet id convergenceLabel;
 @property (nonatomic,assign) IBOutlet id focalLengthLabel;
 @property (nonatomic,assign) IBOutlet id interocularLabel;
+@property (nonatomic,assign) IBOutlet id screenWidthLabel;
 @property (nonatomic,assign) IBOutlet id nearParallaxLabel;
 @property (nonatomic,assign) IBOutlet id farParallaxLabel;
 @property (nonatomic,assign) IBOutlet id parallaxBudgedLabel;
@@ -43,6 +45,7 @@ class SpDocument;
 - (IBAction)convergenceButton;
 - (IBAction)focalLengthButton;
 - (IBAction)interocularButton;
+- (IBAction)screenWidthButton;
 
 
 @end

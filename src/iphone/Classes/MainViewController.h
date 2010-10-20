@@ -19,7 +19,8 @@ typedef enum {
   SLIDER_FAR,
   SLIDER_CONVERGENCE,
   SLIDER_FOCAL_LENGTH,
-  SLIDER_INTEROCULAR
+  SLIDER_INTEROCULAR,
+  SLIDER_SCREEN_WIDTH
 } SliderVariable;
 
 @interface MainViewController : UIViewController {

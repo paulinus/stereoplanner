@@ -94,6 +94,8 @@
       return @"Focal length";
     case SLIDER_INTEROCULAR:
       return @"Interocular";
+    case SLIDER_SCREEN_WIDTH:
+      return @"Screen width";
     default:
       return @"";
   }
@@ -111,6 +113,8 @@
       return doc_->FocalLegth();
     case SLIDER_INTEROCULAR:
       return doc_->RigInterocular();
+    case SLIDER_SCREEN_WIDTH:
+      return doc_->ScreenWidth();
     default:
       return 0;
   }
@@ -132,6 +136,9 @@
       break;
     case SLIDER_INTEROCULAR:
       doc_->SetRigInterocular(value);
+      break;
+    case SLIDER_SCREEN_WIDTH:
+      doc_->SetScreenWidth(value);
       break;
   }
 }

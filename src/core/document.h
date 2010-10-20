@@ -54,7 +54,7 @@ class SpDocument {
   Vector3f CameraPosition(int i) const;
 
   float ScreenWidth() const { return screen_width_; }
-  float ScreenHeight() const { return screen_height_; }
+  float ScreenHeight() const { return ScreenWidth() / SensorWidth() * SensorHeight(); }
 
   float ObserverInterocular() const { return observer_interocular_; }
   float ObserverX() const { return observer_position_[0]; }
@@ -90,7 +90,6 @@ class SpDocument {
   void SetRigRoll(float v);
   
   void SetScreenWidth(float v);
-  void SetScreenHeight(float v);
   
   void SetObserverInterocular(float v);
   void SetObserverX(float v);

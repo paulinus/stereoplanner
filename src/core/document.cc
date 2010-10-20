@@ -193,13 +193,6 @@ void SpDocument::SetScreenWidth(float v) {
   }
 }
 
-void SpDocument::SetScreenHeight(float v) {
-  if (screen_height_ != v) {
-    screen_height_ = v;
-    UpdateEverything();
-  }
-}
-
 void SpDocument::SetObserverInterocular(float v) {
   if (observer_interocular_ != v) {
     observer_interocular_ = v;
