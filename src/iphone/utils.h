@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 
-NSString *floatToString(float x, int num_decimals);
+NSString *floatToString(float value, int significant_digits);
+NSString *floatToStringInMetric(float millimeters, int significant_digits);
+NSString *floatToStringPercentage(float value, int significant_digits);

@@ -29,11 +29,14 @@ CGColorRef graphBackgroundColor() {
 
 @implementation InfiniteSlider
 
-@dynamic value;
 @synthesize label;
+@dynamic value;
+@synthesize valueType;
+
 
 - (id) init {
   value = 1;
+  valueType = ISmetric;
   return [super init];
 }
 
@@ -52,19 +55,28 @@ CGColorRef graphBackgroundColor() {
   
   // Fill in the background
   CGContextSetFillColorWithColor(context, graphBackgroundColor());
-//  CGContextFillRect(context, self.bounds);
   
-  //CGContextTranslateCTM(context, 0.0, 56.0);
-  
-  
-  // Draw the text
+  // Draw label
   UIFont *systemFont = [UIFont systemFontOfSize:22.0];
   [[UIColor whiteColor] set];
   [self.label drawInRect:CGRectMake(0.0, 0.0, 154.0, 26.0)
                          withFont:systemFont
                          lineBreakMode:UILineBreakModeWordWrap
                          alignment:UITextAlignmentRight];
-  [floatToString(value, 2) drawInRect:CGRectMake(0.0, 20.0, 154.0, 26.0)
+  // Draw value
+  NSString *valueString;
+  switch (valueType) {
+    case ISmetric:
+      valueString = floatToStringInMetric(value, 3);
+      break;
+    case ISpercentage:
+      valueString = floatToStringPercentage(value, 3);
+      break;
+    default:
+      valueString = floatToString(value, 3);
+      break;
+  }
+  [valueString drawInRect:CGRectMake(0.0, 20.0, 154.0, 26.0)
                            withFont:systemFont
                            lineBreakMode:UILineBreakModeWordWrap
                            alignment:UITextAlignmentRight];

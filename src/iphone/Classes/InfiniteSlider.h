@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+  ISmetric, ISpercentage
+} ValueType;
 
 @interface InfiniteSlider : UIControl {
-  float value;
   NSString *label;
+  float value;
+  ValueType valueType;
 }
 
 @property (nonatomic) float value;
+@property (nonatomic) ValueType valueType;
 @property (assign,nonatomic) NSString *label;
 
 

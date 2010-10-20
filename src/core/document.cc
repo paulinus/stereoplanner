@@ -57,28 +57,28 @@ static int LineLineIntersect(const Vector3f &p1,
 
 
 SpDocument::SpDocument() {
-  focal_length_ = 40;
-  sensor_width_ = 36;
-  sensor_height_ = 24;
+  focal_length_ = 0.040;
+  sensor_width_ = 0.036;
+  sensor_height_ = 0.024;
 
-  rig_interocular_ = .65;
+  rig_interocular_ = 0.065;
   rig_convergence_ = 7;
   rig_position_ << -7, 1, -4;
   rig_pan_ = 0;
   rig_tilt_ = 230;
   rig_roll_ = 0;
 
-  screen_width_ = 40;
-  screen_height_ = 30;
+  screen_width_ = 10;
+  screen_height_ = 7;
 
-  observer_interocular_ = 6.5;
-  observer_position_ << 0, 0, 70;
+  observer_interocular_ = 0.065;
+  observer_position_ << 0, 0, 10;
   observer_pan_ = 0;
   observer_tilt_ = 0;
   observer_roll_ = 0;
   
-  near_distance_ = 1;
-  far_distance_ = 1500;
+  near_distance_ = 5;
+  far_distance_ = 10;
 
   capture_geometry_ = CubeGeometry();
   UpdateEverything();

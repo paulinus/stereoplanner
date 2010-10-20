@@ -9,29 +9,34 @@
 #import "utils.h"
 
 
-NSString *floatToString(float x, int num_decimals) {
-  NSString *res = [NSString stringWithFormat:@"%0.2f", x];
-  int dot = 0;
-  for (int i = 0; i < [res length]; ++i) {
-    if([res characterAtIndex:i] == '.') {
-      dot = i;
-      break;
-    }					  
-  }
-  
-  if (dot) {
-    int lastZero;
-    for (lastZero = [res length] - 1; lastZero >= dot; --lastZero) {
-      if([res characterAtIndex:lastZero] != '0') {
-        break;
-      }
-    }	
-    if (lastZero == dot)
-      return [res substringToIndex:lastZero];
-    else 
-      return [res substringToIndex:lastZero + 1];
-    
-  } else {
-    return res;
-  }
+NSString *floatToString(float value, int significand_digits) {
+  NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+  [numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
+  [numberFormatter setUsesSignificantDigits:true];
+  [numberFormatter setMaximumSignificantDigits:significand_digits];
+  [numberFormatter setRoundingMode: NSNumberFormatterRoundUp];
+  NSNumber *c = [NSNumber numberWithFloat:value];
+  return [numberFormatter stringFromNumber:c];
 }
+
+NSString *floatToStringInMetric(float meters, int significand_digits) {
+  float x = meters * 1000;
+  if (x < 1000) {
+    return [NSString stringWithFormat:@"%@%@", 
+            floatToString(x, significand_digits), @"mm"];
+  }
+  x /= 1000;
+  if (x < 1000) {
+    return [NSString stringWithFormat:@"%@%@", 
+            floatToString(x, significand_digits), @"m"];   
+  }
+  x /= 1000;
+  return [NSString stringWithFormat:@"%@%@", 
+          floatToString(x, significand_digits), @"km"];   
+}
+
+NSString *floatToStringPercentage(float value, int significand_digits) {
+  return [NSString stringWithFormat:@"%@%@", 
+          floatToString(value, significand_digits), @"%"];
+}
+
