@@ -82,6 +82,7 @@
 }
 
 - (IBAction)updateView {
+  [self highlightSelection];
   [nearLabel setText:floatToStringInMetric(doc_->NearDistance(), 2)];
   [farLabel setText:floatToStringInMetric(doc_->FarDistance(), 2)];
   [convergenceLabel setText:floatToStringInMetric(doc_->RigConvergence(), 2)];
@@ -101,6 +102,16 @@
   UIColor *b = [UIColor blackColor];
   [nearLabel setBackgroundColor:
    ([main_view_controller_ selectedSliderVariable] == SLIDER_NEAR) ? a : b];
+  [farLabel setBackgroundColor:
+   ([main_view_controller_ selectedSliderVariable] == SLIDER_FAR) ? a : b];
+  [convergenceLabel setBackgroundColor:
+   ([main_view_controller_ selectedSliderVariable] == SLIDER_CONVERGENCE) ? a : b];
+  [focalLengthLabel setBackgroundColor:
+   ([main_view_controller_ selectedSliderVariable] == SLIDER_FOCAL_LENGTH) ? a : b];
+  [interocularLabel setBackgroundColor:
+   ([main_view_controller_ selectedSliderVariable] == SLIDER_INTEROCULAR) ? a : b];
+  [screenWidthLabel setBackgroundColor:
+   ([main_view_controller_ selectedSliderVariable] == SLIDER_SCREEN_WIDTH) ? a : b];
 }
 
 - (IBAction)nearButton {
@@ -110,22 +121,27 @@
 
 - (IBAction)farButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR]; 
+  [self highlightSelection];
 }
 
 - (IBAction)convergenceButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
+  [self highlightSelection];
 }
 
 - (IBAction)focalLengthButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
+  [self highlightSelection];
 }
 
 - (IBAction)interocularButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
+  [self highlightSelection];
 }
 
 - (IBAction)screenWidthButton {
   [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
+  [self highlightSelection];
 }
 
 

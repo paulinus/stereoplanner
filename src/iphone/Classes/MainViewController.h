@@ -42,7 +42,6 @@ typedef enum {
 @property (nonatomic) SliderVariable selectedSliderVariable;
 
 
-
 - (NSString *)getSliderVariableLabel;
 - (float)getSliderVariableValue;
 - (void)setSliderVariableValue:(float)value;      
