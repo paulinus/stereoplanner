@@ -139,7 +139,7 @@ class SpDocument {
   
   // Screen parameters.
   // The center of the screen is assumed to be at (0,0,0), its top-left corner 
-  // is at (screen_width_ / 2, screen_height_ / 2, 0).  The normal vector
+  // is at (ScreenWidth() / 2, ScreenHeight() / 2, 0).  The normal vector
   // pointing to the theater is the (0,0,1).
   
   float screen_width_;
