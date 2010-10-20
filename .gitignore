@@ -4,11 +4,14 @@
 
 build/
 bin-dbg/
+models/
 
 *.aux
 *.log
 *.toc
 *.pdf
+
+*.pyc
 
 *.pbxuser
 *.perspective
