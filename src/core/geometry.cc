@@ -12,8 +12,9 @@ void ReadGeo(std::istream *input_stream, Geometry *g) {
   g->normal_.resize(num_vertices * 3);
   g->triangles_.resize(num_faces * 3);
   
-  char buf[3000];  // Read anything remaining in the line including the '\n'.
-  fin.getline(buf, 3000 - 1);
+  const int buf_size = 10000;
+  char buf[buf_size];  // Read anything remaining in the line including the '\n'.
+  fin.getline(buf, buf_size - 1);
   
   fin.read((char *)&g->vertex_[0],
            sizeof(g->vertex_[0]) * g->vertex_.size());
