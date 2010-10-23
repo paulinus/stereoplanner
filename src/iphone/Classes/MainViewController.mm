@@ -197,16 +197,19 @@
   
   switch ([selector selectedSegmentIndex]) {
     case 0:
+      [(CaptureView *)captureViewController.view updateGL];
       [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:mama cache:YES];
       [cinemaViewController.view removeFromSuperview];
       [mama addSubview:captureViewController.view];
       break;
-    case 1:
+    case 1:     
+      [(CinemaView *)cinemaViewController.view updateGL];
       [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:mama cache:YES];
       [captureViewController.view removeFromSuperview];
       [mama addSubview:cinemaViewController.view];
       break;
     case 2:
+      [calculatorViewController updateView];
       [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:mama cache:YES];
       [captureViewController.view removeFromSuperview];
       [mama addSubview:calculatorViewController.view];
