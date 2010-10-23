@@ -15,6 +15,8 @@ class Geometry {
   std::vector<float> vertex_;  // 4 floats per vertex.
   std::vector<float> normal_;  // 3 floats per vertex.
   std::vector<unsigned short> triangles_; // 3 ints per triangle.
+  
+  void ComputeNormals();
 };
 
 void ReadGeo(std::istream *input_stream, Geometry *g);

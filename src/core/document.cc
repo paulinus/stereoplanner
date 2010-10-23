@@ -345,5 +345,6 @@ void SpDocument::Triangulate() {
     theater_geometry_.vertex_[i + 3] = 1;
   }
   theater_geometry_.triangles_ = screen_geometry_[0].triangles_;
+  theater_geometry_.ComputeNormals();
 }
 
