@@ -342,7 +342,8 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
     CGPoint p1 = [touch previousLocationInView:self];
     CGPoint p2 = [touch locationInView:self];
     
-    trackball_.MouseRevolve(p1.x, p1.y, p2.x, p2.y);
+    trackball_.MouseRevolveGravity(
+                                   p1.x, p1.y, p2.x, p2.y);
     
   } else if ([allTouches count] == 2) {
     UITouch *t1 = [allTouches objectAtIndex:0];

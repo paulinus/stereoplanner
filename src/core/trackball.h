@@ -11,7 +11,8 @@ class Trackball {
   void SetScreenSize(int width, int height);
   void SetUpGlCamera();
   void MouseTranslate(float x1, float y1, float x2, float y2);
-  void MouseRevolve(float x1, float y1, float x2, float y2);
+  void MouseRevolveFree(float x1, float y1, float x2, float y2);
+  void MouseRevolveGravity(float x1, float y1, float x2, float y2);
   void MouseZoom(float dw);
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 

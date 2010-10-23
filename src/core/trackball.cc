@@ -73,7 +73,7 @@ static Eigen::Vector3f LiftToTrackball(float x, float y,
   return Eigen::Vector3f(x, y, z);
 }
 
-void Trackball::MouseRevolve(float x1, float y1, float x2, float y2) {
+void Trackball::MouseRevolveFree(float x1, float y1, float x2, float y2) {
   if (x1 == x2 && y1 == y2) {
     return;
   }
@@ -88,6 +88,24 @@ void Trackball::MouseRevolve(float x1, float y1, float x2, float y2) {
   
   // Apply the rotation.
   orientation_ = dq * orientation_;
+  orientation_.normalize();
+}
+
+void Trackball::MouseRevolveGravity(float x1, float y1, float x2, float y2) {
+  if (x1 == x2 && y1 == y2) {
+    return;
+  }
+  // Lift points to the trackball.
+  Eigen::Vector3f p1 = LiftToTrackball(x1, y1, screen_width_, screen_height_);
+  Eigen::Vector3f p2 = LiftToTrackball(x2, y2, screen_width_, screen_height_);
+  
+  // Compute rotation between the lifted vectors.
+  float factor = 0.01;
+  Eigen::Quaternionf da = Eigen::AngleAxisf(factor * (x2 - x1), Eigen::Vector3f::UnitY()) * Eigen::AngleAxisf(0, Eigen::Vector3f::UnitY());
+  Eigen::Quaternionf db = Eigen::AngleAxisf(factor * (y2 - y1), Eigen::Vector3f::UnitX()) * Eigen::AngleAxisf(0, Eigen::Vector3f::UnitY());
+  
+  // Apply the rotation.
+  orientation_ = db * orientation_ * da;
   orientation_.normalize();
 }
 
