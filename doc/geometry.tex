@@ -52,8 +52,30 @@
 \maketitle
 \tableofcontents
 
-
 \section{Formulas}
+Shooting parameters
+\begin{itemize}
+ \item $f$ focal length
+ \item $s_w$ the sensor width
+ \item $b$ the interocular distance
+ \item $H$ the convergence distance, i.e. distance to the stereoscopic window.
+ \item $W$ width of the stereoscopic window. Can be computed from the other parameters. Assuming offaxis set up (using shift lenses or asymetric camera frustum), we have
+ \begin{equation}
+  W = \frac{s_w H}{f}
+ \end{equation}
+ If parallel cameras are used, then convergence is achieved by trimming the images which changes the width of the stereoscopic window. TODO(pau): check this formula and make a drawing.
+ \begin{equation}
+  W = \frac{s_w H}{f} - 2b
+ \end{equation}
+ \item $near$ and $far$, the distance to the nearest and farthest objects in the scene.
+ 
+\end{itemize}
+
+
+
+\section{CACA VELLA: Formulas}
+
+
 
 \subsection{Filming}
 \begin{figure}
