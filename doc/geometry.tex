@@ -48,9 +48,8 @@
 \begin{document}
 
 \title{Geometry of Stereoscopic Filming and Displaying}
-\author{}
+\author{Pau Gargallo}
 \maketitle
-\tableofcontents
 
 \section{Formulas}
 Shooting parameters
@@ -59,14 +58,27 @@ Shooting parameters
  \item $s_w$ the sensor width
  \item $b$ the interocular distance
  \item $H$ the convergence distance, i.e. distance to the stereoscopic window.
- \item $W$ width of the stereoscopic window. Can be computed from the other parameters. Assuming offaxis set up (using shift lenses or asymetric camera frustum), we have
+ \item $W$ width of the stereoscopic window. Can be computed from the other parameters. Assuming off-axis set up (using shift lenses or asymmetric camera frustum), we have
  \begin{equation}
-  W = \frac{s_w H}{f}
+  W_{offaxis} = \frac{s_w H}{f}
  \end{equation}
- If parallel cameras are used, then convergence is achieved by trimming the images which changes the width of the stereoscopic window. TODO(pau): check this formula and make a drawing.
+ If parallel cameras are used, then convergence is achieved by trimming the images which changes the width of the stereoscopic window. The width of the trim is equal to the interocular distance. Therefore the final width of the stereoscopic window will be
  \begin{equation}
-  W = \frac{s_w H}{f} - 2b
+  W_{trimmed} = \frac{s_w H}{f} - b
  \end{equation}
+ \item $Z$ is the depth of a given object
+ \item $d$ is the disparity (or parallax) as a fraction of the window width, $W$.  By the Thales theorem we have
+ \begin{equation}
+  \frac{Z - H}{Z} = \frac{dW}{b}
+ \end{equation}
+ Which is equivalent to
+ \begin{equation}
+  d = \frac{b}{W} \frac{Z}{Z-H}
+ \end{equation}
+ and
+ \begin{equation}
+  Z = \frac{bH}{b - dW}
+ \end{equation} 	
  \item $near$ and $far$, the distance to the nearest and farthest objects in the scene.
  
 \end{itemize}
@@ -82,19 +94,19 @@ Shooting parameters
  \begin{center}
   \includegraphics[width=0.9\textwidth]{stereo_projection.pdf}
  \end{center}
- \caption{Projection of a point into two cameras.  Or, equivanlently, the percieved 3D point given the two images presented to the observer.}
+ \caption{Projection of a point into two cameras.  Or, equivalently, the perceived 3D point given the two images presented to the observer.}
 \end{figure}
 
 
-There are mainly 3 parameters that descrive the internal geometry of a camera, and thus the way in which it captures images.  These are
+There are mainly 3 parameters that describe the internal geometry of a camera, and thus the way in which it captures images.  These are
 \begin{itemize}
  \item the focal leghth of the camera, $f$,
  \item the width of the sensor, $w$
  \item and the position of the principal point, $\p$.
 \end{itemize}
-Usually, only the ratio between the focal lenght and the image width is relevant, and the principal point is at the origin.  In this discussion however, we have to take into account all 3 parameters since they are going to play and important role when displayng the images to the audience.
+Usually, only the ratio between the focal length and the image width is relevant, and the principal point is at the origin.  In this discussion however, we have to take into account all 3 parameters since they are going to play and important role when displaying the images to the audience.
 
-When filming in stereo, another parameter has to be controled.  This is
+When filming in stereo, another parameter has to be controlled.  This is
 \begin{itemize}
  \item the inter-camera distance or baseline, $b$.
 \end{itemize}
@@ -123,7 +135,7 @@ This equation relates the 3D point $\X$ with its projection into the left image 
 \end{figure}
 
 \subsection{Displaying}
-Ideally, one would like to disylay the images in the exact same set up that was used for filming.  If this was the case, the observer would view exactly what the cameras where seeing and the sesation of presence should be perfect, since there is no way for the observer to distinguish the images that are being shown from the ones that he whould obsreve if she was actually there.
+Ideally, one would like to display the images in the exact same set up that was used for filming.  If this was the case, the observer would view exactly what the cameras where seeing and the sensation of presence should be perfect, since there is no way for the observer to distinguish the images that are being shown from the ones that he should observe if she was actually there.
 
 In practice, reproducing the exact same setup is not always possible.  In the following we are going to consider that the parameters such as the focal lenght $f$, the image width $w$, etc, are different when filming and when displaying, and we will analyse the geomtric effect iduced by this differences.
 
