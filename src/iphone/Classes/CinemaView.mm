@@ -96,7 +96,21 @@
     glVertexPointer(3, GL_FLOAT, 0, screen);
     glEnableClientState(GL_VERTEX_ARRAY);
     glDrawArrays(GL_LINES, 0, 8);
-    glDisableClientState(GL_VERTEX_ARRAY);    
+    glDisableClientState(GL_VERTEX_ARRAY);
+    
+    
+    
+    // Move to observer's reference frame.
+    glPushMatrix();
+    glTranslatef(doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ());
+    
+    // Draw near and far planes.
+    [self drawViewingAreaAtDepth:
+     doc_->ViewDepthFromShootingDepth(doc_->NearDistance())];
+    [self drawViewingAreaAtDepth:
+     doc_->ViewDepthFromShootingDepth(doc_->FarDistance())];
+    
+    glPopMatrix(); // Observer's reference frame.
   }  
 }
 
