@@ -15,6 +15,7 @@ class Geometry {
   std::vector<float> vertex_;  // 4 floats per vertex.
   std::vector<float> normal_;  // 3 floats per vertex.
   std::vector<unsigned short> triangles_; // 3 ints per triangle.
+  std::vector<unsigned short> lines_; // 2 ints per line.
   
   void ComputeNormals();
 };

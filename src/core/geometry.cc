@@ -86,8 +86,6 @@ void ReadGeo(const char *filename, Geometry *g) {
   ReadGeo(&fin, g);
 }
 
-
-
 void ReadObj(std::istream *input_stream, Geometry *g) {
   std::istream &fin = *input_stream;
   
@@ -119,7 +117,6 @@ void ReadObj(std::istream *input_stream, Geometry *g) {
   }
 }
 
-
 void ReadObj(const char *filename, Geometry *g) {
   std::ifstream fin(filename);
   ReadObj(&fin, g);
@@ -130,8 +127,6 @@ void ReadObjFromContent(const char *content, Geometry *g) {
   std::istringstream stream(s);
   ReadObj(&stream, g);
 }
-
-
 
 void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p) {
   p->vertex_.resize(g.vertex_.size());
@@ -147,6 +142,7 @@ void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p) {
     p->vertex_[i + 3] = 1;
   }
   p->triangles_ = g.triangles_;
+  p->lines_ = g.lines_;
 }
 
 void ScaleGeometry(const Geometry &g, float fx, float fy, float fz,
@@ -159,5 +155,6 @@ void ScaleGeometry(const Geometry &g, float fx, float fy, float fz,
     p->vertex_[i + 3] = g.vertex_[i + 3];
   }
   p->triangles_ = g.triangles_;
+  p->lines_ = g.lines_;
 }
 
