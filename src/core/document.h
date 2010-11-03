@@ -85,11 +85,6 @@ class SpDocument {
   float FarScreenParallax() const;
   float ScreenParallaxBudged() const;
   
-  void ViewAreaLeft(float Z, float *left, float *right, float *bottom,
-                    float *top) const;
-  void ViewAreaRight(float Z, float *left, float *right, float *bottom,
-                     float *top) const;
-  
  public:
   void SetFocalLegth(float v);
   void SetSensorWidth(float v);

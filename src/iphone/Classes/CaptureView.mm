@@ -21,8 +21,9 @@
 
 - (void)drawViewingAreaAtDepth:(float)z {
   float lleft, lright, rleft, rright, bottom, top;
-  doc_->ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
-  doc_->ViewAreaRight(z, &rleft, &rright, &bottom, &top);
+  StereoFrustum f = doc_->ShootingFrustrum();
+  f.ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
+  f.ViewAreaRight(z, &rleft, &rright, &bottom, &top);
   
   GLfloat z_view_area[] = {
     lleft, bottom, -z,  rleft, bottom, -z,
@@ -50,8 +51,9 @@
   float z = std::max(std::max(doc_->NearDistance(), doc_->RigConvergence()), 
                      doc_->FarDistance());
   float lleft, lright, rleft, rright, bottom, top;
-  doc_->ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
-  doc_->ViewAreaRight(z, &rleft, &rright, &bottom, &top);
+  StereoFrustum f = doc_->ShootingFrustrum();
+  f.ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
+  f.ViewAreaRight(z, &rleft, &rright, &bottom, &top);
   
   float l = -doc_->RigInterocular() / 2;
   

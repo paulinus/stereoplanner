@@ -21,8 +21,9 @@
 
 - (void)drawViewingAreaAtDepth:(float)z {
   float lleft, lright, rleft, rright, bottom, top;
-  doc_->ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
-  doc_->ViewAreaRight(z, &rleft, &rright, &bottom, &top);
+  StereoFrustum f = doc_->ViewingFrustrum();
+  f.ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
+  f.ViewAreaRight(z, &rleft, &rright, &bottom, &top);
   
   GLfloat z_view_area[] = {
     lleft, bottom, -z,  rleft, bottom, -z,
