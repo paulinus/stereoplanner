@@ -44,6 +44,8 @@ class SpDocument {
 
   float RigInterocular() const { return rig_interocular_; }
   float RigConvergence() const { return rig_convergence_; }
+  float StereoWindowWidth() const;
+  float StereoWindowHeight() const;
   float RigX() const { return rig_position_[0]; }
   float RigY() const { return rig_position_[1]; }
   float RigZ() const { return rig_position_[2]; }
@@ -77,6 +79,11 @@ class SpDocument {
   float NearScreenParallax() const;
   float FarScreenParallax() const;
   float ScreenParallaxBudged() const;
+  
+  void ViewAreaLeft(float Z, float *left, float *right, float *top,
+                    float *bottom) const;
+  void ViewAreaRight(float Z, float *left, float *right, float *top,
+                     float *bottom) const;
   
  public:
   void SetFocalLegth(float v);

@@ -91,6 +91,15 @@ void SpDocument::LoadGeometry(const char *path) {
   UpdateEverything();
 }
 
+// TODO(pau): Consired non off-axis configuration (see doc/geometry.tex);
+float SpDocument::StereoWindowWidth() const {
+  return SensorWidth() * RigConvergence() / FocalLegth();
+}
+
+float SpDocument::StereoWindowHeight() const {
+  return SensorHeight() * RigConvergence() / FocalLegth();
+}
+
 float SpDocument::ParallaxFromDepth(float z) const {
   return RigInterocular() * FocalLegth() / RigConvergence() / SensorWidth()
          * (z - RigConvergence()) / z;
@@ -120,6 +129,32 @@ float SpDocument::ScreenParallaxBudged() const {
   return FarScreenParallax() - NearScreenParallax();
 }
 
+
+void SpDocument::ViewAreaLeft(float Z, float *left, float *right, float *top,
+                              float *bottom) const {
+  float b = RigInterocular();
+  float C = RigConvergence();
+  float W = StereoWindowWidth();
+  float H = StereoWindowHeight();
+  
+  *left = (Z * (b - W) / C - b) / 2;
+  *right = (Z * (b + W) / C - b) / 2;
+  *top = Z * H / C / 2;
+  *bottom = - Z * H / C / 2;
+}
+
+void SpDocument::ViewAreaRight(float Z, float *left, float *right, float *top,
+                               float *bottom) const {
+  float b = RigInterocular();
+  float C = RigConvergence();
+  float W = StereoWindowWidth();
+  float H = StereoWindowHeight();
+  
+  *left = (Z * (-b - W) / C + b) / 2;
+  *right = (Z * (-b + W) / C + b) / 2;
+  *top = Z * H / C / 2;
+  *bottom = - Z * H / C / 2;  
+}
 
 void SpDocument::SetFocalLegth(float v) {
   if (focal_length_ != v) {
