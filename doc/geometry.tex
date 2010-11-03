@@ -55,33 +55,57 @@
 Shooting parameters
 \begin{itemize}
  \item $f$ focal length
- \item $s_w$ the sensor width
+ \item $s_w, s_h$ the sensor width and height
  \item $b$ the interocular distance
- \item $H$ the convergence distance, i.e. distance to the stereoscopic window.
+ \item $C$ the convergence distance, i.e. distance to the stereoscopic window.
  \item $W$ width of the stereoscopic window. Can be computed from the other parameters. Assuming off-axis set up (using shift lenses or asymmetric camera frustum), we have
  \begin{equation}
-  W_{offaxis} = \frac{s_w H}{f}
+  W_{offaxis} = \frac{s_w C}{f}
  \end{equation}
  If parallel cameras are used, then convergence is achieved by trimming the images which changes the width of the stereoscopic window. The width of the trim is equal to the interocular distance. Therefore the final width of the stereoscopic window will be
  \begin{equation}
-  W_{trimmed} = \frac{s_w H}{f} - b
+  W_{trimmed} = \frac{s_w C}{f} - b
  \end{equation}
+ \item $H$ the height of the stereoscopic window. This will depend of the type of cropping that is done. Without cropping we have
+\begin{equation}
+  H = \frac{s_h C}{f}
+ \end{equation} 
  \item $Z$ is the depth of a given object
  \item $d$ is the disparity (or parallax) as a fraction of the window width, $W$.  By the Thales theorem we have
  \begin{equation}
-  \frac{Z - H}{Z} = \frac{dW}{b}
+  \frac{Z - C}{Z} = \frac{dW}{b}
  \end{equation}
  Which is equivalent to
  \begin{equation}
-  d = \frac{b}{W} \frac{Z}{Z-H}
+  d = \frac{b}{W} \frac{Z}{Z-C}
  \end{equation}
  and
  \begin{equation}
-  Z = \frac{bH}{b - dW}
- \end{equation} 	
- \item $near$ and $far$, the distance to the nearest and farthest objects in the scene.
- 
+  Z = \frac{bC}{b - dW}
+ \end{equation} 
 \end{itemize}
+
+\section{Confort zones}
+At a given depth plane, each camera sees a rectangular region of the plane.  We will describe this rectangle by its top, bottom, left and right coordinates. These coordinates are expressed in a reference centered at the middle point between the cameras' optical centers.
+
+For the left cameras we have
+\begin{equation}
+ \begin{split}
+  left &= \frac{1}{2} \left( Z \frac{b - W}{C} - b\right) \\
+  right &= \frac{1}{2} \left( Z \frac{b + W}{C} - b\right) \\
+  top &= \frac{Z H}{2 C} \\
+  bottom &= -\frac{Z H}{2 C} ,
+ \end{split}
+\end{equation}
+and for the right camera,
+\begin{equation}
+ \begin{split}
+  left &= \frac{1}{2} \left( Z \frac{-b - W}{C} + b\right) \\
+  right &= \frac{1}{2} \left( Z \frac{-b + W}{C} + b\right) \\
+  top &= \frac{Z H}{2 C} \\
+  bottom &= -\frac{Z H}{2 C} .
+ \end{split}
+\end{equation}
 
 
 
