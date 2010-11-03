@@ -19,21 +19,83 @@
   [self updateGL];
 }
 
+- (void)drawViewingAreaAtDepth:(float)z {
+  float lleft, lright, rleft, rright, bottom, top;
+  doc_->ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
+  doc_->ViewAreaRight(z, &rleft, &rright, &bottom, &top);
+  
+  GLfloat z_view_area[] = {
+    lleft, bottom, -z,  rleft, bottom, -z,
+    rleft, bottom, -z,  lright, bottom, -z,
+    lright, bottom, -z,  rright, bottom, -z,
+    
+    lleft, top, -z,  rleft, top, -z,
+    rleft, top, -z,  lright, top, -z,
+    lright, top, -z,  rright, top, -z,
+    
+    lleft, bottom, -z,  lleft, top, -z,
+    rleft, bottom, -z,  rleft, top, -z,
+    lright, bottom, -z,  lright, top, -z,
+    rright, bottom, -z,  rright, top, -z
+  };
+  glDisable(GL_LIGHTING);
+  glColor4f(.7, .7, .7, 1);
+  glVertexPointer(3, GL_FLOAT, 0, z_view_area);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glDrawArrays(GL_LINES, 0, 20);
+  glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+- (void)drawFrustumLines {
+  float z = std::max(std::max(doc_->NearDistance(), doc_->RigConvergence()), 
+                     doc_->FarDistance());
+  float lleft, lright, rleft, rright, bottom, top;
+  doc_->ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
+  doc_->ViewAreaRight(z, &rleft, &rright, &bottom, &top);
+  
+  float l = -doc_->RigInterocular() / 2;
+  
+  GLfloat frustruml[] = {
+    l,0,0, lleft, bottom, -z,
+    l,0,0, lright, bottom, -z,
+    l,0,0, lright, top, -z,
+    l,0,0, lleft, top, -z
+  };
+  GLfloat frustrumr[] = {
+    -l,0,0, rleft, bottom, -z,
+    -l,0,0, rright, bottom, -z,
+    -l,0,0, rright, top, -z,
+    -l,0,0, rleft, top, -z
+  };
+  
+  glDisable(GL_LIGHTING);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  
+  // left
+  glColor4f(.7, .4, .4, 1);
+  glVertexPointer(3, GL_FLOAT, 0, frustruml);
+  glDrawArrays(GL_LINES, 0, 8);
+  // right
+  glColor4f(.4, .7, .7, 1);
+  glVertexPointer(3, GL_FLOAT, 0, frustrumr);
+  glDrawArrays(GL_LINES, 0, 8);
+  glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+
 // TODO(pau): split this function in subfunctions.
-// TODO(pau): draw near and far planes.
 - (void)draw {
   [super draw];
 
   if (doc_) {
     [super renderGeometry:&(doc_->CaptureGeometry())];
   
-    
-    glPushMatrix(); // Move to rig's reference frame.
+    // Move to rig's reference frame.
+    glPushMatrix();
     glTranslatef(doc_->RigX(), doc_->RigY(), doc_->RigZ());
     Transform3f m;
     m = PanTiltRollA(doc_->RigPan(), doc_->RigTilt(), doc_->RigRoll());
     glMultMatrixf(m.data());
-    
     
     // Draw cameras.
     float l = -doc_->RigInterocular() / 2;
@@ -63,53 +125,14 @@
     
     
     // Draw the screen.
-    float w = doc_->RigConvergence() * doc_->SensorWidth() 
-              / doc_->FocalLegth() / 2;
-    float h = doc_->RigConvergence() * doc_->SensorHeight()
-              / doc_->FocalLegth() / 2;
-    float z = -doc_->RigConvergence();
-  
-    GLfloat screen[] = {
-      -w, -h, z,  +w, -h, z,
-      +w, -h, z,  +w, +h, z,
-      +w, +h, z,  -w, +h, z,
-      -w, +h, z,  -w, -h, z
-    };
-    glDisable(GL_LIGHTING);
-    glColor4f(.7, .7, .7, 1);
-    glVertexPointer(3, GL_FLOAT, 0, screen);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_LINES, 0, 8);
-    glDisableClientState(GL_VERTEX_ARRAY);
-   
-
+    [self drawViewingAreaAtDepth:doc_->RigConvergence()];
+      
     // Draw Frustum
-    GLfloat frustruml[] = {
-      l,0,0, -w, -h, z,
-      l,0,0, +w, -h, z,
-      l,0,0, +w, +h, z,
-      l,0,0, -w, +h, z
-    };
-    GLfloat frustrumr[] = {
-      r,0,0, -w, -h, z,
-      r,0,0, +w, -h, z,
-      r,0,0, +w, +h, z,
-      r,0,0, -w, +h, z
-    };
-
-    glDisable(GL_LIGHTING);
-    glEnableClientState(GL_VERTEX_ARRAY);
+    [self drawFrustumLines];
     
-    // left
-    glColor4f(.7, .4, .4, 1);
-    glVertexPointer(3, GL_FLOAT, 0, frustruml);
-    glDrawArrays(GL_LINES, 0, 8);
-    // right
-    glColor4f(.4, .7, .7, 1);
-    glVertexPointer(3, GL_FLOAT, 0, frustrumr);
-    glDrawArrays(GL_LINES, 0, 8);
-
-    glDisableClientState(GL_VERTEX_ARRAY);
+    // Draw fear and far planes.
+    [self drawViewingAreaAtDepth:doc_->NearDistance()];
+    [self drawViewingAreaAtDepth:doc_->FarDistance()];
     
     glPopMatrix(); // Rig's reference frame.
   }

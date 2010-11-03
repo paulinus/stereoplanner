@@ -130,8 +130,8 @@ float SpDocument::ScreenParallaxBudged() const {
 }
 
 
-void SpDocument::ViewAreaLeft(float Z, float *left, float *right, float *top,
-                              float *bottom) const {
+void SpDocument::ViewAreaLeft(float Z, float *left, float *right, float *bottom,
+                              float *top) const {
   float b = RigInterocular();
   float C = RigConvergence();
   float W = StereoWindowWidth();
@@ -143,8 +143,8 @@ void SpDocument::ViewAreaLeft(float Z, float *left, float *right, float *top,
   *bottom = - Z * H / C / 2;
 }
 
-void SpDocument::ViewAreaRight(float Z, float *left, float *right, float *top,
-                               float *bottom) const {
+void SpDocument::ViewAreaRight(float Z, float *left, float *right,
+                               float *bottom, float *top) const {
   float b = RigInterocular();
   float C = RigConvergence();
   float W = StereoWindowWidth();
