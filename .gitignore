@@ -10,6 +10,7 @@ models/
 *.log
 *.toc
 *.pdf
+*.synctex.gz
 
 *.pyc
 
