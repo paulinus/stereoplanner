@@ -101,8 +101,14 @@ float SpDocument::StereoWindowHeight() const {
 }
 
 float SpDocument::ParallaxFromDepth(float z) const {
-  return RigInterocular() * FocalLegth() / RigConvergence() / SensorWidth()
+  return RigInterocular() / StereoWindowWidth()
          * (z - RigConvergence()) / z;
+}
+
+float SpDocument::ViewDepthFromShootingDepth(float z) const {
+  float d = ParallaxFromDepth(z);
+  return ObserverInterocular() * fabs(ObserverZ())
+        / (ObserverInterocular() - d * ScreenWidth());
 }
 
 float SpDocument::NearParallax() const {

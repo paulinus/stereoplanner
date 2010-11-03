@@ -19,6 +19,32 @@
   [self updateGL];
 }
 
+- (void)drawViewingAreaAtDepth:(float)z {
+  float lleft, lright, rleft, rright, bottom, top;
+  doc_->ViewAreaLeft(z, &lleft, &lright, &bottom, &top);
+  doc_->ViewAreaRight(z, &rleft, &rright, &bottom, &top);
+  
+  GLfloat z_view_area[] = {
+    lleft, bottom, -z,  rleft, bottom, -z,
+    rleft, bottom, -z,  lright, bottom, -z,
+    lright, bottom, -z,  rright, bottom, -z,
+    
+    lleft, top, -z,  rleft, top, -z,
+    rleft, top, -z,  lright, top, -z,
+    lright, top, -z,  rright, top, -z,
+    
+    lleft, bottom, -z,  lleft, top, -z,
+    rleft, bottom, -z,  rleft, top, -z,
+    lright, bottom, -z,  lright, top, -z,
+    rright, bottom, -z,  rright, top, -z
+  };
+  glDisable(GL_LIGHTING);
+  glColor4f(.7, .7, .7, 1);
+  glVertexPointer(3, GL_FLOAT, 0, z_view_area);
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glDrawArrays(GL_LINES, 0, 20);
+  glDisableClientState(GL_VERTEX_ARRAY);
+}
 
 - (void)draw {
   [super draw];
