@@ -86,15 +86,15 @@ Shooting parameters
 \end{itemize}
 
 \section{Viewing areas}
-At a given depth plane, each camera sees a rectangular region of the plane.  We will describe this rectangle by its top, bottom, left and right coordinates. These coordinates are expressed in a reference centered at the middle point between the cameras' optical centers.
+At a given depth plane, each camera sees a rectangular region of the plane.  We will describe this rectangle by its left, right, bottom and top coordinates. These coordinates are expressed in a reference centered at the middle point between the cameras' optical centers.
 
 For the left cameras we have
 \begin{equation}
  \begin{split}
   left &= \frac{1}{2} \left( Z \frac{b - W}{C} - b\right) \\
   right &= \frac{1}{2} \left( Z \frac{b + W}{C} - b\right) \\
-  top &= \frac{Z H}{2 C} \\
-  bottom &= -\frac{Z H}{2 C} ,
+  bottom &= -\frac{Z H}{2 C} \\
+  top &= \frac{Z H}{2 C} ,
  \end{split}
 \end{equation}
 and for the right camera,
@@ -102,8 +102,8 @@ and for the right camera,
  \begin{split}
   left &= \frac{1}{2} \left( Z \frac{-b - W}{C} + b\right) \\
   right &= \frac{1}{2} \left( Z \frac{-b + W}{C} + b\right) \\
-  top &= \frac{Z H}{2 C} \\
-  bottom &= -\frac{Z H}{2 C} .
+  bottom &= -\frac{Z H}{2 C} \\
+  top &= \frac{Z H}{2 C} .
  \end{split}
 \end{equation}
 
