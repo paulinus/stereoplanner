@@ -53,20 +53,24 @@
   if (doc_) {
     [super renderGeometry:&(doc_->TheaterGeometry())];
     
+    // Move to observer's reference frame.
+    glPushMatrix();
+    glTranslatef(doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ());
+
     // Draw the observer.
-    Vector3f posl = doc_->EyePosition(0);
-    Vector3f posr = doc_->EyePosition(1);
+    float l = -doc_->ObserverInterocular() / 2;
+    float r = -l;
     GLfloat eyes[] = {
-      doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ(),
-      posl[0], posl[1], posl[2],
-      posr[0], posr[1], posr[2]
+      0,0,0,
+      l,0,0,
+      r,0,0
     };
     GLfloat eyecolors[] = {
       0, 1, 0, 1,
-      1., .7, .5, 1,
-      .5, .7, 1., 1
+      1, .7, .5, 1,
+      .5, .7, 1, 1
     };
-    
+        
     glDisable(GL_LIGHTING);
     glPointSize(3);
     glVertexPointer(3, GL_FLOAT, 0, eyes);
@@ -81,28 +85,7 @@
   
     
     // Draw the screen.
-    float w = doc_->ScreenWidth() / 2;
-    float h = doc_->ScreenHeight() / 2;
-    float z = 0;
-    GLfloat screen[] = {
-      -w, -h, z,  +w, -h, z,
-      +w, -h, z,  +w, +h, z,
-      +w, +h, z,  -w, +h, z,
-      -w, +h, z,  -w, -h, z
-    };
-    
-    glDisable(GL_LIGHTING);
-    glColor4f(.7, .7, .7, 1);
-    glVertexPointer(3, GL_FLOAT, 0, screen);
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_LINES, 0, 8);
-    glDisableClientState(GL_VERTEX_ARRAY);
-    
-    
-    
-    // Move to observer's reference frame.
-    glPushMatrix();
-    glTranslatef(doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ());
+    [self drawViewingAreaAtDepth:doc_->ObserverZ()];
     
     // Draw near and far planes.
     [self drawViewingAreaAtDepth:
