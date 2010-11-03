@@ -5,6 +5,7 @@
 
 #include "geometry.h"
 #include "camera.h"
+#include "stereo_frustum.h"
 
 using namespace Eigen;
 
@@ -69,6 +70,9 @@ class SpDocument {
                                                    observer_tilt_,
                                                    observer_roll_); }
   Vector3f EyePosition(int i) const;
+  
+  StereoFrustum ShootingFrustrum() const;
+  StereoFrustum ViewingFrustrum() const;
   
   float NearDistance() const { return near_distance_; }
   float FarDistance() const { return far_distance_; }

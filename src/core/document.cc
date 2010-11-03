@@ -100,6 +100,17 @@ float SpDocument::StereoWindowHeight() const {
   return SensorHeight() * RigConvergence() / FocalLegth();
 }
 
+StereoFrustum SpDocument::ShootingFrustrum() const {
+  return StereoFrustum(RigInterocular(), RigConvergence(), StereoWindowWidth(),
+                       StereoWindowHeight(), 0, 0);
+}
+
+StereoFrustum SpDocument::ViewingFrustrum() const {
+  return StereoFrustum(ObserverInterocular(), ObserverZ(), ScreenWidth(),
+                       ScreenHeight(), ObserverX(), ObserverY());  
+}
+
+
 float SpDocument::ParallaxFromDepth(float z) const {
   return RigInterocular() / StereoWindowWidth()
          * (z - RigConvergence()) / z;
