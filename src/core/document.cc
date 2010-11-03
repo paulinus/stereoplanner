@@ -92,7 +92,7 @@ void SpDocument::LoadGeometry(const char *path) {
 }
 
 float SpDocument::ParallaxFromDepth(float z) const {
-  return 100 * RigInterocular() * FocalLegth() / RigConvergence() / SensorWidth()
+  return RigInterocular() * FocalLegth() / RigConvergence() / SensorWidth()
          * (z - RigConvergence()) / z;
 }
 
@@ -109,11 +109,11 @@ float SpDocument::ParallaxBudged() const {
 }
 
 float SpDocument::NearScreenParallax() const {
-  return ScreenWidth() * NearParallax() / 100;
+  return ScreenWidth() * NearParallax();
 }
 
 float SpDocument::FarScreenParallax() const {
-  return ScreenWidth() * FarParallax() / 100;
+  return ScreenWidth() * FarParallax();
 }
 
 float SpDocument::ScreenParallaxBudged() const {

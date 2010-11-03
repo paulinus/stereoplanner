@@ -89,9 +89,9 @@
   [focalLengthLabel setText:floatToStringInMetric(doc_->FocalLegth(), 2)];
   [interocularLabel setText:floatToStringInMetric(doc_->RigInterocular(), 2)];
   [screenWidthLabel setText:floatToStringInMetric(doc_->ScreenWidth(), 2)];
-  [nearParallaxLabel setText:floatToStringPercentage(doc_->NearParallax(), 2)];
-  [farParallaxLabel setText:floatToStringPercentage(doc_->FarParallax(), 2)];
-  [parallaxBudgedLabel setText:floatToStringPercentage(doc_->ParallaxBudged(), 2)];
+  [nearParallaxLabel setText:floatToStringPercentage(100 * doc_->NearParallax(), 2)];
+  [farParallaxLabel setText:floatToStringPercentage(100 * doc_->FarParallax(), 2)];
+  [parallaxBudgedLabel setText:floatToStringPercentage(100 * doc_->ParallaxBudged(), 2)];
   [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
   [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
   [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
