@@ -10,6 +10,31 @@ class StereoFrustum {
     dx_(dx), dy_(dy) {
   }
   
+  float ParallaxFromDepth(float z) const {
+    return b_ / W_ * z / (z - C_);
+  }
+  
+  float DetphFromParallax(float d) const {
+    return b_ * C_ / (b_ - d * W_);
+  }
+  
+  // TODO(pau): take into acount dx_ and dy_ here.
+  void ViewAreaLeft(float Z, float *left, float *right, float *bottom,
+                    float *top) const {
+    *left = (Z * (b_ - W_) / C_ - b_) / 2;
+    *right = (Z * (b_ + W_) / C_ - b_) / 2;
+    *top = Z * H_ / C_ / 2;
+    *bottom = - Z * H_ / C_ / 2;
+  }
+  
+  // TODO(pau): take into acount dx_ and dy_ here.
+  void ViewAreaRight(float Z, float *left, float *right, float *bottom,
+                     float *top) const {
+    *left = (Z * (-b_ - W_) / C_ + b_) / 2;
+    *right = (Z * (-b_ + W_) / C_ + b_) / 2;
+    *top = Z * H_ / C_ / 2;
+    *bottom = - Z * H_ / C_ / 2;  
+  }
   
  private:
   float b_; // The interoccular distance.
