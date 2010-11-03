@@ -212,23 +212,36 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 
 
 - (void)renderGeometry:(const Geometry *)geo {
-  glEnable(GL_LIGHTING);
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glVertexPointer(4, GL_FLOAT, 0, &geo->vertex_[0]);
-  
-  if (geo->normal_.size() / 3 == geo->vertex_.size() / 4) {
-    glEnableClientState(GL_NORMAL_ARRAY);
-    glNormalPointer(GL_FLOAT, 0, &geo->normal_[0]);
-  }
+  if (geo->triangles_.size() > 0) {
+    glEnable(GL_LIGHTING);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(4, GL_FLOAT, 0, &geo->vertex_[0]);
     
-  glEnable(GL_COLOR_MATERIAL);
-  glColor4f(0.5f, 0.5f, 8.0f, 1.0f);
-  glDrawElements(GL_TRIANGLES, geo->triangles_.size(), GL_UNSIGNED_SHORT,
-                 &geo->triangles_[0]);
-
-  glDisableClientState(GL_VERTEX_ARRAY);
-  glDisableClientState(GL_NORMAL_ARRAY);
-  glDisable(GL_LIGHTING);
+    if (geo->normal_.size() / 3 == geo->vertex_.size() / 4) {
+      glEnableClientState(GL_NORMAL_ARRAY);
+      glNormalPointer(GL_FLOAT, 0, &geo->normal_[0]);
+    }
+    
+    glEnable(GL_COLOR_MATERIAL);
+    glColor4f(0.5f, 0.5f, 8.0f, 1.0f);
+    glDrawElements(GL_TRIANGLES, geo->triangles_.size(), GL_UNSIGNED_SHORT,
+                   &geo->triangles_[0]);
+    
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY);
+    glDisable(GL_LIGHTING);
+  }
+  
+  if (geo->lines_.size()) {
+    glDisable(GL_LIGHTING);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(4, GL_FLOAT, 0, &geo->vertex_[0]);
+    glColor4f(0.6f, 0.6f, 0.6f, 1.0f);
+    glDrawElements(GL_LINES, geo->lines_.size(), GL_UNSIGNED_SHORT,
+                   &geo->lines_[0]);
+    glDisableClientState(GL_VERTEX_ARRAY);
+  }
+  
 }
 
 - (void)preDraw {
