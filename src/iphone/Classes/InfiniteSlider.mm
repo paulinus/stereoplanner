@@ -70,7 +70,7 @@ CGColorRef graphBackgroundColor() {
       valueString = floatToStringInMetric(value, 3);
       break;
     case ISpercentage:
-      valueString = floatToStringPercentage(value, 3);
+      valueString = floatToStringPercentage(100 * value, 3);
       break;
     default:
       valueString = floatToString(value, 3);
