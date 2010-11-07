@@ -14,13 +14,21 @@ class StereoFrustum {
     return b_ / W_ * z / (z - C_);
   }
   
-  float DetphFromParallax(float d) const {
+  float DepthFromParallax(float d) const {
     return b_ * C_ / (b_ - d * W_);
   }
   
   // TODO(pau): take into acount dx_ and dy_ here.
-  void ToFrustumCoords(float x, float y, float z, float *u, float *v, float *d) {
-    // TODO(pau): Finish this.
+  void WorldToFrustum(float x, float y, float z, float *u, float *v, float *d) {
+    *u = x / z * C_ / W_;
+    *v = y / z * C_ / W_;
+    *d = ParallaxFromDepth(z);
+  }
+  
+  void FrustumToWorld(float u, float v, float d, float *x, float *y, float *z) {
+    *z = DepthFromParallax(d);
+    *x = *z * u * W_ / C_;
+    *y = *z * v * W_ / C_;
   }
   
   // TODO(pau): take into acount dx_ and dy_ here.
