@@ -35,8 +35,7 @@ class SpDocument {
   void LoadGeometry(const char *path);
 
   const Geometry &CaptureGeometry() const { return capture_geometry_; }
-  const Geometry &SensorGeometry(int i) const { return sensor_geometry_[i]; }
-  const Geometry &ScreenGeometry(int i) const { return screen_geometry_[i]; }
+  const Geometry &FrustumGeometry() const { return frustum_geometry_; }
   const Geometry &TheaterGeometry() const { return theater_geometry_; }
 
   float FocalLegth() const { return focal_length_; }
@@ -117,18 +116,14 @@ class SpDocument {
 
  private:
   void UpdateEverything();
-
-  void ProjectToSensor();
-  void SensorToScreen();
-
-  void Triangulate();
+  void UpdateFrustumGeometry();
+  void UpdateTheaterGeometry();
 
  private:
   bool document_changed_;
 
   Geometry capture_geometry_;
-  Geometry sensor_geometry_[2];   // left and right images
-  Geometry screen_geometry_[2];   // left and right images
+  Geometry frustum_geometry_;
   Geometry theater_geometry_;
 
   // All distances are in mm.
