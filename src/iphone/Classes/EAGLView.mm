@@ -261,8 +261,8 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 }
 
 - (void)draw {
-  [self renderAxis];
-  [self renderGrid];
+  //[self renderAxis];
+  //[self renderGrid];
 }
 
 - (void)postDraw {

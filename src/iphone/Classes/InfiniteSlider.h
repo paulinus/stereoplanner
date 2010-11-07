@@ -13,14 +13,16 @@ typedef enum {
 } ValueType;
 
 @interface InfiniteSlider : UIControl {
-  NSString *label;
+  UILabel *label_view;
+  UILabel *value_view;
   float value;
   ValueType valueType;
 }
 
 @property (nonatomic) float value;
 @property (nonatomic) ValueType valueType;
-@property (assign,nonatomic) NSString *label;
+
+- (void) setLabel:(NSString *)l;
 
 
 @end

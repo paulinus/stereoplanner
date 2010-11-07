@@ -9,61 +9,48 @@
 #import "utils.h"
 #import "InfiniteSlider.h"
 
-CGColorRef CreateDeviceGrayColor(CGFloat w, CGFloat a) {
-  CGColorSpaceRef gray = CGColorSpaceCreateDeviceGray();
-  CGFloat comps[] = {w, a};
-  CGColorRef color = CGColorCreate(gray, comps);
-  CGColorSpaceRelease(gray);
-  return color;
-}	
-
-CGColorRef graphBackgroundColor() {
-  static CGColorRef c = NULL;
-  if(c == NULL)
-  {
-    c = CreateDeviceGrayColor(0.6, 1.0);
-  }
-  return c;
-}
-
 
 @implementation InfiniteSlider
 
-@synthesize label;
+//@synthesize label;
 @dynamic value;
 @synthesize valueType;
 
 
 - (id) init {
+  self = [super init];
   value = 1;
   valueType = ISmetric;
-  return [super init];
+  
+  label_view = [[UILabel alloc] init];
+  [self addSubview:label_view];
+  [label_view setTextAlignment:UITextAlignmentCenter];
+
+  value_view = [[UILabel alloc] init];
+  [self addSubview:value_view];
+  [value_view setTextAlignment:UITextAlignmentCenter];
+  
+  return self;
+}
+
+- (void) setFrame:(CGRect)rect {
+  [super setFrame:rect];
+  rect.origin.x = 0;
+  rect.origin.y = 0;
+  rect.size.height /= 2;
+  [label_view setFrame:rect];
+  rect.origin.y += rect.size.height;
+  [value_view setFrame:rect];
+
+}
+
+- (void) setLabel:(NSString *)l {
+  [label_view setText:l];
 }
 
 - (void) setValue:(float)v {
   value = v;
-  [self setNeedsDisplay];
-  [self sendActionsForControlEvents:UIControlEventValueChanged];
-}
-
-- (float) value {
-  return value;
-}
-
-- (void) drawRect:(CGRect)rect {
-  CGContextRef context = UIGraphicsGetCurrentContext();
   
-  // Fill in the background
-  CGContextSetFillColorWithColor(context, graphBackgroundColor());
-  
-  // Draw label
-  UIFont *systemFont = [UIFont systemFontOfSize:22.0];
-  [[UIColor whiteColor] set];
-  [self.label drawInRect:CGRectMake(0.0, 0.0, 154.0, 26.0)
-                         withFont:systemFont
-                         lineBreakMode:UILineBreakModeWordWrap
-                         alignment:UITextAlignmentRight];
-  // Draw value
   NSString *valueString;
   switch (valueType) {
     case ISmetric:
@@ -76,10 +63,14 @@ CGColorRef graphBackgroundColor() {
       valueString = floatToString(value, 3);
       break;
   }
-  [valueString drawInRect:CGRectMake(0.0, 20.0, 154.0, 26.0)
-                           withFont:systemFont
-                           lineBreakMode:UILineBreakModeWordWrap
-                           alignment:UITextAlignmentRight];
+  [value_view setText:valueString];
+  
+  [self setNeedsDisplay];
+  [self sendActionsForControlEvents:UIControlEventValueChanged];
+}
+
+- (float) value {
+  return value;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {

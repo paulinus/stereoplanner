@@ -19,6 +19,11 @@ class StereoFrustum {
   }
   
   // TODO(pau): take into acount dx_ and dy_ here.
+  void ToFrustumCoords(float x, float y, float z, float *u, float *v, float *d) {
+    // TODO(pau): Finish this.
+  }
+  
+  // TODO(pau): take into acount dx_ and dy_ here.
   void ViewAreaLeft(float Z, float *left, float *right, float *bottom,
                     float *top) const {
     *left = (Z * (b_ - W_) / C_ - b_) / 2;
