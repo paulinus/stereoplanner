@@ -98,7 +98,7 @@
 }
 
 - (void)highlightSelection {
- UIColor *a = [UIColor grayColor];
+ UIColor *a = [UIColor blueColor];
   UIColor *b = [UIColor clearColor];
   [nearLabel setBackgroundColor:
    ([main_view_controller_ selectedSliderVariable] == SLIDER_NEAR) ? a : b];

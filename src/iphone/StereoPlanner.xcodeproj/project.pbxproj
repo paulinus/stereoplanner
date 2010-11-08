@@ -17,6 +17,7 @@
 		28D7ACF80DDB3853001CB0EB /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MainViewController.mm */; };
 		D5118E081281A92E0021E6AB /* icona.png in Resources */ = {isa = PBXBuildFile; fileRef = D5118E071281A92E0021E6AB /* icona.png */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
+		D537BA371288A15D00AF90DA /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = D537BA361288A15D00AF90DA /* black.png */; };
 		D53A026111DB7F550087316D /* document.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025D11DB7F550087316D /* document.cc */; };
 		D53A026211DB7F550087316D /* geometry.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025F11DB7F550087316D /* geometry.cc */; };
 		D53A03FC11E4830E0087316D /* trackball.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A03FA11E4830E0087316D /* trackball.cc */; };
@@ -51,6 +52,7 @@
 		D5118E071281A92E0021E6AB /* icona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icona.png; sourceTree = "<group>"; };
 		D5118E52128213FB0021E6AB /* stereo_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stereo_frustum.h; sourceTree = "<group>"; };
 		D5118E53128213FB0021E6AB /* stereo_frustum.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stereo_frustum.cc; sourceTree = "<group>"; };
+		D537BA361288A15D00AF90DA /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		D53A025C11DB7F550087316D /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
 		D53A025D11DB7F550087316D /* document.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = document.cc; sourceTree = "<group>"; };
 		D53A025E11DB7F550087316D /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D537BA361288A15D00AF90DA /* black.png */,
 				D5118E071281A92E0021E6AB /* icona.png */,
 				D53DB4BA11ED1C27009FA541 /* monkey.geo */,
 				D5B6471D1237D30F009F37FD /* CalculatorViewNController.xib */,
@@ -249,6 +252,7 @@
 				D53DB4BB11ED1C27009FA541 /* monkey.geo in Resources */,
 				D5B6471F1237D30F009F37FD /* CalculatorViewNController.xib in Resources */,
 				D5118E081281A92E0021E6AB /* icona.png in Resources */,
+				D537BA371288A15D00AF90DA /* black.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
