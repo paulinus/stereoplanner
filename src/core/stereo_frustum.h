@@ -2,6 +2,7 @@
 #define stereo_frustum_h_
 
 
+// TODO(pau): take into acount dx_ and dy_ here in all methods of the class.
 class StereoFrustum {
  public:
   StereoFrustum(float interocular, float convergence_distance,
@@ -18,7 +19,6 @@ class StereoFrustum {
     return b_ * C_ / (b_ - d * W_);
   }
   
-  // TODO(pau): take into acount dx_ and dy_ here.
   void WorldToFrustum(float x, float y, float z, float *u, float *v, float *d) {
     z = - z;
     *u = x / z * C_ / W_;
@@ -33,7 +33,6 @@ class StereoFrustum {
     *z = - *z;
   }
   
-  // TODO(pau): take into acount dx_ and dy_ here.
   void ViewAreaLeft(float Z, float *left, float *right, float *bottom,
                     float *top) const {
     *left = (Z * (b_ - W_) / C_ - b_) / 2;
@@ -42,7 +41,6 @@ class StereoFrustum {
     *bottom = - Z * H_ / C_ / 2;
   }
   
-  // TODO(pau): take into acount dx_ and dy_ here.
   void ViewAreaRight(float Z, float *left, float *right, float *bottom,
                      float *top) const {
     *left = (Z * (-b_ - W_) / C_ + b_) / 2;

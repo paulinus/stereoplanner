@@ -273,7 +273,7 @@ void SpDocument::UpdateFrustumGeometry() {
     Vector4f p = T * pp;
     float *q = &frustum_geometry_.vertex_[i];
 
-    f.WorldToFrustum(p[0] / p[3], p[1] / p[3], p[2] / p[3], q, q+1, q+2);
+    f.WorldToFrustum(p[0] / p[3], p[1] / p[3], p[2] / p[3], q, q + 1, q + 2);
     q[3] = 1;
   }
 }
@@ -292,7 +292,7 @@ void SpDocument::UpdateTheaterGeometry() {
     float *p = &frustum_geometry_.vertex_[i];
     float *q = &theater_geometry_.vertex_[i];
     
-    f.FrustumToWorld(p[0] / p[3], p[1] / p[3], p[2] / p[3], q, q+1, q+2);
+    f.FrustumToWorld(p[0] / p[3], p[1] / p[3], p[2] / p[3], q, q + 1, q + 2);
     q[3] = 1;
   }
   theater_geometry_.ComputeNormals();
