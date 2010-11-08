@@ -20,6 +20,7 @@ class StereoFrustum {
   
   // TODO(pau): take into acount dx_ and dy_ here.
   void WorldToFrustum(float x, float y, float z, float *u, float *v, float *d) {
+    z = - z;
     *u = x / z * C_ / W_;
     *v = y / z * C_ / W_;
     *d = ParallaxFromDepth(z);
@@ -29,6 +30,7 @@ class StereoFrustum {
     *z = DepthFromParallax(d);
     *x = *z * u * W_ / C_;
     *y = *z * v * W_ / C_;
+    *z = - *z;
   }
   
   // TODO(pau): take into acount dx_ and dy_ here.

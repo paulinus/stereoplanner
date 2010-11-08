@@ -51,11 +51,11 @@
   [super draw];
   
   if (doc_) {
-    [super renderGeometry:&(doc_->TheaterGeometry())];
-    
     // Move to observer's reference frame.
     glPushMatrix();
     glTranslatef(doc_->ObserverX(), doc_->ObserverY(), doc_->ObserverZ());
+    
+    [super renderGeometry:&(doc_->TheaterGeometry())];
 
     // Draw the observer.
     float l = -doc_->ObserverInterocular() / 2;

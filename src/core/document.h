@@ -53,6 +53,7 @@ class SpDocument {
   float RigTilt() const { return rig_tilt_; }
   float RigRoll() const { return rig_roll_; }
   Matrix3f RigRotation() const { return PanTiltRoll(rig_pan_, rig_tilt_, rig_roll_); }
+  Vector3f RigPosition() const { return rig_position_; }
   Vector3f CameraPosition(int i) const;
 
   float ScreenWidth() const { return screen_width_; }

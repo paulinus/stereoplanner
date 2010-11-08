@@ -260,10 +260,17 @@ Vector3f SpDocument::CameraPosition(int i) const {
 }
 
 void SpDocument::UpdateFrustumGeometry() {
+  Matrix3f R = RigRotation().transpose();
+  Vector3f t = - R * RigPosition();
+  Matrix4f T;
+  T << R, t,
+       MatrixXf::Zero(1,3), 1;
+  
   StereoFrustum f = ShootingFrustrum();
   frustum_geometry_ = capture_geometry_;
   for (unsigned int i = 0; i < frustum_geometry_.vertex_.size(); i += 4) {
-    float *p = &capture_geometry_.vertex_[i];
+    Vector4f pp(&capture_geometry_.vertex_[i]);
+    Vector4f p = T * pp;
     float *q = &frustum_geometry_.vertex_[i];
 
     f.WorldToFrustum(p[0] / p[3], p[1] / p[3], p[2] / p[3], q, q+1, q+2);
