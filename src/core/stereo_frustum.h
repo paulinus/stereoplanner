@@ -20,7 +20,7 @@ class StereoFrustum {
   }
   
   float DepthFromParallaxBounded(float d) const {
-    const float max_depth = 10e6;
+    const float max_depth = 10e5;
     float depth = DepthFromParallax(d);
     if (depth < 0 || depth > max_depth) {
       return max_depth;

@@ -8,7 +8,7 @@
 Trackball::Trackball() {  
   field_of_view_ = 60;
   near_ = 0.1;
-  far_ = 5000;
+  far_ = 10e6;
   screen_width_ = 1;
   screen_height_ = 1;
   
