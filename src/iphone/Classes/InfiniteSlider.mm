@@ -30,6 +30,8 @@
   [self addSubview:value_view];
   [value_view setTextAlignment:UITextAlignmentCenter];
   
+  [self setLabel:@"caca"];
+  
   return self;
 }
 
