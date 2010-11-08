@@ -12,7 +12,7 @@ class StereoFrustum {
   }
   
   float ParallaxFromDepth(float z) const {
-    return b_ / W_ * z / (z - C_);
+    return b_ / W_ * (z - C_) / z;
   }
   
   float DepthFromParallax(float d) const {
@@ -20,7 +20,7 @@ class StereoFrustum {
   }
   
   void WorldToFrustum(float x, float y, float z, float *u, float *v, float *d) {
-    z = - z;
+    z = -z;
     *u = x / z * C_ / W_;
     *v = y / z * C_ / W_;
     *d = ParallaxFromDepth(z);
@@ -30,7 +30,7 @@ class StereoFrustum {
     *z = DepthFromParallax(d);
     *x = *z * u * W_ / C_;
     *y = *z * v * W_ / C_;
-    *z = - *z;
+    *z = -*z;
   }
   
   void ViewAreaLeft(float Z, float *left, float *right, float *bottom,

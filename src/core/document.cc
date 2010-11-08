@@ -8,9 +8,9 @@ SpDocument::SpDocument() {
 
   rig_interocular_ = 0.065;
   rig_convergence_ = 7;
-  rig_position_ << -7, 1, -4;
+  rig_position_ << 0, 0, 7;
   rig_pan_ = 0;
-  rig_tilt_ = 230;
+  rig_tilt_ = 0;
   rig_roll_ = 0;
 
   screen_width_ = 10;
