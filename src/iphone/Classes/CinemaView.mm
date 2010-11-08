@@ -88,10 +88,11 @@
     [self drawViewingAreaAtDepth:doc_->ObserverZ()];
     
     // Draw near and far planes.
+    
     [self drawViewingAreaAtDepth:
-     doc_->ViewDepthFromShootingDepth(doc_->NearDistance())];
+     doc_->ViewingFrustrum().DepthFromParallaxBounded(doc_->NearParallax())];
     [self drawViewingAreaAtDepth:
-     doc_->ViewDepthFromShootingDepth(doc_->FarDistance())];
+     doc_->ViewingFrustrum().DepthFromParallaxBounded(doc_->FarParallax())];
     
     glPopMatrix(); // Observer's reference frame.
   }  

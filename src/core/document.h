@@ -76,8 +76,6 @@ class SpDocument {
   
   float NearDistance() const { return near_distance_; }
   float FarDistance() const { return far_distance_; }
-  float ParallaxFromDepth(float z) const;
-  float ViewDepthFromShootingDepth(float z) const;
   float NearParallax() const;
   float FarParallax() const;
   float ParallaxBudged() const;

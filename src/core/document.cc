@@ -55,24 +55,12 @@ StereoFrustum SpDocument::ViewingFrustrum() const {
                        ScreenHeight(), ObserverX(), ObserverY());  
 }
 
-
-float SpDocument::ParallaxFromDepth(float z) const {
-  return RigInterocular() / StereoWindowWidth()
-         * (z - RigConvergence()) / z;
-}
-
-float SpDocument::ViewDepthFromShootingDepth(float z) const {
-  float d = ParallaxFromDepth(z);
-  return ObserverInterocular() * fabs(ObserverZ())
-        / (ObserverInterocular() - d * ScreenWidth());
-}
-
 float SpDocument::NearParallax() const {
-  return ParallaxFromDepth(NearDistance());
+  return ShootingFrustrum().ParallaxFromDepth(NearDistance());
 }
 
 float SpDocument::FarParallax() const {
-  return ParallaxFromDepth(FarDistance());
+  return ShootingFrustrum().ParallaxFromDepth(FarDistance());
 }
 
 float SpDocument::ParallaxBudged() const {
