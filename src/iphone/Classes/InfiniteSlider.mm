@@ -17,8 +17,7 @@
 @synthesize valueType;
 
 
-- (id) init {
-  self = [super init];
+- (void)commonInit {
   value = 1;
   valueType = ISmetric;
   
@@ -31,11 +30,21 @@
   [value_view setTextAlignment:UITextAlignmentCenter];
   
   [self setLabel:@"caca"];
-  
+}
+
+- (id)init {
+  self = [super init];
+  [self commonInit];
   return self;
 }
 
-- (void) setFrame:(CGRect)rect {
+- (id)initWithCoder:(NSCoder *)aDecoder {
+  self = [super initWithCoder:aDecoder];
+  [self commonInit];
+  return self;
+}
+
+- (void)setFrame:(CGRect)rect {
   [super setFrame:rect];
   rect.origin.x = 0;
   rect.origin.y = 0;
@@ -46,11 +55,15 @@
 
 }
 
-- (void) setLabel:(NSString *)l {
+- (void)awakeFromNib {
+  [self setFrame:[self frame]];
+}
+
+- (void)setLabel:(NSString *)l {
   [label_view setText:l];
 }
 
-- (void) setValue:(float)v {
+- (void)setValue:(float)v {
   value = v;
   
   NSString *valueString;
@@ -71,7 +84,7 @@
   [self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
-- (float) value {
+- (float)value {
   return value;
 }
 

@@ -22,7 +22,8 @@ typedef enum {
 @property (nonatomic) float value;
 @property (nonatomic) ValueType valueType;
 
-- (void) setLabel:(NSString *)l;
+- (void)setLabel:(NSString *)l;
+- (void)awakeFromNib;
 
 
 @end
