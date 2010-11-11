@@ -29,6 +29,11 @@ class SpDocument;
   id screenParallaxBudgedLabel;
   
   InfiniteSlider *nearSlider;
+  InfiniteSlider *farSlider;
+  InfiniteSlider *convergenceSlider;
+  InfiniteSlider *interocularSlider;
+  InfiniteSlider *focalLengthSlider;
+  InfiniteSlider *screenWidthSlider;
 }
 
 @property (nonatomic,assign) IBOutlet id nearLabel;
@@ -45,6 +50,11 @@ class SpDocument;
 @property (nonatomic,assign) IBOutlet id screenParallaxBudgedLabel;
 
 @property (nonatomic,assign) IBOutlet InfiniteSlider *nearSlider;
+@property (nonatomic,assign) IBOutlet InfiniteSlider *farSlider;
+@property (nonatomic,assign) IBOutlet InfiniteSlider *convergenceSlider;
+@property (nonatomic,assign) IBOutlet InfiniteSlider *interocularSlider;
+@property (nonatomic,assign) IBOutlet InfiniteSlider *focalLengthSlider;
+@property (nonatomic,assign) IBOutlet InfiniteSlider *screenWidthSlider;
 
 
 

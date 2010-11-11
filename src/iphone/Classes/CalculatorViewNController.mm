@@ -28,6 +28,11 @@
 @synthesize screenParallaxBudgedLabel;
 
 @synthesize nearSlider;
+@synthesize farSlider;
+@synthesize convergenceSlider;
+@synthesize interocularSlider;
+@synthesize focalLengthSlider;
+@synthesize screenWidthSlider;
 
 
 - (id)initWithMainViewController:(MainViewController *)mvc {
@@ -49,7 +54,17 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   [nearSlider setLabel:@"Near"];
+  [farSlider setLabel:@"Far"];
+  [convergenceSlider setLabel:@"Convergence"];
+  [interocularSlider setLabel:@"Interocular"];
+  [focalLengthSlider setLabel:@"Focal Length"];
+  [screenWidthSlider setLabel:@"Screen Width"];
   [nearSlider addTarget:self action:@selector(nearSliderChanged:) forControlEvents:UIControlEventValueChanged];
+  [farSlider addTarget:self action:@selector(farSliderChanged:) forControlEvents:UIControlEventValueChanged];
+  [convergenceSlider addTarget:self action:@selector(convergenceSliderChanged:) forControlEvents:UIControlEventValueChanged];
+  [interocularSlider addTarget:self action:@selector(interocularSliderChanged:) forControlEvents:UIControlEventValueChanged];
+  [focalLengthSlider addTarget:self action:@selector(focalLengthSliderChanged:) forControlEvents:UIControlEventValueChanged];
+  [screenWidthSlider addTarget:self action:@selector(screenWidthSliderChanged:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)nearSliderChanged:(id)sender {
@@ -58,6 +73,42 @@
     [self updateView];
   }
 }
+
+- (void)farSliderChanged:(id)sender {
+  if (farSlider.value != doc_->FarDistance()) {
+    doc_->SetFarDistance(farSlider.value);
+    [self updateView];
+  }
+}
+
+- (void)convergenceSliderChanged:(id)sender {
+  if (convergenceSlider.value != doc_->RigConvergence()) {
+    doc_->SetRigConvergence(convergenceSlider.value);
+    [self updateView];
+  }
+}
+
+- (void)interocularSliderChanged:(id)sender {
+  if (interocularSlider.value != doc_->RigInterocular()) {
+    doc_->SetRigInterocular(interocularSlider.value);
+    [self updateView];
+  }
+}
+
+- (void)focalLengthSliderChanged:(id)sender {
+  if (focalLengthSlider.value != doc_->FocalLegth()) {
+    doc_->SetFocalLegth(focalLengthSlider.value);
+    [self updateView];
+  }
+}
+
+- (void)screenWidthSliderChanged:(id)sender {
+  if (screenWidthSlider.value != doc_->ScreenWidth()) {
+    doc_->SetScreenWidth(screenWidthSlider.value);
+    [self updateView];
+  }
+}
+
 
 
 /*
@@ -93,6 +144,11 @@
 
 - (IBAction)updateView {
   [nearSlider setValue:doc_->NearDistance()];
+  [farSlider setValue:doc_->FarDistance()];
+  [convergenceSlider setValue:doc_->RigConvergence()];
+  [interocularSlider setValue:doc_->RigInterocular()];
+  [focalLengthSlider setValue:doc_->FocalLegth()];
+  [screenWidthSlider setValue:doc_->ScreenWidth()];
 
   [self highlightSelection];
   [nearLabel setText:floatToStringInMetric(doc_->NearDistance(), 2)];

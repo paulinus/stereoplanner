@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="37"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -808,10 +808,70 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="223400355">
+					<object class="IBUIView" id="710652573">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{30, 16}, {260, 35}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAwLjIxNTgyNjc1IDAuMjI2Njc4NjAzMwA</bytes>
+						</object>
+						<float key="IBUIAlpha">0.26056337356567383</float>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="191280624">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{30, 56}, {260, 35}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAwLjIxNTgyNjc1IDAuMjI2Njc4NjAzMwA</bytes>
+						</object>
+						<float key="IBUIAlpha">0.26056337356567383</float>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="454210009">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{30, 97}, {260, 35}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAwLjIxNTgyNjc1IDAuMjI2Njc4NjAzMwA</bytes>
+						</object>
+						<float key="IBUIAlpha">0.26056337356567383</float>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="897370600">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{29, 146}, {260, 35}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAwLjIxNTgyNjc1IDAuMjI2Njc4NjAzMwA</bytes>
+						</object>
+						<float key="IBUIAlpha">0.26056337356567383</float>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="46390432">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{30, 186}, {260, 35}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MSAwLjIxNTgyNjc1IDAuMjI2Njc4NjAzMwA</bytes>
+						</object>
+						<float key="IBUIAlpha">0.26056337356567383</float>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="168874645">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{30, 236}, {260, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -1050,9 +1110,49 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">nearSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="223400355"/>
+						<reference key="destination" ref="710652573"/>
 					</object>
 					<int key="connectionID">83</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">convergenceSlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="454210009"/>
+					</object>
+					<int key="connectionID">89</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">farSlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="191280624"/>
+					</object>
+					<int key="connectionID">90</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">focalLengthSlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="46390432"/>
+					</object>
+					<int key="connectionID">91</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">interocularSlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="897370600"/>
+					</object>
+					<int key="connectionID">92</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">screenWidthSlider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="168874645"/>
+					</object>
+					<int key="connectionID">93</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1106,7 +1206,12 @@
 							<reference ref="796035421"/>
 							<reference ref="539058116"/>
 							<reference ref="994711989"/>
-							<reference ref="223400355"/>
+							<reference ref="710652573"/>
+							<reference ref="191280624"/>
+							<reference ref="897370600"/>
+							<reference ref="46390432"/>
+							<reference ref="454210009"/>
+							<reference ref="168874645"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1334,9 +1439,39 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">81</int>
-						<reference key="object" ref="223400355"/>
+						<reference key="object" ref="710652573"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Near Slider</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">84</int>
+						<reference key="object" ref="191280624"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Far Slider</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">85</int>
+						<reference key="object" ref="454210009"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Convergence Slider</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">86</int>
+						<reference key="object" ref="897370600"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Interocular Slider</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">87</int>
+						<reference key="object" ref="46390432"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Focal Length Slider</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">88</int>
+						<reference key="object" ref="168874645"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">Screen Width Slider</string>
 					</object>
 				</object>
 			</object>
@@ -1421,6 +1556,21 @@
 					<string>81.CustomClassName</string>
 					<string>81.IBPluginDependency</string>
 					<string>81.IBViewBoundsToFrameTransform</string>
+					<string>84.CustomClassName</string>
+					<string>84.IBPluginDependency</string>
+					<string>84.IBViewBoundsToFrameTransform</string>
+					<string>85.CustomClassName</string>
+					<string>85.IBPluginDependency</string>
+					<string>85.IBViewBoundsToFrameTransform</string>
+					<string>86.CustomClassName</string>
+					<string>86.IBPluginDependency</string>
+					<string>86.IBViewBoundsToFrameTransform</string>
+					<string>87.CustomClassName</string>
+					<string>87.IBPluginDependency</string>
+					<string>87.IBViewBoundsToFrameTransform</string>
+					<string>88.CustomClassName</string>
+					<string>88.IBPluginDependency</string>
+					<string>88.IBViewBoundsToFrameTransform</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1567,7 +1717,32 @@
 					<string>InfiniteSlider</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABChgAAw5mAAA</bytes>
+						<bytes key="NSTransformStruct">AUHwAABBgAAAA</bytes>
+					</object>
+					<string>InfiniteSlider</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABB8AAAw1oAAA</bytes>
+					</object>
+					<string>InfiniteSlider</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABB8AAAw3YAAA</bytes>
+					</object>
+					<string>InfiniteSlider</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABB8AAAw3YAAA</bytes>
+					</object>
+					<string>InfiniteSlider</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABB8AAAwwEAAA</bytes>
+					</object>
+					<string>InfiniteSlider</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCAAAAw5aAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -1587,7 +1762,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">83</int>
+			<int key="maxID">93</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1674,11 +1849,15 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>convergenceLabel</string>
+							<string>convergenceSlider</string>
 							<string>farLabel</string>
 							<string>farParallaxLabel</string>
 							<string>farScreenParallaxLabel</string>
+							<string>farSlider</string>
 							<string>focalLengthLabel</string>
+							<string>focalLengthSlider</string>
 							<string>interocularLabel</string>
+							<string>interocularSlider</string>
 							<string>nearLabel</string>
 							<string>nearParallaxLabel</string>
 							<string>nearScreenParallaxLabel</string>
@@ -1686,15 +1865,20 @@
 							<string>parallaxBudgedLabel</string>
 							<string>screenParallaxBudgedLabel</string>
 							<string>screenWidthLabel</string>
+							<string>screenWidthSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>id</string>
+							<string>InfiniteSlider</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>InfiniteSlider</string>
 							<string>id</string>
+							<string>InfiniteSlider</string>
 							<string>id</string>
+							<string>InfiniteSlider</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1702,6 +1886,7 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>InfiniteSlider</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1709,11 +1894,15 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>convergenceLabel</string>
+							<string>convergenceSlider</string>
 							<string>farLabel</string>
 							<string>farParallaxLabel</string>
 							<string>farScreenParallaxLabel</string>
+							<string>farSlider</string>
 							<string>focalLengthLabel</string>
+							<string>focalLengthSlider</string>
 							<string>interocularLabel</string>
+							<string>interocularSlider</string>
 							<string>nearLabel</string>
 							<string>nearParallaxLabel</string>
 							<string>nearScreenParallaxLabel</string>
@@ -1721,12 +1910,17 @@
 							<string>parallaxBudgedLabel</string>
 							<string>screenParallaxBudgedLabel</string>
 							<string>screenWidthLabel</string>
+							<string>screenWidthSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">convergenceLabel</string>
 								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">convergenceSlider</string>
+								<string key="candidateClassName">InfiniteSlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">farLabel</string>
@@ -1741,12 +1935,24 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">farSlider</string>
+								<string key="candidateClassName">InfiniteSlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">focalLengthLabel</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">focalLengthSlider</string>
+								<string key="candidateClassName">InfiniteSlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">interocularLabel</string>
 								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">interocularSlider</string>
+								<string key="candidateClassName">InfiniteSlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nearLabel</string>
@@ -1775,6 +1981,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">screenWidthLabel</string>
 								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">screenWidthSlider</string>
+								<string key="candidateClassName">InfiniteSlider</string>
 							</object>
 						</object>
 					</object>
