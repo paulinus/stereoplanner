@@ -15,12 +15,6 @@ class SpDocument;
   SpDocument *doc_;
   MainViewController *main_view_controller_;
   
-  id nearLabel;
-  id farLabel;
-  id convergenceLabel;
-  id focalLengthLabel;
-  id interocularLabel;
-  id screenWidthLabel;
   id nearParallaxLabel;
   id farParallaxLabel;
   id parallaxBudgedLabel;
@@ -36,12 +30,6 @@ class SpDocument;
   InfiniteSlider *screenWidthSlider;
 }
 
-@property (nonatomic,assign) IBOutlet id nearLabel;
-@property (nonatomic,assign) IBOutlet id farLabel;
-@property (nonatomic,assign) IBOutlet id convergenceLabel;
-@property (nonatomic,assign) IBOutlet id focalLengthLabel;
-@property (nonatomic,assign) IBOutlet id interocularLabel;
-@property (nonatomic,assign) IBOutlet id screenWidthLabel;
 @property (nonatomic,assign) IBOutlet id nearParallaxLabel;
 @property (nonatomic,assign) IBOutlet id farParallaxLabel;
 @property (nonatomic,assign) IBOutlet id parallaxBudgedLabel;
@@ -60,14 +48,7 @@ class SpDocument;
 
 - (id)initWithMainViewController:(MainViewController *)mvc;
 - (void)setDocument:(SpDocument *)document;
-- (void)highlightSelection;
 - (IBAction)updateView;
-- (IBAction)nearButton;
-- (IBAction)farButton;
-- (IBAction)convergenceButton;
-- (IBAction)focalLengthButton;
-- (IBAction)interocularButton;
-- (IBAction)screenWidthButton;
 - (void)nearSliderChanged:(id)sender;
 
 

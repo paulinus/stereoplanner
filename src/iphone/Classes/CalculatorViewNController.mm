@@ -14,12 +14,6 @@
 
 @implementation CalculatorViewNController
 
-@synthesize nearLabel;
-@synthesize farLabel;
-@synthesize convergenceLabel;
-@synthesize focalLengthLabel;
-@synthesize interocularLabel;
-@synthesize screenWidthLabel;
 @synthesize nearParallaxLabel;
 @synthesize farParallaxLabel;
 @synthesize parallaxBudgedLabel;
@@ -71,6 +65,7 @@
   if (nearSlider.value != doc_->NearDistance()) {
     doc_->SetNearDistance(nearSlider.value);
     [self updateView];
+    [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
   }
 }
 
@@ -78,6 +73,7 @@
   if (farSlider.value != doc_->FarDistance()) {
     doc_->SetFarDistance(farSlider.value);
     [self updateView];
+    [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR];
   }
 }
 
@@ -85,6 +81,7 @@
   if (convergenceSlider.value != doc_->RigConvergence()) {
     doc_->SetRigConvergence(convergenceSlider.value);
     [self updateView];
+    [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
   }
 }
 
@@ -92,6 +89,7 @@
   if (interocularSlider.value != doc_->RigInterocular()) {
     doc_->SetRigInterocular(interocularSlider.value);
     [self updateView];
+    [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
   }
 }
 
@@ -99,6 +97,7 @@
   if (focalLengthSlider.value != doc_->FocalLegth()) {
     doc_->SetFocalLegth(focalLengthSlider.value);
     [self updateView];
+    [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
   }
 }
 
@@ -106,6 +105,7 @@
   if (screenWidthSlider.value != doc_->ScreenWidth()) {
     doc_->SetScreenWidth(screenWidthSlider.value);
     [self updateView];
+    [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
   }
 }
 
@@ -149,63 +149,6 @@
   [interocularSlider setValue:doc_->RigInterocular()];
   [focalLengthSlider setValue:doc_->FocalLegth()];
   [screenWidthSlider setValue:doc_->ScreenWidth()];
-
-  [self highlightSelection];
-  [nearLabel setText:floatToStringInMetric(doc_->NearDistance(), 2)];
-  [farLabel setText:floatToStringInMetric(doc_->FarDistance(), 2)];
-  [convergenceLabel setText:floatToStringInMetric(doc_->RigConvergence(), 2)];
-  [focalLengthLabel setText:floatToStringInMetric(doc_->FocalLegth(), 2)];
-  [interocularLabel setText:floatToStringInMetric(doc_->RigInterocular(), 2)];
-  [screenWidthLabel setText:floatToStringInMetric(doc_->ScreenWidth(), 2)];
-  [nearParallaxLabel setText:floatToStringPercentage(100 * doc_->NearParallax(), 2)];
-  [farParallaxLabel setText:floatToStringPercentage(100 * doc_->FarParallax(), 2)];
-  [parallaxBudgedLabel setText:floatToStringPercentage(100 * doc_->ParallaxBudged(), 2)];
-  [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
-  [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
-  [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
 }
-
-- (void)highlightSelection {
- UIColor *a = [UIColor blueColor];
-  UIColor *b = [UIColor clearColor];
-  [nearLabel setBackgroundColor:
-   ([main_view_controller_ selectedSliderVariable] == SLIDER_NEAR) ? a : b];
-  [farLabel setBackgroundColor:
-   ([main_view_controller_ selectedSliderVariable] == SLIDER_FAR) ? a : b];
-  [convergenceLabel setBackgroundColor:
-   ([main_view_controller_ selectedSliderVariable] == SLIDER_CONVERGENCE) ? a : b];
-  [focalLengthLabel setBackgroundColor:
-   ([main_view_controller_ selectedSliderVariable] == SLIDER_FOCAL_LENGTH) ? a : b];
-  [interocularLabel setBackgroundColor:
-   ([main_view_controller_ selectedSliderVariable] == SLIDER_INTEROCULAR) ? a : b];
-  [screenWidthLabel setBackgroundColor:
-   ([main_view_controller_ selectedSliderVariable] == SLIDER_SCREEN_WIDTH) ? a : b];
-}
-
-- (IBAction)nearButton {
-  [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
-}
-
-- (IBAction)farButton {
-  [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR]; 
-}
-
-- (IBAction)convergenceButton {
-  [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
-}
-
-- (IBAction)focalLengthButton {
-  [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
-}
-
-- (IBAction)interocularButton {
-  [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
-  [self highlightSelection];
-}
-
-- (IBAction)screenWidthButton {
-  [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
-}
-
 
 @end

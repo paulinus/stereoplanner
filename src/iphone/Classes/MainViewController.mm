@@ -81,7 +81,6 @@
     selectedSliderVariable = v;
     [slider setLabel:[self getSliderVariableLabel]];
     [slider setValue:[self getSliderVariableValue]];
-    [(CalculatorViewNController *)calculatorViewController highlightSelection];
   }
 }
 
