@@ -27,6 +27,8 @@ class SpDocument;
   id nearScreenParallaxLabel;
   id farScreenParallaxLabel;
   id screenParallaxBudgedLabel;
+  
+  InfiniteSlider *nearSlider;
 }
 
 @property (nonatomic,assign) IBOutlet id nearLabel;
@@ -42,6 +44,9 @@ class SpDocument;
 @property (nonatomic,assign) IBOutlet id farScreenParallaxLabel;
 @property (nonatomic,assign) IBOutlet id screenParallaxBudgedLabel;
 
+@property (nonatomic,assign) IBOutlet InfiniteSlider *nearSlider;
+
+
 
 - (id)initWithMainViewController:(MainViewController *)mvc;
 - (void)setDocument:(SpDocument *)document;
@@ -53,6 +58,7 @@ class SpDocument;
 - (IBAction)focalLengthButton;
 - (IBAction)interocularButton;
 - (IBAction)screenWidthButton;
+- (void)nearSliderChanged:(id)sender;
 
 
 @end

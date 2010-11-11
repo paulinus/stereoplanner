@@ -27,6 +27,8 @@
 @synthesize farScreenParallaxLabel;
 @synthesize screenParallaxBudgedLabel;
 
+@synthesize nearSlider;
+
 
 - (id)initWithMainViewController:(MainViewController *)mvc {
   main_view_controller_ = mvc;
@@ -43,12 +45,20 @@
 }
 */
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
+  [nearSlider setLabel:@"Near"];
+  [nearSlider addTarget:self action:@selector(nearSliderChanged:) forControlEvents:UIControlEventValueChanged];
 }
-*/
+
+- (void)nearSliderChanged:(id)sender {
+  if (nearSlider.value != doc_->NearDistance()) {
+    doc_->SetNearDistance(nearSlider.value);
+    [self updateView];
+  }
+}
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -82,6 +92,8 @@
 }
 
 - (IBAction)updateView {
+  [nearSlider setValue:doc_->NearDistance()];
+
   [self highlightSelection];
   [nearLabel setText:floatToStringInMetric(doc_->NearDistance(), 2)];
   [farLabel setText:floatToStringInMetric(doc_->FarDistance(), 2)];
