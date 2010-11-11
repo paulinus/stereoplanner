@@ -149,6 +149,12 @@
   [interocularSlider setValue:doc_->RigInterocular()];
   [focalLengthSlider setValue:doc_->FocalLegth()];
   [screenWidthSlider setValue:doc_->ScreenWidth()];
+  [nearParallaxLabel setText:floatToStringPercentage(100 * doc_->NearParallax(), 2)];
+  [farParallaxLabel setText:floatToStringPercentage(100 * doc_->FarParallax(), 2)];
+  [parallaxBudgedLabel setText:floatToStringPercentage(100 * doc_->ParallaxBudged(), 2)];
+  [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
+  [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
+  [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];  
 }
 
 @end
