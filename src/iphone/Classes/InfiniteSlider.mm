@@ -76,13 +76,13 @@
   NSString *valueString;
   switch (valueType) {
     case ISmetric:
-      valueString = floatToStringInMetric(value, 3);
+      valueString = floatToStringInMetric(value, 2);
       break;
     case ISpercentage:
-      valueString = floatToStringPercentage(100 * value, 3);
+      valueString = floatToStringPercentage(100 * value, 2);
       break;
     default:
-      valueString = floatToString(value, 3);
+      valueString = floatToString(value, 2);
       break;
   }
   [value_view setText:valueString];
