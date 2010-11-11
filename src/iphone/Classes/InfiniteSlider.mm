@@ -23,11 +23,17 @@
   
   label_view = [[UILabel alloc] init];
   [self addSubview:label_view];
-  [label_view setTextAlignment:UITextAlignmentCenter];
-
+  [label_view setTextAlignment:UITextAlignmentLeft];
+  [label_view setTextColor:[UIColor whiteColor]];
+  [label_view setBackgroundColor:[UIColor clearColor]];
+  [label_view setFont:[UIFont fontWithName:@"Helvetica" size:18]];
+  
   value_view = [[UILabel alloc] init];
   [self addSubview:value_view];
-  [value_view setTextAlignment:UITextAlignmentCenter];
+  [value_view setTextAlignment:UITextAlignmentRight];
+  [value_view setTextColor:[UIColor yellowColor]];
+  [value_view setBackgroundColor:[UIColor clearColor]];
+  [value_view setFont:[UIFont fontWithName:@"Helvetica" size:24]];
   
   [self setLabel:@"caca"];
 }
@@ -46,11 +52,12 @@
 
 - (void)setFrame:(CGRect)rect {
   [super setFrame:rect];
-  rect.origin.x = 0;
+  float margin = 10;
+  rect.origin.x = margin;
   rect.origin.y = 0;
-  rect.size.height /= 2;
+  rect.size.width = rect.size.width / 2 - margin;
   [label_view setFrame:rect];
-  rect.origin.y += rect.size.height;
+  rect.origin.x += rect.size.width;
   [value_view setFrame:rect];
 
 }

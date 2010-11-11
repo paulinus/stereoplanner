@@ -808,19 +808,18 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="710652573">
+					<object class="IBUIView" id="100529418">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{30, 16}, {260, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAwLjIxNTgyNjc1IDAuMjI2Njc4NjAzMwA</bytes>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
-						<float key="IBUIAlpha">0.26056337356567383</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="191280624">
+					<object class="IBUIView" id="546134120">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{30, 56}, {260, 35}}</string>
@@ -832,10 +831,10 @@
 						<float key="IBUIAlpha">0.26056337356567383</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="454210009">
+					<object class="IBUIView" id="109897752">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 97}, {260, 35}}</string>
+						<string key="NSFrame">{{30, 96}, {260, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -844,10 +843,10 @@
 						<float key="IBUIAlpha">0.26056337356567383</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="897370600">
+					<object class="IBUIView" id="720989818">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{29, 146}, {260, 35}}</string>
+						<string key="NSFrame">{{30, 146}, {206, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -856,7 +855,7 @@
 						<float key="IBUIAlpha">0.26056337356567383</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="46390432">
+					<object class="IBUIView" id="134699579">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{30, 186}, {260, 35}}</string>
@@ -868,7 +867,7 @@
 						<float key="IBUIAlpha">0.26056337356567383</float>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
-					<object class="IBUIView" id="168874645">
+					<object class="IBUIView" id="409257409">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{30, 236}, {260, 35}}</string>
@@ -1110,7 +1109,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">nearSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="710652573"/>
+						<reference key="destination" ref="100529418"/>
 					</object>
 					<int key="connectionID">83</int>
 				</object>
@@ -1118,7 +1117,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">convergenceSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="454210009"/>
+						<reference key="destination" ref="109897752"/>
 					</object>
 					<int key="connectionID">89</int>
 				</object>
@@ -1126,7 +1125,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">farSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="191280624"/>
+						<reference key="destination" ref="546134120"/>
 					</object>
 					<int key="connectionID">90</int>
 				</object>
@@ -1134,7 +1133,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">focalLengthSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="46390432"/>
+						<reference key="destination" ref="134699579"/>
 					</object>
 					<int key="connectionID">91</int>
 				</object>
@@ -1142,7 +1141,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">interocularSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="897370600"/>
+						<reference key="destination" ref="720989818"/>
 					</object>
 					<int key="connectionID">92</int>
 				</object>
@@ -1150,7 +1149,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">screenWidthSlider</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="168874645"/>
+						<reference key="destination" ref="409257409"/>
 					</object>
 					<int key="connectionID">93</int>
 				</object>
@@ -1206,12 +1205,12 @@
 							<reference ref="796035421"/>
 							<reference ref="539058116"/>
 							<reference ref="994711989"/>
-							<reference ref="710652573"/>
-							<reference ref="191280624"/>
-							<reference ref="897370600"/>
-							<reference ref="46390432"/>
-							<reference ref="454210009"/>
-							<reference ref="168874645"/>
+							<reference ref="100529418"/>
+							<reference ref="546134120"/>
+							<reference ref="720989818"/>
+							<reference ref="134699579"/>
+							<reference ref="109897752"/>
+							<reference ref="409257409"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1439,37 +1438,37 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">81</int>
-						<reference key="object" ref="710652573"/>
+						<reference key="object" ref="100529418"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Near Slider</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">84</int>
-						<reference key="object" ref="191280624"/>
+						<reference key="object" ref="546134120"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Far Slider</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">85</int>
-						<reference key="object" ref="454210009"/>
+						<reference key="object" ref="109897752"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Convergence Slider</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">86</int>
-						<reference key="object" ref="897370600"/>
+						<reference key="object" ref="720989818"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Interocular Slider</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">87</int>
-						<reference key="object" ref="46390432"/>
+						<reference key="object" ref="134699579"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Focal Length Slider</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">88</int>
-						<reference key="object" ref="168874645"/>
+						<reference key="object" ref="409257409"/>
 						<reference key="parent" ref="191373211"/>
 						<string key="objectName">Screen Width Slider</string>
 					</object>
