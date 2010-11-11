@@ -65,13 +65,13 @@
   [self setSelectedSliderVariable:SLIDER_CONVERGENCE];
    
   CGRect rect = [mama frame];
-  int h = 50;
+  int h = 40;
   rect.origin.y = rect.origin.y + rect.size.height - h;
   rect.size.height = h;
   
   [slider setFrame:rect];
-  [slider setBackgroundColor:[UIColor blueColor]];
-  [slider setAlpha:0.3];
+  [slider setBackgroundColor:[UIColor blackColor]];
+  [slider setAlpha:0.5];
   [mama addSubview:slider];
   [mama bringSubviewToFront:slider];
 }
