@@ -17,14 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-  // Create the document
-  doc_ = new SpDocument;
-  [viewController setDocument:doc_];
-  
+
   // Override point for customization after app launch    
   [window addSubview:viewController.view];
   [window makeKeyAndVisible];
-  
+ 
+  // Create the document
+  doc_ = new SpDocument; 
+  [viewController setDocument:doc_];
+
   return YES;
 }
 
