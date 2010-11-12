@@ -36,9 +36,7 @@
   if (self) {
     isShowingLandscapeView = NO;
 
-    self.main_view_controller_ = [[[MainViewController alloc]
-                              initWithNibName:@"MainView" bundle:nil]
-                             autorelease];
+    self.main_view_controller_ = [[MainViewController alloc] init];
 
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self
