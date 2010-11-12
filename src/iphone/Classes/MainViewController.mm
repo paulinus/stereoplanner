@@ -152,15 +152,22 @@
 - (void)sliderChanged:(id)sender {
   if (slider.value != [self getSliderVariableValue]) {
     [self setSliderVariableValue:slider.value];
-    
-    if ([captureViewController.view isDescendantOfView:mama])
-      [(CaptureView *)captureViewController.view updateGL];
-    if ([cinemaViewController.view isDescendantOfView:mama])
-      [(CinemaView *)cinemaViewController.view updateGL];
-    if ([calculatorViewController.view isDescendantOfView:mama]) {
-      [calculatorViewController updateView];
-    }
+    [self documentChanged];
   }
+}
+
+- (void)documentChanged {
+  if (slider.value != [self getSliderVariableValue])
+    slider.value = [self getSliderVariableValue];
+  
+  if ([captureViewController.view isDescendantOfView:mama])
+    [(CaptureView *)captureViewController.view updateGL];
+  
+  if ([cinemaViewController.view isDescendantOfView:mama])
+    [(CinemaView *)cinemaViewController.view updateGL];
+  
+  if ([calculatorViewController.view isDescendantOfView:mama])
+    [calculatorViewController updateView];    
 }
 
 /*
