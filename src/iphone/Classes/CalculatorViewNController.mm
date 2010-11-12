@@ -64,7 +64,7 @@
 - (void)nearSliderChanged:(id)sender {
   if (nearSlider.value != doc_->NearDistance()) {
     doc_->SetNearDistance(nearSlider.value);
-    [main_view_controller_ documentChanged];
+    [self documentChanged];
     [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
   }
 }
@@ -72,7 +72,7 @@
 - (void)farSliderChanged:(id)sender {
   if (farSlider.value != doc_->FarDistance()) {
     doc_->SetFarDistance(farSlider.value);
-    [main_view_controller_ documentChanged];
+    [self documentChanged];
     [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR];
   }
 }
@@ -80,7 +80,7 @@
 - (void)convergenceSliderChanged:(id)sender {
   if (convergenceSlider.value != doc_->RigConvergence()) {
     doc_->SetRigConvergence(convergenceSlider.value);
-    [main_view_controller_ documentChanged];
+    [self documentChanged];
     [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
   }
 }
@@ -88,7 +88,7 @@
 - (void)interocularSliderChanged:(id)sender {
   if (interocularSlider.value != doc_->RigInterocular()) {
     doc_->SetRigInterocular(interocularSlider.value);
-    [main_view_controller_ documentChanged];
+    [self documentChanged];
     [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
   }
 }
@@ -96,7 +96,7 @@
 - (void)focalLengthSliderChanged:(id)sender {
   if (focalLengthSlider.value != doc_->FocalLegth()) {
     doc_->SetFocalLegth(focalLengthSlider.value);
-    [main_view_controller_ documentChanged];
+    [self documentChanged];
     [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
   }
 }
@@ -104,7 +104,7 @@
 - (void)screenWidthSliderChanged:(id)sender {
   if (screenWidthSlider.value != doc_->ScreenWidth()) {
     doc_->SetScreenWidth(screenWidthSlider.value);
-    [main_view_controller_ documentChanged];
+    [self documentChanged];
     [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
   }
 }
@@ -156,5 +156,10 @@
   [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
   [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];  
 }
+
+- (void)documentChanged {
+  [self updateView];
+}
+
 
 @end

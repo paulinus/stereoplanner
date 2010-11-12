@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InfiniteSlider.h"
 
 class SpDocument;
 @class MainViewController;
@@ -49,7 +50,7 @@ class SpDocument;
 - (id)initWithMainViewController:(MainViewController *)mvc;
 - (void)setDocument:(SpDocument *)document;
 - (IBAction)updateView;
-- (void)nearSliderChanged:(id)sender;
+- (void)documentChanged;
 
 
 @end

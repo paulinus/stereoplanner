@@ -7,7 +7,8 @@
 //
 
 #import "StereoPlannerAppDelegate.h"
-#import "MainViewController.h"
+#import "CalculatorViewNController.h"
+#include "document.h"
 
 @implementation StereoPlannerAppDelegate
 
@@ -16,7 +17,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
+  // Create the document
+  doc_ = new SpDocument;
+  [viewController setDocument:doc_];
+  
   // Override point for customization after app launch    
   [window addSubview:viewController.view];
   [window makeKeyAndVisible];
@@ -28,6 +32,7 @@
 - (void)dealloc {
   [viewController release];
   [window release];
+  delete doc_;
   [super dealloc];
 }
 
