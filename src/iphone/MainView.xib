@@ -45,7 +45,7 @@
 					<object class="IBUIView" id="874471685">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{0, -21}, {480, 277}}</string>
+						<string key="NSFrame">{{0, -21}, {480, 321}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -96,16 +96,19 @@
 									<object class="NSNull" id="4"/>
 									<reference ref="4"/>
 								</object>
+								<object class="NSColor" key="IBTintColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC42IDAuNiAwLjYAA</bytes>
+								</object>
 							</object>
-							<object class="IBUIView" id="534835687">
+							<object class="IBUIView" id="165186181">
 								<reference key="NSNextResponder" ref="304445331"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{151, 6}, {273, 33}}</string>
 								<reference key="NSSuperview" ref="304445331"/>
 								<object class="NSColor" key="IBUIBackgroundColor">
 									<int key="NSColorSpace">3</int>
-									<bytes key="NSWhite">MQA</bytes>
-									<reference key="NSCustomColorSpace" ref="7321121"/>
+									<bytes key="NSWhite">MAA</bytes>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
@@ -115,6 +118,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIBarStyle">2</int>
 						<object class="NSMutableArray" key="IBUIItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIBarButtonItem" id="338769687">
@@ -122,9 +126,9 @@
 								<reference key="IBUICustomView" ref="1012902883"/>
 								<reference key="IBUIToolbar" ref="304445331"/>
 							</object>
-							<object class="IBUIBarButtonItem" id="1065357756">
+							<object class="IBUIBarButtonItem" id="849624855">
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<reference key="IBUICustomView" ref="534835687"/>
+								<reference key="IBUICustomView" ref="165186181"/>
 								<reference key="IBUIToolbar" ref="304445331"/>
 							</object>
 						</object>
@@ -183,6 +187,14 @@
 					</object>
 					<int key="connectionID">24</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">slider</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="165186181"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -226,7 +238,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="338769687"/>
-							<reference ref="1065357756"/>
+							<reference ref="849624855"/>
 						</object>
 						<reference key="parent" ref="774585933"/>
 					</object>
@@ -246,17 +258,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
-						<reference key="object" ref="1065357756"/>
+						<reference key="object" ref="849624855"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="534835687"/>
+							<reference ref="165186181"/>
 						</object>
 						<reference key="parent" ref="304445331"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">27</int>
-						<reference key="object" ref="534835687"/>
-						<reference key="parent" ref="1065357756"/>
+						<reference key="object" ref="165186181"/>
+						<reference key="parent" ref="849624855"/>
 					</object>
 				</object>
 			</object>
@@ -269,6 +281,7 @@
 					<string>11.IBPluginDependency</string>
 					<string>11.IBViewBoundsToFrameTransform</string>
 					<string>18.IBPluginDependency</string>
+					<string>27.CustomClassName</string>
 					<string>27.IBPluginDependency</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
@@ -284,8 +297,9 @@
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw34AAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>InfiniteSlider</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{424, 421}, {480, 320}}</string>
+					<string>{{317, 412}, {480, 320}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
@@ -309,11 +323,19 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">29</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">InfiniteSlider</string>
+					<string key="superclassName">UIControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">Classes/InfiniteSlider.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">MainViewController</string>
 					<string key="superclassName">UIViewController</string>
@@ -334,11 +356,13 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>mama</string>
 							<string>selector</string>
+							<string>slider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIView</string>
 							<string>UISegmentedControl</string>
+							<string>InfiniteSlider</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -347,6 +371,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>mama</string>
 							<string>selector</string>
+							<string>slider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -357,6 +382,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">selector</string>
 								<string key="candidateClassName">UISegmentedControl</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">slider</string>
+								<string key="candidateClassName">InfiniteSlider</string>
 							</object>
 						</object>
 					</object>

@@ -14,6 +14,7 @@
 @implementation MainViewController
 
 @synthesize mama;
+@synthesize slider;
 @synthesize selector;
 @dynamic selectedSliderVariable;
 
@@ -45,7 +46,6 @@
   
   [self selectSetCinema];
   
-  slider = [[InfiniteSlider alloc] init];
   [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
   [self setSelectedSliderVariable:SLIDER_CONVERGENCE];
    
@@ -53,12 +53,6 @@
   int h = 40;
   rect.origin.y = rect.origin.y + rect.size.height - h;
   rect.size.height = h;
-  
-  [slider setFrame:rect];
-  [slider setBackgroundColor:[UIColor blackColor]];
-  [slider setAlpha:0.5];
-  [mama addSubview:slider];
-  [mama bringSubviewToFront:slider];
 }
 
 - (void)setDocument:(SpDocument *)document {

@@ -38,6 +38,7 @@ typedef enum {
 }
 
 @property (nonatomic,assign) IBOutlet UIView *mama;
+@property (nonatomic,assign) IBOutlet InfiniteSlider *slider;
 @property (nonatomic,assign) IBOutlet UISegmentedControl *selector;
 @property (nonatomic) SliderVariable selectedSliderVariable;
 
