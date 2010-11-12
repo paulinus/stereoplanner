@@ -14,6 +14,8 @@
 
 @implementation CalculatorViewNController
 
+@synthesize main_view_controller_;
+
 @synthesize nearParallaxLabel;
 @synthesize farParallaxLabel;
 @synthesize parallaxBudgedLabel;
@@ -29,9 +31,36 @@
 @synthesize screenWidthSlider;
 
 
-- (id)initWithMainViewController:(MainViewController *)mvc {
-  main_view_controller_ = mvc;
-  return [self init];
+- (id)initWithCoder:(NSCoder *)coder {
+  self = [super initWithCoder:coder];
+  if (self) {
+    isShowingLandscapeView = NO;
+
+    self.main_view_controller_ = [[[MainViewController alloc]
+                              initWithNibName:@"MainView" bundle:nil]
+                             autorelease];
+
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orientationChanged:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+
+  }
+  return self;
+}
+
+- (void)orientationChanged:(NSNotification *)notification {
+  UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+  if (UIDeviceOrientationIsLandscape(deviceOrientation) &&
+      !isShowingLandscapeView) {
+    [self presentModalViewController:self.main_view_controller_ animated:YES];
+    isShowingLandscapeView = YES;
+  } else if (deviceOrientation == UIDeviceOrientationPortrait &&
+           isShowingLandscapeView) {
+    [self dismissModalViewControllerAnimated:YES];
+    isShowingLandscapeView = NO;
+  }
 }
 
 /*
@@ -59,13 +88,16 @@
   [interocularSlider addTarget:self action:@selector(interocularSliderChanged:) forControlEvents:UIControlEventValueChanged];
   [focalLengthSlider addTarget:self action:@selector(focalLengthSliderChanged:) forControlEvents:UIControlEventValueChanged];
   [screenWidthSlider addTarget:self action:@selector(screenWidthSliderChanged:) forControlEvents:UIControlEventValueChanged];
+
+  [self presentModalViewController:self.main_view_controller_ animated:YES];
+
 }
 
 - (void)nearSliderChanged:(id)sender {
   if (nearSlider.value != doc_->NearDistance()) {
     doc_->SetNearDistance(nearSlider.value);
     [self documentChanged];
-    [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
+//    [main_view_controller_ setSelectedSliderVariable:SLIDER_NEAR];
   }
 }
 
@@ -73,7 +105,7 @@
   if (farSlider.value != doc_->FarDistance()) {
     doc_->SetFarDistance(farSlider.value);
     [self documentChanged];
-    [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR];
+//    [main_view_controller_ setSelectedSliderVariable:SLIDER_FAR];
   }
 }
 
@@ -81,7 +113,7 @@
   if (convergenceSlider.value != doc_->RigConvergence()) {
     doc_->SetRigConvergence(convergenceSlider.value);
     [self documentChanged];
-    [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
+//    [main_view_controller_ setSelectedSliderVariable:SLIDER_CONVERGENCE];
   }
 }
 
@@ -89,7 +121,7 @@
   if (interocularSlider.value != doc_->RigInterocular()) {
     doc_->SetRigInterocular(interocularSlider.value);
     [self documentChanged];
-    [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
+//    [main_view_controller_ setSelectedSliderVariable:SLIDER_INTEROCULAR];
   }
 }
 
@@ -97,7 +129,7 @@
   if (focalLengthSlider.value != doc_->FocalLegth()) {
     doc_->SetFocalLegth(focalLengthSlider.value);
     [self documentChanged];
-    [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
+//    [main_view_controller_ setSelectedSliderVariable:SLIDER_FOCAL_LENGTH];
   }
 }
 
@@ -105,7 +137,7 @@
   if (screenWidthSlider.value != doc_->ScreenWidth()) {
     doc_->SetScreenWidth(screenWidthSlider.value);
     [self documentChanged];
-    [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
+//    [main_view_controller_ setSelectedSliderVariable:SLIDER_SCREEN_WIDTH];
   }
 }
 

@@ -107,31 +107,6 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
-					<object class="IBUILabel" id="393673876">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{45, 148}, {120, 30}}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Interaxial</string>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica</string>
-							<double key="NSSize">18</double>
-							<int key="NSfFlags">16</int>
-						</object>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAxIDEAA</bytes>
-							<reference key="NSCustomColorSpace" ref="645413986"/>
-						</object>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">1</int>
-						<float key="IBUIMinimumFontSize">10</float>
-					</object>
 					<object class="IBUILabel" id="128975407">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
@@ -537,7 +512,6 @@
 							<reference ref="495735924"/>
 							<reference ref="24198165"/>
 							<reference ref="113154390"/>
-							<reference ref="393673876"/>
 							<reference ref="63631219"/>
 							<reference ref="600796744"/>
 							<reference ref="128975407"/>
@@ -574,11 +548,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
 						<reference key="object" ref="402262648"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">23</int>
-						<reference key="object" ref="393673876"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -686,8 +655,6 @@
 					<string>1.IBEditorWindowLastContentRect</string>
 					<string>1.IBPluginDependency</string>
 					<string>12.IBPluginDependency</string>
-					<string>23.IBPluginDependency</string>
-					<string>23.IBViewBoundsToFrameTransform</string>
 					<string>25.IBPluginDependency</string>
 					<string>25.IBViewBoundsToFrameTransform</string>
 					<string>31.IBPluginDependency</string>
@@ -735,10 +702,6 @@
 					<string>{{479, 323}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABC/gAAw30AAA</bytes>
-					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAABDewAAw0QAAA</bytes>
@@ -835,119 +798,44 @@
 					<string key="className">CalculatorViewNController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>convergenceButton</string>
-							<string>farButton</string>
-							<string>focalLengthButton</string>
-							<string>interocularButton</string>
-							<string>nearButton</string>
-							<string>nearSliderChanged:</string>
-							<string>screenWidthButton</string>
-							<string>updateView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
+						<string key="NS.key.0">updateView</string>
+						<string key="NS.object.0">id</string>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>convergenceButton</string>
-							<string>farButton</string>
-							<string>focalLengthButton</string>
-							<string>interocularButton</string>
-							<string>nearButton</string>
-							<string>nearSliderChanged:</string>
-							<string>screenWidthButton</string>
-							<string>updateView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">convergenceButton</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">farButton</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">focalLengthButton</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">interocularButton</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">nearButton</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">nearSliderChanged:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">screenWidthButton</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">updateView</string>
-								<string key="candidateClassName">id</string>
-							</object>
+						<string key="NS.key.0">updateView</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">updateView</string>
+							<string key="candidateClassName">id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>convergenceLabel</string>
 							<string>convergenceSlider</string>
-							<string>farLabel</string>
 							<string>farParallaxLabel</string>
 							<string>farScreenParallaxLabel</string>
 							<string>farSlider</string>
-							<string>focalLengthLabel</string>
 							<string>focalLengthSlider</string>
-							<string>interocularLabel</string>
 							<string>interocularSlider</string>
-							<string>nearLabel</string>
 							<string>nearParallaxLabel</string>
 							<string>nearScreenParallaxLabel</string>
 							<string>nearSlider</string>
 							<string>parallaxBudgedLabel</string>
 							<string>screenParallaxBudgedLabel</string>
-							<string>screenWidthLabel</string>
 							<string>screenWidthSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
 							<string>InfiniteSlider</string>
 							<string>id</string>
 							<string>id</string>
-							<string>id</string>
 							<string>InfiniteSlider</string>
-							<string>id</string>
 							<string>InfiniteSlider</string>
-							<string>id</string>
 							<string>InfiniteSlider</string>
 							<string>id</string>
 							<string>id</string>
-							<string>id</string>
 							<string>InfiniteSlider</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>InfiniteSlider</string>
@@ -957,38 +845,24 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>convergenceLabel</string>
 							<string>convergenceSlider</string>
-							<string>farLabel</string>
 							<string>farParallaxLabel</string>
 							<string>farScreenParallaxLabel</string>
 							<string>farSlider</string>
-							<string>focalLengthLabel</string>
 							<string>focalLengthSlider</string>
-							<string>interocularLabel</string>
 							<string>interocularSlider</string>
-							<string>nearLabel</string>
 							<string>nearParallaxLabel</string>
 							<string>nearScreenParallaxLabel</string>
 							<string>nearSlider</string>
 							<string>parallaxBudgedLabel</string>
 							<string>screenParallaxBudgedLabel</string>
-							<string>screenWidthLabel</string>
 							<string>screenWidthSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
-								<string key="name">convergenceLabel</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">convergenceSlider</string>
 								<string key="candidateClassName">InfiniteSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">farLabel</string>
-								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">farParallaxLabel</string>
@@ -1003,24 +877,12 @@
 								<string key="candidateClassName">InfiniteSlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">focalLengthLabel</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">focalLengthSlider</string>
 								<string key="candidateClassName">InfiniteSlider</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">interocularLabel</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">interocularSlider</string>
 								<string key="candidateClassName">InfiniteSlider</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">nearLabel</string>
-								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nearParallaxLabel</string>
@@ -1040,10 +902,6 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">screenParallaxBudgedLabel</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">screenWidthLabel</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">

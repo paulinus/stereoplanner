@@ -16,6 +16,8 @@ class SpDocument;
   SpDocument *doc_;
   MainViewController *main_view_controller_;
   
+  bool isShowingLandscapeView;
+  
   id nearParallaxLabel;
   id farParallaxLabel;
   id parallaxBudgedLabel;
@@ -30,6 +32,8 @@ class SpDocument;
   InfiniteSlider *focalLengthSlider;
   InfiniteSlider *screenWidthSlider;
 }
+
+@property (nonatomic,assign) MainViewController *main_view_controller_;
 
 @property (nonatomic,assign) IBOutlet id nearParallaxLabel;
 @property (nonatomic,assign) IBOutlet id farParallaxLabel;
@@ -47,7 +51,6 @@ class SpDocument;
 
 
 
-- (id)initWithMainViewController:(MainViewController *)mvc;
 - (void)setDocument:(SpDocument *)document;
 - (IBAction)updateView;
 - (void)documentChanged;

@@ -51,9 +51,6 @@
   [cinemaViewController.view setFrame:[mama frame]];
   [cinemaViewController setDocument:doc_];
   
-  calculatorViewController = [[CalculatorViewNController alloc] initWithMainViewController:self];
-  [calculatorViewController.view setFrame:[mama frame]];
-  [calculatorViewController setDocument:doc_];
   [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
 
   [self selectSetCinema];
@@ -165,16 +162,13 @@
   
   if ([cinemaViewController.view isDescendantOfView:mama])
     [(CinemaView *)cinemaViewController.view updateGL];
-  
-  if ([calculatorViewController.view isDescendantOfView:mama])
-    [calculatorViewController updateView];    
 }
 
 
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+  return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
 
 
@@ -213,13 +207,7 @@
       [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:mama cache:YES];
       [captureViewController.view removeFromSuperview];
       [mama addSubview:cinemaViewController.view];
-      break;
-    case 2:
-      [calculatorViewController updateView];
-      [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:mama cache:YES];
-      [captureViewController.view removeFromSuperview];
-      [mama addSubview:calculatorViewController.view];
-      break;      
+      break;    
   }
   [UIView commitAnimations];
   [mama bringSubviewToFront:slider];
