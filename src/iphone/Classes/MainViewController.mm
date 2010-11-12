@@ -33,9 +33,6 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  // Create the document
-  doc_ = new SpDocument;
-  
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"monkey" ofType:@"geo"];  
   if (filePath) {
     //NSString *myText = [NSString stringWithContentsOfFile:filePath];
@@ -49,7 +46,7 @@
   
   cinemaViewController = [[CinemaViewController alloc] init];
   [cinemaViewController.view setFrame:[mama frame]];
-  [cinemaViewController setDocument:doc_];
+  [captureViewController setDocument:doc_];
   
   [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
 
@@ -71,6 +68,12 @@
   [slider setAlpha:0.5];
   [mama addSubview:slider];
   [mama bringSubviewToFront:slider];
+}
+
+- (void)setDocument:(SpDocument *)document {
+  doc_ = document;
+  [captureViewController setDocument:doc_];
+  [cinemaViewController setDocument:doc_];
 }
 
 - (void)setSelectedSliderVariable:(SliderVariable)v {

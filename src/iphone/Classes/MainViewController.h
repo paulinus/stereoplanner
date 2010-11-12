@@ -46,6 +46,7 @@ typedef enum {
 - (float)getSliderVariableValue;
 - (void)setSliderVariableValue:(float)value;      
 - (IBAction)selectSetCinema;
+- (void)setDocument:(SpDocument *)document;
 - (void)documentChanged;
 
 @end
