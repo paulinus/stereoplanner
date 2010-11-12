@@ -39,16 +39,12 @@
   
   cinemaViewController = [[CinemaViewController alloc] init];
   [cinemaViewController.view setFrame:[mama frame]];
-  [captureViewController setDocument:doc_];
+  [cinemaViewController setDocument:doc_];
   
-  [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
-
   [self selectSetCinema];
-
   
   slider = [[InfiniteSlider alloc] init];
   [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
-
   [self setSelectedSliderVariable:SLIDER_CONVERGENCE];
    
   CGRect rect = [mama frame];
