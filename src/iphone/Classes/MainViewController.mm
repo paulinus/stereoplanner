@@ -33,12 +33,14 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
+  CGRect mframe = [mama frame];
+  mframe.origin.y = 0;
   captureViewController = [[CaptureViewController alloc] init];
-  [captureViewController.view setFrame:[mama frame]];
+  [captureViewController.view setFrame:mframe];
   [captureViewController setDocument:doc_];
   
   cinemaViewController = [[CinemaViewController alloc] init];
-  [cinemaViewController.view setFrame:[mama frame]];
+  [cinemaViewController.view setFrame:mframe];
   [cinemaViewController setDocument:doc_];
   
   [self selectSetCinema];
@@ -47,7 +49,7 @@
   [slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
   [self setSelectedSliderVariable:SLIDER_CONVERGENCE];
    
-  CGRect rect = [mama frame];
+  CGRect rect = mframe;
   int h = 40;
   rect.origin.y = rect.origin.y + rect.size.height - h;
   rect.size.height = h;
@@ -156,13 +158,11 @@
     [(CinemaView *)cinemaViewController.view updateGL];
 }
 
-
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
   return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-
 
 - (void)didReceiveMemoryWarning {
   // Releases the view if it doesn't have a superview.
@@ -177,11 +177,9 @@
   delete doc_;
 }
 
-
 - (void)dealloc {
   [super dealloc];
 }
-
 
 - (IBAction)selectSetCinema {
   [UIView beginAnimations:nil context:NULL];
