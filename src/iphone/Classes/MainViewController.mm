@@ -32,13 +32,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"monkey" ofType:@"geo"];  
-  if (filePath) {
-    //NSString *myText = [NSString stringWithContentsOfFile:filePath];
-    //const char *text = [myText UTF8String];
-    doc_->LoadGeometry([filePath cStringUsingEncoding:1]);
-  }  
 
   captureViewController = [[CaptureViewController alloc] init];
   [captureViewController.view setFrame:[mama frame]];

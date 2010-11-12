@@ -23,7 +23,13 @@
   [window makeKeyAndVisible];
  
   // Create the document
-  doc_ = new SpDocument; 
+  doc_ = new SpDocument;
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"monkey" ofType:@"geo"];  
+  if (filePath) {
+    //NSString *myText = [NSString stringWithContentsOfFile:filePath];
+    //const char *text = [myText UTF8String];
+    doc_->LoadGeometry([filePath cStringUsingEncoding:1]);
+  }
   [viewController setDocument:doc_];
 
   return YES;
