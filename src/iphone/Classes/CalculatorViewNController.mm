@@ -55,7 +55,7 @@
     [main_view_controller_ documentChanged];
     [self presentModalViewController:self.main_view_controller_ animated:YES];
     isShowingLandscapeView = YES;
-  } else if (deviceOrientation == UIDeviceOrientationPortrait &&
+  } else if (UIDeviceOrientationIsPortrait(deviceOrientation) &&
            isShowingLandscapeView) {
     [self documentChanged];
     [self dismissModalViewControllerAnimated:YES];
