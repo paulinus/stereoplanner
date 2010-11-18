@@ -113,3 +113,21 @@ void Trackball::MouseZoom(float dw) {
   revolve_point_in_cam_coords_(2) /= dw;
 }
 
+Eigen::Vector3f Trackball::CameraCordinates(Eigen::Vector3f &world_coords) {
+  return orientation_ * (world_coords - revolve_point_)
+  + revolve_point_in_cam_coords_;
+}
+
+Eigen::Vector3f Trackball::Project(Eigen::Vector3f &q) {
+  Eigen::Vector3f cam_coords = CameraCordinates(q);
+  
+  cam_coords[0] = cam_coords[0] / cam_coords[2] 
+                * screen_width_ / 2 / tan(field_of_view_ / 180. * M_PI / 2);
+  
+  cam_coords[1] = cam_coords[1] / cam_coords[2] 
+                * screen_width_ / 2 / tan(field_of_view_ / 180. * M_PI / 2);
+  
+  return cam_coords;
+}
+
+

@@ -14,6 +14,10 @@ class Trackball {
   void MouseRevolveFree(float x1, float y1, float x2, float y2);
   void MouseRevolveGravity(float x1, float y1, float x2, float y2);
   void MouseZoom(float dw);
+  Eigen::Vector3f CameraCordinates(Eigen::Vector3f &world_coords);
+  Eigen::Vector3f Project(Eigen::Vector3f &q);
+
+  
   EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
  private:
