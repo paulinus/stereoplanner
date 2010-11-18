@@ -13,6 +13,13 @@
 
 @implementation CaptureView
 
+@synthesize interactionMode;
+
+- (id)commonInit {
+  interactionMode = CaptureViewInteractionModeOrbit;
+  return [super commonInit];
+}
+
 - (void)setDocument:(const SpDocument *)document {
   
   doc_ = document;
@@ -137,6 +144,12 @@
     [self drawViewingAreaAtDepth:doc_->FarDistance()];
     
     glPopMatrix(); // Rig's reference frame.
+  }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+  if (interactionMode == CaptureViewInteractionModeOrbit) {
+    [super touchesMoved:touches withEvent:event];
   }
 }
 

@@ -11,10 +11,19 @@
 
 class SpDocument;
 
+typedef enum {
+  CaptureViewInteractionModeOrbit,
+  CaptureViewInteractionModeMove
+} CaptureViewInteractionMode;
+
+
 @interface CaptureView : EAGLView {
-@private
+  CaptureViewInteractionMode interactionMode;
+
   const SpDocument *doc_;
 }
+
+@property (nonatomic) CaptureViewInteractionMode interactionMode;
 
 - (void)setDocument:(const SpDocument *)document;
 - (void)draw;

@@ -34,6 +34,7 @@ class Geometry;
 
 @property (nonatomic) float rotation;
 
+- (id)commonInit;
 - (void)updateGL;
 - (void)preDraw;
 - (void)draw;

@@ -265,7 +265,7 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
 }
 
 - (void)postDraw {
-    glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+  glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
   [context presentRenderbuffer:GL_RENDERBUFFER_OES];
 }
 
