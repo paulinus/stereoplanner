@@ -113,21 +113,39 @@ void Trackball::MouseZoom(float dw) {
   revolve_point_in_cam_coords_(2) /= dw;
 }
 
-Eigen::Vector3f Trackball::CameraCordinates(Eigen::Vector3f &world_coords) {
+Eigen::Vector3f Trackball::CameraCoordinates(Eigen::Vector3f &world_coords) {
   return orientation_ * (world_coords - revolve_point_)
-  + revolve_point_in_cam_coords_;
+         + revolve_point_in_cam_coords_;
+}
+
+Eigen::Vector3f Trackball::WorldCoordinates(Eigen::Vector3f &cam_coords) {
+  return orientation_.conjugate() * (cam_coords - revolve_point_in_cam_coords_)
+         + revolve_point_;
 }
 
 Eigen::Vector3f Trackball::Project(Eigen::Vector3f &q) {
-  Eigen::Vector3f cam_coords = CameraCordinates(q);
+  Eigen::Vector3f cam_coords = CameraCoordinates(q);
   
   cam_coords[0] = cam_coords[0] / cam_coords[2] 
-                * screen_width_ / 2 / tan(field_of_view_ / 180. * M_PI / 2);
+                * screen_width_ / 2 / tan(field_of_view_ / 180. * M_PI / 2)
+                + screen_width_ / 2;
   
   cam_coords[1] = cam_coords[1] / cam_coords[2] 
-                * screen_width_ / 2 / tan(field_of_view_ / 180. * M_PI / 2);
+                * screen_height_ / 2 / tan(field_of_view_ / 180. * M_PI / 2)
+                + screen_height_ / 2;
   
   return cam_coords;
+}
+
+Eigen::Vector3f Trackball::BackProject(float u, float v, float depth) {
+  Eigen::Vector3f cam_coords;
+  cam_coords[0] = (u - screen_width_ / 2 ) * depth
+                * tan(field_of_view_ / 180. * M_PI / 2) / (screen_width_ / 2);
+  cam_coords[1] = (v - screen_height_ / 2 ) * depth
+                * tan(field_of_view_ / 180. * M_PI / 2) / (screen_height_ / 2);
+  cam_coords[2] = depth;
+  
+  return WorldCoordinates(cam_coords);
 }
 
 
