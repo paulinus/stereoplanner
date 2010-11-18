@@ -17,9 +17,9 @@ class Geometry;
 
 
 @interface EAGLView : UIView {
-@private
   Trackball trackball_;
   
+@private
   EAGLContext *context;
   
   // The pixel dimensions of the CAEAGLLayer.

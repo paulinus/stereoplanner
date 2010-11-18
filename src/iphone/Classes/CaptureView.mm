@@ -20,7 +20,7 @@
   return [super commonInit];
 }
 
-- (void)setDocument:(const SpDocument *)document {
+- (void)setDocument:(SpDocument *)document {
   
   doc_ = document;
   [self updateGL];
@@ -150,7 +150,25 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   if (interactionMode == CaptureViewInteractionModeOrbit) {
     [super touchesMoved:touches withEvent:event];
+  } else if (interactionMode == CaptureViewInteractionModeMove) {
+    NSArray *allTouches = [[event allTouches] allObjects];
+
+    if ([allTouches count] == 1) {
+      UITouch *touch = [touches anyObject];
+      
+      CGPoint p1 = [touch previousLocationInView:self];
+      CGPoint p2 = [touch locationInView:self];
+      
+      Eigen::Vector3f p = trackball_.Project(doc_->scene_.position_);
+      float depth = p[2];
+      NSLog(@"u, v, depth = %g, %g, %g", p[0], p[1], depth);
+      Eigen::Vector3f a = trackball_.BackProject(p1.x, p1.y, depth);
+      Eigen::Vector3f b = trackball_.BackProject(p2.x, p2.y, depth);
+      doc_->scene_.position_ += b - a;
+    } 
   }
+  doc_->UpdateEverything();
+  [self updateGL];
 }
 
 - (void)dealloc {

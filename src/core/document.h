@@ -114,16 +114,18 @@ class SpDocument {
   void setDocumentChanged(bool b);
   bool DocumentChanged();
 
+  void UpdateEverything(); //TODO(pau): make this private
+
  private:
-  void UpdateEverything();
   void UpdateCaptureGeometry();
   void UpdateFrustumGeometry();
   void UpdateTheaterGeometry();
 
  private:
   bool document_changed_;
-
-  Object scene_;
+ public:
+  Object scene_; //TODO(pau): make this private
+ private:
   Geometry capture_geometry_;
   Geometry frustum_geometry_;
   Geometry theater_geometry_;

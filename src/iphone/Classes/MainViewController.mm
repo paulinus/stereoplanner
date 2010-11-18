@@ -252,5 +252,11 @@
   [self hideSliderSelectionView];
 }
 
+- (IBAction)orbitButtonAction {
+  [(CaptureView *)captureViewController.view setInteractionMode:CaptureViewInteractionModeOrbit];
+}
+- (IBAction)moveButtonAction {
+  [(CaptureView *)captureViewController.view setInteractionMode:CaptureViewInteractionModeMove];
+}
 
 @end

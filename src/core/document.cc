@@ -249,6 +249,17 @@ Vector3f SpDocument::CameraPosition(int i) const {
 
 void ExtractGeometry(Object &o, Geometry *g) {
   *g = o.geometry_;
+  
+  Matrix3f R = o.orientation_.toRotationMatrix();
+  Vector3f t = o.position_;
+  Matrix4f T;
+  T << R, t,
+       MatrixXf::Zero(1,3), 1;
+  for (unsigned int i = 0; i < g->vertex_.size(); i += 4) {
+    Vector4f pp(&o.geometry_.vertex_[i]);
+    Vector4f p = T * pp;
+    for (int j = 0; j < 4; ++j) g->vertex_[i + j] = p[j];
+  }
 }
 
 void SpDocument::UpdateCaptureGeometry () {

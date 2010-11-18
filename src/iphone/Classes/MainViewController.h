@@ -61,5 +61,8 @@ typedef enum {
 - (IBAction)sliderSelectFocalLength;
 - (IBAction)sliderSelectScreenWidth;
 
+- (IBAction)orbitButtonAction;
+- (IBAction)moveButtonAction;
+
 @end
 
