@@ -24,7 +24,6 @@ SpDocument::SpDocument() {
   near_distance_ = 5;
   far_distance_ = 10;
 
-  capture_geometry_ = CubeGeometry();
   UpdateEverything();
 }
 
@@ -32,11 +31,11 @@ SpDocument::~SpDocument() {
 }
 
 void SpDocument::LoadGeometry(const char *path) {
-  ReadGeo(path, &capture_geometry_);
+  ReadGeo(path, &scene_.geometry_);
   UpdateEverything();
 }
 
-// TODO(pau): Consired non off-axis configuration (see doc/geometry.tex);
+// TODO(pau): Consider non off-axis configuration (see doc/geometry.tex);
 float SpDocument::StereoWindowWidth() const {
   return SensorWidth() * RigConvergence() / FocalLegth();
 }
@@ -237,6 +236,7 @@ bool SpDocument::DocumentChanged() {
 }
 
 void SpDocument::UpdateEverything() {
+  UpdateCaptureGeometry();
   UpdateFrustumGeometry();
   UpdateTheaterGeometry();
   setDocumentChanged(true);
@@ -245,6 +245,14 @@ void SpDocument::UpdateEverything() {
 Vector3f SpDocument::CameraPosition(int i) const {
   Vector3f shift((i==0?-1:1) * rig_interocular_ / 2, 0, 0);
   return rig_position_ + RigRotation() * shift;
+}
+
+void ExtractGeometry(Object &o, Geometry *g) {
+  *g = o.geometry_;
+}
+
+void SpDocument::UpdateCaptureGeometry () {
+  ExtractGeometry(scene_, &capture_geometry_);
 }
 
 void SpDocument::UpdateFrustumGeometry() {

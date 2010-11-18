@@ -3,6 +3,7 @@
 
 #include "Eigen/Dense"
 
+#include "object.h"
 #include "geometry.h"
 #include "camera.h"
 #include "stereo_frustum.h"
@@ -115,12 +116,14 @@ class SpDocument {
 
  private:
   void UpdateEverything();
+  void UpdateCaptureGeometry();
   void UpdateFrustumGeometry();
   void UpdateTheaterGeometry();
 
  private:
   bool document_changed_;
 
+  Object scene_;
   Geometry capture_geometry_;
   Geometry frustum_geometry_;
   Geometry theater_geometry_;
