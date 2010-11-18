@@ -202,23 +202,20 @@
   sliderSelectionView.alpha = 0;
   sliderSelectionView.hidden = NO;
   [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:0.1];
+  [UIView setAnimationDuration:0.15];
   sliderSelectionView.alpha = 1;
   [UIView commitAnimations];
 }
 
 - (void)hideSliderSelectionView {
   [UIView beginAnimations:nil context:NULL];
-  [UIView setAnimationDuration:0.1];
+  [UIView setAnimationDuration:0.15];
   sliderSelectionView.alpha = 0;
-  sliderSelectionView.hidden = YES;
   [UIView commitAnimations];
 }
 
 - (IBAction)chooseSliderButton {
-  CGRect r = CGRectMake(300, 0, 200, 200);
-  
-  if (sliderSelectionView.hidden == YES) {
+  if (sliderSelectionView.hidden == YES || sliderSelectionView.alpha == 0) {
     [self showSliderSelectionView];
   } else {    
     [self hideSliderSelectionView];
