@@ -14,6 +14,7 @@
 @implementation MainViewController
 
 @synthesize mama;
+@synthesize sliderSelectionView;
 @synthesize slider;
 @synthesize selector;
 @dynamic selectedSliderVariable;
@@ -194,7 +195,65 @@
       break;    
   }
   [UIView commitAnimations];
-  [mama bringSubviewToFront:slider];
 }
+
+
+- (void)showSliderSelectionView {
+  sliderSelectionView.alpha = 0;
+  sliderSelectionView.hidden = NO;
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:0.1];
+  sliderSelectionView.alpha = 1;
+  [UIView commitAnimations];
+}
+
+- (void)hideSliderSelectionView {
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:0.1];
+  sliderSelectionView.alpha = 0;
+  sliderSelectionView.hidden = YES;
+  [UIView commitAnimations];
+}
+
+- (IBAction)chooseSliderButton {
+  CGRect r = CGRectMake(300, 0, 200, 200);
+  
+  if (sliderSelectionView.hidden == YES) {
+    [self showSliderSelectionView];
+  } else {    
+    [self hideSliderSelectionView];
+  }
+}
+
+- (IBAction)sliderSelectNear {
+  self.selectedSliderVariable = SLIDER_NEAR;
+  [self hideSliderSelectionView];
+}
+     
+- (IBAction)sliderSelectFar {
+  self.selectedSliderVariable = SLIDER_FAR;
+  [self hideSliderSelectionView];
+}
+     
+- (IBAction)sliderSelectConvergence {
+  self.selectedSliderVariable = SLIDER_CONVERGENCE;
+  [self hideSliderSelectionView];  
+}
+     
+- (IBAction)sliderSelectInterocular {
+  self.selectedSliderVariable = SLIDER_INTEROCULAR;
+  [self hideSliderSelectionView];  
+}
+     
+- (IBAction)sliderSelectFocalLength {
+  self.selectedSliderVariable = SLIDER_FOCAL_LENGTH;
+  [self hideSliderSelectionView];
+}
+     
+- (IBAction)sliderSelectScreenWidth {
+  self.selectedSliderVariable = SLIDER_SCREEN_WIDTH;
+  [self hideSliderSelectionView];
+}
+
 
 @end

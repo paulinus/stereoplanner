@@ -25,6 +25,7 @@ typedef enum {
 
 @interface MainViewController : UIViewController {
   UIView *mama;
+  UIView *sliderSelectionView;
   CaptureViewController *captureViewController;
   CinemaViewController *cinemaViewController;
   CalculatorViewNController *calculatorViewController;
@@ -38,6 +39,7 @@ typedef enum {
 }
 
 @property (nonatomic,assign) IBOutlet UIView *mama;
+@property (nonatomic,assign) IBOutlet UIView *sliderSelectionView;
 @property (nonatomic,assign) IBOutlet InfiniteSlider *slider;
 @property (nonatomic,assign) IBOutlet UISegmentedControl *selector;
 @property (nonatomic) SliderVariable selectedSliderVariable;
@@ -49,6 +51,15 @@ typedef enum {
 - (IBAction)selectSetCinema;
 - (void)setDocument:(SpDocument *)document;
 - (void)documentChanged;
+
+- (IBAction)chooseSliderButton;
+
+- (IBAction)sliderSelectNear;
+- (IBAction)sliderSelectFar;
+- (IBAction)sliderSelectConvergence;
+- (IBAction)sliderSelectInterocular;
+- (IBAction)sliderSelectFocalLength;
+- (IBAction)sliderSelectScreenWidth;
 
 @end
 
