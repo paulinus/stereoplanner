@@ -27,6 +27,7 @@
 		D53DB4BB11ED1C27009FA541 /* monkey.geo in Resources */ = {isa = PBXBuildFile; fileRef = D53DB4BA11ED1C27009FA541 /* monkey.geo */; };
 		D53DB53011EF6A6B009FA541 /* CaptureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53DB52D11EF6A6B009FA541 /* CaptureView.mm */; };
 		D53DB53111EF6A6B009FA541 /* CinemaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53DB52F11EF6A6B009FA541 /* CinemaView.mm */; };
+		D5436DE312994F8800D1E7AE /* SettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5436DE212994F8800D1E7AE /* SettingsViewController.mm */; };
 		D58C8E671295628B00E2A017 /* object.cc in Sources */ = {isa = PBXBuildFile; fileRef = D58C8E661295628B00E2A017 /* object.cc */; };
 		D5AA498011F24B9400AF8E21 /* InfiniteSlider.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5AA497F11F24B9400AF8E21 /* InfiniteSlider.mm */; };
 		D5B6471E1237D30F009F37FD /* CalculatorViewNController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5B6471C1237D30F009F37FD /* CalculatorViewNController.mm */; };
@@ -72,6 +73,8 @@
 		D53DB52D11EF6A6B009FA541 /* CaptureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CaptureView.mm; sourceTree = "<group>"; };
 		D53DB52E11EF6A6B009FA541 /* CinemaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaView.h; sourceTree = "<group>"; };
 		D53DB52F11EF6A6B009FA541 /* CinemaView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinemaView.mm; sourceTree = "<group>"; };
+		D5436DE112994F8800D1E7AE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		D5436DE212994F8800D1E7AE /* SettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingsViewController.mm; sourceTree = "<group>"; };
 		D58C8E651295628B00E2A017 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
 		D58C8E661295628B00E2A017 /* object.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cc; sourceTree = "<group>"; };
 		D5AA497E11F24B9400AF8E21 /* InfiniteSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteSlider.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				28D7ACF70DDB3853001CB0EB /* MainViewController.mm */,
 				D5B6471B1237D30F009F37FD /* CalculatorViewNController.h */,
 				D5B6471C1237D30F009F37FD /* CalculatorViewNController.mm */,
+				D5436DE112994F8800D1E7AE /* SettingsViewController.h */,
+				D5436DE212994F8800D1E7AE /* SettingsViewController.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 				D53B09B6126909D900DF4180 /* utils.mm in Sources */,
 				D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */,
 				D58C8E671295628B00E2A017 /* object.cc in Sources */,
+				D5436DE312994F8800D1E7AE /* SettingsViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
