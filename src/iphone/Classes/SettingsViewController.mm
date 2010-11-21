@@ -15,6 +15,10 @@
 #pragma mark -
 #pragma mark Initialization
 
+- (id)init {
+  return [self initWithStyle:UITableViewStyleGrouped];
+}
+
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -28,14 +32,17 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
 - (void)viewDidLoad {
-    [super viewDidLoad];
+  [super viewDidLoad];
 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+  self.navigationItem.title = @"Settings";
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
+                                           initWithTitle:@"Done"
+                                           style:UIBarButtonItemStyleDone
+                                           target:self
+                                           action:@selector(doneButton)];
 }
-*/
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -172,6 +179,9 @@
     [super dealloc];
 }
 
+- (void)doneButton {
+  [self.parentViewController dismissModalViewControllerAnimated:YES];
+}
 
 @end
 
