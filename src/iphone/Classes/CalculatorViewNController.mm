@@ -9,6 +9,7 @@
 #include "document.h"
 #import "utils.h"
 #import "MainViewController.h"
+#import "SettingsViewController.h"
 #import "CalculatorViewNController.h"
 
 
@@ -183,6 +184,14 @@
 
 - (void)documentChanged {
   [self updateView];
+}
+
+- (IBAction)showSettings {
+  SettingsViewController *s = [[SettingsViewController alloc] init];
+  UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:s];
+  [self presentModalViewController:n animated:YES];
+  [n release];
+  [s release];
 }
 
 

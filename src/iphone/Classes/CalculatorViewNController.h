@@ -54,6 +54,7 @@ class SpDocument;
 - (void)setDocument:(SpDocument *)document;
 - (IBAction)updateView;
 - (void)documentChanged;
+- (IBAction)showSettings;
 
 
 @end
