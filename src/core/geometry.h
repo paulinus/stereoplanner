@@ -18,6 +18,7 @@ class Geometry {
   std::vector<unsigned short> lines_; // 2 ints per line.
   
   void ComputeNormals();
+  void Append(const Geometry &b);
 };
 
 void ReadGeo(std::istream *input_stream, Geometry *g);
@@ -25,8 +26,6 @@ void ReadGeo(const char *filename, Geometry *g);
 
 void ReadObj(const char *filename, Geometry *g);
 void ReadObjFromContent(const char *content, Geometry *g);
-
-void MergeGeometries(const Geometry &a, const Geometry &b, Geometry *res);
 
 
 inline Geometry CubeGeometry() {
