@@ -277,6 +277,8 @@ void ExtractGeometry(Object &o, Geometry *g) {
 }
 
 void SpDocument::UpdateCaptureGeometry () {
+  Geometry a;
+  capture_geometry_ = a;
   ExtractGeometry(scene_, &capture_geometry_);
 }
 
