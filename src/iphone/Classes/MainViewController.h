@@ -26,6 +26,7 @@ typedef enum {
 @interface MainViewController : UIViewController {
   UIView *mama;
   UIView *sliderSelectionView;
+  UITableView *selectObjectView;
   CaptureViewController *captureViewController;
   CinemaViewController *cinemaViewController;
   CalculatorViewNController *calculatorViewController;
@@ -40,6 +41,7 @@ typedef enum {
 
 @property (nonatomic,assign) IBOutlet UIView *mama;
 @property (nonatomic,assign) IBOutlet UIView *sliderSelectionView;
+@property (nonatomic,assign) IBOutlet UITableView *selectObjectView;
 @property (nonatomic,assign) IBOutlet InfiniteSlider *slider;
 @property (nonatomic,assign) IBOutlet UISegmentedControl *selector;
 @property (nonatomic) SliderVariable selectedSliderVariable;
@@ -63,6 +65,7 @@ typedef enum {
 
 - (IBAction)orbitButtonAction;
 - (IBAction)moveButtonAction;
+- (IBAction)selectButtonAction;
 
 @end
 

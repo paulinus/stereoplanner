@@ -14,6 +14,7 @@
 @implementation CaptureView
 
 @synthesize interactionMode;
+@synthesize selectedObject;
 
 - (id)commonInit {
   interactionMode = CaptureViewInteractionModeOrbit;

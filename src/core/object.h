@@ -13,6 +13,7 @@ class Object {
   }
 
  public:
+  std::string name_;
   Geometry geometry_;  
   Eigen::Vector3f position_;
   Eigen::Quaternionf orientation_;

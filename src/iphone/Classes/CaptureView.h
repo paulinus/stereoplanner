@@ -19,11 +19,13 @@ typedef enum {
 
 @interface CaptureView : EAGLView {
   CaptureViewInteractionMode interactionMode;
+  int selectedObject;
 
   SpDocument *doc_; //TODO(pau) make this const
 }
 
 @property (nonatomic) CaptureViewInteractionMode interactionMode;
+@property int selectedObject;
 
 - (void)setDocument:(SpDocument *)document;
 - (void)draw;

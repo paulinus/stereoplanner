@@ -15,6 +15,7 @@
 
 @synthesize mama;
 @synthesize sliderSelectionView;
+@synthesize selectObjectView;
 @synthesize slider;
 @synthesize selector;
 @dynamic selectedSliderVariable;
@@ -255,8 +256,35 @@
 - (IBAction)orbitButtonAction {
   [(CaptureView *)captureViewController.view setInteractionMode:CaptureViewInteractionModeOrbit];
 }
+
 - (IBAction)moveButtonAction {
   [(CaptureView *)captureViewController.view setInteractionMode:CaptureViewInteractionModeMove];
 }
+
+- (void)showSelectObjectView {
+  selectObjectView.alpha = 0;
+  selectObjectView.hidden = NO;
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:0.15];
+  selectObjectView.alpha = 1;
+  [UIView commitAnimations];
+}
+
+- (void)hideSelectObjectView {
+  [UIView beginAnimations:nil context:NULL];
+  [UIView setAnimationDuration:0.15];
+  selectObjectView.alpha = 0;
+  [UIView commitAnimations];
+}
+
+- (IBAction)selectButtonAction {
+  if (selectObjectView.hidden == YES || selectObjectView.alpha == 0) {
+    [self showSelectObjectView];
+  } else {    
+    [self hideSelectObjectView];
+  }
+}
+
+
 
 @end
