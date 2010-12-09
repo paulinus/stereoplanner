@@ -26,7 +26,7 @@ void ReadGeo(const char *filename, Geometry *g);
 void ReadObj(const char *filename, Geometry *g);
 void ReadObjFromContent(const char *content, Geometry *g);
 
-
+void MergeGeometries(const Geometry &a, const Geometry &b, Geometry *res);
 
 
 inline Geometry CubeGeometry() {

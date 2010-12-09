@@ -128,6 +128,26 @@ void ReadObjFromContent(const char *content, Geometry *g) {
   ReadObj(&stream, g);
 }
 
+void MergeGeometries(const Geometry &a, const Geometry &b, Geometry *res) {
+  res->vertex_.insert(res->vertex_.end(), a.vertex_.begin(), a.vertex_.end());
+  res->vertex_.insert(res->vertex_.end(), b.vertex_.begin(), b.vertex_.end());
+  res->normal_.insert(res->normal_.end(), a.normal_.begin(), a.normal_.end());
+  res->normal_.insert(res->normal_.end(), b.normal_.begin(), b.normal_.end());
+
+  res->triangles_.reserve(a.triangles_.size() + b.triangles_.size());
+  res->triangles_.insert(res->triangles_.end(), a.triangles_.begin(), a.triangles_.end());
+  for (unsigned int i = 0; i < b.triangles_.size(); ++i) {
+    res->triangles_.push_back(b.triangles_[i] + a.vertex_.size());
+  }
+
+  res->lines_.reserve(a.lines_.size() + b.lines_.size());
+  res->lines_.insert(res->lines_.end(), a.lines_.begin(), a.lines_.end());
+  for (unsigned int i = 0; i < b.lines_.size(); ++i) {
+    res->lines_.push_back(b.lines_[i] + a.vertex_.size());
+  }
+}
+
+
 void ProjectGeometry(const Geometry &g, const Camera &c, Geometry *p) {
   p->vertex_.resize(g.vertex_.size());
   for (unsigned int i = 0; i < g.vertex_.size(); i += 4) {
