@@ -17,6 +17,7 @@
 		28D7ACF80DDB3853001CB0EB /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MainViewController.mm */; };
 		D5118E081281A92E0021E6AB /* icona.png in Resources */ = {isa = PBXBuildFile; fileRef = D5118E071281A92E0021E6AB /* icona.png */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
+		D512607012B1796100899163 /* SelectObjectViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D512606F12B1796100899163 /* SelectObjectViewController.mm */; };
 		D537BA371288A15D00AF90DA /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = D537BA361288A15D00AF90DA /* black.png */; };
 		D53A026111DB7F550087316D /* document.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025D11DB7F550087316D /* document.cc */; };
 		D53A026211DB7F550087316D /* geometry.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025F11DB7F550087316D /* geometry.cc */; };
@@ -54,6 +55,8 @@
 		D5118E071281A92E0021E6AB /* icona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icona.png; sourceTree = "<group>"; };
 		D5118E52128213FB0021E6AB /* stereo_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stereo_frustum.h; sourceTree = "<group>"; };
 		D5118E53128213FB0021E6AB /* stereo_frustum.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stereo_frustum.cc; sourceTree = "<group>"; };
+		D512606E12B1796100899163 /* SelectObjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectObjectViewController.h; sourceTree = "<group>"; };
+		D512606F12B1796100899163 /* SelectObjectViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SelectObjectViewController.mm; sourceTree = "<group>"; };
 		D537BA361288A15D00AF90DA /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		D53A025C11DB7F550087316D /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
 		D53A025D11DB7F550087316D /* document.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = document.cc; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				D5B6471C1237D30F009F37FD /* CalculatorViewNController.mm */,
 				D5436DE112994F8800D1E7AE /* SettingsViewController.h */,
 				D5436DE212994F8800D1E7AE /* SettingsViewController.mm */,
+				D512606E12B1796100899163 /* SelectObjectViewController.h */,
+				D512606F12B1796100899163 /* SelectObjectViewController.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */,
 				D58C8E671295628B00E2A017 /* object.cc in Sources */,
 				D5436DE312994F8800D1E7AE /* SettingsViewController.mm in Sources */,
+				D512607012B1796100899163 /* SelectObjectViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

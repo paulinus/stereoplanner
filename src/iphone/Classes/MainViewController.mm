@@ -16,6 +16,7 @@
 @synthesize mama;
 @synthesize sliderSelectionView;
 @synthesize selectObjectView;
+@synthesize SelectObjectViewController;
 @synthesize slider;
 @synthesize selector;
 @dynamic selectedSliderVariable;
@@ -61,6 +62,7 @@
   doc_ = document;
   [captureViewController setDocument:doc_];
   [cinemaViewController setDocument:doc_];
+  [SelectObjectViewController setDocument:doc_];
 }
 
 - (void)setSelectedSliderVariable:(SliderVariable)v {

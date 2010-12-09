@@ -31,7 +31,16 @@ SpDocument::~SpDocument() {
 }
 
 void SpDocument::LoadGeometry(const char *path) {
-  ReadGeo(path, &scene_.geometry_);
+  Object *o;
+  o = new Object;
+  ReadGeo(path, &o->geometry_);
+  scene_.children_.push_back(o);
+  
+  o = new Object;
+  ReadGeo(path, &o->geometry_);
+  o->position_ << 3, 0, 0;
+  scene_.children_.push_back(o);
+  
   UpdateEverything();
 }
 
@@ -248,17 +257,22 @@ Vector3f SpDocument::CameraPosition(int i) const {
 }
 
 void ExtractGeometry(Object &o, Geometry *g) {
-  *g = o.geometry_;
+  Geometry tmp = o.geometry_;
   
   Matrix3f R = o.orientation_.toRotationMatrix();
   Vector3f t = o.position_;
   Matrix4f T;
   T << R, t,
        MatrixXf::Zero(1,3), 1;
-  for (unsigned int i = 0; i < g->vertex_.size(); i += 4) {
+  for (unsigned int i = 0; i < tmp.vertex_.size(); i += 4) {
     Vector4f pp(&o.geometry_.vertex_[i]);
     Vector4f p = T * pp;
-    for (int j = 0; j < 4; ++j) g->vertex_[i + j] = p[j];
+    for (int j = 0; j < 4; ++j) tmp.vertex_[i + j] = p[j];
+  }
+  g->Append(tmp);
+  
+  for (int i = 0; i < o.children_.size(); ++i) {
+    ExtractGeometry(*o.children_[i], g);
   }
 }
 

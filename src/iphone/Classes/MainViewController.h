@@ -11,6 +11,7 @@
 #import "CaptureViewController.h"
 #import "CinemaViewController.h"
 #import "CalculatorViewNController.h"
+#import "SelectObjectViewController.h"
 
 class SpDocument;
 
@@ -27,6 +28,7 @@ typedef enum {
   UIView *mama;
   UIView *sliderSelectionView;
   UITableView *selectObjectView;
+  SelectObjectViewController *selectObjectViewController;
   CaptureViewController *captureViewController;
   CinemaViewController *cinemaViewController;
   CalculatorViewNController *calculatorViewController;
@@ -42,6 +44,7 @@ typedef enum {
 @property (nonatomic,assign) IBOutlet UIView *mama;
 @property (nonatomic,assign) IBOutlet UIView *sliderSelectionView;
 @property (nonatomic,assign) IBOutlet UITableView *selectObjectView;
+@property (nonatomic,assign) IBOutlet SelectObjectViewController *SelectObjectViewController;
 @property (nonatomic,assign) IBOutlet InfiniteSlider *slider;
 @property (nonatomic,assign) IBOutlet UISegmentedControl *selector;
 @property (nonatomic) SliderVariable selectedSliderVariable;
