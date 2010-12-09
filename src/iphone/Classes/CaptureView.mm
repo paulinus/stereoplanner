@@ -154,18 +154,19 @@
   } else if (interactionMode == CaptureViewInteractionModeMove) {
     NSArray *allTouches = [[event allTouches] allObjects];
 
+    Object *so = doc_->scene_.children_[selectedObject];
     if ([allTouches count] == 1) {
       UITouch *touch = [touches anyObject];
       
       CGPoint p1 = [touch previousLocationInView:self];
       CGPoint p2 = [touch locationInView:self];
       
-      Eigen::Vector3f p = trackball_.Project(doc_->scene_.position_);
+      Eigen::Vector3f p = trackball_.Project(so->position_);
       float depth = p[2];
       NSLog(@"u, v, depth = %g, %g, %g", p[0], p[1], depth);
       Eigen::Vector3f a = trackball_.BackProject(p1.x, p1.y, depth);
       Eigen::Vector3f b = trackball_.BackProject(p2.x, p2.y, depth);
-      doc_->scene_.position_ += b - a;
+      so->position_ += b - a;
     } 
   }
   doc_->UpdateEverything();

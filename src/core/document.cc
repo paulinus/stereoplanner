@@ -34,11 +34,13 @@ void SpDocument::LoadGeometry(const char *path) {
   Object *o;
   o = new Object;
   ReadGeo(path, &o->geometry_);
+  o->name_ = "Mico 1";
   scene_.children_.push_back(o);
   
   o = new Object;
   ReadGeo(path, &o->geometry_);
   o->position_ << 3, 0, 0;
+  o->name_ = "Mica 2";
   scene_.children_.push_back(o);
   
   UpdateEverything();

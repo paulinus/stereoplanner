@@ -15,11 +15,11 @@
 
 @synthesize mama;
 @synthesize sliderSelectionView;
-@synthesize selectObjectView;
-@synthesize SelectObjectViewController;
+@synthesize selectObjectPicker;
 @synthesize slider;
 @synthesize selector;
 @dynamic selectedSliderVariable;
+
 
 
 /*
@@ -62,7 +62,20 @@
   doc_ = document;
   [captureViewController setDocument:doc_];
   [cinemaViewController setDocument:doc_];
-  [SelectObjectViewController setDocument:doc_];
+}
+
+-(int)selectedObject {
+  return selectedObject;
+}
+
+-(void)setSelectedObject:(int)s {
+  selectedObject = s;
+  [(CaptureView *)captureViewController.view setSelectedObject:selectedObject];
+}
+
+
+- (SliderVariable)selectedSliderVariable {
+  return selectedSliderVariable;
 }
 
 - (void)setSelectedSliderVariable:(SliderVariable)v {
@@ -73,9 +86,6 @@
   }
 }
 
-- (SliderVariable)selectedSliderVariable {
-  return selectedSliderVariable;
-}
 
 - (NSString *)getSliderVariableLabel {
   switch (selectedSliderVariable) {
@@ -264,27 +274,47 @@
 }
 
 - (void)showSelectObjectView {
-  selectObjectView.alpha = 0;
-  selectObjectView.hidden = NO;
+  selectObjectPicker.alpha = 0;
+  selectObjectPicker.hidden = NO;
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:0.15];
-  selectObjectView.alpha = 1;
+  selectObjectPicker.alpha = 1;
   [UIView commitAnimations];
 }
 
 - (void)hideSelectObjectView {
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:0.15];
-  selectObjectView.alpha = 0;
+  selectObjectPicker.alpha = 0;
   [UIView commitAnimations];
 }
 
 - (IBAction)selectButtonAction {
-  if (selectObjectView.hidden == YES || selectObjectView.alpha == 0) {
+  if (selectObjectPicker.hidden == YES || selectObjectPicker.alpha == 0) {
     [self showSelectObjectView];
   } else {    
     [self hideSelectObjectView];
   }
+}
+
+#pragma mark -
+#pragma mark UIPickerView stuff
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+  return 1;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+  [self setSelectedObject:row];
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+  return doc_->scene_.children_.size();
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+  return [NSString stringWithCString:doc_->scene_.children_[row]->name_.c_str() 
+                   encoding:[NSString defaultCStringEncoding]];
 }
 
 
