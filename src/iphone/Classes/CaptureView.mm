@@ -151,7 +151,9 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
   if (interactionMode == CaptureViewInteractionModeOrbit) {
     [super touchesMoved:touches withEvent:event];
-  } else if (interactionMode == CaptureViewInteractionModeMove) {
+  } else if (interactionMode == CaptureViewInteractionModeMove
+             && selectedObject >= 0
+             && selectedObject < doc_->scene_.children_.size()) {
     NSArray *allTouches = [[event allTouches] allObjects];
 
     Object *so = doc_->scene_.children_[selectedObject];

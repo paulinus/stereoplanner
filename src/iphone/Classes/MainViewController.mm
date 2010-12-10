@@ -19,6 +19,7 @@
 @synthesize slider;
 @synthesize selector;
 @dynamic selectedSliderVariable;
+@dynamic selectedObject;
 
 
 
@@ -56,6 +57,8 @@
   int h = 40;
   rect.origin.y = rect.origin.y + rect.size.height - h;
   rect.size.height = h;
+  
+  self.selectedObject = -1;
 }
 
 - (void)setDocument:(SpDocument *)document {
@@ -64,11 +67,11 @@
   [cinemaViewController setDocument:doc_];
 }
 
--(int)selectedObject {
+- (int)selectedObject {
   return selectedObject;
 }
 
--(void)setSelectedObject:(int)s {
+- (void)setSelectedObject:(int)s {
   selectedObject = s;
   [(CaptureView *)captureViewController.view setSelectedObject:selectedObject];
 }
@@ -311,7 +314,7 @@
   if (selectedObject >= 0) {
     doc_->RemoveObject(selectedObject);
     [self documentChanged];
-    selectedObject = -1;
+    self.selectedObject = -1;
     [selectObjectPicker selectRow:0 inComponent:0 animated:YES];
   }
 }
@@ -324,7 +327,7 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-  [self setSelectedObject:row - 1];
+  self.selectedObject = row - 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {

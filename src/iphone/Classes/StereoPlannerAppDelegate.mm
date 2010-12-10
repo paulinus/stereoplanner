@@ -28,7 +28,7 @@
   if (filePath) {
     //NSString *myText = [NSString stringWithContentsOfFile:filePath];
     //const char *text = [myText UTF8String];
-    doc_->LoadGeometry([filePath cStringUsingEncoding:1]);
+    doc_->AddObject([filePath cStringUsingEncoding:1]);
   }
   [viewController setDocument:doc_];
 

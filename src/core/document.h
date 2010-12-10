@@ -33,7 +33,6 @@ class SpDocument {
   SpDocument();
   virtual ~SpDocument();
   
-  void LoadGeometry(const char *path);
   void AddObject(const char *path);
   void RemoveObject(int i);
 
