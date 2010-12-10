@@ -34,6 +34,8 @@ class SpDocument {
   virtual ~SpDocument();
   
   void LoadGeometry(const char *path);
+  void AddObject(const char *path);
+  void RemoveObject(int i);
 
   const Geometry &CaptureGeometry() const { return capture_geometry_; }
   const Geometry &FrustumGeometry() const { return frustum_geometry_; }

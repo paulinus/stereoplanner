@@ -46,6 +46,26 @@ void SpDocument::LoadGeometry(const char *path) {
   UpdateEverything();
 }
 
+void SpDocument::AddObject(const char *path) {
+  Object *o = new Object;
+  std::stringstream st;
+  st << "Mico " << scene_.children_.size() + 1;
+  o->name_ = st.str();
+  ReadGeo(path, &o->geometry_);
+  scene_.children_.push_back(o);
+  
+  UpdateEverything();  
+}
+
+void SpDocument::RemoveObject(int i) {
+  if (i >= 0 && i < scene_.children_.size()) {
+    delete scene_.children_[i];
+    scene_.children_.erase(scene_.children_.begin() + i);
+  }
+  
+  UpdateEverything();
+}
+
 // TODO(pau): Consider non off-axis configuration (see doc/geometry.tex);
 float SpDocument::StereoWindowWidth() const {
   return SensorWidth() * RigConvergence() / FocalLegth();

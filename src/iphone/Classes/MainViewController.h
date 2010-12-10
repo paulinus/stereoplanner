@@ -68,6 +68,8 @@ typedef enum {
 - (IBAction)orbitButtonAction;
 - (IBAction)moveButtonAction;
 - (IBAction)selectButtonAction;
+- (IBAction)addButtonAction;
+- (IBAction)removeButtonAction;
 
 @end
 

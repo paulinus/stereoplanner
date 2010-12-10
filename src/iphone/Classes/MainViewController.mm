@@ -297,6 +297,17 @@
   }
 }
 
+- (IBAction)addButtonAction {
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"monkey" ofType:@"geo"];  
+  if (filePath) {
+    doc_->AddObject([filePath cStringUsingEncoding:1]);
+  }
+}
+
+- (IBAction)removeButtonAction {
+  doc_->RemoveObject(selectedObject);
+}
+
 #pragma mark -
 #pragma mark UIPickerView stuff
 
