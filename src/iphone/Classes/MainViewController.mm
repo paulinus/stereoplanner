@@ -159,6 +159,8 @@
   if (slider.value != [self getSliderVariableValue])
     slider.value = [self getSliderVariableValue];
   
+  [selectObjectPicker reloadAllComponents];
+  
   if ([captureViewController.view isDescendantOfView:mama])
     [(CaptureView *)captureViewController.view updateGL];
   
@@ -302,10 +304,16 @@
   if (filePath) {
     doc_->AddObject([filePath cStringUsingEncoding:1]);
   }
+  [self documentChanged];
 }
 
 - (IBAction)removeButtonAction {
-  doc_->RemoveObject(selectedObject);
+  if (selectedObject >= 0) {
+    doc_->RemoveObject(selectedObject);
+    [self documentChanged];
+    selectedObject = -1;
+    [selectObjectPicker selectRow:0 inComponent:0 animated:YES];
+  }
 }
 
 #pragma mark -
@@ -316,16 +324,20 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-  [self setSelectedObject:row];
+  [self setSelectedObject:row - 1];
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-  return doc_->scene_.children_.size();
+  return doc_->scene_.children_.size() + 1;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-  return [NSString stringWithCString:doc_->scene_.children_[row]->name_.c_str() 
-                   encoding:[NSString defaultCStringEncoding]];
+  if (row == 0) {
+    return @"None";
+  } else {
+    return [NSString stringWithCString:doc_->scene_.children_[row - 1]->name_.c_str() 
+                     encoding:[NSString defaultCStringEncoding]];
+  }
 }
 
 
