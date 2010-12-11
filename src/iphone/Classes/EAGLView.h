@@ -40,6 +40,7 @@ class Geometry;
 - (void)draw;
 - (void)postDraw;
 - (void)renderGeometry:(const Geometry *)geo;
+- (void)renderGeometry:(const Geometry *)geo withColor:(float *)color;
 - (BOOL)createFramebuffer;
 - (void)destroyFramebuffer;
 

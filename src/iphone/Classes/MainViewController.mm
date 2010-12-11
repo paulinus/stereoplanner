@@ -74,6 +74,7 @@
 - (void)setSelectedObject:(int)s {
   selectedObject = s;
   [(CaptureView *)captureViewController.view setSelectedObject:selectedObject];
+  [self documentChanged];
 }
 
 
@@ -283,7 +284,7 @@
   selectObjectPicker.hidden = NO;
   [UIView beginAnimations:nil context:NULL];
   [UIView setAnimationDuration:0.15];
-  selectObjectPicker.alpha = 1;
+  selectObjectPicker.alpha = 0.5;
   [UIView commitAnimations];
 }
 

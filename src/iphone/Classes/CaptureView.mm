@@ -98,7 +98,21 @@
   [super draw];
 
   if (doc_) {
-    [super renderGeometry:&(doc_->CaptureGeometry())];
+    float cyan[4] = { 0.9f, 0.7f, 0.0f, 1.0f };
+    float blue[4] = { 0.5f, 0.5f, 8.0f, 1.0f };
+
+    for (int i = 0; i < doc_->scene_.children_.size(); ++i) {
+      Object *o = doc_->scene_.children_[i];
+      glPushMatrix();
+      Matrix3f R = o->orientation_.toRotationMatrix();
+      Vector3f t = o->position_;
+      Matrix4f T;
+      T << R, t, MatrixXf::Zero(1,3), 1;
+      glMultMatrixf(T.data());
+      float *color = (selectedObject == i) ? cyan:blue;
+      [super renderGeometry:&o->geometry_ withColor:color];
+      glPopMatrix();
+    }
   
     // Move to rig's reference frame.
     glPushMatrix();

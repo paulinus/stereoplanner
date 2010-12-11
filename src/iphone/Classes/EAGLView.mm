@@ -210,8 +210,13 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
   glDisableClientState(GL_COLOR_ARRAY);
 }
 
-
 - (void)renderGeometry:(const Geometry *)geo {
+  float color[4] = { 0.5f, 0.5f, 8.0f, 1.0f };
+  [self renderGeometry:geo withColor:color];
+}
+
+
+- (void)renderGeometry:(const Geometry *)geo withColor:(float *)color {
   if (geo->triangles_.size() > 0) {
     glEnable(GL_LIGHTING);
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -223,7 +228,7 @@ void DecomposeTwoTouchMove(CGPoint prev1, CGPoint prev2,
     }
     
     glEnable(GL_COLOR_MATERIAL);
-    glColor4f(0.5f, 0.5f, 8.0f, 1.0f);
+    glColor4f(color[0], color[1], color[2], color[3]);
     glDrawElements(GL_TRIANGLES, geo->triangles_.size(), GL_UNSIGNED_SHORT,
                    &geo->triangles_[0]);
     
