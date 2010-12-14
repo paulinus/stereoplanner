@@ -36,9 +36,9 @@ class SpDocument {
   void AddObject(const char *path);
   void RemoveObject(int i);
 
-  const Geometry &CaptureGeometry() const { return capture_geometry_; }
-  const Geometry &FrustumGeometry() const { return frustum_geometry_; }
-  const Geometry &TheaterGeometry() const { return theater_geometry_; }
+  const Geometry &CaptureGeometry();
+  const Geometry &FrustumGeometry();
+  const Geometry &TheaterGeometry();
 
   float FocalLegth() const { return focal_length_; }
   float SensorWidth() const { return sensor_width_; }
@@ -128,8 +128,11 @@ class SpDocument {
   Object scene_; //TODO(pau): make this private
  private:
   Geometry capture_geometry_;
+  bool capture_geometry_updated_;
   Geometry frustum_geometry_;
+  bool frustum_geometry_updated_;
   Geometry theater_geometry_;
+  bool theater_geometry_updated_;
 
   // All distances are in mm.
 

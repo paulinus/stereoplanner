@@ -2,6 +2,10 @@
 
 
 SpDocument::SpDocument() {
+  capture_geometry_updated_ = false;
+  frustum_geometry_updated_ = false;
+  theater_geometry_updated_ = false;
+  
   focal_length_ = 0.040;
   sensor_width_ = 0.036;
   sensor_height_ = 0.024;
@@ -49,6 +53,22 @@ void SpDocument::RemoveObject(int i) {
   
   UpdateEverything();
 }
+
+const Geometry &SpDocument::CaptureGeometry() {
+  if (!capture_geometry_updated_) UpdateCaptureGeometry();
+  return capture_geometry_;
+}
+
+const Geometry &SpDocument::FrustumGeometry() {
+  if (!frustum_geometry_updated_) UpdateFrustumGeometry();
+  return frustum_geometry_;
+}
+
+const Geometry &SpDocument::TheaterGeometry() {
+  if (!theater_geometry_updated_) UpdateTheaterGeometry();
+  return theater_geometry_;
+}
+
 
 // TODO(pau): Consider non off-axis configuration (see doc/geometry.tex);
 float SpDocument::StereoWindowWidth() const {
@@ -251,9 +271,9 @@ bool SpDocument::DocumentChanged() {
 }
 
 void SpDocument::UpdateEverything() {
-  UpdateCaptureGeometry();
-  UpdateFrustumGeometry();
-  UpdateTheaterGeometry();
+  capture_geometry_updated_ = false;
+  frustum_geometry_updated_ = false;
+  theater_geometry_updated_ = false;
   setDocumentChanged(true);
 }
 
@@ -286,6 +306,7 @@ void SpDocument::UpdateCaptureGeometry () {
   Geometry a;
   capture_geometry_ = a;
   ExtractGeometry(scene_, &capture_geometry_);
+  capture_geometry_updated_ = true;
 }
 
 void SpDocument::UpdateFrustumGeometry() {
@@ -296,7 +317,7 @@ void SpDocument::UpdateFrustumGeometry() {
        MatrixXf::Zero(1,3), 1;
   
   StereoFrustum f = ShootingFrustrum();
-  frustum_geometry_ = capture_geometry_;
+  frustum_geometry_ = CaptureGeometry();
   for (unsigned int i = 0; i < frustum_geometry_.vertex_.size(); i += 4) {
     Vector4f pp(&capture_geometry_.vertex_[i]);
     Vector4f p = T * pp;
@@ -305,6 +326,7 @@ void SpDocument::UpdateFrustumGeometry() {
     f.WorldToFrustum(p[0] / p[3], p[1] / p[3], p[2] / p[3], q, q + 1, q + 2);
     q[3] = 1;
   }
+  frustum_geometry_updated_ = true;
 }
 
 Vector3f SpDocument::EyePosition(int i) const {
@@ -316,7 +338,7 @@ Vector3f SpDocument::EyePosition(int i) const {
 
 void SpDocument::UpdateTheaterGeometry() {
   StereoFrustum f = ViewingFrustrum();
-  theater_geometry_ = frustum_geometry_;
+  theater_geometry_ = FrustumGeometry();
   for (unsigned int i = 0; i < theater_geometry_.vertex_.size(); i += 4) {
     float *p = &frustum_geometry_.vertex_[i];
     float *q = &theater_geometry_.vertex_[i];
@@ -325,5 +347,6 @@ void SpDocument::UpdateTheaterGeometry() {
     q[3] = 1;
   }
   theater_geometry_.ComputeNormals();
+  theater_geometry_updated_ = true;
 }
 

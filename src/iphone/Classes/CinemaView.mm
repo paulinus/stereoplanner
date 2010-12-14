@@ -13,8 +13,7 @@
 
 @implementation CinemaView
 
-- (void)setDocument:(const SpDocument *)document {
-  
+- (void)setDocument:(SpDocument *)document {
   doc_ = document;
   [self updateGL];
 }

@@ -14,10 +14,10 @@ class SpDocument;
 
 @interface CinemaView : EAGLView {
 @private
-  const SpDocument *doc_;
+  SpDocument *doc_;
 }
 
-- (void)setDocument:(const SpDocument *)document;
+- (void)setDocument:(SpDocument *)document;
 - (void)draw;
 
 @end
