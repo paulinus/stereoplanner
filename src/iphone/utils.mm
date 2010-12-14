@@ -16,7 +16,9 @@ NSString *floatToString(float value, int significand_digits) {
   [numberFormatter setMaximumSignificantDigits:significand_digits];
   [numberFormatter setRoundingMode: NSNumberFormatterRoundUp];
   NSNumber *c = [NSNumber numberWithFloat:value];
-  return [numberFormatter stringFromNumber:c];
+  NSString *res = [numberFormatter stringFromNumber:c];
+  [numberFormatter release];
+  return res;
 }
 
 NSString *floatToStringInMetric(float meters, int significand_digits) {
