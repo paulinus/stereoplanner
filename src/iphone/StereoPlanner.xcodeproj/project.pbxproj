@@ -7,54 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* StereoPlannerAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* StereoPlannerAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		2899E5220DE3E06400AC0155 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* MainView.xib */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		28D7ACF80DDB3853001CB0EB /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* MainViewController.mm */; };
-		D5118E081281A92E0021E6AB /* icona.png in Resources */ = {isa = PBXBuildFile; fileRef = D5118E071281A92E0021E6AB /* icona.png */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
-		D537BA371288A15D00AF90DA /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = D537BA361288A15D00AF90DA /* black.png */; };
 		D53A026111DB7F550087316D /* document.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025D11DB7F550087316D /* document.cc */; };
 		D53A026211DB7F550087316D /* geometry.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025F11DB7F550087316D /* geometry.cc */; };
 		D53A03FC11E4830E0087316D /* trackball.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A03FA11E4830E0087316D /* trackball.cc */; };
-		D53A040C11E483940087316D /* CaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53A040B11E483940087316D /* CaptureViewController.mm */; };
-		D53A076911E678410087316D /* CinemaViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53A076811E678410087316D /* CinemaViewController.mm */; };
 		D53B09B6126909D900DF4180 /* utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53B09B5126909D900DF4180 /* utils.mm */; };
-		D53DB4BB11ED1C27009FA541 /* monkey.geo in Resources */ = {isa = PBXBuildFile; fileRef = D53DB4BA11ED1C27009FA541 /* monkey.geo */; };
-		D53DB53011EF6A6B009FA541 /* CaptureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53DB52D11EF6A6B009FA541 /* CaptureView.mm */; };
-		D53DB53111EF6A6B009FA541 /* CinemaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53DB52F11EF6A6B009FA541 /* CinemaView.mm */; };
-		D5436DE312994F8800D1E7AE /* SettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5436DE212994F8800D1E7AE /* SettingsViewController.mm */; };
+		D5505C6213A4FEFC00F09BF0 /* CalculatorViewNController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C4E13A4FEFC00F09BF0 /* CalculatorViewNController.mm */; };
+		D5505C6313A4FEFC00F09BF0 /* CalculatorViewNController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5505C4F13A4FEFC00F09BF0 /* CalculatorViewNController.xib */; };
+		D5505C6513A4FEFC00F09BF0 /* CaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */; };
+		D5505C6713A4FEFC00F09BF0 /* CinemaViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5713A4FEFC00F09BF0 /* CinemaViewController.mm */; };
+		D5505C6A13A4FEFC00F09BF0 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5D13A4FEFC00F09BF0 /* MainViewController.mm */; };
+		D5505C6B13A4FEFC00F09BF0 /* SettingsViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5F13A4FEFC00F09BF0 /* SettingsViewController.mm */; };
+		D5505C6C13A4FEFC00F09BF0 /* StereoPlannerAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C6113A4FEFC00F09BF0 /* StereoPlannerAppDelegate.mm */; };
+		D5505C7E13A50F4300F09BF0 /* CaptureView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C7513A50F4300F09BF0 /* CaptureView.mm */; };
+		D5505C7F13A50F4300F09BF0 /* CinemaView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C7713A50F4300F09BF0 /* CinemaView.mm */; };
+		D5505C8013A50F4300F09BF0 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C7913A50F4300F09BF0 /* EAGLView.mm */; };
+		D5505C8113A50F4300F09BF0 /* InfiniteSlider.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C7B13A50F4300F09BF0 /* InfiniteSlider.mm */; };
+		D5505C8213A50F4300F09BF0 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5505C7C13A50F4300F09BF0 /* MainView.xib */; };
+		D5505C8313A50F4300F09BF0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5505C7D13A50F4300F09BF0 /* MainWindow.xib */; };
+		D5505C8713A50F5D00F09BF0 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = D5505C8413A50F5D00F09BF0 /* black.png */; };
+		D5505C8813A50F5D00F09BF0 /* icona.png in Resources */ = {isa = PBXBuildFile; fileRef = D5505C8513A50F5D00F09BF0 /* icona.png */; };
+		D5505C8913A50F5D00F09BF0 /* monkey.geo in Resources */ = {isa = PBXBuildFile; fileRef = D5505C8613A50F5D00F09BF0 /* monkey.geo */; };
 		D58C8E671295628B00E2A017 /* object.cc in Sources */ = {isa = PBXBuildFile; fileRef = D58C8E661295628B00E2A017 /* object.cc */; };
-		D5AA498011F24B9400AF8E21 /* InfiniteSlider.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5AA497F11F24B9400AF8E21 /* InfiniteSlider.mm */; };
-		D5B6471E1237D30F009F37FD /* CalculatorViewNController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5B6471C1237D30F009F37FD /* CalculatorViewNController.mm */; };
-		D5B6471F1237D30F009F37FD /* CalculatorViewNController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5B6471D1237D30F009F37FD /* CalculatorViewNController.xib */; };
-		D5C0055B11D65EBC0007CF10 /* EAGLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5C0055A11D65EBC0007CF10 /* EAGLView.mm */; };
 		D5C0057B11D65F9B0007CF10 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0057A11D65F9B0007CF10 /* OpenGLES.framework */; };
 		D5C0058F11D65FCD0007CF10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0058E11D65FCD0007CF10 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* StereoPlannerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoPlannerAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* StereoPlannerAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoPlannerAppDelegate.mm; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* StereoPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StereoPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E5210DE3E06400AC0155 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28D7ACF60DDB3853001CB0EB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MainViewController.mm; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* StereoPlanner_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoPlanner_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* StereoPlanner-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StereoPlanner-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		D5118E071281A92E0021E6AB /* icona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icona.png; sourceTree = "<group>"; };
 		D5118E52128213FB0021E6AB /* stereo_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stereo_frustum.h; sourceTree = "<group>"; };
 		D5118E53128213FB0021E6AB /* stereo_frustum.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stereo_frustum.cc; sourceTree = "<group>"; };
-		D537BA361288A15D00AF90DA /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black.png; sourceTree = "<group>"; };
 		D53A025C11DB7F550087316D /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
 		D53A025D11DB7F550087316D /* document.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = document.cc; sourceTree = "<group>"; };
 		D53A025E11DB7F550087316D /* document.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = document.h; sourceTree = "<group>"; };
@@ -62,28 +54,36 @@
 		D53A026011DB7F550087316D /* geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geometry.h; sourceTree = "<group>"; };
 		D53A03FA11E4830E0087316D /* trackball.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = trackball.cc; sourceTree = "<group>"; };
 		D53A03FB11E4830E0087316D /* trackball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trackball.h; sourceTree = "<group>"; };
-		D53A040A11E483940087316D /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureViewController.h; sourceTree = "<group>"; };
-		D53A040B11E483940087316D /* CaptureViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CaptureViewController.mm; sourceTree = "<group>"; };
-		D53A076711E678410087316D /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaViewController.h; sourceTree = "<group>"; };
-		D53A076811E678410087316D /* CinemaViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinemaViewController.mm; sourceTree = "<group>"; };
-		D53B09B4126909D900DF4180 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
-		D53B09B5126909D900DF4180 /* utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = utils.mm; sourceTree = "<group>"; };
-		D53DB4BA11ED1C27009FA541 /* monkey.geo */ = {isa = PBXFileReference; lastKnownFileType = file; path = monkey.geo; sourceTree = "<group>"; };
-		D53DB52C11EF6A6B009FA541 /* CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptureView.h; sourceTree = "<group>"; };
-		D53DB52D11EF6A6B009FA541 /* CaptureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CaptureView.mm; sourceTree = "<group>"; };
-		D53DB52E11EF6A6B009FA541 /* CinemaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CinemaView.h; sourceTree = "<group>"; };
-		D53DB52F11EF6A6B009FA541 /* CinemaView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CinemaView.mm; sourceTree = "<group>"; };
-		D5436DE112994F8800D1E7AE /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
-		D5436DE212994F8800D1E7AE /* SettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SettingsViewController.mm; sourceTree = "<group>"; };
+		D53B09B4126909D900DF4180 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = Utils/utils.h; sourceTree = "<group>"; };
+		D53B09B5126909D900DF4180 /* utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = utils.mm; path = Utils/utils.mm; sourceTree = "<group>"; };
+		D5505C4D13A4FEFC00F09BF0 /* CalculatorViewNController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorViewNController.h; path = Controllers/CalculatorViewNController.h; sourceTree = "<group>"; };
+		D5505C4E13A4FEFC00F09BF0 /* CalculatorViewNController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CalculatorViewNController.mm; path = Controllers/CalculatorViewNController.mm; sourceTree = "<group>"; };
+		D5505C4F13A4FEFC00F09BF0 /* CalculatorViewNController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalculatorViewNController.xib; path = Controllers/CalculatorViewNController.xib; sourceTree = "<group>"; };
+		D5505C5213A4FEFC00F09BF0 /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureViewController.h; path = Controllers/CaptureViewController.h; sourceTree = "<group>"; };
+		D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureViewController.mm; path = Controllers/CaptureViewController.mm; sourceTree = "<group>"; };
+		D5505C5613A4FEFC00F09BF0 /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemaViewController.h; path = Controllers/CinemaViewController.h; sourceTree = "<group>"; };
+		D5505C5713A4FEFC00F09BF0 /* CinemaViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CinemaViewController.mm; path = Controllers/CinemaViewController.mm; sourceTree = "<group>"; };
+		D5505C5C13A4FEFC00F09BF0 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Controllers/MainViewController.h; sourceTree = "<group>"; };
+		D5505C5D13A4FEFC00F09BF0 /* MainViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MainViewController.mm; path = Controllers/MainViewController.mm; sourceTree = "<group>"; };
+		D5505C5E13A4FEFC00F09BF0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Controllers/SettingsViewController.h; sourceTree = "<group>"; };
+		D5505C5F13A4FEFC00F09BF0 /* SettingsViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SettingsViewController.mm; path = Controllers/SettingsViewController.mm; sourceTree = "<group>"; };
+		D5505C6013A4FEFC00F09BF0 /* StereoPlannerAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StereoPlannerAppDelegate.h; path = Controllers/StereoPlannerAppDelegate.h; sourceTree = "<group>"; };
+		D5505C6113A4FEFC00F09BF0 /* StereoPlannerAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = StereoPlannerAppDelegate.mm; path = Controllers/StereoPlannerAppDelegate.mm; sourceTree = "<group>"; };
+		D5505C7413A50F4300F09BF0 /* CaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureView.h; path = Views/CaptureView.h; sourceTree = "<group>"; };
+		D5505C7513A50F4300F09BF0 /* CaptureView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureView.mm; path = Views/CaptureView.mm; sourceTree = "<group>"; };
+		D5505C7613A50F4300F09BF0 /* CinemaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemaView.h; path = Views/CinemaView.h; sourceTree = "<group>"; };
+		D5505C7713A50F4300F09BF0 /* CinemaView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CinemaView.mm; path = Views/CinemaView.mm; sourceTree = "<group>"; };
+		D5505C7813A50F4300F09BF0 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EAGLView.h; path = Views/EAGLView.h; sourceTree = "<group>"; };
+		D5505C7913A50F4300F09BF0 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = EAGLView.mm; path = Views/EAGLView.mm; sourceTree = "<group>"; };
+		D5505C7A13A50F4300F09BF0 /* InfiniteSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InfiniteSlider.h; path = Views/InfiniteSlider.h; sourceTree = "<group>"; };
+		D5505C7B13A50F4300F09BF0 /* InfiniteSlider.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = InfiniteSlider.mm; path = Views/InfiniteSlider.mm; sourceTree = "<group>"; };
+		D5505C7C13A50F4300F09BF0 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainView.xib; path = Views/MainView.xib; sourceTree = "<group>"; };
+		D5505C7D13A50F4300F09BF0 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainWindow.xib; path = Views/MainWindow.xib; sourceTree = "<group>"; };
+		D5505C8413A50F5D00F09BF0 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = black.png; path = Resources/black.png; sourceTree = "<group>"; };
+		D5505C8513A50F5D00F09BF0 /* icona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icona.png; path = Resources/icona.png; sourceTree = "<group>"; };
+		D5505C8613A50F5D00F09BF0 /* monkey.geo */ = {isa = PBXFileReference; lastKnownFileType = file; name = monkey.geo; path = Resources/monkey.geo; sourceTree = "<group>"; };
 		D58C8E651295628B00E2A017 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
 		D58C8E661295628B00E2A017 /* object.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cc; sourceTree = "<group>"; };
-		D5AA497E11F24B9400AF8E21 /* InfiniteSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteSlider.h; sourceTree = "<group>"; };
-		D5AA497F11F24B9400AF8E21 /* InfiniteSlider.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InfiniteSlider.mm; sourceTree = "<group>"; };
-		D5B6471B1237D30F009F37FD /* CalculatorViewNController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorViewNController.h; sourceTree = "<group>"; };
-		D5B6471C1237D30F009F37FD /* CalculatorViewNController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CalculatorViewNController.mm; sourceTree = "<group>"; };
-		D5B6471D1237D30F009F37FD /* CalculatorViewNController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalculatorViewNController.xib; path = Classes/CalculatorViewNController.xib; sourceTree = "<group>"; };
-		D5C0055911D65EBC0007CF10 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
-		D5C0055A11D65EBC0007CF10 /* EAGLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAGLView.mm; sourceTree = "<group>"; };
 		D5C0057A11D65F9B0007CF10 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		D5C0058E11D65FCD0007CF10 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -104,34 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				D53A025B11DB7F550087316D /* core */,
-				D5C0055911D65EBC0007CF10 /* EAGLView.h */,
-				D5C0055A11D65EBC0007CF10 /* EAGLView.mm */,
-				D53DB52C11EF6A6B009FA541 /* CaptureView.h */,
-				D53DB52D11EF6A6B009FA541 /* CaptureView.mm */,
-				D53DB52E11EF6A6B009FA541 /* CinemaView.h */,
-				D53DB52F11EF6A6B009FA541 /* CinemaView.mm */,
-				D53A040A11E483940087316D /* CaptureViewController.h */,
-				D53A040B11E483940087316D /* CaptureViewController.mm */,
-				D53A076711E678410087316D /* CinemaViewController.h */,
-				D53A076811E678410087316D /* CinemaViewController.mm */,
-				D5AA497E11F24B9400AF8E21 /* InfiniteSlider.h */,
-				D5AA497F11F24B9400AF8E21 /* InfiniteSlider.mm */,
-				1D3623240D0F684500981E51 /* StereoPlannerAppDelegate.h */,
-				1D3623250D0F684500981E51 /* StereoPlannerAppDelegate.mm */,
-				28D7ACF60DDB3853001CB0EB /* MainViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* MainViewController.mm */,
-				D5B6471B1237D30F009F37FD /* CalculatorViewNController.h */,
-				D5B6471C1237D30F009F37FD /* CalculatorViewNController.mm */,
-				D5436DE112994F8800D1E7AE /* SettingsViewController.h */,
-				D5436DE212994F8800D1E7AE /* SettingsViewController.mm */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +115,10 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
+				D53A025B11DB7F550087316D /* core */,
+				D5505C6D13A50EB700F09BF0 /* Views */,
+				D5505C4B13A4FEE400F09BF0 /* Controllers */,
+				D5505C8A13A50F7F00F09BF0 /* Utils */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -155,8 +130,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				D53B09B4126909D900DF4180 /* utils.h */,
-				D53B09B5126909D900DF4180 /* utils.mm */,
 				32CA4F630368D1EE00C91783 /* StereoPlanner_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -166,12 +139,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D537BA361288A15D00AF90DA /* black.png */,
-				D5118E071281A92E0021E6AB /* icona.png */,
-				D53DB4BA11ED1C27009FA541 /* monkey.geo */,
-				D5B6471D1237D30F009F37FD /* CalculatorViewNController.xib */,
-				2899E5210DE3E06400AC0155 /* MainView.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				D5505C8413A50F5D00F09BF0 /* black.png */,
+				D5505C8513A50F5D00F09BF0 /* icona.png */,
+				D5505C8613A50F5D00F09BF0 /* monkey.geo */,
 				8D1107310486CEB800E47090 /* StereoPlanner-Info.plist */,
 			);
 			name = Resources;
@@ -207,6 +177,52 @@
 			name = core;
 			path = ../core;
 			sourceTree = SOURCE_ROOT;
+		};
+		D5505C4B13A4FEE400F09BF0 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5505C4D13A4FEFC00F09BF0 /* CalculatorViewNController.h */,
+				D5505C4E13A4FEFC00F09BF0 /* CalculatorViewNController.mm */,
+				D5505C4F13A4FEFC00F09BF0 /* CalculatorViewNController.xib */,
+				D5505C5213A4FEFC00F09BF0 /* CaptureViewController.h */,
+				D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */,
+				D5505C5613A4FEFC00F09BF0 /* CinemaViewController.h */,
+				D5505C5713A4FEFC00F09BF0 /* CinemaViewController.mm */,
+				D5505C5C13A4FEFC00F09BF0 /* MainViewController.h */,
+				D5505C5D13A4FEFC00F09BF0 /* MainViewController.mm */,
+				D5505C5E13A4FEFC00F09BF0 /* SettingsViewController.h */,
+				D5505C5F13A4FEFC00F09BF0 /* SettingsViewController.mm */,
+				D5505C6013A4FEFC00F09BF0 /* StereoPlannerAppDelegate.h */,
+				D5505C6113A4FEFC00F09BF0 /* StereoPlannerAppDelegate.mm */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D5505C6D13A50EB700F09BF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D5505C7413A50F4300F09BF0 /* CaptureView.h */,
+				D5505C7513A50F4300F09BF0 /* CaptureView.mm */,
+				D5505C7613A50F4300F09BF0 /* CinemaView.h */,
+				D5505C7713A50F4300F09BF0 /* CinemaView.mm */,
+				D5505C7813A50F4300F09BF0 /* EAGLView.h */,
+				D5505C7913A50F4300F09BF0 /* EAGLView.mm */,
+				D5505C7A13A50F4300F09BF0 /* InfiniteSlider.h */,
+				D5505C7B13A50F4300F09BF0 /* InfiniteSlider.mm */,
+				D5505C7C13A50F4300F09BF0 /* MainView.xib */,
+				D5505C7D13A50F4300F09BF0 /* MainWindow.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D5505C8A13A50F7F00F09BF0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D53B09B4126909D900DF4180 /* utils.h */,
+				D53B09B5126909D900DF4180 /* utils.mm */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -257,12 +273,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				2899E5220DE3E06400AC0155 /* MainView.xib in Resources */,
-				D53DB4BB11ED1C27009FA541 /* monkey.geo in Resources */,
-				D5B6471F1237D30F009F37FD /* CalculatorViewNController.xib in Resources */,
-				D5118E081281A92E0021E6AB /* icona.png in Resources */,
-				D537BA371288A15D00AF90DA /* black.png in Resources */,
+				D5505C6313A4FEFC00F09BF0 /* CalculatorViewNController.xib in Resources */,
+				D5505C8213A50F4300F09BF0 /* MainView.xib in Resources */,
+				D5505C8313A50F4300F09BF0 /* MainWindow.xib in Resources */,
+				D5505C8713A50F5D00F09BF0 /* black.png in Resources */,
+				D5505C8813A50F5D00F09BF0 /* icona.png in Resources */,
+				D5505C8913A50F5D00F09BF0 /* monkey.geo in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,22 +290,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* StereoPlannerAppDelegate.mm in Sources */,
-				28D7ACF80DDB3853001CB0EB /* MainViewController.mm in Sources */,
-				D5C0055B11D65EBC0007CF10 /* EAGLView.mm in Sources */,
 				D53A026111DB7F550087316D /* document.cc in Sources */,
 				D53A026211DB7F550087316D /* geometry.cc in Sources */,
 				D53A03FC11E4830E0087316D /* trackball.cc in Sources */,
-				D53A040C11E483940087316D /* CaptureViewController.mm in Sources */,
-				D53A076911E678410087316D /* CinemaViewController.mm in Sources */,
-				D53DB53011EF6A6B009FA541 /* CaptureView.mm in Sources */,
-				D53DB53111EF6A6B009FA541 /* CinemaView.mm in Sources */,
-				D5AA498011F24B9400AF8E21 /* InfiniteSlider.mm in Sources */,
-				D5B6471E1237D30F009F37FD /* CalculatorViewNController.mm in Sources */,
 				D53B09B6126909D900DF4180 /* utils.mm in Sources */,
 				D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */,
 				D58C8E671295628B00E2A017 /* object.cc in Sources */,
-				D5436DE312994F8800D1E7AE /* SettingsViewController.mm in Sources */,
+				D5505C6213A4FEFC00F09BF0 /* CalculatorViewNController.mm in Sources */,
+				D5505C6513A4FEFC00F09BF0 /* CaptureViewController.mm in Sources */,
+				D5505C6713A4FEFC00F09BF0 /* CinemaViewController.mm in Sources */,
+				D5505C6A13A4FEFC00F09BF0 /* MainViewController.mm in Sources */,
+				D5505C6B13A4FEFC00F09BF0 /* SettingsViewController.mm in Sources */,
+				D5505C6C13A4FEFC00F09BF0 /* StereoPlannerAppDelegate.mm in Sources */,
+				D5505C7E13A50F4300F09BF0 /* CaptureView.mm in Sources */,
+				D5505C7F13A50F4300F09BF0 /* CinemaView.mm in Sources */,
+				D5505C8013A50F4300F09BF0 /* EAGLView.mm in Sources */,
+				D5505C8113A50F4300F09BF0 /* InfiniteSlider.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
