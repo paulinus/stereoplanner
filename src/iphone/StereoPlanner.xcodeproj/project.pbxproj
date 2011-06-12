@@ -16,8 +16,8 @@
 		D53A026211DB7F550087316D /* geometry.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025F11DB7F550087316D /* geometry.cc */; };
 		D53A03FC11E4830E0087316D /* trackball.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A03FA11E4830E0087316D /* trackball.cc */; };
 		D53B09B6126909D900DF4180 /* utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = D53B09B5126909D900DF4180 /* utils.mm */; };
-		D5505C6213A4FEFC00F09BF0 /* CalculatorViewNController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C4E13A4FEFC00F09BF0 /* CalculatorViewNController.mm */; };
-		D5505C6313A4FEFC00F09BF0 /* CalculatorViewN.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5505C4F13A4FEFC00F09BF0 /* CalculatorViewN.xib */; };
+		D5505C6213A4FEFC00F09BF0 /* CalculatorViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C4E13A4FEFC00F09BF0 /* CalculatorViewController.mm */; };
+		D5505C6313A4FEFC00F09BF0 /* CalculatorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5505C4F13A4FEFC00F09BF0 /* CalculatorView.xib */; };
 		D5505C6513A4FEFC00F09BF0 /* CaptureViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */; };
 		D5505C6713A4FEFC00F09BF0 /* CinemaViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5713A4FEFC00F09BF0 /* CinemaViewController.mm */; };
 		D5505C6A13A4FEFC00F09BF0 /* MainViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D5505C5D13A4FEFC00F09BF0 /* MainViewController.mm */; };
@@ -56,9 +56,9 @@
 		D53A03FB11E4830E0087316D /* trackball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trackball.h; sourceTree = "<group>"; };
 		D53B09B4126909D900DF4180 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = Utils/utils.h; sourceTree = "<group>"; };
 		D53B09B5126909D900DF4180 /* utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = utils.mm; path = Utils/utils.mm; sourceTree = "<group>"; };
-		D5505C4D13A4FEFC00F09BF0 /* CalculatorViewNController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorViewNController.h; path = Controllers/CalculatorViewNController.h; sourceTree = "<group>"; };
-		D5505C4E13A4FEFC00F09BF0 /* CalculatorViewNController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CalculatorViewNController.mm; path = Controllers/CalculatorViewNController.mm; sourceTree = "<group>"; };
-		D5505C4F13A4FEFC00F09BF0 /* CalculatorViewN.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalculatorViewN.xib; path = Views/CalculatorViewN.xib; sourceTree = "<group>"; };
+		D5505C4D13A4FEFC00F09BF0 /* CalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculatorViewController.h; path = Controllers/CalculatorViewController.h; sourceTree = "<group>"; };
+		D5505C4E13A4FEFC00F09BF0 /* CalculatorViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CalculatorViewController.mm; path = Controllers/CalculatorViewController.mm; sourceTree = "<group>"; };
+		D5505C4F13A4FEFC00F09BF0 /* CalculatorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CalculatorView.xib; path = Views/CalculatorView.xib; sourceTree = "<group>"; };
 		D5505C5213A4FEFC00F09BF0 /* CaptureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureViewController.h; path = Controllers/CaptureViewController.h; sourceTree = "<group>"; };
 		D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureViewController.mm; path = Controllers/CaptureViewController.mm; sourceTree = "<group>"; };
 		D5505C5613A4FEFC00F09BF0 /* CinemaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CinemaViewController.h; path = Controllers/CinemaViewController.h; sourceTree = "<group>"; };
@@ -181,8 +181,8 @@
 		D5505C4B13A4FEE400F09BF0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D5505C4D13A4FEFC00F09BF0 /* CalculatorViewNController.h */,
-				D5505C4E13A4FEFC00F09BF0 /* CalculatorViewNController.mm */,
+				D5505C4D13A4FEFC00F09BF0 /* CalculatorViewController.h */,
+				D5505C4E13A4FEFC00F09BF0 /* CalculatorViewController.mm */,
 				D5505C5213A4FEFC00F09BF0 /* CaptureViewController.h */,
 				D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */,
 				D5505C5613A4FEFC00F09BF0 /* CinemaViewController.h */,
@@ -210,7 +210,7 @@
 				D5505C7B13A50F4300F09BF0 /* InfiniteSlider.mm */,
 				D5505C7C13A50F4300F09BF0 /* MainView.xib */,
 				D5505C7D13A50F4300F09BF0 /* MainWindow.xib */,
-				D5505C4F13A4FEFC00F09BF0 /* CalculatorViewN.xib */,
+				D5505C4F13A4FEFC00F09BF0 /* CalculatorView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5505C6313A4FEFC00F09BF0 /* CalculatorViewN.xib in Resources */,
+				D5505C6313A4FEFC00F09BF0 /* CalculatorView.xib in Resources */,
 				D5505C8213A50F4300F09BF0 /* MainView.xib in Resources */,
 				D5505C8313A50F4300F09BF0 /* MainWindow.xib in Resources */,
 				D5505C8713A50F5D00F09BF0 /* black.png in Resources */,
@@ -296,7 +296,7 @@
 				D53B09B6126909D900DF4180 /* utils.mm in Sources */,
 				D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */,
 				D58C8E671295628B00E2A017 /* object.cc in Sources */,
-				D5505C6213A4FEFC00F09BF0 /* CalculatorViewNController.mm in Sources */,
+				D5505C6213A4FEFC00F09BF0 /* CalculatorViewController.mm in Sources */,
 				D5505C6513A4FEFC00F09BF0 /* CaptureViewController.mm in Sources */,
 				D5505C6713A4FEFC00F09BF0 /* CinemaViewController.mm in Sources */,
 				D5505C6A13A4FEFC00F09BF0 /* MainViewController.mm in Sources */,

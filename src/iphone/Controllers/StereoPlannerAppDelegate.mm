@@ -7,7 +7,7 @@
 //
 
 #import "StereoPlannerAppDelegate.h"
-#import "CalculatorViewNController.h"
+#import "CalculatorViewController.h"
 #include "document.h"
 
 @implementation StereoPlannerAppDelegate

@@ -10,7 +10,7 @@
 #import "InfiniteSlider.h"
 #import "CaptureViewController.h"
 #import "CinemaViewController.h"
-#import "CalculatorViewNController.h"
+#import "CalculatorViewController.h"
 
 class SpDocument;
 
@@ -29,7 +29,7 @@ typedef enum {
   UIPickerView *selectObjectPicker;
   CaptureViewController *captureViewController;
   CinemaViewController *cinemaViewController;
-  CalculatorViewNController *calculatorViewController;
+  CalculatorViewController *calculatorViewController;
 
   InfiniteSlider *slider;
   

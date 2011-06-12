@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class CalculatorViewNController;
+@class CalculatorViewController;
 class SpDocument;
 
 @interface StereoPlannerAppDelegate : NSObject <UIApplicationDelegate> {
   UIWindow *window;
-  CalculatorViewNController *viewController;
+  CalculatorViewController *viewController;
   SpDocument *doc_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet CalculatorViewNController *viewController;
+@property (nonatomic, retain) IBOutlet CalculatorViewController *viewController;
 
 @end
 

@@ -10,10 +10,10 @@
 #import "utils.h"
 #import "MainViewController.h"
 #import "SettingsViewController.h"
-#import "CalculatorViewNController.h"
+#import "CalculatorViewController.h"
 
 
-@implementation CalculatorViewNController
+@implementation CalculatorViewController
 
 @synthesize main_view_controller_;
 

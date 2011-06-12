@@ -12,7 +12,7 @@
 class SpDocument;
 @class MainViewController;
 
-@interface CalculatorViewNController : UIViewController {
+@interface CalculatorViewController : UIViewController {
   SpDocument *doc_;
   MainViewController *main_view_controller_;
   
