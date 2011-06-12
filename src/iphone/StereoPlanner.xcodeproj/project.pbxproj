@@ -200,6 +200,7 @@
 		D5505C6D13A50EB700F09BF0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D5505C4F13A4FEFC00F09BF0 /* CalculatorView.xib */,
 				D5505C7413A50F4300F09BF0 /* CaptureView.h */,
 				D5505C7513A50F4300F09BF0 /* CaptureView.mm */,
 				D5505C7613A50F4300F09BF0 /* CinemaView.h */,
@@ -210,7 +211,6 @@
 				D5505C7B13A50F4300F09BF0 /* InfiniteSlider.mm */,
 				D5505C7C13A50F4300F09BF0 /* MainView.xib */,
 				D5505C7D13A50F4300F09BF0 /* MainWindow.xib */,
-				D5505C4F13A4FEFC00F09BF0 /* CalculatorView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
