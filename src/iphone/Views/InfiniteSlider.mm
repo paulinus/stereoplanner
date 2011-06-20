@@ -61,7 +61,7 @@
 - (void)setFrame:(CGRect)rect {
   [super setFrame:rect];
   float total_width = rect.size.width;
-  float margin = 3;
+  float margin = 0;
   float button_width = 30;
   
   rect.origin.x = margin;
