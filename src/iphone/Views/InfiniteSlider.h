@@ -15,6 +15,9 @@ typedef enum {
 @interface InfiniteSlider : UIControl {
   UILabel *label_view;
   UILabel *value_view;
+  UIButton *minus_button;
+  UIButton *plus_button;
+  
   float value;
   ValueType valueType;
 }

@@ -1,0 +1,7 @@
+
+Per la primera versio:
+
+ * Posar buttons al slider
+ * Calcular el Max Interocular
+ * Completar settings
+ * Treure vista 3D

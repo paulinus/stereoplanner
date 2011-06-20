@@ -21,6 +21,11 @@
   value = 1;
   valueType = ISmetric;
   
+  minus_button = [[UIButton alloc] init];
+  [self addSubview:minus_button];
+  [minus_button setTitle:@"-" forState:UIControlStateNormal];
+  [minus_button addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+
   label_view = [[UILabel alloc] init];
   [self addSubview:label_view];
   [label_view setTextAlignment:UITextAlignmentLeft];
@@ -34,8 +39,11 @@
   [value_view setTextColor:[UIColor yellowColor]];
   [value_view setBackgroundColor:[UIColor clearColor]];
   [value_view setFont:[UIFont fontWithName:@"Helvetica" size:24]];
-  
-  [self setLabel:@"caca"];
+
+  plus_button = [[UIButton alloc] init];
+  [self addSubview:plus_button];
+  [plus_button setTitle:@"+" forState:UIControlStateNormal];
+  [plus_button addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (id)init {
@@ -52,14 +60,25 @@
 
 - (void)setFrame:(CGRect)rect {
   [super setFrame:rect];
-  float margin = 10;
+  float total_width = rect.size.width;
+  float margin = 3;
+  float button_width = 30;
+  
   rect.origin.x = margin;
   rect.origin.y = 0;
-  rect.size.width = rect.size.width / 2 - margin;
+  rect.size.width = button_width;
+  [minus_button setFrame:rect];
+
+  rect.origin.x += rect.size.width;
+  rect.size.width = total_width / 2 - margin - button_width;
   [label_view setFrame:rect];
+  
   rect.origin.x += rect.size.width;
   [value_view setFrame:rect];
-
+  
+  rect.origin.x += rect.size.width;
+  rect.size.width = button_width;
+  [plus_button setFrame:rect];
 }
 
 - (void)awakeFromNib {
@@ -108,4 +127,11 @@
   }
 }
 
+- (void)minusButtonAction {
+  self.value = self.value / 1.01;
+}
+
+- (void)plusButtonAction {
+  self.value = self.value * 1.01;
+}
 @end

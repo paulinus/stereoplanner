@@ -110,7 +110,7 @@
 					<object class="IBUILabel" id="128975407">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{244, 301}, {44, 18}}</string>
+						<string key="NSFrame">{{264, 301}, {44, 18}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -157,7 +157,7 @@
 					<object class="IBUILabel" id="63631219">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{244, 315}, {46, 21}}</string>
+						<string key="NSFrame">{{264, 315}, {46, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -318,7 +318,7 @@
 					<object class="IBUIView" id="231366819">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 171}, {260, 35}}</string>
+						<string key="NSFrame">{{10, 171}, {300, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -329,7 +329,7 @@
 					<object class="IBUIView" id="914930662">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 211}, {260, 35}}</string>
+						<string key="NSFrame">{{10, 211}, {300, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="143816726">
 							<int key="NSColorSpace">3</int>
@@ -340,7 +340,7 @@
 					<object class="IBUIView" id="879907911">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 251}, {260, 35}}</string>
+						<string key="NSFrame">{{10, 251}, {300, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="IBUIBackgroundColor" ref="143816726"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -348,7 +348,7 @@
 					<object class="IBUIView" id="212925052">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 301}, {206, 35}}</string>
+						<string key="NSFrame">{{10, 301}, {246, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="IBUIBackgroundColor" ref="143816726"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -356,7 +356,7 @@
 					<object class="IBUIView" id="934959763">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 341}, {260, 35}}</string>
+						<string key="NSFrame">{{10, 341}, {300, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="IBUIBackgroundColor" ref="143816726"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -364,7 +364,7 @@
 					<object class="IBUIView" id="941899578">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{30, 391}, {260, 35}}</string>
+						<string key="NSFrame">{{10, 391}, {300, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="IBUIBackgroundColor" ref="143816726"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -754,7 +754,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>CalculatorViewController</string>
 					<string>UIResponder</string>
-					<string>{{415, 329}, {320, 460}}</string>
+					<string>{{415, 216}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
