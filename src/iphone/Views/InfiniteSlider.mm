@@ -23,7 +23,7 @@
   
   minus_button = [[UIButton alloc] init];
   [self addSubview:minus_button];
-  [minus_button setTitle:@"-" forState:UIControlStateNormal];
+  [minus_button setTitle:@"−" forState:UIControlStateNormal];
   [minus_button addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
 
   label_view = [[UILabel alloc] init];
@@ -127,11 +127,18 @@
   }
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+  self.value = self.value = significantDigits(self.value, 2);
+}
+
 - (void)minusButtonAction {
-  self.value = self.value / 1.01;
+  float new_v = self.value - significantDigitsStep(self.value, 2);
+  self.value = significantDigits(new_v, 2);
 }
 
 - (void)plusButtonAction {
-  self.value = self.value * 1.01;
+  float new_v = self.value + significantDigitsStep(self.value, 2);
+  self.value = significantDigits(new_v, 2);
 }
+
 @end

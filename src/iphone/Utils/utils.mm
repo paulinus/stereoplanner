@@ -8,6 +8,15 @@
 
 #import "utils.h"
 
+float significantDigitsStep(float x, int significand_digits) {
+  int k = floor(log10(x)) + 1;
+  return pow(10, k - significand_digits);
+}
+
+float significantDigits(float x, int significand_digits) {
+  float z = significantDigitsStep(x, significand_digits);
+  return round(x / z) * z;
+}
 
 NSString *floatToString(float value, int significand_digits) {
   NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
