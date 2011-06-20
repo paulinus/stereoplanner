@@ -14,7 +14,7 @@ NSString *floatToString(float value, int significand_digits) {
   [numberFormatter setNumberStyle: NSNumberFormatterDecimalStyle];
   [numberFormatter setUsesSignificantDigits:true];
   [numberFormatter setMaximumSignificantDigits:significand_digits];
-  [numberFormatter setRoundingMode: NSNumberFormatterRoundUp];
+  [numberFormatter setRoundingMode: NSNumberFormatterRoundHalfDown];
   NSNumber *c = [NSNumber numberWithFloat:value];
   NSString *res = [numberFormatter stringFromNumber:c];
   [numberFormatter release];

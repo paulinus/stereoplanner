@@ -1,7 +1,8 @@
 
 Per la primera versio:
 
- * Posar buttons al slider
+ * Posar imatges als butons del slider
+ * Fer que despres d'apretar els butons +/- dels sliders el value sigui exactament igual al que surt en el label.
  * Calcular el Max Interocular
  * Completar settings
  * Treure vista 3D
