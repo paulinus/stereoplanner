@@ -27,6 +27,9 @@ SpDocument::SpDocument() {
   
   near_distance_ = 5;
   far_distance_ = 10;
+  
+  min_parallax_constraint_ = -0.03;
+  max_parallax_constraint_ = 0.03;
 
   UpdateEverything();
 }
@@ -112,6 +115,31 @@ float SpDocument::FarScreenParallax() const {
 float SpDocument::ScreenParallaxBudged() const {
   return FarScreenParallax() - NearScreenParallax();
 }
+
+float SpDocument::MaxRigInterocular() const {
+  return std::min(MaxRigInterocularMinParallax(),
+                  MaxRigInterocularMaxParallax());
+}
+
+float SpDocument::MaxRigInterocularMinParallax() const {
+  if (NearDistance() > RigConvergence()) {
+    return std::numeric_limits<float>::max();
+  }
+  
+  return MinParallaxConstraint() * StereoWindowWidth() * NearDistance()
+         / (NearDistance() - RigConvergence());
+}
+
+float SpDocument::MaxRigInterocularMaxParallax() const {
+  if (FarDistance() < RigConvergence()) {
+    return std::numeric_limits<float>::max();
+  }
+  
+  return MaxParallaxConstraint() * StereoWindowWidth() * FarDistance()
+         / (FarDistance() - RigConvergence());
+}
+
+
 
 void SpDocument::SetFocalLegth(float v) {
   if (focal_length_ != v) {
@@ -257,6 +285,20 @@ void SpDocument::SetNearDistance(float v) {
 void SpDocument::SetFarDistance(float v) {
   if (far_distance_ != v) {
     far_distance_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetMinParallaxConstraint(float v) {
+  if (min_parallax_constraint_ != v) {
+    min_parallax_constraint_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetMaxParallaxConstraint(float v) {
+  if (max_parallax_constraint_ != v) {
+    max_parallax_constraint_ = v;
     UpdateEverything();
   }
 }

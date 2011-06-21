@@ -22,7 +22,6 @@
 }
 
 - (void)setDocument:(SpDocument *)document {
-  
   doc_ = document;
   [self updateGL];
 }

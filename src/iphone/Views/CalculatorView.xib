@@ -515,6 +515,14 @@
 					</object>
 					<int key="connectionID">97</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">maxInterocularLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="63631219"/>
+					</object>
+					<int key="connectionID">100</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -847,7 +855,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">99</int>
+			<int key="maxID">100</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -897,6 +905,7 @@
 							<string>farSlider</string>
 							<string>focalLengthSlider</string>
 							<string>interocularSlider</string>
+							<string>maxInterocularLabel</string>
 							<string>nearParallaxLabel</string>
 							<string>nearScreenParallaxLabel</string>
 							<string>nearSlider</string>
@@ -912,6 +921,7 @@
 							<string>InfiniteSlider</string>
 							<string>InfiniteSlider</string>
 							<string>InfiniteSlider</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>InfiniteSlider</string>
@@ -930,6 +940,7 @@
 							<string>farSlider</string>
 							<string>focalLengthSlider</string>
 							<string>interocularSlider</string>
+							<string>maxInterocularLabel</string>
 							<string>nearParallaxLabel</string>
 							<string>nearScreenParallaxLabel</string>
 							<string>nearSlider</string>
@@ -962,6 +973,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">interocularSlider</string>
 								<string key="candidateClassName">InfiniteSlider</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">maxInterocularLabel</string>
+								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">nearParallaxLabel</string>

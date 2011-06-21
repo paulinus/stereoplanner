@@ -78,12 +78,19 @@ class SpDocument {
   
   float NearDistance() const { return near_distance_; }
   float FarDistance() const { return far_distance_; }
+  float MinParallaxConstraint() const { return min_parallax_constraint_; }
+  float MaxParallaxConstraint() const { return max_parallax_constraint_; }
+
   float NearParallax() const;
   float FarParallax() const;
   float ParallaxBudged() const;
   float NearScreenParallax() const;
   float FarScreenParallax() const;
   float ScreenParallaxBudged() const;
+  float MaxRigInterocular() const;
+  float MaxRigInterocularMinParallax() const;
+  float MaxRigInterocularMaxParallax() const;
+
   
  public:
   void SetFocalLegth(float v);
@@ -111,6 +118,9 @@ class SpDocument {
   
   void SetNearDistance(float v);
   void SetFarDistance(float v);
+  
+  void SetMinParallaxConstraint(float v);
+  void SetMaxParallaxConstraint(float v);
 
   void setDocumentChanged(bool b);
   bool DocumentChanged();
@@ -162,6 +172,10 @@ class SpDocument {
   // Scene parameters.
   float near_distance_;
   float far_distance_;
+  
+  // Constraint parametres.
+  float min_parallax_constraint_;
+  float max_parallax_constraint_;
 };
 
 #endif // DOCUMENT_H_

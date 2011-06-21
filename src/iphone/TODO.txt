@@ -2,6 +2,13 @@
 Per la primera versio:
 
  * Posar imatges als butons del slider
+
  * Calcular el Max Interocular
+
  * Completar settings
+   - Sensor size
+   - Viewer distance (as percentage of the screen size)
+   - Viewer's interocular
+
  * Treure vista 3D
+

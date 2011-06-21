@@ -23,6 +23,7 @@
 @synthesize nearScreenParallaxLabel;
 @synthesize farScreenParallaxLabel;
 @synthesize screenParallaxBudgedLabel;
+@synthesize maxInterocularLabel;
 
 @synthesize nearSlider;
 @synthesize farSlider;
@@ -179,7 +180,8 @@
   [parallaxBudgedLabel setText:floatToStringPercentage(100 * doc_->ParallaxBudged(), 2)];
   [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
   [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
-  [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];  
+  [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
+  [maxInterocularLabel setText:floatToStringInMetric(doc_->MaxRigInterocular(), 2)];
 }
 
 - (void)documentChanged {
