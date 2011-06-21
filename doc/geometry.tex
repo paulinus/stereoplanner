@@ -76,7 +76,7 @@ Shooting parameters
   \frac{Z - C}{Z} = \frac{dW}{b}
  \end{equation}
  Which is equivalent to
- \begin{equation}
+ \begin{equation}\label{eqn:disparity}
   d = \frac{b}{W} \frac{Z-C}{Z}
  \end{equation}
  and
@@ -112,6 +112,44 @@ The projection $(u,v)$ of a point $(X,Y,Z)$ onto the stereoscopic window using t
 \begin{equation}
 \frac{X}{Z} = \frac{u W}{C}
 \end{equation}
+
+
+\section{Interocular Limits}
+When filming, depending on the camera parameters and the viewing geometry, there are limits to the interocular distance between the cameras that one can use.
+
+We consider the following constraints:
+\begin{enumerate}
+ \item Minimal negative parallax as percentage of the screen size, $d_{min}$. By using \eqref{eqn:disparity} we have
+
+ \begin{equation}
+  d_{min} \leq  \frac{b}{W} \frac{Z_{min} - C}{Z_{min}}
+ \end{equation}
+ which gives (note that we assume $Z_{min} - C < 0$)
+ \begin{equation}
+ b \leq \frac{d_{min} W Z_{min}}{Z_{min} - C}
+ \end{equation}
+ 
+ \item Maximal positive parallax as percentage of the screen size, $d_{max}$
+ \begin{equation}
+  d_{max} \geq  \frac{b}{W} \frac{Z_{max} - C}{Z_{max}}
+ \end{equation}
+ which gives (note that we assume $Z_{max} - C > 0$)
+ \begin{equation}
+ b \leq \frac{d_{max} W Z_{max}}{Z_{max} - C}
+ \end{equation}
+ 
+ \item Maximal parallax bracket as percentage of the screen size, $d_{bra}$
+ \begin{equation}
+ d_{bra} \geq d_{max} - d_{min} = \frac{b}{W} \left(\frac{Z_{max} - C}{Z_{max}} - \frac{Z_{min} - C}{Z_{min}} \right)
+ \end{equation}
+ which gives
+ \begin{equation}
+ b \leq d_{bra} W \bigg/ \left( \frac{Z_{max} - C}{Z_{max}} - \frac{Z_{min} - C}{Z_{min}} \right)
+ \end{equation}
+  
+ \item Maximal angular divergence (depends on the screen size, the viewer distance and the viewers interocular)
+\end{enumerate}
+
 
 
 \section{CACA VELLA: Formulas}
