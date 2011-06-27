@@ -121,9 +121,13 @@ float SpDocument::ScreenParallaxBudged() const {
 }
 
 float SpDocument::MaxRigInterocular() const {
-  float m = MaxRigInterocularMinParallax();
+  float m = std::numeric_limits<float>::max();
+  m = std::min(m, MaxRigInterocularMinParallax());
   m = std::min(m, MaxRigInterocularMaxParallax());
   m = std::min(m, MaxRigInterocularMaxBracket());
+  m = std::min(m, MaxRigInterocularMinScreenParallax());
+  m = std::min(m, MaxRigInterocularMaxScreenParallax());
+  m = std::min(m, MaxRigInterocularMaxScreenBracket());
   return m;
 }
 
@@ -155,6 +159,33 @@ float SpDocument::MaxRigInterocularMaxBracket() const {
               - (NearDistance() - RigConvergence()) / NearDistance());
 }
 
+float SpDocument::MaxRigInterocularMinScreenParallax() const {
+  if (NearDistance() > RigConvergence()) {
+    return std::numeric_limits<float>::max();
+  }
+  
+  return MinScreenParallaxConstraint() * StereoWindowWidth() * NearDistance()
+  / (NearDistance() - RigConvergence()) / ScreenWidth();
+}
+
+float SpDocument::MaxRigInterocularMaxScreenParallax() const {
+  if (FarDistance() < RigConvergence()) {
+    return std::numeric_limits<float>::max();
+  }
+  
+  return MaxScreenParallaxConstraint() * StereoWindowWidth() * FarDistance()
+  / (FarDistance() - RigConvergence()) / ScreenWidth();
+}
+
+float SpDocument::MaxRigInterocularMaxScreenBracket() const {
+  if (FarDistance() <= NearDistance()) {
+    return std::numeric_limits<float>::max();
+  }
+  
+  return MaxScreenBracketConstraint() * StereoWindowWidth() / ScreenWidth()
+  / (  (FarDistance()  - RigConvergence()) / FarDistance()
+     - (NearDistance() - RigConvergence()) / NearDistance());
+}
 
 
 

@@ -96,7 +96,10 @@ class SpDocument {
   float MaxRigInterocularMinParallax() const;
   float MaxRigInterocularMaxParallax() const;
   float MaxRigInterocularMaxBracket() const;
-  
+  float MaxRigInterocularMinScreenParallax() const;
+  float MaxRigInterocularMaxScreenParallax() const;
+  float MaxRigInterocularMaxScreenBracket() const;
+ 
  public:
   void SetFocalLegth(float v);
   void SetSensorWidth(float v);
