@@ -120,91 +120,115 @@ When filming, depending on the camera parameters and the viewing geometry, there
 We consider the following constraints:
 \begin{enumerate}
  \item Minimal negative parallax as percentage of the screen size, $d_{min}$. By using \eqref{eqn:disparity} we have
-
  \begin{equation}
-  d_{min} \leq  \frac{b}{W} \frac{Z_{min} - C}{Z_{min}}
+  d_{min} \leq d_{near} =  \frac{b}{W} \frac{Z_{near} - C}{Z_{near}}
  \end{equation}
- which gives (note that we assume $Z_{min} - C < 0$)
+ which gives (note that we assume $Z_{near} - C < 0$)
  \begin{equation}
- b \leq \frac{d_{min} W Z_{min}}{Z_{min} - C}
+ b \leq \frac{d_{min} W Z_{near}}{Z_{near} - C}
  \end{equation}
  
  \item Maximal positive parallax as percentage of the screen size, $d_{max}$
  \begin{equation}
-  d_{max} \geq  \frac{b}{W} \frac{Z_{max} - C}{Z_{max}}
+  d_{max} \geq  d_{far} = \frac{b}{W} \frac{Z_{far} - C}{Z_{far}}
  \end{equation}
- which gives (note that we assume $Z_{max} - C > 0$)
+ which gives (note that we assume $Z_{far} - C > 0$)
  \begin{equation}
- b \leq \frac{d_{max} W Z_{max}}{Z_{max} - C}
+ b \leq \frac{d_{max} W Z_{far}}{Z_{far} - C}
  \end{equation}
  
  \item Maximal parallax bracket as percentage of the screen size, $d_{bra}$
  \begin{equation}
- d_{bra} \geq d_{max} - d_{min} = \frac{b}{W} \left(\frac{Z_{max} - C}{Z_{max}} - \frac{Z_{min} - C}{Z_{min}} \right)
+ d_{bra} \geq d_{far} - d_{near} = \frac{b}{W} \left(\frac{Z_{far} - C}{Z_{far}} - \frac{Z_{near} - C}{Z_{near}} \right)
  \end{equation}
  which gives
  \begin{equation}
- b \leq d_{bra} W \bigg/ \left( \frac{Z_{max} - C}{Z_{max}} - \frac{Z_{min} - C}{Z_{min}} \right)
+ b \leq d_{bra} W \bigg/ \left( \frac{Z_{far} - C}{Z_{far}} - \frac{Z_{near} - C}{Z_{near}} \right)
  \end{equation}
   
- \item Maximal angular divergence (depends on the screen size, the viewer distance and the viewers interocular)
+ \item Minimal negative parallax in actual viewing dimensions, $D_min$  (depends on the screen size, $W'$)
+ \begin{equation}
+  D_{min} \leq W' d_{near} =  W' \frac{b}{W} \frac{Z_{near} - C}{Z_{near}}
+ \end{equation}
+ which gives (note that we assume $Z_{near} - C < 0$)
+ \begin{equation}
+ b \leq \frac{D_{min} W Z_{near}}{W'(Z_{near} - C)}
+ \end{equation}
+
+ \item Minimal negative parallax in actual viewing dimensions, $D_max$  (depends on the screen size, $W'$)
+ \begin{equation}
+  D_{max} \geq W' d_{far} =  W' \frac{b}{W} \frac{Z_{far} - C}{Z_{far}}
+ \end{equation}
+ which gives (note that we assume $Z_{far} - C > 0$)
+ \begin{equation}
+ b \leq \frac{D_{max} W Z_{far}}{W'(Z_{far} - C)}
+ \end{equation}
+ 
+  \item Maximal parallax bracket  in actual viewing dimensions, $D_{bra}$ (depends on the screen size, $W'$)
+ \begin{equation}
+ D_{bra} \geq W'(d_{far} - d_{near}) = W' \frac{b}{W} \left(\frac{Z_{far} - C}{Z_{far}} - \frac{Z_{near} - C}{Z_{near}} \right)
+ \end{equation}
+ which gives
+ \begin{equation}
+ b \leq d_{bra} \frac{W}{W'} \bigg/ \left( \frac{Z_{far} - C}{Z_{far}} - \frac{Z_{near} - C}{Z_{near}} \right)
+ \end{equation}
+
+ 
+ 
 \end{enumerate}
 
 
 
-\section{CACA VELLA: Formulas}
-
-
-
-\subsection{Filming}
-\begin{figure}
- \begin{center}
-  \includegraphics[width=0.9\textwidth]{stereo_projection.pdf}
- \end{center}
- \caption{Projection of a point into two cameras.  Or, equivalently, the perceived 3D point given the two images presented to the observer.}
-\end{figure}
-
-
-There are mainly 3 parameters that describe the internal geometry of a camera, and thus the way in which it captures images.  These are
-\begin{itemize}
- \item the focal leghth of the camera, $f$,
- \item the width of the sensor, $w$
- \item and the position of the principal point, $\p$.
-\end{itemize}
-Usually, only the ratio between the focal length and the image width is relevant, and the principal point is at the origin.  In this discussion however, we have to take into account all 3 parameters since they are going to play and important role when displaying the images to the audience.
-
-When filming in stereo, another parameter has to be controlled.  This is
-\begin{itemize}
- \item the inter-camera distance or baseline, $b$.
-\end{itemize}
-Other parameters could also be taken into account to represent the relative position of cameras, but here, we are only going to consider parallel cameras with their optical center shifted on the x axis.  The reason is that other set ups yield to vertical disparity and should never be used without geometric correction.  A simplistic argument for this is that: since the images are going to be displayed in a single plane (the screen), they should also be captured in a single plane.  By placing the cameras in parallel position, we make their image planes coincide.
-
-
-Let $b_c$ be the baseline or inter-occular distance of the cameras.  Let the optical centers of the cameras be
-\begin{equation}
- \O^l = (-\frac{b_c}{2}, 0, 0)  \quad\quad  \O^r = (\frac{b_c}{2}, 0, 0)
-\end{equation}
-Let $f_c$ be the focal distance of the cameras and $w_c$ the width of the images expressed in the same units.  Let also $\p^l$ and $\p^r$ be the principal point of the cameras.
-
-
-By Thales theorem we have
-\begin{equation}
- \frac{p^l + w \x^l}{f} = \frac{\X_{xy} - \O^l_{xy}}{\X_z}
-\end{equation}
-This equation relates the 3D point $\X$ with its projection into the left image $\x^l$.  The same equation holds for the right image.
-
-
-\begin{figure}
- \begin{center}
-  \includegraphics[width=0.7\textwidth]{image_coordinate.pdf}
- \end{center}
- \caption{The image coordinate system used in the equations.}
-\end{figure}
-
-\subsection{Displaying}
-Ideally, one would like to display the images in the exact same set up that was used for filming.  If this was the case, the observer would view exactly what the cameras where seeing and the sensation of presence should be perfect, since there is no way for the observer to distinguish the images that are being shown from the ones that he should observe if she was actually there.
-
-In practice, reproducing the exact same setup is not always possible.  In the following we are going to consider that the parameters such as the focal lenght $f$, the image width $w$, etc, are different when filming and when displaying, and we will analyse the geomtric effect iduced by this differences.
+%\section{CACA VELLA: Formulas}
+%\subsection{Filming}
+%\begin{figure}
+% \begin{center}
+%  \includegraphics[width=0.9\textwidth]{stereo_projection.pdf}
+% \end{center}
+% \caption{Projection of a point into two cameras.  Or, equivalently, the perceived 3D point given the two images presented to the observer.}
+%\end{figure}
+%
+%
+%There are mainly 3 parameters that describe the internal geometry of a camera, and thus the way in which it captures images.  These are
+%\begin{itemize}
+% \item the focal leghth of the camera, $f$,
+% \item the width of the sensor, $w$
+% \item and the position of the principal point, $\p$.
+%\end{itemize}
+%Usually, only the ratio between the focal length and the image width is relevant, and the principal point is at the origin.  In this discussion however, we have to take into account all 3 parameters since they are going to play and important role when displaying the images to the audience.
+%
+%When filming in stereo, another parameter has to be controlled.  This is
+%\begin{itemize}
+% \item the inter-camera distance or baseline, $b$.
+%\end{itemize}
+%Other parameters could also be taken into account to represent the relative position of cameras, but here, we are only going to consider parallel cameras with their optical center shifted on the x axis.  The reason is that other set ups yield to vertical disparity and should never be used without geometric correction.  A simplistic argument for this is that: since the images are going to be displayed in a single plane (the screen), they should also be captured in a single plane.  By placing the cameras in parallel position, we make their image planes coincide.
+%
+%
+%Let $b_c$ be the baseline or inter-occular distance of the cameras.  Let the optical centers of the cameras be
+%\begin{equation}
+% \O^l = (-\frac{b_c}{2}, 0, 0)  \quad\quad  \O^r = (\frac{b_c}{2}, 0, 0)
+%\end{equation}
+%Let $f_c$ be the focal distance of the cameras and $w_c$ the width of the images expressed in the same units.  Let also $\p^l$ and $\p^r$ be the principal point of the cameras.
+%
+%
+%By Thales theorem we have
+%\begin{equation}
+% \frac{p^l + w \x^l}{f} = \frac{\X_{xy} - \O^l_{xy}}{\X_z}
+%\end{equation}
+%This equation relates the 3D point $\X$ with its projection into the left image $\x^l$.  The same equation holds for the right image.
+%
+%
+%\begin{figure}
+% \begin{center}
+%  \includegraphics[width=0.7\textwidth]{image_coordinate.pdf}
+% \end{center}
+% \caption{The image coordinate system used in the equations.}
+%\end{figure}
+%
+%\subsection{Displaying}
+%Ideally, one would like to display the images in the exact same set up that was used for filming.  If this was the case, the observer would view exactly what the cameras where seeing and the sensation of presence should be perfect, since there is no way for the observer to distinguish the images that are being shown from the ones that he should observe if she was actually there.
+%
+%In practice, reproducing the exact same setup is not always possible.  In the following we are going to consider that the parameters such as the focal lenght $f$, the image width $w$, etc, are different when filming and when displaying, and we will analyse the geomtric effect iduced by this differences.
 
 
 

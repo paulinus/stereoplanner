@@ -1,14 +1,17 @@
 
 Per la primera versio:
 
+ * Posar butons del slider    OK
+
  * Posar imatges als butons del slider
 
- * Calcular el Max Interocular
+ * Calcular el Max Interocular    OK
 
  * Completar settings
    - Sensor size
    - Viewer distance (as percentage of the screen size)
    - Viewer's interocular
+   - Parallax constraints
 
  * Treure vista 3D
 
