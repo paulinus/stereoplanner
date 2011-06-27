@@ -30,7 +30,7 @@ SpDocument::SpDocument() {
   
   min_parallax_constraint_ = -0.03;
   max_parallax_constraint_ = 0.03;
-  max_bracket_constraint_ = 0.01;
+  max_bracket_constraint_ = 0.05;
 
   UpdateEverything();
 }

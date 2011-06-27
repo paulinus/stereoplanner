@@ -169,15 +169,38 @@
 }
 
 - (IBAction)updateView {
+  // Update sliders.
   [nearSlider setValue:doc_->NearDistance()];
   [farSlider setValue:doc_->FarDistance()];
   [convergenceSlider setValue:doc_->RigConvergence()];
   [interocularSlider setValue:doc_->RigInterocular()];
   [focalLengthSlider setValue:doc_->FocalLegth()];
   [screenWidthSlider setValue:doc_->ScreenWidth()];
+  
+  // Update parallax labels.
   [nearParallaxLabel setText:floatToStringPercentage(100 * doc_->NearParallax(), 2)];
+  if (doc_->NearParallax() > doc_->MinParallaxConstraint()) {
+    [nearParallaxLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [nearParallaxLabel setTextColor:[UIColor redColor]];
+  }
+  
   [farParallaxLabel setText:floatToStringPercentage(100 * doc_->FarParallax(), 2)];
+  if (doc_->FarParallax() < doc_->MaxParallaxConstraint()) {
+    [farParallaxLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [farParallaxLabel setTextColor:[UIColor redColor]];
+  }
+  
   [parallaxBudgedLabel setText:floatToStringPercentage(100 * doc_->ParallaxBudged(), 2)];
+  if (doc_->ParallaxBudged() < doc_->MaxBracketConstraint()) {
+    [parallaxBudgedLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [parallaxBudgedLabel setTextColor:[UIColor redColor]];
+  }
+  
+  
+  
   [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
   [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
   [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
