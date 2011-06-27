@@ -30,6 +30,7 @@ SpDocument::SpDocument() {
   
   min_parallax_constraint_ = -0.03;
   max_parallax_constraint_ = 0.03;
+  max_bracket_constraint_ = 0.01;
 
   UpdateEverything();
 }
@@ -117,8 +118,10 @@ float SpDocument::ScreenParallaxBudged() const {
 }
 
 float SpDocument::MaxRigInterocular() const {
-  return std::min(MaxRigInterocularMinParallax(),
-                  MaxRigInterocularMaxParallax());
+  float m = MaxRigInterocularMinParallax();
+  m = std::min(m, MaxRigInterocularMaxParallax());
+  m = std::min(m, MaxRigInterocularMaxBracket());
+  return m;
 }
 
 float SpDocument::MaxRigInterocularMinParallax() const {
@@ -138,6 +141,18 @@ float SpDocument::MaxRigInterocularMaxParallax() const {
   return MaxParallaxConstraint() * StereoWindowWidth() * FarDistance()
          / (FarDistance() - RigConvergence());
 }
+
+float SpDocument::MaxRigInterocularMaxBracket() const {
+    if (FarDistance() <= NearDistance()) {
+        return std::numeric_limits<float>::max();
+    }
+    
+    return MaxBracketConstraint() * StereoWindowWidth()
+           / (  (FarDistance()  - RigConvergence()) / FarDistance()
+              - (NearDistance() - RigConvergence()) / NearDistance());
+}
+
+
 
 
 
@@ -303,6 +318,12 @@ void SpDocument::SetMaxParallaxConstraint(float v) {
   }
 }
 
+void SpDocument::SetMaxBracketConstraint(float v) {
+    if (max_bracket_constraint_ != v) {
+        max_bracket_constraint_ = v;
+        UpdateEverything();
+    }
+}
 
 void SpDocument::setDocumentChanged(bool b) {
   document_changed_ = b;

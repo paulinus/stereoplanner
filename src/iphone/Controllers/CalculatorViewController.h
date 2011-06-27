@@ -1,5 +1,5 @@
 //
-//  CalculatorViewNController.h
+//  CalculatorViewController.h
 //  StereoPlanner
 //
 //  Created by Pau Gargallo on 9/8/10.

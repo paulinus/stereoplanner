@@ -80,6 +80,7 @@ class SpDocument {
   float FarDistance() const { return far_distance_; }
   float MinParallaxConstraint() const { return min_parallax_constraint_; }
   float MaxParallaxConstraint() const { return max_parallax_constraint_; }
+  float MaxBracketConstraint() const { return max_bracket_constraint_; }
 
   float NearParallax() const;
   float FarParallax() const;
@@ -90,7 +91,7 @@ class SpDocument {
   float MaxRigInterocular() const;
   float MaxRigInterocularMinParallax() const;
   float MaxRigInterocularMaxParallax() const;
-
+  float MaxRigInterocularMaxBracket() const;
   
  public:
   void SetFocalLegth(float v);
@@ -121,6 +122,7 @@ class SpDocument {
   
   void SetMinParallaxConstraint(float v);
   void SetMaxParallaxConstraint(float v);
+  void SetMaxBracketConstraint(float v);
 
   void setDocumentChanged(bool b);
   bool DocumentChanged();
@@ -176,6 +178,7 @@ class SpDocument {
   // Constraint parametres.
   float min_parallax_constraint_;
   float max_parallax_constraint_;
+  float max_bracket_constraint_;
 };
 
 #endif // DOCUMENT_H_
