@@ -81,6 +81,10 @@ class SpDocument {
   float MinParallaxConstraint() const { return min_parallax_constraint_; }
   float MaxParallaxConstraint() const { return max_parallax_constraint_; }
   float MaxBracketConstraint() const { return max_bracket_constraint_; }
+  float MinScreenParallaxConstraint() const { return min_screen_parallax_constraint_; }
+  float MaxScreenParallaxConstraint() const { return max_screen_parallax_constraint_; }
+  float MaxScreenBracketConstraint() const { return max_screen_bracket_constraint_; }
+
 
   float NearParallax() const;
   float FarParallax() const;
@@ -123,6 +127,9 @@ class SpDocument {
   void SetMinParallaxConstraint(float v);
   void SetMaxParallaxConstraint(float v);
   void SetMaxBracketConstraint(float v);
+  void SetMinScreenParallaxConstraint(float v);
+  void SetMaxScreenParallaxConstraint(float v);
+  void SetMaxScreenBracketConstraint(float v);
 
   void setDocumentChanged(bool b);
   bool DocumentChanged();
@@ -179,6 +186,9 @@ class SpDocument {
   float min_parallax_constraint_;
   float max_parallax_constraint_;
   float max_bracket_constraint_;
+  float min_screen_parallax_constraint_;
+  float max_screen_parallax_constraint_;
+  float max_screen_bracket_constraint_;
 };
 
 #endif // DOCUMENT_H_

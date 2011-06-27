@@ -31,6 +31,9 @@ SpDocument::SpDocument() {
   min_parallax_constraint_ = -0.03;
   max_parallax_constraint_ = 0.03;
   max_bracket_constraint_ = 0.05;
+  min_screen_parallax_constraint_ = -0.065;
+  max_screen_parallax_constraint_ = 0.065;
+  max_screen_bracket_constraint_ = 2 * 0.065;
 
   UpdateEverything();
 }
@@ -324,6 +327,28 @@ void SpDocument::SetMaxBracketConstraint(float v) {
         UpdateEverything();
     }
 }
+
+void SpDocument::SetMinScreenParallaxConstraint(float v) {
+  if (min_screen_parallax_constraint_ != v) {
+    min_screen_parallax_constraint_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetMaxScreenParallaxConstraint(float v) {
+  if (max_screen_parallax_constraint_ != v) {
+    max_screen_parallax_constraint_ = v;
+    UpdateEverything();
+  }
+}
+
+void SpDocument::SetMaxScreenBracketConstraint(float v) {
+  if (max_screen_bracket_constraint_ != v) {
+    max_screen_bracket_constraint_ = v;
+    UpdateEverything();
+  }
+}
+
 
 void SpDocument::setDocumentChanged(bool b) {
   document_changed_ = b;

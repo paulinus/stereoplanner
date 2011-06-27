@@ -199,11 +199,27 @@
     [parallaxBudgedLabel setTextColor:[UIColor redColor]];
   }
   
-  
-  
   [nearScreenParallaxLabel setText:floatToStringInMetric(doc_->NearScreenParallax(), 2)];
+  if (doc_->NearScreenParallax() > doc_->MinScreenParallaxConstraint()) {
+    [nearScreenParallaxLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [nearScreenParallaxLabel setTextColor:[UIColor redColor]];
+  }
+  
   [farScreenParallaxLabel setText:floatToStringInMetric(doc_->FarScreenParallax(), 2)];
+  if (doc_->FarScreenParallax() < doc_->MaxScreenParallaxConstraint()) {
+    [farScreenParallaxLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [farScreenParallaxLabel setTextColor:[UIColor redColor]];
+  }
+  
   [screenParallaxBudgedLabel setText:floatToStringInMetric(doc_->ScreenParallaxBudged(), 2)];
+  if (doc_->ScreenParallaxBudged() < doc_->MaxScreenBracketConstraint()) {
+    [screenParallaxBudgedLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [screenParallaxBudgedLabel setTextColor:[UIColor redColor]];
+  }
+
   [maxInterocularLabel setText:floatToStringInMetric(doc_->MaxRigInterocular(), 2)];
 }
 
