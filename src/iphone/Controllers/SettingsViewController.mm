@@ -6,6 +6,7 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+#import "SensorSizeViewController.h"
 #import "SettingsViewController.h"
 
 
@@ -157,14 +158,18 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+  
+  switch (indexPath.row) {
+    case 0:
+    {
+      SensorSizeViewController *s = [[SensorSizeViewController alloc] init];
+      [self.navigationController pushViewController:s animated:YES];
+      [s release];
+    }
+      break;
+    case 1:
+      break;
+  }
 }
 
 
