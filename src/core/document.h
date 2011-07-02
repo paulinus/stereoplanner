@@ -3,6 +3,7 @@
 
 #include "Eigen/Dense"
 
+#include "sensor_type.h"
 #include "object.h"
 #include "geometry.h"
 #include "camera.h"
@@ -133,6 +134,10 @@ class SpDocument {
   void SetMinScreenParallaxConstraint(float v);
   void SetMaxScreenParallaxConstraint(float v);
   void SetMaxScreenBracketConstraint(float v);
+  
+  void SetSelectedSensorType(int i);
+  int SelectedSensorType() const { return selected_sensor_type_; }
+  const SensorType &SensorTypeAt(int i) { return sensor_type_list_[i]; }
 
   void setDocumentChanged(bool b);
   bool DocumentChanged();
@@ -192,6 +197,10 @@ class SpDocument {
   float min_screen_parallax_constraint_;
   float max_screen_parallax_constraint_;
   float max_screen_bracket_constraint_;
+  
+  // Sensor Type list and selection.
+  std::vector<SensorType> sensor_type_list_;
+  int selected_sensor_type_;
 };
 
 #endif // DOCUMENT_H_

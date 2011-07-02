@@ -1,11 +1,8 @@
 
 Per la primera versio:
 
- * Posar butons del slider    OK
-
  * Posar imatges als butons del slider
-
- * Calcular el Max Interocular    OK
+ 
 
  * Completar settings
    - Sensor size
@@ -15,3 +12,7 @@ Per la primera versio:
 
  * Treure vista 3D
 
+
+ * Posar butons del slider    OK
+ * Calcular el Max Interocular    OK
+ * Posar la barra de menu negra    OK

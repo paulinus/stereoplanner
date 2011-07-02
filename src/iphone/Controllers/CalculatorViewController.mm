@@ -228,11 +228,13 @@
 }
 
 - (IBAction)showSettings {
-  SettingsViewController *s = [[SettingsViewController alloc] init];
+  SettingsViewController *s = [[SettingsViewController alloc] initWithDocument:doc_];
   UINavigationController *n = [[UINavigationController alloc] initWithRootViewController:s];
   [self presentModalViewController:n animated:YES];
   [n release];
   [s release];
+  
+  [self documentChanged];
 }
 
 

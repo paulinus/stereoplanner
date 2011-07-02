@@ -11,13 +11,12 @@
 
 @implementation SensorSizeViewController
 
-@synthesize selectedCell;
-
 
 #pragma mark -
 #pragma mark Initialization
 
-- (id)init {
+- (id)initWithDocument:(SpDocument *)document {
+  doc_ = document;
   return [self initWithStyle:UITableViewStylePlain];
 }
 
@@ -31,7 +30,6 @@
 
   self.navigationItem.title = @"SensorSize";
   [self.navigationItem.leftBarButtonItem setTitle:@"Settings"];
-  self.selectedCell = nil;
 }
 
 
@@ -57,20 +55,15 @@
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
   }
   
   // Configure the cell...
-  switch (indexPath.row) {
-    case 0:
-      cell.textLabel.text = @"Nikon FX";
-      cell.accessoryType=UITableViewCellAccessoryNone;
-      break;
-    case 1:
-      cell.textLabel.text = @"Nikon DX";
-      cell.accessoryType=UITableViewCellAccessoryNone;
-      break;
-  }
+  const SensorType &st = doc_->SensorTypeAt(indexPath.row);
+  cell.textLabel.text = [NSString stringWithCString:st.label.c_str() encoding:[NSString defaultCStringEncoding]];
+  cell.detailTextLabel.text = [NSString stringWithFormat:@"%gmm x %gmm", st.width * 1000, st.height * 1000];
+  cell.accessoryType = (indexPath.row == doc_->SelectedSensorType()) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+
   return cell;
 }
 
@@ -79,12 +72,12 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (self.selectedCell) {
-    UITableViewCell *down = [tableView cellForRowAtIndexPath:self.selectedCell];
-    if (down) down.accessoryType = UITableViewCellAccessoryNone;
-  }
-  self.selectedCell = indexPath;
-  UITableViewCell *up = [tableView cellForRowAtIndexPath:self.selectedCell];
+  UITableViewCell *down = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:doc_->SelectedSensorType() inSection:indexPath.section]];
+  if (down) down.accessoryType = UITableViewCellAccessoryNone;
+  
+  doc_->SetSelectedSensorType(indexPath.row);
+  
+  UITableViewCell *up = [tableView cellForRowAtIndexPath:indexPath];
   if (up) up.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 

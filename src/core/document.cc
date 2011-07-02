@@ -35,6 +35,9 @@ SpDocument::SpDocument() {
   max_screen_parallax_constraint_ = 0.065;
   max_screen_bracket_constraint_ = 2 * 0.065;
 
+  CreateSensorTypeList(&sensor_type_list_);
+  selected_sensor_type_ = 0;
+  
   UpdateEverything();
 }
 
@@ -353,10 +356,10 @@ void SpDocument::SetMaxParallaxConstraint(float v) {
 }
 
 void SpDocument::SetMaxBracketConstraint(float v) {
-    if (max_bracket_constraint_ != v) {
-        max_bracket_constraint_ = v;
-        UpdateEverything();
-    }
+  if (max_bracket_constraint_ != v) {
+    max_bracket_constraint_ = v;
+    UpdateEverything();
+  }
 }
 
 void SpDocument::SetMinScreenParallaxConstraint(float v) {
@@ -380,6 +383,11 @@ void SpDocument::SetMaxScreenBracketConstraint(float v) {
   }
 }
 
+void SpDocument::SetSelectedSensorType(int i) {
+  selected_sensor_type_ = i;
+  SetSensorWidth(SensorTypeAt(i).width);
+  SetSensorHeight(SensorTypeAt(i).height);
+}
 
 void SpDocument::setDocumentChanged(bool b) {
   document_changed_ = b;

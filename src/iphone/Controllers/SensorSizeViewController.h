@@ -6,14 +6,15 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
+#include "document.h"
+
 #import <UIKit/UIKit.h>
 
 
 @interface SensorSizeViewController : UITableViewController {
-  NSIndexPath *selectedCell;
+  SpDocument *doc_;
 }
 
-@property (nonatomic,assign) NSIndexPath *selectedCell;
-
+- (id)initWithDocument:(SpDocument *)document;
 
 @end

@@ -16,7 +16,8 @@
 #pragma mark -
 #pragma mark Initialization
 
-- (id)init {
+- (id)initWithDocument:(SpDocument *)document {
+  doc_ = document;
   return [self initWithStyle:UITableViewStyleGrouped];
 }
 
@@ -162,7 +163,7 @@
   switch (indexPath.row) {
     case 0:
     {
-      SensorSizeViewController *s = [[SensorSizeViewController alloc] init];
+      SensorSizeViewController *s = [[SensorSizeViewController alloc] initWithDocument:doc_];
       [self.navigationController pushViewController:s animated:YES];
       [s release];
     }

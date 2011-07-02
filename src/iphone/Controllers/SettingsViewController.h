@@ -10,8 +10,9 @@
 
 
 @interface SettingsViewController : UITableViewController {
-
+  SpDocument *doc_;
 }
 
+- (id)initWithDocument:(SpDocument *)document;
 - (void)doneButton;
 @end
