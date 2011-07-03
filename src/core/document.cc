@@ -36,7 +36,7 @@ SpDocument::SpDocument() {
   max_screen_bracket_constraint_ = 2 * 0.065;
 
   CreateSensorTypeList(&sensor_type_list_);
-  selected_sensor_type_ = 0;
+  SetSelectedSensorType(5);
   
   UpdateEverything();
 }
