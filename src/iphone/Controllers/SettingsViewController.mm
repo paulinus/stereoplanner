@@ -16,8 +16,9 @@
 #pragma mark -
 #pragma mark Initialization
 
-- (id)initWithDocument:(SpDocument *)document {
+- (id)initWithDocument:(SpDocument *)document delegate:(id)dele {
   doc_ = document;
+  delegate_ = dele;
   return [self initWithStyle:UITableViewStyleGrouped];
 }
 
@@ -195,7 +196,7 @@
 }
 
 - (void)doneButton {
-  [self.parentViewController dismissModalViewControllerAnimated:YES];
+  [delegate_ settingsDone];
 }
 
 @end

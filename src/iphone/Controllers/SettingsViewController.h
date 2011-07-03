@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 
 
+@protocol SettingsDoneDelegate <NSObject>
+  - (void)settingsDone;
+@end
+
+
 @interface SettingsViewController : UITableViewController {
   SpDocument *doc_;
+  id delegate_;
 }
 
-- (id)initWithDocument:(SpDocument *)document;
+- (id)initWithDocument:(SpDocument *)document delegate:(id)dele;
 - (void)doneButton;
 @end
+
+
