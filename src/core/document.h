@@ -141,6 +141,7 @@ class SpDocument {
   void SetSelectedSensorType(int i);
   int SelectedSensorType() const { return selected_sensor_type_; }
   const SensorType &SensorTypeAt(int i) { return sensor_type_list_[i]; }
+  int NumSensorTypes() { return sensor_type_list_.size(); }
 
   void setDocumentChanged(bool b);
   bool DocumentChanged();

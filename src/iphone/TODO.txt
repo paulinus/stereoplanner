@@ -2,11 +2,10 @@
 Per la primera versio:
 
  * Posar imatges als butons del slider
- 
 
  * Completar settings
-   - Sensor size
-   - Viewer distance (as percentage of the screen size)
+   - Sensor size  OK
+   - Viewer distance (as percentage of the screen size)   OK
    - Viewer's interocular
    - Parallax constraints
 
@@ -16,3 +15,4 @@ Per la primera versio:
  * Posar butons del slider    OK
  * Calcular el Max Interocular    OK
  * Posar la barra de menu negra    OK
+ * fer que la calculadora s'actualitzi despres de veure els settings.  Mirar la doc de presentModalViewController per veure com fer que sigui el controlador pare el que fa el dismiss del fill.  Sembla que s'ha de fer servir un delegate per aixo.    OK
