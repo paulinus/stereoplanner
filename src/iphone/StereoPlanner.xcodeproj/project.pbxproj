@@ -12,6 +12,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		D5069DDE13BF2D5800F615BF /* sensor_type.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5069DDC13BF2D5800F615BF /* sensor_type.cc */; };
+		D510161413C07A9B00F813C2 /* ViewerDistanceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
 		D51CD5B613BE6FC3000717AA /* SensorSizeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D51CD5B513BE6FC3000717AA /* SensorSizeViewController.mm */; };
 		D53A026111DB7F550087316D /* document.cc in Sources */ = {isa = PBXBuildFile; fileRef = D53A025D11DB7F550087316D /* document.cc */; };
@@ -49,6 +50,8 @@
 		8D1107310486CEB800E47090 /* StereoPlanner-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StereoPlanner-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D5069DDC13BF2D5800F615BF /* sensor_type.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sensor_type.cc; sourceTree = "<group>"; };
 		D5069DDD13BF2D5800F615BF /* sensor_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sensor_type.h; sourceTree = "<group>"; };
+		D510161213C07A9B00F813C2 /* ViewerDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerDistanceViewController.h; path = Controllers/ViewerDistanceViewController.h; sourceTree = "<group>"; };
+		D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewerDistanceViewController.mm; path = Controllers/ViewerDistanceViewController.mm; sourceTree = "<group>"; };
 		D5118E52128213FB0021E6AB /* stereo_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stereo_frustum.h; sourceTree = "<group>"; };
 		D5118E53128213FB0021E6AB /* stereo_frustum.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stereo_frustum.cc; sourceTree = "<group>"; };
 		D51CD5B413BE6FC3000717AA /* SensorSizeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SensorSizeViewController.h; path = Controllers/SensorSizeViewController.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				D5505C5F13A4FEFC00F09BF0 /* SettingsViewController.mm */,
 				D51CD5B413BE6FC3000717AA /* SensorSizeViewController.h */,
 				D51CD5B513BE6FC3000717AA /* SensorSizeViewController.mm */,
+				D510161213C07A9B00F813C2 /* ViewerDistanceViewController.h */,
+				D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */,
 				D5505C6013A4FEFC00F09BF0 /* StereoPlannerAppDelegate.h */,
 				D5505C6113A4FEFC00F09BF0 /* StereoPlannerAppDelegate.mm */,
 			);
@@ -318,6 +323,7 @@
 				D5505C8113A50F4300F09BF0 /* InfiniteSlider.mm in Sources */,
 				D51CD5B613BE6FC3000717AA /* SensorSizeViewController.mm in Sources */,
 				D5069DDE13BF2D5800F615BF /* sensor_type.cc in Sources */,
+				D510161413C07A9B00F813C2 /* ViewerDistanceViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,6 +66,9 @@ class SpDocument {
   float ObserverX() const { return observer_position_[0] * ScreenWidth(); }
   float ObserverY() const { return observer_position_[1] * ScreenWidth(); }
   float ObserverZ() const { return observer_position_[2] * ScreenWidth(); }
+  float ObserverXRatio() const { return observer_position_[0]; }
+  float ObserverYRatio() const { return observer_position_[1]; }
+  float ObserverZRatio() const { return observer_position_[2]; }
   float ObserverPan() const { return observer_pan_; }
   float ObserverTilt() const { return observer_tilt_; }
   float ObserverRoll() const { return observer_roll_; }

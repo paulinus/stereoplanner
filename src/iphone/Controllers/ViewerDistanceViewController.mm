@@ -1,15 +1,17 @@
 //
-//  SensorSizeViewController.mm
+//  ViewerDistanceViewController.mm
 //  StereoPlanner
 //
 //  Created by Pau Gargallo on 11/21/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "SensorSizeViewController.h"
+#import "ViewerDistanceViewController.h"
 
+int num_ratios = 10;
+float ratios[] = {.2, .5, 1., 1.5, 2, 3, 4, 5, 7.5, 10};
 
-@implementation SensorSizeViewController
+@implementation ViewerDistanceViewController
 
 
 #pragma mark -
@@ -28,7 +30,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.navigationItem.title = @"Sensor Size";
+  self.navigationItem.title = @"Viewer Distance";
   [self.navigationItem.leftBarButtonItem setTitle:@"Settings"];
 }
 
@@ -44,7 +46,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 2;
+    return num_ratios;
 }
 
 
@@ -55,14 +57,12 @@
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
   }
   
   // Configure the cell...
-  const SensorType &st = doc_->SensorTypeAt(indexPath.row);
-  cell.textLabel.text = [NSString stringWithCString:st.label.c_str() encoding:[NSString defaultCStringEncoding]];
-  cell.detailTextLabel.text = [NSString stringWithFormat:@"%gmm x %gmm", st.width * 1000, st.height * 1000];
-  cell.accessoryType = (indexPath.row == doc_->SelectedSensorType()) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+  cell.textLabel.text = [NSString stringWithFormat:@"%g%s", ratios[indexPath.row] * 100, "% of screen width"];
+  cell.accessoryType = (ratios[indexPath.row] == doc_->ObserverZRatio()) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
   return cell;
 }
@@ -72,10 +72,12 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *down = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:doc_->SelectedSensorType() inSection:indexPath.section]];
-  if (down) down.accessoryType = UITableViewCellAccessoryNone;
+  for (int i = 0; i < num_ratios; ++i) {
+    UITableViewCell *down = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]];
+    if (down) down.accessoryType = UITableViewCellAccessoryNone;
+  }
   
-  doc_->SetSelectedSensorType(indexPath.row);
+  doc_->SetObserverZRatio(ratios[indexPath.row]);
   
   UITableViewCell *up = [tableView cellForRowAtIndexPath:indexPath];
   if (up) up.accessoryType = UITableViewCellAccessoryCheckmark;

@@ -7,6 +7,7 @@
 //
 
 #import "SensorSizeViewController.h"
+#import "ViewerDistanceViewController.h"
 #import "SettingsViewController.h"
 
 
@@ -108,7 +109,7 @@
       cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
       break;
     case 1:
-      cell.textLabel.text = @"caca";
+      cell.textLabel.text = @"Viewer distance";
       cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
       break;
   }
@@ -167,10 +168,13 @@
       SensorSizeViewController *s = [[SensorSizeViewController alloc] initWithDocument:doc_];
       [self.navigationController pushViewController:s animated:YES];
       [s release];
-    }
-      break;
+    } break;
     case 1:
-      break;
+    {
+      ViewerDistanceViewController *s = [[ViewerDistanceViewController alloc] initWithDocument:doc_];
+      [self.navigationController pushViewController:s animated:YES];
+      [s release];
+    } break;
   }
 }
 
