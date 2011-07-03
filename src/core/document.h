@@ -63,9 +63,9 @@ class SpDocument {
   float ScreenHeight() const { return ScreenWidth() / SensorWidth() * SensorHeight(); }
 
   float ObserverInterocular() const { return observer_interocular_; }
-  float ObserverX() const { return observer_position_[0]; }
-  float ObserverY() const { return observer_position_[1]; }
-  float ObserverZ() const { return observer_position_[2]; }
+  float ObserverX() const { return observer_position_[0] * ScreenWidth(); }
+  float ObserverY() const { return observer_position_[1] * ScreenWidth(); }
+  float ObserverZ() const { return observer_position_[2] * ScreenWidth(); }
   float ObserverPan() const { return observer_pan_; }
   float ObserverTilt() const { return observer_tilt_; }
   float ObserverRoll() const { return observer_roll_; }
@@ -118,9 +118,9 @@ class SpDocument {
   void SetScreenWidth(float v);
   
   void SetObserverInterocular(float v);
-  void SetObserverX(float v);
-  void SetObserverY(float v);
-  void SetObserverZ(float v);
+  void SetObserverXRatio(float v);
+  void SetObserverYRatio(float v);
+  void SetObserverZRatio(float v);
   void SetObserverPan(float v);
   void SetObserverTilt(float v);
   void SetObserverRoll(float v);
@@ -183,7 +183,7 @@ class SpDocument {
   
   // Observer parameters.
   float observer_interocular_;
-  Vector3f observer_position_;
+  Vector3f observer_position_;  // As a portion of the screen width.
   float observer_pan_, observer_tilt_, observer_roll_;
   
   // Scene parameters.

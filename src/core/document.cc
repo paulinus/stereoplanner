@@ -20,7 +20,7 @@ SpDocument::SpDocument() {
   screen_width_ = 10;
 
   observer_interocular_ = 0.065;
-  observer_position_ << 0, 0, 10;
+  observer_position_ << 0, 0, 2;
   observer_pan_ = 0;
   observer_tilt_ = 0;
   observer_roll_ = 0;
@@ -284,21 +284,21 @@ void SpDocument::SetObserverInterocular(float v) {
   }
 }
 
-void SpDocument::SetObserverX(float v) {
+void SpDocument::SetObserverXRatio(float v) {
   if (observer_position_[0] != v) {
     observer_position_[0] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverY(float v) {
+void SpDocument::SetObserverYRatio(float v) {
   if (observer_position_[1] != v) {
     observer_position_[1] = v;
     UpdateEverything();
   }
 }
 
-void SpDocument::SetObserverZ(float v) {
+void SpDocument::SetObserverZRatio(float v) {
   if (observer_position_[2] != v) {
     observer_position_[2] = v;
     UpdateEverything();
