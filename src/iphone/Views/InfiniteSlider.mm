@@ -23,8 +23,9 @@
   
   minus_button = [[UIButton alloc] init];
   [self addSubview:minus_button];
-  [minus_button setTitle:@"−" forState:UIControlStateNormal];
+  [minus_button setBackgroundImage:[UIImage imageNamed:@"menys.png"] forState:UIControlStateNormal];
   [minus_button addTarget:self action:@selector(minusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+
 
   label_view = [[UILabel alloc] init];
   [self addSubview:label_view];
@@ -42,8 +43,9 @@
 
   plus_button = [[UIButton alloc] init];
   [self addSubview:plus_button];
-  [plus_button setTitle:@"+" forState:UIControlStateNormal];
+  [plus_button setBackgroundImage:[UIImage imageNamed:@"mes.png"] forState:UIControlStateNormal];
   [plus_button addTarget:self action:@selector(plusButtonAction) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 - (id)init {
@@ -61,22 +63,22 @@
 - (void)setFrame:(CGRect)rect {
   [super setFrame:rect];
   float total_width = rect.size.width;
-  float margin = 0;
-  float button_width = 30;
+  float margin = 5;
+  float button_width = 20;
   
-  rect.origin.x = margin;
+  rect.origin.x = 0;
   rect.origin.y = 0;
   rect.size.width = button_width;
   [minus_button setFrame:rect];
 
-  rect.origin.x += rect.size.width;
+  rect.origin.x += rect.size.width + margin;
   rect.size.width = total_width / 2 - margin - button_width;
   [label_view setFrame:rect];
   
   rect.origin.x += rect.size.width;
   [value_view setFrame:rect];
   
-  rect.origin.x += rect.size.width;
+  rect.origin.x += rect.size.width + margin;
   rect.size.width = button_width;
   [plus_button setFrame:rect];
 }

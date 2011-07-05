@@ -11,6 +11,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		D50692A613C3B09E0082F235 /* menys.png in Resources */ = {isa = PBXBuildFile; fileRef = D50692A413C3B09E0082F235 /* menys.png */; };
+		D50692A713C3B09E0082F235 /* mes.png in Resources */ = {isa = PBXBuildFile; fileRef = D50692A513C3B09E0082F235 /* mes.png */; };
 		D5069DDE13BF2D5800F615BF /* sensor_type.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5069DDC13BF2D5800F615BF /* sensor_type.cc */; };
 		D510161413C07A9B00F813C2 /* ViewerDistanceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
@@ -48,6 +50,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* StereoPlanner_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoPlanner_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* StereoPlanner-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "StereoPlanner-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		D50692A413C3B09E0082F235 /* menys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menys.png; path = Resources/menys.png; sourceTree = "<group>"; };
+		D50692A513C3B09E0082F235 /* mes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mes.png; path = Resources/mes.png; sourceTree = "<group>"; };
 		D5069DDC13BF2D5800F615BF /* sensor_type.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sensor_type.cc; sourceTree = "<group>"; };
 		D5069DDD13BF2D5800F615BF /* sensor_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sensor_type.h; sourceTree = "<group>"; };
 		D510161213C07A9B00F813C2 /* ViewerDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerDistanceViewController.h; path = Controllers/ViewerDistanceViewController.h; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 			children = (
 				D5505C8413A50F5D00F09BF0 /* black.png */,
 				D5505C8513A50F5D00F09BF0 /* icona.png */,
+				D50692A413C3B09E0082F235 /* menys.png */,
+				D50692A513C3B09E0082F235 /* mes.png */,
 				D5505C8613A50F5D00F09BF0 /* monkey.geo */,
 				8D1107310486CEB800E47090 /* StereoPlanner-Info.plist */,
 			);
@@ -294,6 +300,8 @@
 				D5505C8713A50F5D00F09BF0 /* black.png in Resources */,
 				D5505C8813A50F5D00F09BF0 /* icona.png in Resources */,
 				D5505C8913A50F5D00F09BF0 /* monkey.geo in Resources */,
+				D50692A613C3B09E0082F235 /* menys.png in Resources */,
+				D50692A713C3B09E0082F235 /* mes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
