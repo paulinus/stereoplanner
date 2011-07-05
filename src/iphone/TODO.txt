@@ -1,13 +1,19 @@
 
 Per la primera versio:
 
- * Posar imatges als butons del slider
 
  * Completar settings
    - Sensor size  OK
    - Viewer distance (as percentage of the screen size)   OK
    - Viewer's interocular
    - Parallax constraints
+
+ * Canviar interocular per interaxial
+ * Buscar nom per bracket (depth budged?)
+
+ * Documentacio
+   - escriure una web petita
+   - posar una "i" de info a sota la calculadora
 
  * Treure vista 3D
 
@@ -16,3 +22,4 @@ Per la primera versio:
  * Calcular el Max Interocular    OK
  * Posar la barra de menu negra    OK
  * fer que la calculadora s'actualitzi despres de veure els settings.  Mirar la doc de presentModalViewController per veure com fer que sigui el controlador pare el que fa el dismiss del fill.  Sembla que s'ha de fer servir un delegate per aixo.    OK
+ * Posar imatges als butons del slider    OK
