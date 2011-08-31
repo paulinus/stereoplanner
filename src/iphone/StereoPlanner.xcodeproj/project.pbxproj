@@ -349,6 +349,7 @@
 				GCC_PREFIX_HEADER = StereoPlanner_Prefix.pch;
 				INFOPLIST_FILE = "StereoPlanner-Info.plist";
 				PRODUCT_NAME = StereoPlanner;
+				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
 		};
@@ -361,6 +362,7 @@
 				GCC_PREFIX_HEADER = StereoPlanner_Prefix.pch;
 				INFOPLIST_FILE = "StereoPlanner-Info.plist";
 				PRODUCT_NAME = StereoPlanner;
+				SDKROOT = iphoneos3.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

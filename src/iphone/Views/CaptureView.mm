@@ -181,7 +181,7 @@
       NSLog(@"u, v, depth = %g, %g, %g", p[0], p[1], depth);
       Eigen::Vector3f a = trackball_.BackProject(p1.x, p1.y, depth);
       Eigen::Vector3f b = trackball_.BackProject(p2.x, p2.y, depth);
-      so->position_ += b - a;
+      so->position_ += (b - a) / 2;
     } 
   }
   doc_->UpdateEverything();
