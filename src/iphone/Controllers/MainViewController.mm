@@ -94,15 +94,15 @@
 - (NSString *)getSliderVariableLabel {
   switch (selectedSliderVariable) {
     case SLIDER_NEAR:
-      return @"Near";
+      return @"Foreground";
     case SLIDER_FAR:
-      return @"Far";
+      return @"Background";
     case SLIDER_CONVERGENCE:
       return @"Convergence";
     case SLIDER_FOCAL_LENGTH:
       return @"Focal length";
     case SLIDER_INTEROCULAR:
-      return @"Interocular";
+      return @"Interaxial";
     case SLIDER_SCREEN_WIDTH:
       return @"Screen width";
     default:

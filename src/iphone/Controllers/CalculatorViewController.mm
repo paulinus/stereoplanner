@@ -79,10 +79,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [nearSlider setLabel:@"Near"];
-  [farSlider setLabel:@"Far"];
+  [nearSlider setLabel:@"Foreground"];
+  [farSlider setLabel:@"Background"];
   [convergenceSlider setLabel:@"Convergence"];
-  [interocularSlider setLabel:@"Interocular"];
+  [interocularSlider setLabel:@"Interaxial"];
   [focalLengthSlider setLabel:@"Focal Length"];
   [screenWidthSlider setLabel:@"Screen Width"];
   [nearSlider addTarget:self action:@selector(nearSliderChanged:) forControlEvents:UIControlEventValueChanged];

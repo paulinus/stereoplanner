@@ -17,6 +17,7 @@
 		D50A91611412C7EA008C876A /* documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = D50A91601412C7EA008C876A /* documentation.html */; };
 		D50A91631412CBEA008C876A /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50A91621412CBEA008C876A /* FlipsideView.xib */; };
 		D50A91661412CC07008C876A /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50A91651412CC07008C876A /* FlipsideViewController.m */; };
+		D50A91681412D822008C876A /* icona_beta.png in Resources */ = {isa = PBXBuildFile; fileRef = D50A91671412D822008C876A /* icona_beta.png */; };
 		D510161413C07A9B00F813C2 /* ViewerDistanceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
 		D51CD5B613BE6FC3000717AA /* SensorSizeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D51CD5B513BE6FC3000717AA /* SensorSizeViewController.mm */; };
@@ -61,6 +62,7 @@
 		D50A91621412CBEA008C876A /* FlipsideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
 		D50A91641412CC07008C876A /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
 		D50A91651412CC07008C876A /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
+		D50A91671412D822008C876A /* icona_beta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icona_beta.png; path = Resources/icona_beta.png; sourceTree = "<group>"; };
 		D510161213C07A9B00F813C2 /* ViewerDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerDistanceViewController.h; path = Controllers/ViewerDistanceViewController.h; sourceTree = "<group>"; };
 		D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewerDistanceViewController.mm; path = Controllers/ViewerDistanceViewController.mm; sourceTree = "<group>"; };
 		D5118E52128213FB0021E6AB /* stereo_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stereo_frustum.h; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				D50A91601412C7EA008C876A /* documentation.html */,
 				D5505C8413A50F5D00F09BF0 /* black.png */,
 				D5505C8513A50F5D00F09BF0 /* icona.png */,
+				D50A91671412D822008C876A /* icona_beta.png */,
 				D50692A413C3B09E0082F235 /* menys.png */,
 				D50692A513C3B09E0082F235 /* mes.png */,
 				D5505C8613A50F5D00F09BF0 /* monkey.geo */,
@@ -315,6 +318,7 @@
 				D50692A713C3B09E0082F235 /* mes.png in Resources */,
 				D50A91611412C7EA008C876A /* documentation.html in Resources */,
 				D50A91631412CBEA008C876A /* FlipsideView.xib in Resources */,
+				D50A91681412D822008C876A /* icona_beta.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
