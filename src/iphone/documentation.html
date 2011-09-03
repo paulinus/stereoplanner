@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>StereoPlanner Documentation</title>
+    <style type="text/css">
+      body {
+        background:#000000;
+        color:#FFFFFF;
+        font-family:Arial;
+      }
+    </style>
+  </head>
+<body>
+  
+  <h1>StereoPlanner</h1>
+  <p>StereoPlanner is a simple application for stereoscopic photography that allows you quickly check that things will look good on screen before you shot.  The calculator will compute screen parallaxes given the parameters of a stereo shooting. Set up your focal length, convergence and interaxial distance and see what parallaxes you will get on screen.</p>
+
+  <p>The upper part of the screen shows the minimum, total and maximum parallaxes as percentage of the screen size and in millimeters. Red numbers will indicates excessive parallax.</p>
+
+  <ul>
+    <li>The <b>minimum parallax</b> is the parallax of the object that will appear closest to the spectator. This is usually negative and, as a general rule, it should be smaller than 3% of the screen size and 65mm, which corresponds to placing the objects halfway between the screen and the spectator.</li>
+
+    <li>The <b>maximum parallax</b> is the parallax of the object that will appear farthest to the spectator. As a general rule, this should not exceed the distance between the eyes (65mm), or a 3% of the screen size.</li>
+
+    <li>The <b>parallax budget</b> is the difference between the maximum and the minimum parallaxes and tells you the amount of depth that is present in a shot. Minimum and maximum parallaxes can be shifted by re-converging the shot in post-production, but the parallax budget will remain constant.</li>
+  </ul>
+
+  <p>In the lower part of the screen, a set of sliders let you set up the shooting parameters.</p>
+  
+  <ul>
+    <li> <b>Foreground</b>: the distances from the cameras to the closest object.</li>
+
+    <li> <b>Background</b>: the distance from the cameras to the farther object.</li>
+
+    <li> <b>Convergence</b>: the distance at which the cameras converge. If you are shooting parallel and setting convergence in post-production, put here the distance to the object that will be at zero parallax after post.</li>
+
+    <li> <b>Interaxial</b>: distance between the optical centers of the cameras---also called interocular, baseline or stereo base. At the right of the slider the <b>Max</b> label indicates the larger interaxial that can be used without generating excessive parallax.</li>
+
+    <li> <b>Focal length</b>: the focal length of the lenses. Put the actual focal length (not equivalences) and make sure you set the correct sensor size in the settings.</li>
+
+    <li> <b>Screen width</b>: the width of the screen that you are targeting. If in doubt, put the larger screen size that you plan the material to be shown with.</li>
+  </ul>
+
+</body>
+</html>

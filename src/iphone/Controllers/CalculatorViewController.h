@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "InfiniteSlider.h"
+#import "FlipsideViewController.h"
 
 class SpDocument;
 @class MainViewController;
 
-@interface CalculatorViewController : UIViewController {
+@interface CalculatorViewController : UIViewController <FlipsideViewControllerDelegate> {
   SpDocument *doc_;
   MainViewController *main_view_controller_;
   
@@ -57,6 +58,7 @@ class SpDocument;
 - (IBAction)updateView;
 - (void)documentChanged;
 - (IBAction)showSettings;
+- (IBAction)showInfo;
 
 
 @end

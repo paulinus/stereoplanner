@@ -11,6 +11,7 @@
 #import "MainViewController.h"
 #import "SettingsViewController.h"
 #import "CalculatorViewController.h"
+#import "FlipsideViewController.h"
 
 
 @implementation CalculatorViewController
@@ -237,6 +238,20 @@
 
 - (void)settingsDone {
   [self documentChanged];
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)showInfo {
+  FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideView" bundle:nil];
+  controller.delegate = self;
+  
+  controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  [self presentModalViewController:controller animated:YES];
+  
+  [controller release];
+}
+
+- (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller {  
   [self dismissModalViewControllerAnimated:YES];
 }
 

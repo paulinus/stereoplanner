@@ -14,6 +14,9 @@
 		D50692A613C3B09E0082F235 /* menys.png in Resources */ = {isa = PBXBuildFile; fileRef = D50692A413C3B09E0082F235 /* menys.png */; };
 		D50692A713C3B09E0082F235 /* mes.png in Resources */ = {isa = PBXBuildFile; fileRef = D50692A513C3B09E0082F235 /* mes.png */; };
 		D5069DDE13BF2D5800F615BF /* sensor_type.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5069DDC13BF2D5800F615BF /* sensor_type.cc */; };
+		D50A91611412C7EA008C876A /* documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = D50A91601412C7EA008C876A /* documentation.html */; };
+		D50A91631412CBEA008C876A /* FlipsideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D50A91621412CBEA008C876A /* FlipsideView.xib */; };
+		D50A91661412CC07008C876A /* FlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50A91651412CC07008C876A /* FlipsideViewController.m */; };
 		D510161413C07A9B00F813C2 /* ViewerDistanceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */; };
 		D5118E54128213FB0021E6AB /* stereo_frustum.cc in Sources */ = {isa = PBXBuildFile; fileRef = D5118E53128213FB0021E6AB /* stereo_frustum.cc */; };
 		D51CD5B613BE6FC3000717AA /* SensorSizeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D51CD5B513BE6FC3000717AA /* SensorSizeViewController.mm */; };
@@ -54,6 +57,10 @@
 		D50692A513C3B09E0082F235 /* mes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mes.png; path = Resources/mes.png; sourceTree = "<group>"; };
 		D5069DDC13BF2D5800F615BF /* sensor_type.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sensor_type.cc; sourceTree = "<group>"; };
 		D5069DDD13BF2D5800F615BF /* sensor_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sensor_type.h; sourceTree = "<group>"; };
+		D50A91601412C7EA008C876A /* documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = documentation.html; sourceTree = "<group>"; };
+		D50A91621412CBEA008C876A /* FlipsideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlipsideView.xib; sourceTree = "<group>"; };
+		D50A91641412CC07008C876A /* FlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipsideViewController.h; sourceTree = "<group>"; };
+		D50A91651412CC07008C876A /* FlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipsideViewController.m; sourceTree = "<group>"; };
 		D510161213C07A9B00F813C2 /* ViewerDistanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewerDistanceViewController.h; path = Controllers/ViewerDistanceViewController.h; sourceTree = "<group>"; };
 		D510161313C07A9B00F813C2 /* ViewerDistanceViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewerDistanceViewController.mm; path = Controllers/ViewerDistanceViewController.mm; sourceTree = "<group>"; };
 		D5118E52128213FB0021E6AB /* stereo_frustum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stereo_frustum.h; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D50A91601412C7EA008C876A /* documentation.html */,
 				D5505C8413A50F5D00F09BF0 /* black.png */,
 				D5505C8513A50F5D00F09BF0 /* icona.png */,
 				D50692A413C3B09E0082F235 /* menys.png */,
@@ -204,6 +212,8 @@
 				D5505C5313A4FEFC00F09BF0 /* CaptureViewController.mm */,
 				D5505C5613A4FEFC00F09BF0 /* CinemaViewController.h */,
 				D5505C5713A4FEFC00F09BF0 /* CinemaViewController.mm */,
+				D50A91641412CC07008C876A /* FlipsideViewController.h */,
+				D50A91651412CC07008C876A /* FlipsideViewController.m */,
 				D5505C5C13A4FEFC00F09BF0 /* MainViewController.h */,
 				D5505C5D13A4FEFC00F09BF0 /* MainViewController.mm */,
 				D5505C5E13A4FEFC00F09BF0 /* SettingsViewController.h */,
@@ -228,6 +238,7 @@
 				D5505C7713A50F4300F09BF0 /* CinemaView.mm */,
 				D5505C7813A50F4300F09BF0 /* EAGLView.h */,
 				D5505C7913A50F4300F09BF0 /* EAGLView.mm */,
+				D50A91621412CBEA008C876A /* FlipsideView.xib */,
 				D5505C7A13A50F4300F09BF0 /* InfiniteSlider.h */,
 				D5505C7B13A50F4300F09BF0 /* InfiniteSlider.mm */,
 				D5505C7C13A50F4300F09BF0 /* MainView.xib */,
@@ -302,6 +313,8 @@
 				D5505C8913A50F5D00F09BF0 /* monkey.geo in Resources */,
 				D50692A613C3B09E0082F235 /* menys.png in Resources */,
 				D50692A713C3B09E0082F235 /* mes.png in Resources */,
+				D50A91611412C7EA008C876A /* documentation.html in Resources */,
+				D50A91631412CBEA008C876A /* FlipsideView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +345,7 @@
 				D51CD5B613BE6FC3000717AA /* SensorSizeViewController.mm in Sources */,
 				D5069DDE13BF2D5800F615BF /* sensor_type.cc in Sources */,
 				D510161413C07A9B00F813C2 /* ViewerDistanceViewController.mm in Sources */,
+				D50A91661412CC07008C876A /* FlipsideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
