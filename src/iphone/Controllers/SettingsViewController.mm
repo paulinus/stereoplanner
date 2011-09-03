@@ -48,11 +48,27 @@
 }
 
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+  [self.tableView setNeedsLayout]; 
+  
+  {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow: 0 inSection: 0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell) {
+      [self setSensorSizeDetailText:cell];
+    }
+  }
+  {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow: 1 inSection: 0];
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell) {
+      [self setViewerDistanceDetailText:cell];
+    }
+  }
+  [super viewWillAppear:animated];
 }
-*/
+
 /*
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -99,17 +115,21 @@
   
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
   if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
   }
   
   // Configure the cell...
   switch (indexPath.row) {
     case 0:
+    {
       cell.textLabel.text = @"Sensor size";
+      [self setSensorSizeDetailText:cell];
       cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
       break;
+    }
     case 1:
       cell.textLabel.text = @"Viewer distance";
+      [self setViewerDistanceDetailText:cell];
       cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
       break;
   }
@@ -201,6 +221,18 @@
 
 - (void)doneButton {
   [delegate_ settingsDone];
+}
+       
+#pragma mark -
+#pragma mark DetailText updates
+   
+- (void)setSensorSizeDetailText:(UITableViewCell *)cell {
+  const SensorType &st = doc_->SensorTypeAt(doc_->SelectedSensorType());
+  cell.detailTextLabel.text = [NSString stringWithFormat:@"%gmm x %gmm", st.width * 1000, st.height * 1000];
+}
+
+- (void)setViewerDistanceDetailText:(UITableViewCell *)cell {
+  cell.detailTextLabel.text = [NSString stringWithFormat:@"%g%s", doc_->ObserverZRatio() * 100, "% of screen width"];
 }
 
 @end

@@ -21,6 +21,9 @@
 
 - (id)initWithDocument:(SpDocument *)document delegate:(id)dele;
 - (void)doneButton;
+- (void)setSensorSizeDetailText:(UITableViewCell *)cell;
+- (void)setViewerDistanceDetailText:(UITableViewCell *)cell;
+
 @end
 
 
