@@ -41,6 +41,7 @@
 		D5505C8713A50F5D00F09BF0 /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = D5505C8413A50F5D00F09BF0 /* black.png */; };
 		D5505C8813A50F5D00F09BF0 /* icona.png in Resources */ = {isa = PBXBuildFile; fileRef = D5505C8513A50F5D00F09BF0 /* icona.png */; };
 		D5505C8913A50F5D00F09BF0 /* monkey.geo in Resources */ = {isa = PBXBuildFile; fileRef = D5505C8613A50F5D00F09BF0 /* monkey.geo */; };
+		D57F927C14142B5C00EA1AC1 /* icona_beta_petita.png in Resources */ = {isa = PBXBuildFile; fileRef = D57F927B14142B5C00EA1AC1 /* icona_beta_petita.png */; };
 		D58C8E671295628B00E2A017 /* object.cc in Sources */ = {isa = PBXBuildFile; fileRef = D58C8E661295628B00E2A017 /* object.cc */; };
 		D5C0057B11D65F9B0007CF10 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0057A11D65F9B0007CF10 /* OpenGLES.framework */; };
 		D5C0058F11D65FCD0007CF10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C0058E11D65FCD0007CF10 /* QuartzCore.framework */; };
@@ -104,6 +105,7 @@
 		D5505C8413A50F5D00F09BF0 /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = black.png; path = Resources/black.png; sourceTree = "<group>"; };
 		D5505C8513A50F5D00F09BF0 /* icona.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icona.png; path = Resources/icona.png; sourceTree = "<group>"; };
 		D5505C8613A50F5D00F09BF0 /* monkey.geo */ = {isa = PBXFileReference; lastKnownFileType = file; name = monkey.geo; path = Resources/monkey.geo; sourceTree = "<group>"; };
+		D57F927B14142B5C00EA1AC1 /* icona_beta_petita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icona_beta_petita.png; path = Resources/icona_beta_petita.png; sourceTree = "<group>"; };
 		D58C8E651295628B00E2A017 /* object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
 		D58C8E661295628B00E2A017 /* object.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = object.cc; sourceTree = "<group>"; };
 		D5C0057A11D65F9B0007CF10 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -165,6 +167,7 @@
 				D5505C8413A50F5D00F09BF0 /* black.png */,
 				D5505C8513A50F5D00F09BF0 /* icona.png */,
 				D50A91671412D822008C876A /* icona_beta.png */,
+				D57F927B14142B5C00EA1AC1 /* icona_beta_petita.png */,
 				D50692A413C3B09E0082F235 /* menys.png */,
 				D50692A513C3B09E0082F235 /* mes.png */,
 				D5505C8613A50F5D00F09BF0 /* monkey.geo */,
@@ -319,6 +322,7 @@
 				D50A91611412C7EA008C876A /* documentation.html in Resources */,
 				D50A91631412CBEA008C876A /* FlipsideView.xib in Resources */,
 				D50A91681412D822008C876A /* icona_beta.png in Resources */,
+				D57F927C14142B5C00EA1AC1 /* icona_beta_petita.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pau Gargallo";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -367,6 +372,7 @@
 				GCC_PREFIX_HEADER = StereoPlanner_Prefix.pch;
 				INFOPLIST_FILE = "StereoPlanner-Info.plist";
 				PRODUCT_NAME = StereoPlanner;
+				PROVISIONING_PROFILE = "96373644-3A87-4E85-851A-6BFE7B18A380";
 				SDKROOT = iphoneos3.2;
 			};
 			name = Debug;
@@ -375,11 +381,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pau Gargallo";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = StereoPlanner_Prefix.pch;
 				INFOPLIST_FILE = "StereoPlanner-Info.plist";
 				PRODUCT_NAME = StereoPlanner;
+				PROVISIONING_PROFILE = "96373644-3A87-4E85-851A-6BFE7B18A380";
 				SDKROOT = iphoneos3.2;
 				VALIDATE_PRODUCT = YES;
 			};

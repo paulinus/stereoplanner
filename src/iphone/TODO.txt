@@ -1,21 +1,28 @@
 
 Per la primera versio:
 
+ * instalar el xcode 4.0.1
+   * compilar
+   * archivar
+   * pujar!
+
+
+
+ * Guardar l'estat!!!
 
  * Completar settings
-   - Sensor size  OK
-   - Viewer distance (as percentage of the screen size)   OK
    - Viewer's interocular
    - Parallax constraints
-
- * Canviar interocular per interaxial
- * Buscar nom per bracket (depth budged?)
-
- * Documentacio
-   - escriure una web petita
-   - posar una "i" de info a sota la calculadora
+   - Sensor size  OK
+   - Viewer distance (as percentage of the screen size)   OK
+   - Posar valor actual als settings abans de seleccionar-los  OK
 
  * Treure vista 3D
+
+ * Canviar interocular per interaxial  OK
+ * Buscar nom per bracket (depth budged?)  OK
+
+ * Documentacio OK
 
 
  * Posar butons del slider    OK
