@@ -51,6 +51,8 @@
   return self;
 }
 
+#define SP_ENABLE_3D_VIEW 0
+#if SP_ENABLE_3D_VIEW
 - (void)orientationChanged:(NSNotification *)notification {
   UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
   if (UIDeviceOrientationIsLandscape(deviceOrientation) &&
@@ -65,6 +67,11 @@
     isShowingLandscapeView = NO;
   }
 }
+#else
+- (void)orientationChanged:(NSNotification *)notification {
+  isShowingLandscapeView = NO;
+}
+#endif
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
