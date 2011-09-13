@@ -77,7 +77,7 @@ SpDocument::SpDocument() {
   observer_tilt_ = 0;
   observer_roll_ = 0;
 
-  ReadObj("models/torus.obj", &capture_geometry_);
+  ReadObj("models/cotxe.obj", &capture_geometry_);
   UpdateEverything();
 }
 

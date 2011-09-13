@@ -1,21 +1,35 @@
 <html>
-  <head>
-    <title>StereoPlanner Documentation</title>
-    <style type="text/css">
-      body {
-        background:#000000;
-        color:#B0B0B0;
-        font-family:Arial;
-      }
-      b, h1 {
-        color:#FFFFFF;
-      }
-    </style>
-  </head>
+<head>
+  <title>StereoPlanner Documentation</title>
+  <style type="text/css">
+    body {
+      background:#000000;
+      color:#B0B0B0;
+      font-family:Arial;
+    }
+    b, h1 {
+      color:#FFFFFF;
+    }
+  </style>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25595198-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
 <body>
   
   <h1>StereoPlanner</h1>
-  <p>StereoPlanner is a simple application for stereoscopic photography that allows you quickly check that things will look good on screen before you shot.  The calculator will compute screen parallaxes given the parameters of a stereo shooting. Set up your focal length, convergence and interaxial distance and see what parallaxes you will get on screen.</p>
+  <p>StereoPlanner is a simple application for stereoscopic photography that allows you quickly check that things will look good on screen before you shoot.  The calculator will compute screen parallaxes given the parameters of a stereo shooting. Set up your focal length, convergence and interaxial distance and see what parallaxes you will get on screen.</p>
   <p>
   <center>
   <img src="screenshot.png" alt="Stereo Planner screenshot" />
@@ -39,7 +53,7 @@
 
     <li> <b>Background</b>: the distance from the cameras to the farthest object.</li>
 
-    <li> <b>Convergence</b>: the distance at which the cameras converge. If you shot with parallel cameras and set convergence in post-production, put here the distance to the object that will be at zero parallax after post.</li>
+    <li> <b>Convergence</b>: the distance at which the cameras converge. If you shoot with parallel cameras and set convergence in post-production, put here the distance to the object that will be at zero parallax after post.</li>
 
     <li> <b>Interaxial</b>: distance between the optical centers of the cameras---also called interocular, baseline or stereo base. At the right of the slider the <b>Max</b> label indicates the larger interaxial that can be used without generating excessive parallax.</li>
 
