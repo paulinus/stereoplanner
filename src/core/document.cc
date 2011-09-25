@@ -20,7 +20,7 @@ SpDocument::SpDocument() {
   screen_width_ = 10;
 
   observer_interocular_ = 0.065;
-  observer_position_ << 0, 0, 2;
+  observer_position_ << 0, 0, 1.5;
   observer_pan_ = 0;
   observer_tilt_ = 0;
   observer_roll_ = 0;

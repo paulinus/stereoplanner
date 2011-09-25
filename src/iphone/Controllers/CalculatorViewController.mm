@@ -230,6 +230,11 @@
   }
 
   [roundnessLabel setText:floatToString(doc_->Roundness(), 2)];
+  if (0.33 <= doc_->Roundness() && doc_->Roundness() <= 3) {
+    [roundnessLabel setTextColor:[UIColor greenColor]];
+  } else {
+    [roundnessLabel setTextColor:[UIColor redColor]];
+  }
 
   [maxInterocularLabel setText:floatToStringInMetric(doc_->MaxRigInterocular(), 2)];
 }
