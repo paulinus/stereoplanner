@@ -24,6 +24,7 @@
 @synthesize nearScreenParallaxLabel;
 @synthesize farScreenParallaxLabel;
 @synthesize screenParallaxBudgedLabel;
+@synthesize roundnessLabel;
 @synthesize maxInterocularLabel;
 
 @synthesize nearSlider;
@@ -227,6 +228,8 @@
   } else {
     [screenParallaxBudgedLabel setTextColor:[UIColor redColor]];
   }
+
+  [roundnessLabel setText:floatToString(doc_->Roundness(), 2)];
 
   [maxInterocularLabel setText:floatToStringInMetric(doc_->MaxRigInterocular(), 2)];
 }

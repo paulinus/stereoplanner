@@ -96,6 +96,7 @@ class SpDocument {
   float NearScreenParallax() const;
   float FarScreenParallax() const;
   float ScreenParallaxBudged() const;
+  float Roundness() const;
   float MaxRigInterocular() const;
   float MaxRigInterocularMinParallax() const;
   float MaxRigInterocularMaxParallax() const;

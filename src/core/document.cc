@@ -123,6 +123,11 @@ float SpDocument::ScreenParallaxBudged() const {
   return FarScreenParallax() - NearScreenParallax();
 }
 
+float SpDocument::Roundness() const {
+  return ObserverZ() * RigInterocular()
+      / ObserverInterocular() / RigConvergence();
+}
+
 float SpDocument::MaxRigInterocular() const {
   float m = std::numeric_limits<float>::max();
   m = std::min(m, MaxRigInterocularMinParallax());

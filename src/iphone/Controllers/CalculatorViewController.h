@@ -25,6 +25,7 @@ class SpDocument;
   id nearScreenParallaxLabel;
   id farScreenParallaxLabel;
   id screenParallaxBudgedLabel;
+  id roundnessLabel;
   id maxInterocularLabel;
   
   InfiniteSlider *nearSlider;
@@ -43,6 +44,7 @@ class SpDocument;
 @property (nonatomic,assign) IBOutlet id nearScreenParallaxLabel;
 @property (nonatomic,assign) IBOutlet id farScreenParallaxLabel;
 @property (nonatomic,assign) IBOutlet id screenParallaxBudgedLabel;
+@property (nonatomic,assign) IBOutlet id roundnessLabel;
 @property (nonatomic,assign) IBOutlet id maxInterocularLabel;
 
 @property (nonatomic,assign) IBOutlet InfiniteSlider *nearSlider;
