@@ -172,12 +172,24 @@ We consider the following constraints:
  \begin{equation}
  b \leq d_{bra} \frac{W}{W'} \bigg/ \left( \frac{Z_{far} - C}{Z_{far}} - \frac{Z_{near} - C}{Z_{near}} \right)
  \end{equation}
-
- 
  
 \end{enumerate}
 
 
+
+\section{Roundness Factor}
+The roundness factor is defined as how much extended or compressed is the Z axis compared to the change in screen size.  We usually talk about the roundness factor for objects at the screen plane. That is
+\begin{equation}
+ r = \frac{\partial Z'}{\partial Z}\Big|_{d=0} \Bigg/  \frac{W'}{W}.
+\end{equation}
+We first compute a differential change in Z as
+\begin{equation}
+  \delta Z |_{d=0} = \frac{bCW \delta d}{(b - dW)^2} \Big|_{d=0} = \frac{C W\delta d}{b}.
+\end{equation}
+Inserting this into the roundness definition we have,
+\begin{equation}
+ r = \frac{C'}{b'} \ \frac{b}{C}
+\end{equation}
 
 %\section{CACA VELLA: Formulas}
 %\subsection{Filming}
