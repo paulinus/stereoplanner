@@ -28,22 +28,24 @@
 
 <body>
   
-  <h1>StereoPlanner</h1>
-  <p>StereoPlanner is a simple application for stereoscopic photography that allows you quickly check that things will look good on screen before you shoot.  The calculator will compute screen parallaxes given the parameters of a stereo shooting. Set up your focal length, convergence and interaxial distance and see what parallaxes you will get on screen.</p>
+  <h1>StereoPlanner <small>(v1.1)</small></h1>
+  <p>StereoPlanner is a simple application for stereoscopic photography that allows you quickly check that things will look fine on screen before you shoot.  The calculator will compute roundness and parallax budget given the parameters of the shooting. Set up your focal length, convergence and interaxial and see the roundness and parallax that you will get on screen.</p>
   <p>
   <center>
   <img src="screenshot.png" alt="Stereo Planner screenshot" />
 </center>
   </p>
 
-  <p>The upper part of the screen shows the minimum, total and maximum parallaxes as percentage of the screen size and in millimeters. Red numbers will indicates excessive parallax.</p>
+  <p>The upper part of the screen shows the roundness and the minimum, total and maximum parallax as percentage of the screen size and in millimeters. Red numbers will indicates excessive parallax.</p>
 
   <ul>
+    <li>The <b>roundness</b> factor indicates how round or flat the objects will appear on screen.  A roundness factor of 1 indicates perfect roundness where objects will appear on screen as round as they are in reality. Smaller roundness indicates will appear flatter than they are.  Larger roundness indicates that objects will appear elongated much like a football.</li>
+
     <li>The <b>minimum parallax</b> is the parallax of the object that will appear closest to the spectator. This is usually negative and, as a general rule, it should be smaller than 3% of the screen size and 65mm, which corresponds to placing the objects halfway between the screen and the spectator.</li>
 
     <li>The <b>maximum parallax</b> is the parallax of the object that will appear farthest to the spectator. As a general rule, this should not exceed the distance between the eyes (65mm), or a 3% of the screen size.</li>
 
-    <li>The <b>parallax budget</b> is the difference between the maximum and the minimum parallaxes and tells you the amount of depth that is present in a shot. Minimum and maximum parallaxes can be shifted by re-converging the shot in post-production, but the parallax budget will remain constant.</li>
+    <li>The <b>parallax budget</b> is the difference between the maximum and the minimum parallax and tells you the amount of depth that is present in a shot. Minimum and maximum parallax can be shifted by re-converging the shot in post-production, but the parallax budget will remain constant.</li>
   </ul>
 
   <p>In the lower part of the screen, a set of sliders let you set up the shooting parameters.</p>
